@@ -1,0 +1,7 @@
+<resources>
+    <color name="transparent">#00000000</color>
+    <color name="primary">#FF7806</color>
+    <color name="primaryDark">#ED5700</color>
+    <color name="accent">#FFFFFF</color>
+    <color name="window_background">#FFFFFF</color>
+</resources>

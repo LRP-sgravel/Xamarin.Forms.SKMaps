@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:installLocation="auto" package="FormsSkiaBikeTracker.Droid">
+	<uses-sdk android:minSdkVersion="15" android:targetSdkVersion="25" />
+    <application android:label="FormsSkiaBikeTracker" android:icon="@drawable/icon" android:theme="@style/MainTheme">
+	</application>
+</manifest>
