@@ -5,6 +5,10 @@ using MvvmCross.Platform;
 using UIKit;
 using Xamarin.Forms;
 using FormsSkiaBikeTracker;
+using LRPLib;
+using LRPLib.Mvx.iOS;
+using LRPLib.Mvx.Views.XForms.iOS;
+using LRPLib.Views.XForms.iOS;
 
 [assembly: ResolutionGroupName(Constants.GeneralNamespace)]
 namespace FormsSkiaBikeTracker.iOS
@@ -27,6 +31,11 @@ namespace FormsSkiaBikeTracker.iOS
 
             var setup = new Setup(this, _window);
             setup.Initialize();
+
+            LrpLib.Init();
+            LrpLibMvx.Init();
+            LrpLibViews.Init();
+            LrpLibMvxViews.Init();
 
             var startup = Mvx.Resolve<IMvxAppStart>();
             startup.Start();

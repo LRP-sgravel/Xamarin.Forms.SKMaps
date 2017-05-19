@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <mvvm:MvxContentPage xmlns="http://xamarin.com/schemas/2014/forms"
                      xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-                     xmlns:lrp="clr-namespace:LRP_XFormsCore.Extensions;assembly=LRP-XFormsCore"
                      xmlns:mvvm="clr-namespace:MvvmCross.Forms.Presenter.Core;assembly=MvvmCross.Forms.Presenter.Core"
+                     xmlns:lrp="clr-namespace:LRPLib.Views.XForms.Markup;assembly=LRPLib.Views.XForms"
                      x:Class="FormsSkiaBikeTracker.Forms.UI.Views.LoadingPage">
 
     <AbsoluteLayout>

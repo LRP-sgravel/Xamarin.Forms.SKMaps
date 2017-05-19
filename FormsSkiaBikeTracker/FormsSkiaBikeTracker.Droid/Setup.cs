@@ -2,20 +2,19 @@
 using System.Linq;
 using System.Reflection;
 using Android.Content;
-using LRP_XFormsCore.Droid;
 using MvvmCross.Platform;
 using MvvmCross.Platform.Platform;
-using MvvmCross.Droid.Platform;
 using MvvmCross.Droid.Views;
 using MvvmCross.Forms.Presenter.Droid;
 using MvvmCross.Core.ViewModels;
 using MvvmCross.Core.Views;
 using MvvmCross.Platform.IoC;
 using FormsSkiaBikeTracker.Forms.UI.Views;
+using LRPLib.Mvx.Droid;
 
 namespace FormsSkiaBikeTracker.Droid
 {
-    public class Setup : MvxAndroidSetup
+    public class Setup : LrpDroidSetup
     {
         public Setup(Context applicationContext)
             : base(applicationContext)
@@ -29,11 +28,13 @@ namespace FormsSkiaBikeTracker.Droid
 
         protected override IMvxTrace CreateDebugTrace()
         {
+            bool alwaysOutput = false;
+
 #if DEBUG
-            return new LrpDebugTrace(true);
-#else
-            return new LrpDebugTrace();
+            alwaysOutput = true;
 #endif
+
+            return new LrpDroidDebugTrace(alwaysOutput);
         }
 
         protected override void InitializePlatformServices()

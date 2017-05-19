@@ -2,9 +2,12 @@
 using Android.Content;
 using Android.OS;
 using Android.Content.PM;
+using LRPLib;
+using LRPLib.Mvx.Droid;
+using LRPLib.Mvx.Views.XForms.Droid;
+using LRPLib.Views.XForms.Droid;
 using MvvmCross.Binding.BindingContext;
 using Xamarin.Forms.Platform.Android;
-using Xamarin.Forms;
 using MvvmCross.Forms.Presenter.Core;
 using MvvmCross.Platform;
 using MvvmCross.Core.Views;
@@ -56,6 +59,11 @@ namespace FormsSkiaBikeTracker.Droid
 
             MvxFormsApp mvxFormsApp = new MvxFormsApp();
             LoadApplication(mvxFormsApp);
+            
+            LrpLib.Init();
+            LrpLibMvx.Init();
+            LrpLibViews.Init();
+            LrpLibMvxViews.Init();
 
             MvxFormsDroidPagePresenter presenter = Mvx.Resolve<IMvxViewPresenter>() as MvxFormsDroidPagePresenter;
             presenter.MvxFormsApp = mvxFormsApp;

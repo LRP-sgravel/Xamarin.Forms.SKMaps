@@ -2,7 +2,6 @@
 using System.Linq;
 using System.Reflection;
 using UIKit;
-using LRP_XFormsCore.iOS;
 using MvvmCross.Forms.Presenter.iOS;
 using MvvmCross.Forms.Presenter.Core;
 using MvvmCross.Platform.Platform;
@@ -11,10 +10,11 @@ using MvvmCross.Core.ViewModels;
 using MvvmCross.iOS.Platform;
 using MvvmCross.Platform.IoC;
 using FormsSkiaBikeTracker.Forms.UI.Views;
+using LRPLib.Mvx.iOS;
 
 namespace FormsSkiaBikeTracker.iOS
 {
-    public class Setup : MvxIosSetup
+    public class Setup : LrpIosSetup
     {
         public Setup(MvxApplicationDelegate applicationDelegate, UIWindow window)
             : base(applicationDelegate, window)
@@ -28,18 +28,20 @@ namespace FormsSkiaBikeTracker.iOS
 
         protected override IMvxTrace CreateDebugTrace()
         {
+            bool alwaysOutput = false;
+
 #if DEBUG
-            return new LrpDebugTrace(true);
-#else
-            return new LrpDebugTrace();
+            alwaysOutput = true;
 #endif
+
+            return new LrpIosDebugTrace(alwaysOutput);
         }
 
         protected override IMvxIosViewPresenter CreatePresenter()
         {
             Xamarin.Forms.Forms.Init();
 
-            var xamarinFormsApp = new MvxFormsApp();
+            MvxFormsApp xamarinFormsApp = new MvxFormsApp();
 
             return new MvxFormsIosPagePresenter(Window, xamarinFormsApp);
         }

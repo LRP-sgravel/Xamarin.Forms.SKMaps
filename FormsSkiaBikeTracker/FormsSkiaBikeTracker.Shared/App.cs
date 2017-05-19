@@ -1,14 +1,15 @@
 ﻿using System.Reflection;
 using System.Threading.Tasks;
 using Acr.Settings;
-using LRP_XFormsCore;
-using LRP_XFormsCore.Services;
 using MvvmCross.Core.ViewModels;
 using MvvmCross.Localization;
 using MvvmCross.Platform;
 using MvvmCross.Platform.IoC;
 using MvvmCross.Plugins.JsonLocalization;
 using FormsSkiaBikeTracker.ViewModels;
+using LRPLib.Mvx.Core;
+using LRPLib.Mvx.Services.Localization;
+using LRPLib.Services;
 
 namespace FormsSkiaBikeTracker
 {
@@ -46,7 +47,7 @@ namespace FormsSkiaBikeTracker
             resourceLocator.RegisterPath(ResourceLocator.ImagesKey, Constants.RootImagesFolder);
             resourceLocator.RegisterPath(ResourceLocator.TextKey, Constants.RootTextFolder);
 
-            Mvx.RegisterSingleton<ISettings>(Settings.Local);
+            Mvx.RegisterSingleton<ISettings>(Settings.Current);
             Mvx.RegisterSingleton(resourceLocator);
         }
 

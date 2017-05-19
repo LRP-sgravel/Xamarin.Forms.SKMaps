@@ -1,5 +1,5 @@
-﻿using LRP_XFormsCore.Services;
-using LRP_XFormsCore.ViewModels;
+﻿using LRPLib.Mvx.ViewModels;
+using LRPLib.Services;
 
 namespace FormsSkiaBikeTracker.ViewModels
 {
