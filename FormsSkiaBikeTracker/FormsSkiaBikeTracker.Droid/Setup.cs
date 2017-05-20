@@ -2,10 +2,10 @@
 using System.Linq;
 using System.Reflection;
 using Android.Content;
+using Flurry.Analytics;
 using MvvmCross.Platform;
 using MvvmCross.Platform.Platform;
 using MvvmCross.Droid.Views;
-using MvvmCross.Forms.Presenter.Droid;
 using MvvmCross.Core.ViewModels;
 using MvvmCross.Core.Views;
 using MvvmCross.Platform.IoC;
@@ -37,14 +37,9 @@ namespace FormsSkiaBikeTracker.Droid
             return new LrpDroidDebugTrace(alwaysOutput);
         }
 
-        protected override void InitializePlatformServices()
-        {
-            base.InitializePlatformServices();
-        }
-
         protected override IMvxAndroidViewPresenter CreateViewPresenter()
         {
-            MvxFormsDroidPagePresenter presenter = new MvxFormsDroidPagePresenter();
+            LrpFormsAndroidPagePresenter presenter = new LrpFormsAndroidPagePresenter();
             Mvx.RegisterSingleton<IMvxViewPresenter>(presenter);
 
             return presenter;
@@ -69,5 +64,26 @@ namespace FormsSkiaBikeTracker.Droid
                 PropertyInjectorOptions = MvxPropertyInjectorOptions.MvxInject
             };
         }
+        protected override void InitializePlatformServices()
+        {
+            base.InitializePlatformServices();
+
+            SetupFlurry();
+        }
+
+        private void SetupFlurry()
+        {
+            Context context = ApplicationContext;
+
+            FlurryAgent.Init(ApplicationContext, "CGQSK9688VG9MFXMDRTS");
+            FlurryAgent.OnStartSession(context);                                  
+            FlurryAgent.SetLogEnabled(true);          
+            FlurryAgent.SetLogEvents(true);
+            FlurryAgent.SetCaptureUncaughtExceptions(true);
+            FlurryAgent.SetVersionName(context.PackageManager
+                                              .GetPackageInfo(context.PackageName, 0)
+                                              .VersionName);
+        }
+
     }
 }

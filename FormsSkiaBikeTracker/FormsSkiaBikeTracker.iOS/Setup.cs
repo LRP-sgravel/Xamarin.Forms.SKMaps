@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using Flurry.Analytics;
 using UIKit;
-using MvvmCross.Forms.Presenter.iOS;
 using MvvmCross.Forms.Presenter.Core;
 using MvvmCross.Platform.Platform;
 using MvvmCross.iOS.Views.Presenters;
@@ -10,6 +10,7 @@ using MvvmCross.Core.ViewModels;
 using MvvmCross.iOS.Platform;
 using MvvmCross.Platform.IoC;
 using FormsSkiaBikeTracker.Forms.UI.Views;
+using Foundation;
 using LRPLib.Mvx.iOS;
 
 namespace FormsSkiaBikeTracker.iOS
@@ -41,9 +42,7 @@ namespace FormsSkiaBikeTracker.iOS
         {
             Xamarin.Forms.Forms.Init();
 
-            MvxFormsApp xamarinFormsApp = new MvxFormsApp();
-
-            return new MvxFormsIosPagePresenter(Window, xamarinFormsApp);
+            return new LrpFormsIosPagePresenter(Window, new MvxFormsApp());
         }
 
         protected override IEnumerable<Assembly> GetViewAssemblies()
@@ -69,6 +68,19 @@ namespace FormsSkiaBikeTracker.iOS
         protected override void InitializePlatformServices()
         {
             base.InitializePlatformServices();
+
+            SetupFlurry();
+        }
+
+        private void SetupFlurry()
+        {
+            FlurryAgent.StartSession("BT7TJ7N85XMH4YMMH6ZC");
+            FlurryAgent.SetDebugLogEnabled(true);                                         
+            FlurryAgent.SetEventLoggingEnabled(true);
+            FlurryAgent.SetCrashReportingEnabled(true);
+            FlurryAgent.SetAppVersion(NSBundle.MainBundle
+                                              .ObjectForInfoDictionary("CFBundleVersion")
+                                              .ToString());
         }
     }
 }

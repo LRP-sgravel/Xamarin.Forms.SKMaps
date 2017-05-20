@@ -71,7 +71,7 @@ namespace FormsSkiaBikeTracker
         {
             LrpBootstrapper bootstrapper = Mvx.Resolve<LrpBootstrapper>();
 
-            bootstrapper.AddAsyncStep(new LrpAsyncActionBootstrapStep(async a => await Task.Delay(1500).ConfigureAwait(false)));
+            bootstrapper.AddAsyncStep(new LrpAsyncActionBootstrapStep(a => Task.Delay(1500).Wait()));
             bootstrapper.QueueStep(new LrpActionBootstrapStep(() => { }) { StepActionText = "Booting..." });
 
             bootstrapper.Boot();

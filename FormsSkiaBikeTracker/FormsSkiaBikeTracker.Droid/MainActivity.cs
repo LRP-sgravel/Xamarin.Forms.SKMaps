@@ -11,7 +11,6 @@ using Xamarin.Forms.Platform.Android;
 using MvvmCross.Forms.Presenter.Core;
 using MvvmCross.Platform;
 using MvvmCross.Core.Views;
-using MvvmCross.Forms.Presenter.Droid;
 using MvvmCross.Core.ViewModels;
 using MvvmCross.Droid.Platform;
 using MvvmCross.Droid.Views;
@@ -65,7 +64,7 @@ namespace FormsSkiaBikeTracker.Droid
             LrpLibViews.Init();
             LrpLibMvxViews.Init();
 
-            MvxFormsDroidPagePresenter presenter = Mvx.Resolve<IMvxViewPresenter>() as MvxFormsDroidPagePresenter;
+            LrpFormsAndroidPagePresenter presenter = Mvx.Resolve<IMvxViewPresenter>() as LrpFormsAndroidPagePresenter;
             presenter.MvxFormsApp = mvxFormsApp;
 
             IsAppInForeground = true;
