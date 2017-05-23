@@ -17,13 +17,9 @@ namespace FormsSkiaBikeTracker.Forms.UI.Views
         public LoadingPage()
         {
             InitializeComponent();
-        }
-
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
 
             NavigationPage.SetHasNavigationBar(this, false);
         }
+
     }
 }
