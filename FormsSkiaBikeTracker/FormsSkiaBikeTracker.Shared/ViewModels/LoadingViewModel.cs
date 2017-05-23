@@ -9,6 +9,7 @@
 // 
 // ***********************************************************************
 using System.Collections.Generic;
+using FormsSkiaBikeTracker.Shared.ViewModels;
 using LRPLib.Mvx.ViewModels;
 using LRPLib.Services;
 using MvvmCross.Core.ViewModels;
@@ -52,7 +53,7 @@ namespace FormsSkiaBikeTracker.ViewModels
 
             if (_Bootstrapper.IsBooted)
             {
-                MainThread.Context.Post(state => OnBootCompleted(), null);
+                MainThread.Run(OnBootCompleted);
             }
         }
 
@@ -66,15 +67,15 @@ namespace FormsSkiaBikeTracker.ViewModels
             _Bootstrapper.BootTextChanged -= UpdateBootText;
             _Bootstrapper.BootCompleted -= OnBootCompleted;
 
-            ShowViewModel<MainViewModel>((IMvxBundle)null,
-                                         new MvxBundle
-                                         (
-                                             new Dictionary<string, string>
-                                             {
-                                                 [PresenterConstants.ReplaceMainPagePresentation] =
-                                                 true.ToString()
-                                             }
-                                         ));
+            ShowViewModel<LoginViewModel>((IMvxBundle)null,
+                                          new MvxBundle
+                                          (
+                                              new Dictionary<string, string>
+                                              {
+                                                  [PresenterConstants.ReplaceMainPagePresentation] =
+                                                  true.ToString()
+                                              }
+                                          ));
         }
     }
 }
