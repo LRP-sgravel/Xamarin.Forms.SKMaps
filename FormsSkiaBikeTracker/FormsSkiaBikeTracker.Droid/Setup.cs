@@ -76,13 +76,13 @@ namespace FormsSkiaBikeTracker.Droid
             Context context = ApplicationContext;
 
             FlurryAgent.Init(ApplicationContext, "CGQSK9688VG9MFXMDRTS");
-            FlurryAgent.OnStartSession(context);                                  
-            FlurryAgent.SetLogEnabled(true);          
+            FlurryAgent.SetLogEnabled(true);
             FlurryAgent.SetLogEvents(true);
             FlurryAgent.SetCaptureUncaughtExceptions(true);
             FlurryAgent.SetVersionName(context.PackageManager
                                               .GetPackageInfo(context.PackageName, 0)
                                               .VersionName);
+            FlurryAgent.OnStartSession(context);                                  
         }
 
     }

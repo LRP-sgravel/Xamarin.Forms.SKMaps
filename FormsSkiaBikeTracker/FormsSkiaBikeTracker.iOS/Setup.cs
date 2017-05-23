@@ -74,13 +74,13 @@ namespace FormsSkiaBikeTracker.iOS
 
         private void SetupFlurry()
         {
-            FlurryAgent.StartSession("BT7TJ7N85XMH4YMMH6ZC");
             FlurryAgent.SetDebugLogEnabled(true);                                         
             FlurryAgent.SetEventLoggingEnabled(true);
             FlurryAgent.SetCrashReportingEnabled(true);
             FlurryAgent.SetAppVersion(NSBundle.MainBundle
                                               .ObjectForInfoDictionary("CFBundleVersion")
                                               .ToString());
+            FlurryAgent.StartSession("BT7TJ7N85XMH4YMMH6ZC");
         }
     }
 }
