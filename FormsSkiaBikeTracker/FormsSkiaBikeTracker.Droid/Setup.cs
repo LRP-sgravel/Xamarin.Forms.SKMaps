@@ -84,11 +84,16 @@ namespace FormsSkiaBikeTracker.Droid
         private void SetupFlurry()
         {
             Context context = ApplicationContext;
+            bool enableCrashReporting = true;
+
+#if DEBUG
+            enableCrashReporting = false;
+#endif
 
             FlurryAgent.Init(ApplicationContext, "CGQSK9688VG9MFXMDRTS");
             FlurryAgent.SetLogEnabled(true);
             FlurryAgent.SetLogEvents(true);
-            FlurryAgent.SetCaptureUncaughtExceptions(true);
+            FlurryAgent.SetCaptureUncaughtExceptions(enableCrashReporting);
             FlurryAgent.SetVersionName(context.PackageManager
                                               .GetPackageInfo(context.PackageName, 0)
                                               .VersionName);

@@ -84,9 +84,15 @@ namespace FormsSkiaBikeTracker.iOS
 
         private void SetupFlurry()
         {
+            bool enableCrashReporting = true;
+
+#if DEBUG
+            enableCrashReporting = false;
+#endif
+
             FlurryAgent.SetDebugLogEnabled(true);                                         
             FlurryAgent.SetEventLoggingEnabled(true);
-            FlurryAgent.SetCrashReportingEnabled(true);
+            FlurryAgent.SetCrashReportingEnabled(enableCrashReporting);
             FlurryAgent.SetAppVersion(NSBundle.MainBundle
                                               .ObjectForInfoDictionary("CFBundleVersion")
                                               .ToString());
