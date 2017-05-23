@@ -22,7 +22,7 @@
         </Grid.RowDefinitions>
 
         <xForms:SvgImage Grid.Row="0" 
-                         Margin="40"
+                         Margin="40, 50, 40, 40"
                          HeightRequest="100"
                          WidthRequest="300"
                          HorizontalOptions="Center"

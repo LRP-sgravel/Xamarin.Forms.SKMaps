@@ -92,7 +92,8 @@ namespace FormsSkiaBikeTracker.Forms.UI.Controls
                                       {
                                           Style = SKPaintStyle.Stroke,
                                           Color = ColorExtensions.ToSKColor(BorderColor),
-                                          StrokeWidth = BorderWidth
+                                          StrokeWidth = BorderWidth,
+                                          IsAntialias = true,
                                       };
 
                 using (borderPaint)

@@ -5,7 +5,8 @@
              x:Class="FormsSkiaBikeTracker.Forms.UI.Controls.UserLoginControlView"
              x:Name="Control"
              HeightRequest="80">
-    <Grid BindingContext="{Binding Source={x:Reference Name=Control}, Path=InternalViewModel}">
+    <Grid BindingContext="{Binding Source={x:Reference Name=Control}, Path=InternalViewModel}"
+          ColumnSpacing="0">
 
         <Grid.RowDefinitions>
             <RowDefinition Height="80" />
@@ -25,6 +26,7 @@
                                    BorderColor="DarkSlateGray" />
 
         <controls:SKLabel Grid.Column="1"
+                          Margin ="0, 0, 0, 10"
                           VerticalOptions="CenterAndExpand"
                           HorizontalOptions="Start"
                           Text="{Binding User.Name}"

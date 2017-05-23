@@ -100,7 +100,7 @@ namespace FormsSkiaBikeTracker.Forms.UI.Controls
                     paint.TextSize = (float)FontSize;
                     paint.MeasureText(Text, ref textBounds);
 
-                    return new SizeRequest(new Size(textBounds.Width, textBounds.Height + paint.FontMetrics.Bottom));
+                    return new SizeRequest(new Size(textBounds.Width, textBounds.Height + paint.FontMetrics.Descent));
                 }
             }
 
@@ -118,8 +118,9 @@ namespace FormsSkiaBikeTracker.Forms.UI.Controls
                     paint.Typeface = _Typeface;
                     paint.Color = TextColor.ToSKColor();
                     paint.TextSize = (float)FontSize;
+                    paint.IsAntialias = true;
 
-                    canvas.DrawText(Text, 0, (float)Height - paint.FontMetrics.Bottom, paint);
+                    canvas.DrawText(Text, 0, (float)Height - (paint.FontMetrics.Descent / canvas.TotalMatrix.ScaleY), paint);
                 }
             }
         }
