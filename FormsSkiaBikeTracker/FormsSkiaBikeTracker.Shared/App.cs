@@ -20,6 +20,8 @@ using FormsSkiaBikeTracker.ViewModels;
 using LRPLib.Mvx.Core;
 using LRPLib.Mvx.Services.Localization;
 using LRPLib.Services;
+using LRPLib.Services.Resources;
+using SimpleCrypto;
 
 namespace FormsSkiaBikeTracker
 {
@@ -53,12 +55,13 @@ namespace FormsSkiaBikeTracker
             Assembly currentAssembly = Assembly.Load(new AssemblyName("FormsSkiaBikeTracker.Shared"));
             ResourceLocator resourceLocator = new ResourceLocator(Constants.GeneralNamespace, currentAssembly);
 
-            resourceLocator.RegisterPath(ResourceLocator.RootKey, Constants.RootResourcesFolder);
-            resourceLocator.RegisterPath(ResourceLocator.ImagesKey, Constants.RootImagesFolder);
-            resourceLocator.RegisterPath(ResourceLocator.TextKey, Constants.RootTextFolder);
+            resourceLocator.RegisterPath(ResourceKeys.RootKey, Constants.RootResourcesFolder);
+            resourceLocator.RegisterPath(ResourceKeys.ImagesKey, Constants.RootImagesFolder);
+            resourceLocator.RegisterPath(ResourceKeys.TextKey, Constants.RootTextFolder);
+            resourceLocator.RegisterPath("Fonts", Constants.RootResourcesFolder + "/Fonts");
 
             Mvx.RegisterSingleton<ISettings>(Settings.Current);
-            Mvx.RegisterSingleton(resourceLocator);
+            Mvx.RegisterSingleton<IResourceLocator>(resourceLocator);
         }
 
         private void InitializeText()
@@ -75,6 +78,7 @@ namespace FormsSkiaBikeTracker
         private void InitializeServices()
         {
             Mvx.RegisterSingleton(Mvx.IocConstruct<LrpBootstrapper>);
+            Mvx.RegisterSingleton<ICryptoService>(new PBKDF2());
         }
 
         private void InitializeBootstrap()
