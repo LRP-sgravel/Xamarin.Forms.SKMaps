@@ -1,11 +1,70 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 
-<core:MvxContentPage x:TypeArguments="views:LoginViewModel"
+<core:MvxContentPage x:TypeArguments="viewModels:LoginViewModel"
                      xmlns="http://xamarin.com/schemas/2014/forms"
                      xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                      xmlns:core="clr-namespace:MvvmCross.Forms.Presenter.Core;assembly=MvvmCross.Forms.Presenter.Core"
-                     xmlns:views="clr-namespace:FormsSkiaBikeTracker.Shared.UI.Views;assembly=FormsSkiaBikeTracker.Shared"
+                     xmlns:viewModels="clr-namespace:FormsSkiaBikeTracker.Shared.ViewModels;assembly=FormsSkiaBikeTracker.Shared"
+                     xmlns:controls="clr-namespace:FormsSkiaBikeTracker.Forms.UI.Controls;assembly=FormsSkiaBikeTracker.Forms.UI"
+                     xmlns:xForms="clr-namespace:LRPLib.Views.XForms;assembly=LRPLib.Views.XForms"
+                     xmlns:lrpMvx="clr-namespace:LRPLib.Mvx.Views.XForms.Markup;assembly=LRPLib.Mvx.Views.XForms"
+                     xmlns:lrp="clr-namespace:LRPLib.Views.XForms.Markup;assembly=LRPLib.Views.XForms"
                      x:Class="FormsSkiaBikeTracker.Forms.UI.Views.LoginPage">
-    <StackLayout Orientation="Vertical">
-    </StackLayout>
+    <Grid RowSpacing="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="140" />
+            <RowDefinition Height="2" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="2" />
+            <RowDefinition Height="20" />
+            <RowDefinition Height="80" />
+            <RowDefinition Height="20" />
+        </Grid.RowDefinitions>
+
+        <xForms:SvgImage Grid.Row="0" 
+                         Margin="40"
+                         HeightRequest="100"
+                         WidthRequest="300"
+                         HorizontalOptions="Center"
+                         VerticalOptions="Fill"
+                         Aspect="AspectFit"
+                         Source="{lrpMvx:EmbeddedImage full_logo.svg}" />
+
+        <xForms:LinearGradientBoxView Grid.Row="1"
+                                      EndColor="AliceBlue"
+                                      StartColor="LightSkyBlue" />
+        <ListView Grid.Row="2"
+                  RowHeight="-1"
+                  HasUnevenRows="True"
+                  SeparatorVisibility="None"
+                  ItemsSource="{Binding Users}"
+                  SelectedItem="{Binding SelectedUser}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <controls:UserLoginControlView User="{Binding .}" />
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <xForms:LinearGradientBoxView Grid.Row="3"
+                                      StartColor="AliceBlue"
+                                      EndColor="LightSkyBlue" />
+        
+        <controls:DrawnBackgroundControlView Grid.Row="5"
+                                             Margin="30, 10, 30, 10">
+            <controls:DrawnBackgroundControlView.Background>
+                <xForms:LinearGradientBoxView x:Name="SignUpButtonBackground"
+                                              StartColor="LightSkyBlue"
+                                              EndColor="CadetBlue"
+                                              Direction="TopToBottom"/>
+            </controls:DrawnBackgroundControlView.Background>
+            <controls:DrawnBackgroundControlView.Foreground>
+                <Button Text="{lrp:LocalizedText SignUp}"
+                        FontSize="22"
+                        FontAttributes="Bold"
+                        TextColor="DarkSlateGray"/>
+            </controls:DrawnBackgroundControlView.Foreground>
+        </controls:DrawnBackgroundControlView>
+    </Grid>
 </core:MvxContentPage>
