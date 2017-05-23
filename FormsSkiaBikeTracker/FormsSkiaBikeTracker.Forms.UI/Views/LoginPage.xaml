@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<core:MvxContentPage x:TypeArguments="views:LoginViewModel"
+                     xmlns="http://xamarin.com/schemas/2014/forms"
+                     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                     xmlns:core="clr-namespace:MvvmCross.Forms.Presenter.Core;assembly=MvvmCross.Forms.Presenter.Core"
+                     xmlns:views="clr-namespace:FormsSkiaBikeTracker.Shared.UI.Views;assembly=FormsSkiaBikeTracker.Shared"
+                     x:Class="FormsSkiaBikeTracker.Forms.UI.Views.LoginPage">
+    <StackLayout Orientation="Vertical">
+    </StackLayout>
+</core:MvxContentPage>

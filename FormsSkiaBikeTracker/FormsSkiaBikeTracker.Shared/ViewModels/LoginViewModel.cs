@@ -1,6 +1,6 @@
 ﻿// **********************************************************************
 // 
-//   MainViewModel.cs
+//   LoginViewModel.cs
 //   
 //   This file is subject to the terms and conditions defined in
 //   file 'LICENSE.txt', which is part of this source code package.
@@ -10,11 +10,11 @@
 // ***********************************************************************
 using LRPLib.Mvx.ViewModels;
 
-namespace FormsSkiaBikeTracker.ViewModels
+namespace FormsSkiaBikeTracker.Shared.ViewModels
 {
-    public class MainViewModel : LrpViewModel
+    public class LoginViewModel : LrpViewModel
     {
-        public MainViewModel()
+        public LoginViewModel()
         {
         }
 

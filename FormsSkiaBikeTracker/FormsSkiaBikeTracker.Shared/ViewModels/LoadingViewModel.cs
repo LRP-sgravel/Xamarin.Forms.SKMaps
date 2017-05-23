@@ -1,12 +1,21 @@
-﻿using System.Collections.Generic;
-using FormsSkiaBikeTracker.Forms.UI;
+﻿// **********************************************************************
+// 
+//   LoadingViewModel.cs
+//   
+//   This file is subject to the terms and conditions defined in
+//   file 'LICENSE.txt', which is part of this source code package.
+//   
+//   Copyright (c) 2017, Le rond-point
+// 
+// ***********************************************************************
+using System.Collections.Generic;
 using LRPLib.Mvx.ViewModels;
 using LRPLib.Services;
 using MvvmCross.Core.ViewModels;
 
 namespace FormsSkiaBikeTracker.ViewModels
 {
-    class LoadingViewModel : LrpLocalizedViewModel
+    class LoadingViewModel : LrpViewModel
     {
         private LrpBootstrapper _Bootstrapper { get; }
 
@@ -62,7 +71,7 @@ namespace FormsSkiaBikeTracker.ViewModels
                                          (
                                              new Dictionary<string, string>
                                              {
-                                                 [LrpFormsPagePresenter.ReplaceMainPagePresentation] =
+                                                 [PresenterConstants.ReplaceMainPagePresentation] =
                                                  true.ToString()
                                              }
                                          ));

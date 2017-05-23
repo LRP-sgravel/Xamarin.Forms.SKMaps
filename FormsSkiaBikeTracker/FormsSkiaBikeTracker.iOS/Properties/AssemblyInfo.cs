@@ -1,4 +1,14 @@
-﻿using System.Reflection;
+﻿// **********************************************************************
+// 
+//   AssemblyInfo.cs
+//   
+//   This file is subject to the terms and conditions defined in
+//   file 'LICENSE.txt', which is part of this source code package.
+//   
+//   Copyright (c) 2017, Le rond-point
+// 
+// ***********************************************************************
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 

@@ -1,6 +1,6 @@
 ﻿// **********************************************************************
 // 
-//   MainViewModel.cs
+//   LoginPage.xaml.cs
 //   
 //   This file is subject to the terms and conditions defined in
 //   file 'LICENSE.txt', which is part of this source code package.
@@ -8,21 +8,21 @@
 //   Copyright (c) 2017, Le rond-point
 // 
 // ***********************************************************************
-using LRPLib.Mvx.ViewModels;
+using Xamarin.Forms.Xaml;
 
-namespace FormsSkiaBikeTracker.ViewModels
+namespace FormsSkiaBikeTracker.Forms.UI.Views
 {
-    public class MainViewModel : LrpViewModel
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class LoginPage
     {
-        public MainViewModel()
+        public LoginPage()
         {
+            InitializeComponent();
         }
 
-        public override void Start()
+        protected override void OnPropertyChanged(string propertyName = null)
         {
-            base.Start();
-            
+            base.OnPropertyChanged(propertyName);
         }
     }
 }
-

@@ -1,4 +1,14 @@
-﻿namespace FormsSkiaBikeTracker
+﻿// **********************************************************************
+// 
+//   Constants.cs
+//   
+//   This file is subject to the terms and conditions defined in
+//   file 'LICENSE.txt', which is part of this source code package.
+//   
+//   Copyright (c) 2017, Le rond-point
+// 
+// ***********************************************************************
+namespace FormsSkiaBikeTracker
 {
     public static class Constants
     {

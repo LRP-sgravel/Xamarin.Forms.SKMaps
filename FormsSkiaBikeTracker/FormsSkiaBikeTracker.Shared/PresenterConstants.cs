@@ -1,6 +1,6 @@
 ﻿// **********************************************************************
 // 
-//   MainViewModel.cs
+//   PresenterConstants.cs
 //   
 //   This file is subject to the terms and conditions defined in
 //   file 'LICENSE.txt', which is part of this source code package.
@@ -8,21 +8,10 @@
 //   Copyright (c) 2017, Le rond-point
 // 
 // ***********************************************************************
-using LRPLib.Mvx.ViewModels;
-
-namespace FormsSkiaBikeTracker.ViewModels
+namespace FormsSkiaBikeTracker
 {
-    public class MainViewModel : LrpViewModel
+    public class PresenterConstants
     {
-        public MainViewModel()
-        {
-        }
-
-        public override void Start()
-        {
-            base.Start();
-            
-        }
+        public const string ReplaceMainPagePresentation = nameof(ReplaceMainPagePresentation);
     }
 }
-

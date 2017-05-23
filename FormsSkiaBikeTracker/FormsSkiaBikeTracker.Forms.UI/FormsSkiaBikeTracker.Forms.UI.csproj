@@ -40,6 +40,9 @@
     <Compile Include="Views\LoadingPage.xaml.cs">
       <DependentUpon>LoadingPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\LoginPage.xaml.cs">
+      <DependentUpon>LoginPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -50,7 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="LRPLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\LRPLib.1.0.2\lib\portable-net45+win8\LRPLib.dll</HintPath>
+      <HintPath>..\..\packages\LRPLib.1.0.2\lib\portable-net40+sl5+windowsphone8+windows8+MonoAndroid40+MonoTouch10\LRPLib.dll</HintPath>
     </Reference>
     <Reference Include="LRPLib.Mvx, Version=1.0.6348.24673, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\LRPLib.Mvx.Views.XForms.1.0.0\lib\LRPLib.Mvx.dll</HintPath>
@@ -125,6 +128,18 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\LoginPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FormsSkiaBikeTracker.Shared\FormsSkiaBikeTracker.Shared.csproj">
+      <Project>{82BB27C7-29AB-4EE9-979B-874E82D3C321}</Project>
+      <Name>FormsSkiaBikeTracker.Shared</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Forms.2.3.4.247\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.3.4.247\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" />

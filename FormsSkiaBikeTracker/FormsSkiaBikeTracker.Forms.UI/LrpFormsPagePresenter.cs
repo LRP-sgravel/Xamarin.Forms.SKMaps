@@ -1,4 +1,14 @@
-﻿using MvvmCross.Core.ViewModels;
+﻿// **********************************************************************
+// 
+//   LrpFormsPagePresenter.cs
+//   
+//   This file is subject to the terms and conditions defined in
+//   file 'LICENSE.txt', which is part of this source code package.
+//   
+//   Copyright (c) 2017, Le rond-point
+// 
+// ***********************************************************************
+using MvvmCross.Core.ViewModels;
 using MvvmCross.Forms.Presenter.Core;
 using Xamarin.Forms;
 
@@ -6,8 +16,6 @@ namespace FormsSkiaBikeTracker.Forms.UI
 {
     public abstract class LrpFormsPagePresenter : MvxFormsPagePresenter
     {
-        public const string ReplaceMainPagePresentation = nameof(ReplaceMainPagePresentation);
-
         protected LrpFormsPagePresenter()
         {
         }
@@ -23,9 +31,9 @@ namespace FormsSkiaBikeTracker.Forms.UI
 
             if (request.PresentationValues != null)
             {
-                if (request.PresentationValues.ContainsKey(ReplaceMainPagePresentation))
+                if (request.PresentationValues.ContainsKey(PresenterConstants.ReplaceMainPagePresentation))
                 {
-                    bool.TryParse(request.PresentationValues[ReplaceMainPagePresentation], out replaceMain);
+                    bool.TryParse(request.PresentationValues[PresenterConstants.ReplaceMainPagePresentation], out replaceMain);
                 }
             }
 

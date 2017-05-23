@@ -10,8 +10,8 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>FormsSkiaBikeTracker.Shared</RootNamespace>
     <AssemblyName>FormsSkiaBikeTracker.Shared</AssemblyName>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
-    <TargetFrameworkProfile>Profile44</TargetFrameworkProfile>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Profile7</TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <NuGetPackageImportStamp>
@@ -37,8 +37,10 @@
   <ItemGroup>
     <Compile Include="App.cs" />
     <Compile Include="Constants.cs" />
+    <Compile Include="PresenterConstants.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\LoadingViewModel.cs" />
+    <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -51,6 +53,7 @@
     <Folder Include="Models\" />
     <Folder Include="Resources\Images\" />
     <Folder Include="Services\" />
+    <Folder Include="Views\" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Acr.Settings, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -63,10 +66,10 @@
       <HintPath>..\..\packages\Flurry.Analytics.Portable.2.0.0\lib\portable-wp80+win80+wpa81+net45+sl50+MonoTouch10+MonoAndroid10+XamariniOS10\Flurry.Analytics.Portable.dll</HintPath>
     </Reference>
     <Reference Include="LRPLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\LRPLib.1.0.2\lib\portable-net45+win8\LRPLib.dll</HintPath>
+      <HintPath>..\..\packages\LRPLib.1.0.2\lib\portable-net40+sl5+windowsphone8+windows8+MonoAndroid40+MonoTouch10\LRPLib.dll</HintPath>
     </Reference>
-    <Reference Include="LRPLib.Mvx, Version=1.0.6319.28896, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\LRPLib.Mvx.1.0.2\lib\portable-net45+win8\LRPLib.Mvx.dll</HintPath>
+    <Reference Include="LRPLib.Mvx, Version=1.0.6348.40219, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\LRPLib.Mvx.1.0.2\lib\portable-net45+netcore45+wpa81+MonoAndroid10+Xamarin.iOS10\LRPLib.Mvx.dll</HintPath>
     </Reference>
     <Reference Include="MvvmCross.Binding, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\MvvmCross.Binding.4.4.0\lib\portable-net45+win+wpa81+wp80\MvvmCross.Binding.dll</HintPath>
@@ -119,12 +122,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="FodyWeavers.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\FormsSkiaBikeTracker.Forms.UI\FormsSkiaBikeTracker.Forms.UI.csproj">
-      <Project>{2CA00F2B-622E-4B8A-9CE9-1A3D09FBFB61}</Project>
-      <Name>FormsSkiaBikeTracker.Forms.UI</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\..\packages\Fody.2.0.6\build\portable-net+sl+win+wpa+wp\Fody.targets" Condition="Exists('..\..\packages\Fody.2.0.6\build\portable-net+sl+win+wpa+wp\Fody.targets')" />

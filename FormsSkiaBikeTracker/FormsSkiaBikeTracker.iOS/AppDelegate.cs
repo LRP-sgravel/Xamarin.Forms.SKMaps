@@ -1,4 +1,14 @@
-﻿using MvvmCross.iOS.Platform;
+﻿// **********************************************************************
+// 
+//   AppDelegate.cs
+//   
+//   This file is subject to the terms and conditions defined in
+//   file 'LICENSE.txt', which is part of this source code package.
+//   
+//   Copyright (c) 2017, Le rond-point
+// 
+// ***********************************************************************
+using MvvmCross.iOS.Platform;
 using Foundation;
 using MvvmCross.Core.ViewModels;
 using MvvmCross.Platform;
