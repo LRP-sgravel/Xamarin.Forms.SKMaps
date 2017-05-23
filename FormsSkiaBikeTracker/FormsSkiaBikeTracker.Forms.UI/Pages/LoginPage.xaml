@@ -9,7 +9,7 @@
                      xmlns:xForms="clr-namespace:LRPLib.Views.XForms;assembly=LRPLib.Views.XForms"
                      xmlns:lrpMvx="clr-namespace:LRPLib.Mvx.Views.XForms.Markup;assembly=LRPLib.Mvx.Views.XForms"
                      xmlns:lrp="clr-namespace:LRPLib.Views.XForms.Markup;assembly=LRPLib.Views.XForms"
-                     x:Class="FormsSkiaBikeTracker.Forms.UI.Views.LoginPage">
+                     x:Class="FormsSkiaBikeTracker.Forms.UI.Pages.LoginPage">
     <Grid RowSpacing="0">
         <Grid.RowDefinitions>
             <RowDefinition Height="140" />

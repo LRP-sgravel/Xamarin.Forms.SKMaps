@@ -1,5 +1,16 @@
-﻿using System;
+﻿// **********************************************************************
+// 
+//   CircledImageView.xaml.cs
+//   
+//   This file is subject to the terms and conditions defined in
+//   file 'LICENSE.txt', which is part of this source code package.
+//   
+//   Copyright (c) 2017, Le rond-point
+// 
+// ***********************************************************************
+using System;
 using LRPLib.Services.Resources;
+using LRPLib.Views.XForms;
 using LRPLib.Views.XForms.Extensions;
 using MvvmCross.Platform;
 using SkiaSharp;
@@ -8,7 +19,7 @@ using Xamarin.Forms;
 
 namespace FormsSkiaBikeTracker.Forms.UI.Controls
 {
-    public partial class CircledImageView
+    public class CircledImageView : DrawableView
     {
         public static readonly BindableProperty SourceProperty = BindableProperty.Create(nameof(Source),
                                                                                          typeof(SKBitmapImageSource),
@@ -65,8 +76,6 @@ namespace FormsSkiaBikeTracker.Forms.UI.Controls
 
         public CircledImageView()
         {
-            InitializeComponent();
-
         }
 
         protected override void Paint(SKCanvas canvas)
@@ -130,7 +139,7 @@ namespace FormsSkiaBikeTracker.Forms.UI.Controls
             }
         }
 
-    protected override void OnPropertyChanged(string propertyName = null)
+        protected override void OnPropertyChanged(string propertyName = null)
         {
             base.OnPropertyChanged(propertyName);
 

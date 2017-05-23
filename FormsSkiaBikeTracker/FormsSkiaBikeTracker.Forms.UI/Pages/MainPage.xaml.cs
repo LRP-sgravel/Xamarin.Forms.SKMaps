@@ -1,6 +1,6 @@
 ﻿// **********************************************************************
 // 
-//   LoadingPage.xaml.cs
+//   MainPage.xaml.cs
 //   
 //   This file is subject to the terms and conditions defined in
 //   file 'LICENSE.txt', which is part of this source code package.
@@ -8,18 +8,16 @@
 //   Copyright (c) 2017, Le rond-point
 // 
 // ***********************************************************************
-using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
 
-namespace FormsSkiaBikeTracker.Forms.UI.Views
+namespace FormsSkiaBikeTracker.Forms.UI.Pages
 {
-    public partial class LoadingPage
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class MainPage
     {
-        public LoadingPage()
+        public MainPage()
         {
             InitializeComponent();
-
-            NavigationPage.SetHasNavigationBar(this, false);
         }
-
     }
 }

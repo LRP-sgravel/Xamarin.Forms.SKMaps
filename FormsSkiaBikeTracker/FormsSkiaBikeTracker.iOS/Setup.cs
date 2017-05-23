@@ -19,7 +19,7 @@ using MvvmCross.iOS.Views.Presenters;
 using MvvmCross.Core.ViewModels;
 using MvvmCross.iOS.Platform;
 using MvvmCross.Platform.IoC;
-using FormsSkiaBikeTracker.Forms.UI.Views;
+using FormsSkiaBikeTracker.Forms.UI.Pages;
 using Foundation;
 using LRPLib.Mvx.iOS;
 

@@ -18,7 +18,7 @@ using SkiaSharp.Views.Forms;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace FormsSkiaBikeTracker.Forms.UI.Views
+namespace FormsSkiaBikeTracker.Forms.UI.Pages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class LoginPage

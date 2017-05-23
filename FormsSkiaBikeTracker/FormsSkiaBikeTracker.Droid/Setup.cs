@@ -19,7 +19,7 @@ using MvvmCross.Droid.Views;
 using MvvmCross.Core.ViewModels;
 using MvvmCross.Core.Views;
 using MvvmCross.Platform.IoC;
-using FormsSkiaBikeTracker.Forms.UI.Views;
+using FormsSkiaBikeTracker.Forms.UI.Pages;
 using LRPLib.Mvx.Droid;
 
 namespace FormsSkiaBikeTracker.Droid

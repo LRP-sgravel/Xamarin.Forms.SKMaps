@@ -1,5 +1,16 @@
-﻿using System.IO;
+﻿// **********************************************************************
+// 
+//   SKLabel.xaml.cs
+//   
+//   This file is subject to the terms and conditions defined in
+//   file 'LICENSE.txt', which is part of this source code package.
+//   
+//   Copyright (c) 2017, Le rond-point
+// 
+// ***********************************************************************
+using System.IO;
 using LRPLib.Services.Resources;
+using LRPLib.Views.XForms;
 using LRPLib.Views.XForms.Extensions;
 using MvvmCross.Platform;
 using SkiaSharp;
@@ -7,7 +18,7 @@ using Xamarin.Forms;
 
 namespace FormsSkiaBikeTracker.Forms.UI.Controls
 {
-    public partial class SKLabel
+    public class SKLabel : DrawableView
     {
         public static readonly BindableProperty FontResourcePathProperty = BindableProperty.Create(nameof(FontResourcePath), typeof(string), typeof(SKLabel), string.Empty, BindingMode.OneWay, null, FontResourcePathPropertyChanged);
         public static readonly BindableProperty TextProperty = BindableProperty.Create(nameof(Text), typeof(string), typeof(SKLabel), string.Empty, BindingMode.OneWay, null, ResizePropertyChanged);
@@ -42,8 +53,8 @@ namespace FormsSkiaBikeTracker.Forms.UI.Controls
 
         public SKLabel()
         {
-            InitializeComponent();
         }
+
         ~SKLabel()
         {
             _Typeface?.Dispose();

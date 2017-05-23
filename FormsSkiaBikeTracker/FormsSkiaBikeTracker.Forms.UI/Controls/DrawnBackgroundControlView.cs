@@ -1,9 +1,19 @@
-﻿using LRPLib.Views.XForms;
+﻿// **********************************************************************
+// 
+//   DrawnBackgroundControlView.xaml.cs
+//   
+//   This file is subject to the terms and conditions defined in
+//   file 'LICENSE.txt', which is part of this source code package.
+//   
+//   Copyright (c) 2017, Le rond-point
+// 
+// ***********************************************************************
+using LRPLib.Views.XForms;
 using Xamarin.Forms;
 
 namespace FormsSkiaBikeTracker.Forms.UI.Controls
 {
-    public partial class DrawnBackgroundControlView
+    public class DrawnBackgroundControlView : AbsoluteLayout
     {
         public static readonly BindableProperty BackgroundProperty = BindableProperty.Create(nameof(Background),
                                                                                              typeof(DrawableView),
@@ -36,9 +46,6 @@ namespace FormsSkiaBikeTracker.Forms.UI.Controls
 
         public DrawnBackgroundControlView()
         {
-            InitializeComponent();
-
-            RefreshLayout();
         }
 
         private static void BackgroundPropertyChanged(BindableObject bindable, object oldvalue, object newvalue)
