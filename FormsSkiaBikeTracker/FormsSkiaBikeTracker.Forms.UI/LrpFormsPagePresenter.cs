@@ -43,7 +43,7 @@ namespace FormsSkiaBikeTracker.Forms.UI
 
                 if (newMain != null)
                 {
-                    MvxFormsApp.MainPage = newMain;
+                    SetMainPage(newMain);
                     callBase = false;
                 }
             }
@@ -52,6 +52,12 @@ namespace FormsSkiaBikeTracker.Forms.UI
             {
                 base.Show(request);
             }
+        }
+
+        private void SetMainPage(Page newMain)
+        {
+            MvxFormsApp.MainPage = newMain;
+            InitRootViewController(newMain);
         }
 
         private Page CreateAndSetupPage(MvxViewModelRequest request)
@@ -83,6 +89,11 @@ namespace FormsSkiaBikeTracker.Forms.UI
             }
         }
 
-        protected abstract void PlatformRootViewInitialization(Page rootPage);
+        protected override void CustomPlatformInitialization(NavigationPage mainPage)
+        {
+            InitRootViewController(mainPage);
+        }
+
+        protected abstract void InitRootViewController(Page rootPage);
     }
 }

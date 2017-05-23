@@ -24,11 +24,9 @@ namespace FormsSkiaBikeTracker.iOS
             _Window = window;
         }
 
-        protected override void PlatformRootViewInitialization(Page rootPage)
+        protected override void InitRootViewController(Page mainPage)
         {
-            base.PlatformRootViewInitialization(rootPage);
-
-            _Window.RootViewController = MvxFormsApp.MainPage.CreateViewController();
+            _Window.RootViewController = mainPage.CreateViewController();
         }
 
         public bool PresentModalViewController(UIViewController controller, bool animated)

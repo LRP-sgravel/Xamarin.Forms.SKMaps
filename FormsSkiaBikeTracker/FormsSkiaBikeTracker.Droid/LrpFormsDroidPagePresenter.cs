@@ -25,7 +25,7 @@ namespace FormsSkiaBikeTracker.Droid
         {
         }
 
-        protected override void PlatformRootViewInitialization(Page rootPage)
+        protected override void InitRootViewController(Page rootPage)
         {
         }
     }
