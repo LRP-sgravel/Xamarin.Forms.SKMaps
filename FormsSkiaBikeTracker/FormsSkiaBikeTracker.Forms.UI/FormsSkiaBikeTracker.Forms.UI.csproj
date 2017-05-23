@@ -35,6 +35,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Controls\SKLabel.xaml.cs">
+      <DependentUpon>SKLabel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\DrawnBackgroundControlView.xaml.cs">
+      <DependentUpon>DrawnBackgroundControlView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\CircledImageView.xaml.cs">
+      <DependentUpon>CircledImageView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\UserLoginControlView.xaml.cs">
+      <DependentUpon>UserLoginControlView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="LrpFormsPagePresenter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Views\LoadingPage.xaml.cs">
@@ -55,11 +67,14 @@
     <Reference Include="LRPLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\LRPLib.1.0.2\lib\portable-net40+sl5+windowsphone8+windows8+MonoAndroid40+MonoTouch10\LRPLib.dll</HintPath>
     </Reference>
-    <Reference Include="LRPLib.Mvx, Version=1.0.6348.24673, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\LRPLib.Mvx.Views.XForms.1.0.0\lib\LRPLib.Mvx.dll</HintPath>
+    <Reference Include="LRPLib.Mvx, Version=1.0.6348.40219, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\LRPLib.Mvx.1.0.2\lib\portable-net45+netcore45+wpa81+MonoAndroid10+Xamarin.iOS10\LRPLib.Mvx.dll</HintPath>
+    </Reference>
+    <Reference Include="LRPLib.Mvx.Views.XForms, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\LRPLib.Mvx.Views.XForms.1.0.0\lib\portable-net45+netcore45+wpa81+MonoAndroid10+Xamarin.iOS10\LRPLib.Mvx.Views.XForms.dll</HintPath>
     </Reference>
     <Reference Include="LRPLib.Views.XForms, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\LRPLib.Views.XForms.1.0.0\lib\LRPLib.Views.XForms.dll</HintPath>
+      <HintPath>..\..\packages\LRPLib.Views.XForms.1.0.1\lib\portable-net45+netcore45+wpa81+MonoAndroid10+Xamarin.iOS10\LRPLib.Views.XForms.dll</HintPath>
     </Reference>
     <Reference Include="MvvmCross.Binding, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\MvvmCross.Binding.4.4.0\lib\portable-net45+win+wpa81+wp80\MvvmCross.Binding.dll</HintPath>
@@ -98,11 +113,18 @@
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Newtonsoft.Json.10.0.2\lib\portable-net45+win8+wpa81+wp8\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="SkiaSharp, Version=1.57.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\SkiaSharp.1.57.1\lib\portable-net45+win8+wpa81+wp8\SkiaSharp.dll</HintPath>
+    <Reference Include="PropertyChanged">
+      <HintPath>..\..\packages\PropertyChanged.Fody.1.53.0\Lib\portable-net4+sl4+wp8+win8+wpa81+MonoAndroid16+MonoTouch40\PropertyChanged.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="SkiaSharp.Svg, Version=1.57.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\SkiaSharp.Svg.1.57.1\lib\portable-net45+win8+wpa81+wp8\SkiaSharp.Svg.dll</HintPath>
+    <Reference Include="SkiaSharp, Version=1.58.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\SkiaSharp.1.58.0\lib\portable-net45+win8+wpa81+wp8\SkiaSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="SkiaSharp.Svg, Version=1.58.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\SkiaSharp.Svg.1.58.0\lib\portable-net45+win8+wpa81+wp8\SkiaSharp.Svg.dll</HintPath>
+    </Reference>
+    <Reference Include="SkiaSharp.Views.Forms, Version=1.58.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\SkiaSharp.Views.Forms.1.58.0\lib\portable-net45+win8+wpa81+wp8\SkiaSharp.Views.Forms.dll</HintPath>
     </Reference>
     <Reference Include="System.Collections.Immutable, Version=1.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\..\packages\System.Collections.Immutable.1.3.1\lib\portable-net45+win8+wp8+wpa81\System.Collections.Immutable.dll</HintPath>
@@ -142,7 +164,28 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Controls\UserLoginControlView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
     <EmbeddedResource Include="Controls\CircledImageView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="FodyWeavers.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Controls\DrawnBackgroundControlView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Controls\SKLabel.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -154,7 +197,9 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\..\packages\Xamarin.Forms.2.3.4.247\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Xamarin.Forms.2.3.4.247\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets'))" />
+    <Error Condition="!Exists('..\..\packages\Fody.2.0.6\build\portable-net+sl+win+wpa+wp\Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Fody.2.0.6\build\portable-net+sl+win+wpa+wp\Fody.targets'))" />
   </Target>
+  <Import Project="..\..\packages\Fody.2.0.6\build\portable-net+sl+win+wpa+wp\Fody.targets" Condition="Exists('..\..\packages\Fody.2.0.6\build\portable-net+sl+win+wpa+wp\Fody.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

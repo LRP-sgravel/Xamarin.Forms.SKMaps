@@ -64,9 +64,9 @@
       <HintPath>..\..\packages\Xamarin.Forms.2.3.4.247\lib\MonoAndroid10\FormsViewGroup.dll</HintPath>
     </Reference>
     <Reference Include="LRPLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\LRPLib.1.0.2\lib\portable-net45+win8\LRPLib.dll</HintPath>
+      <HintPath>..\..\packages\LRPLib.1.0.2\lib\portable-net40+sl5+windowsphone8+windows8+MonoAndroid40+MonoTouch10\LRPLib.dll</HintPath>
     </Reference>
-    <Reference Include="LRPLib.Mvx, Version=1.0.6319.28896, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="LRPLib.Mvx, Version=1.0.6348.40219, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\LRPLib.Mvx.1.0.2\lib\MonoAndroid70\LRPLib.Mvx.dll</HintPath>
     </Reference>
     <Reference Include="LRPLib.Mvx.Droid, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -79,10 +79,10 @@
       <HintPath>..\..\packages\LRPLib.Mvx.Views.XForms.1.0.0\lib\MonoAndroid70\LRPLib.Mvx.Views.XForms.Droid.dll</HintPath>
     </Reference>
     <Reference Include="LRPLib.Views.XForms, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\LRPLib.Views.XForms.1.0.0\lib\MonoAndroid70\LRPLib.Views.XForms.dll</HintPath>
+      <HintPath>..\..\packages\LRPLib.Views.XForms.1.0.1\lib\MonoAndroid70\LRPLib.Views.XForms.dll</HintPath>
     </Reference>
     <Reference Include="LRPLib.Views.XForms.Droid, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\LRPLib.Views.XForms.1.0.0\lib\MonoAndroid70\LRPLib.Views.XForms.Droid.dll</HintPath>
+      <HintPath>..\..\packages\LRPLib.Views.XForms.1.0.1\lib\MonoAndroid70\LRPLib.Views.XForms.Droid.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Threading.Tasks, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
@@ -196,11 +196,11 @@
     <Reference Include="Remotion.Linq, Version=2.1.0.0, Culture=neutral, PublicKeyToken=fee00910d6e5f53b, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Remotion.Linq.2.1.1\lib\portable-net45+win+wpa81+wp80\Remotion.Linq.dll</HintPath>
     </Reference>
-    <Reference Include="SkiaSharp, Version=1.57.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\SkiaSharp.1.57.1\lib\MonoAndroid\SkiaSharp.dll</HintPath>
+    <Reference Include="SkiaSharp, Version=1.58.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\SkiaSharp.1.58.0\lib\MonoAndroid\SkiaSharp.dll</HintPath>
     </Reference>
-    <Reference Include="SkiaSharp.Svg, Version=1.57.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\SkiaSharp.Svg.1.57.1\lib\netstandard1.3\SkiaSharp.Svg.dll</HintPath>
+    <Reference Include="SkiaSharp.Svg, Version=1.58.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\SkiaSharp.Svg.1.58.0\lib\netstandard1.3\SkiaSharp.Svg.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Collections.Immutable, Version=1.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
