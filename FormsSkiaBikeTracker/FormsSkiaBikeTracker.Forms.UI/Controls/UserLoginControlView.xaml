@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:FormsSkiaBikeTracker.Forms.UI.Controls;assembly=FormsSkiaBikeTracker.Forms.UI"
+             x:Class="FormsSkiaBikeTracker.Forms.UI.Controls.UserLoginControlView"
+             x:Name="Control"
+             HeightRequest="80">
+    <Grid BindingContext="{Binding Source={x:Reference Name=Control}, Path=InternalViewModel}">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80" />
+        </Grid.RowDefinitions>
+            
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="5*" />
+        </Grid.ColumnDefinitions>
+
+        <controls:CircledImageView Grid.Column="0"
+                                   Margin="10"
+                                   VerticalOptions="FillAndExpand"
+                                   HorizontalOptions="FillAndExpand"
+                                   Source="{Binding UserPicture}"
+                                   BorderWidth="2"
+                                   BorderColor="DarkSlateGray" />
+
+        <controls:SKLabel Grid.Column="1"
+                          VerticalOptions="CenterAndExpand"
+                          HorizontalOptions="Start"
+                          Text="{Binding User.Name}"
+                          FontResourcePath="KumarOne-Regular.ttf"
+                          FontSize="24"
+                          TextColor="DarkSlateGray"/>
+    </Grid>
+</ContentView>
