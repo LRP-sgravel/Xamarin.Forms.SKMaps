@@ -2,14 +2,21 @@
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:controls="clr-namespace:FormsSkiaBikeTracker.Forms.UI.Controls;assembly=FormsSkiaBikeTracker.Forms.UI"
+             xmlns:lrp="clr-namespace:LRPLib.Views.XForms.Markup;assembly=LRPLib.Views.XForms"
              x:Class="FormsSkiaBikeTracker.Forms.UI.Controls.UserLoginControlView"
              x:Name="Control"
-             HeightRequest="80">
-    <Grid BindingContext="{Binding Source={x:Reference Name=Control}, Path=InternalViewModel}"
-          ColumnSpacing="0">
+             HeightRequest="79"
+             IsClippedToBounds="True">
+    
+    <Grid x:Name="ContentGrid"
+          BindingContext="{Binding Source={x:Reference Name=Control}, Path=InternalViewModel}"
+          Margin="0, 0, 0, 10"
+          ColumnSpacing="0"
+          RowSpacing="0">
 
         <Grid.RowDefinitions>
             <RowDefinition Height="80" />
+            <RowDefinition Height="30" />
         </Grid.RowDefinitions>
             
         <Grid.ColumnDefinitions>
@@ -17,15 +24,14 @@
             <ColumnDefinition Width="5*" />
         </Grid.ColumnDefinitions>
 
-        <controls:CircledImageView Grid.Column="0"
+        <controls:CircledImageView Grid.Row="0" Grid.Column="0"
                                    Margin="10"
                                    VerticalOptions="FillAndExpand"
                                    HorizontalOptions="FillAndExpand"
                                    Source="{Binding UserPicture}"
                                    BorderWidth="2"
                                    BorderColor="DarkSlateGray" />
-
-        <controls:SKLabel Grid.Column="1"
+        <controls:SKLabel Grid.Row="0" Grid.Column="1"
                           Margin ="0, 0, 0, 10"
                           VerticalOptions="CenterAndExpand"
                           HorizontalOptions="Start"
@@ -33,5 +39,13 @@
                           FontResourcePath="KumarOne-Regular.ttf"
                           FontSize="24"
                           TextColor="DarkSlateGray"/>
+
+        <Entry x:Name="PasswordLayout"
+               Grid.Row="1" Grid.Column="0"
+               Grid.ColumnSpan="2"
+               HeightRequest="0"
+               Margin="20, 0, 20, 0"
+               HorizontalOptions="Fill"
+               Placeholder="{lrp:LocalizedText Password}"/>
     </Grid>
 </ContentView>

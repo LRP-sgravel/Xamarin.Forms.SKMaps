@@ -54,14 +54,27 @@ namespace FormsSkiaBikeTracker.Shared.ViewModels
             }
         }
 
-        public UserLoginControlViewModel()
+        private string _enteredPassword;
+        public string EnteredPassword
+        {
+            get { return _enteredPassword; }
+            set
+            {
+                if (EnteredPassword != value)
+                {
+                    _enteredPassword = value;
+                    RaisePropertyChanged();
+                }
+            }
+        }
+
+        public UserLoginControlViewModel() : base("ViewModels." + nameof(LoginViewModel))
         {
         }
 
         public override void Start()
         {
             base.Start();
-            
         }
     }
 }

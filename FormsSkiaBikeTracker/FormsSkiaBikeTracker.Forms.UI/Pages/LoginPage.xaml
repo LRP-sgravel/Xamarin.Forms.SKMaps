@@ -9,7 +9,8 @@
                      xmlns:xForms="clr-namespace:LRPLib.Views.XForms;assembly=LRPLib.Views.XForms"
                      xmlns:lrpMvx="clr-namespace:LRPLib.Mvx.Views.XForms.Markup;assembly=LRPLib.Mvx.Views.XForms"
                      xmlns:lrp="clr-namespace:LRPLib.Views.XForms.Markup;assembly=LRPLib.Views.XForms"
-                     x:Class="FormsSkiaBikeTracker.Forms.UI.Pages.LoginPage">
+                     x:Class="FormsSkiaBikeTracker.Forms.UI.Pages.LoginPage"
+                     x:Name="Self">
     <Grid RowSpacing="0">
         <Grid.RowDefinitions>
             <RowDefinition Height="140" />
@@ -33,17 +34,19 @@
         <xForms:LinearGradientBoxView Grid.Row="1"
                                       EndColor="AliceBlue"
                                       StartColor="LightSkyBlue" />
-        <ListView Grid.Row="2"
+        <ListView x:Name="UsersListView"
+                  Grid.Row="2"
                   RowHeight="-1"
                   HasUnevenRows="True"
                   SeparatorVisibility="None"
-                  ItemsSource="{Binding Users}"
-                  SelectedItem="{Binding SelectedUser}">
+                  ItemsSource="{Binding Source={x:Reference Self}, Path=UsersViewWrappers}"
+                  SelectedItem="{Binding Source={x:Reference Self}, Path=SelectedUser}">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <ViewCell>
-                        <controls:UserLoginControlView User="{Binding .}" />
-                    </ViewCell>
+                    <controls:ResizableViewCell>
+                        <controls:UserLoginControlView User="{Binding User}"
+                                                       Expanded="{Binding IsExpanded}" />
+                    </controls:ResizableViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
@@ -55,7 +58,7 @@
                                              Margin="30, 10, 30, 10">
             <controls:DrawnBackgroundControlView.Background>
                 <xForms:LinearGradientBoxView x:Name="SignUpButtonBackground"
-                                              StartColor="LightSkyBlue"
+                                              StartColor="LightBlue"
                                               EndColor="CadetBlue"
                                               Direction="TopToBottom"/>
             </controls:DrawnBackgroundControlView.Background>
