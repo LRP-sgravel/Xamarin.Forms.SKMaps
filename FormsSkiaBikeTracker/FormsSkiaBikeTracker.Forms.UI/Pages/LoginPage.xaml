@@ -10,7 +10,8 @@
                      xmlns:lrpMvx="clr-namespace:LRPLib.Mvx.Views.XForms.Markup;assembly=LRPLib.Mvx.Views.XForms"
                      xmlns:lrp="clr-namespace:LRPLib.Views.XForms.Markup;assembly=LRPLib.Views.XForms"
                      x:Class="FormsSkiaBikeTracker.Forms.UI.Pages.LoginPage"
-                     x:Name="Self">
+                     x:Name="Self"
+                     NavigationPage.HasNavigationBar="False">
     <Grid RowSpacing="0">
         <Grid.RowDefinitions>
             <RowDefinition Height="140" />
@@ -64,9 +65,11 @@
             </controls:DrawnBackgroundControlView.Background>
             <controls:DrawnBackgroundControlView.Foreground>
                 <Button Text="{lrp:LocalizedText SignUp}"
+                        BorderRadius="0"
                         FontSize="22"
                         FontAttributes="Bold"
-                        TextColor="DarkSlateGray"/>
+                        TextColor="DarkSlateGray"
+                        Command="{Binding GoToSignupCommand}"/>
             </controls:DrawnBackgroundControlView.Foreground>
         </controls:DrawnBackgroundControlView>
     </Grid>

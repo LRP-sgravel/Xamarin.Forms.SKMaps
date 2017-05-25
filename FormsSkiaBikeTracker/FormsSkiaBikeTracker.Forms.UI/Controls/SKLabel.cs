@@ -8,17 +8,18 @@
 //   Copyright (c) 2017, Le rond-point
 // 
 // ***********************************************************************
+
+using System;
 using System.IO;
 using LRPLib.Services.Resources;
-using LRPLib.Views.XForms;
-using LRPLib.Views.XForms.Extensions;
 using MvvmCross.Platform;
 using SkiaSharp;
+using SkiaSharp.Views.Forms;
 using Xamarin.Forms;
 
 namespace FormsSkiaBikeTracker.Forms.UI.Controls
 {
-    public class SKLabel : DrawableView
+    public class SKLabel : SKCanvasView
     {
         public static readonly BindableProperty FontResourcePathProperty = BindableProperty.Create(nameof(FontResourcePath), typeof(string), typeof(SKLabel), string.Empty, BindingMode.OneWay, null, FontResourcePathPropertyChanged);
         public static readonly BindableProperty TextProperty = BindableProperty.Create(nameof(Text), typeof(string), typeof(SKLabel), string.Empty, BindingMode.OneWay, null, ResizePropertyChanged);
@@ -49,15 +50,18 @@ namespace FormsSkiaBikeTracker.Forms.UI.Controls
             set { SetValue(FontSizeProperty, value); }
         }
 
+        private SKPaint _Paint { get; set; }
         private SKTypeface _Typeface { get; set; }
 
         public SKLabel()
         {
+            _Paint = new SKPaint();
         }
 
         ~SKLabel()
         {
             _Typeface?.Dispose();
+            _Paint?.Dispose();
         }
 
         private static void FontResourcePathPropertyChanged(BindableObject bindable, object oldvalue, object newvalue)
@@ -66,6 +70,8 @@ namespace FormsSkiaBikeTracker.Forms.UI.Controls
             IResourceLocator resLocator = Mvx.Resolve<IResourceLocator>();
             string resourcePath = resLocator.GetResourcePath("Fonts", view.FontResourcePath);
             Stream resStream = resLocator.ResourcesAssembly.GetManifestResourceStream(resourcePath);
+
+            view._Typeface?.Dispose();
 
             if (resStream != null)
             {
@@ -79,6 +85,8 @@ namespace FormsSkiaBikeTracker.Forms.UI.Controls
                 view._Typeface = null;
             }
 
+            view.RefreshPaint();
+
             ResizePropertyChanged(bindable, oldvalue, newvalue);
         }
         
@@ -86,7 +94,7 @@ namespace FormsSkiaBikeTracker.Forms.UI.Controls
         {
             SKLabel view = bindable as SKLabel;
 
-            view.Invalidate();
+            view.InvalidateSurface();
         }
                 
         private static void ResizePropertyChanged(BindableObject bindable, object oldValue, object newValue)
@@ -94,51 +102,56 @@ namespace FormsSkiaBikeTracker.Forms.UI.Controls
             SKLabel view = bindable as SKLabel;
 
             view.InvalidateMeasure();
-            view.Invalidate();
+            view.InvalidateSurface();
         }
 
         protected override SizeRequest OnMeasure(double widthConstraint, double heightConstraint)
         {
             if (HasSomethingToDraw())
             {
-                SKPaint paint = new SKPaint();
+                SKRect textBounds = new SKRect();
+                Rectangle requestRect;
 
-                using (paint)
-                {
-                    SKRect textBounds = new SKRect();
+                RefreshPaint();
 
-                    paint.Typeface = _Typeface;
-                    paint.TextSize = (float)FontSize;
-                    paint.MeasureText(Text, ref textBounds);
+                _Paint.MeasureText(Text, ref textBounds);
+                requestRect = textBounds.ToFormsRect();
 
-                    return new SizeRequest(new Size(textBounds.Width, textBounds.Height + paint.FontMetrics.Descent));
-                }
+                requestRect.Height += _Paint.FontMetrics.Descent;
+                requestRect.Width = Math.Min(requestRect.Width, widthConstraint);
+                requestRect.Height = Math.Min(requestRect.Height, heightConstraint);
+
+                return new SizeRequest(requestRect.Size);
             }
 
             return new SizeRequest();
         }
 
-        protected override void Paint(SKCanvas canvas)
+        protected override void OnPaintSurface(SKPaintSurfaceEventArgs args)
         {
             if (HasSomethingToDraw())
             {
-                SKPaint paint = new SKPaint();
+                RefreshPaint();
 
-                using (paint)
-                {
-                    paint.Typeface = _Typeface;
-                    paint.Color = TextColor.ToSKColor();
-                    paint.TextSize = (float)FontSize;
-                    paint.IsAntialias = true;
-
-                    canvas.DrawText(Text, 0, (float)Height - (paint.FontMetrics.Descent / canvas.TotalMatrix.ScaleY), paint);
-                }
+                args.Surface.Canvas.Clear(SKColor.Empty);
+                args.Surface.Canvas.Scale(CanvasSize.Width / (float)Width, CanvasSize.Height / (float)Height);
+                args.Surface.Canvas.DrawText(Text, 0, (float)Height - (_Paint.FontMetrics.Descent * 0.5f), _Paint);
             }
+
+            base.OnPaintSurface(args);
         }
 
         private bool HasSomethingToDraw()
         {
             return _Typeface != null && !string.IsNullOrEmpty(Text) && TextColor != Color.Transparent && FontSize > 0;
+        }
+
+        private void RefreshPaint()
+        {
+            _Paint.Typeface = _Typeface;
+            _Paint.Color = TextColor.ToSKColor();
+            _Paint.TextSize = (float)FontSize;
+            _Paint.IsAntialias = true;
         }
     }
 }

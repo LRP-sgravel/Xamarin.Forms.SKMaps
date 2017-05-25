@@ -59,14 +59,6 @@ namespace FormsSkiaBikeTracker.Forms.UI.Pages
             _signupPropertyChangedSubscription = SignUpButtonBackground.WeakSubscribe("SizeChanged", SignUpBackgroundSizeChanged);
         }
 
-        protected override void OnDisappearing()
-        {
-            base.OnDisappearing();
-
-            _signupPropertyChangedSubscription.Dispose();
-            _signupPropertyChangedSubscription = null;
-        }
-
         protected override void OnPropertyChanged(string propertyName = null)
         {
             base.OnPropertyChanged(propertyName);
