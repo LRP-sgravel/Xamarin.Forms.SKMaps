@@ -69,7 +69,7 @@
       <HintPath>..\..\packages\LRPLib.Mvx.Views.XForms.1.0.0\lib\portable-net45+netcore45+wpa81+MonoAndroid10+Xamarin.iOS10\LRPLib.Mvx.Views.XForms.dll</HintPath>
     </Reference>
     <Reference Include="LRPLib.Views.XForms, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\LRPLib.Views.XForms.1.0.1\lib\portable-net45+netcore45+wpa81+MonoAndroid10+Xamarin.iOS10\LRPLib.Views.XForms.dll</HintPath>
+      <HintPath>..\..\packages\LRPLib.Views.XForms.1.0.2\lib\portable-net45+netcore45+wpa81+MonoAndroid10+Xamarin.iOS10\LRPLib.Views.XForms.dll</HintPath>
     </Reference>
     <Reference Include="MvvmCross.Binding, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\MvvmCross.Binding.4.4.0\lib\portable-net45+win+wpa81+wp80\MvvmCross.Binding.dll</HintPath>

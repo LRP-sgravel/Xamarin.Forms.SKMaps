@@ -79,10 +79,10 @@
       <HintPath>..\..\packages\LRPLib.Mvx.Views.XForms.1.0.0\lib\MonoAndroid70\LRPLib.Mvx.Views.XForms.Droid.dll</HintPath>
     </Reference>
     <Reference Include="LRPLib.Views.XForms, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\LRPLib.Views.XForms.1.0.1\lib\MonoAndroid70\LRPLib.Views.XForms.dll</HintPath>
+      <HintPath>..\..\packages\LRPLib.Views.XForms.1.0.2\lib\MonoAndroid70\LRPLib.Views.XForms.dll</HintPath>
     </Reference>
     <Reference Include="LRPLib.Views.XForms.Droid, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\LRPLib.Views.XForms.1.0.1\lib\MonoAndroid70\LRPLib.Views.XForms.Droid.dll</HintPath>
+      <HintPath>..\..\packages\LRPLib.Views.XForms.1.0.2\lib\MonoAndroid70\LRPLib.Views.XForms.Droid.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Threading.Tasks, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
