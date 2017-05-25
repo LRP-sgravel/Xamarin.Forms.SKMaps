@@ -72,7 +72,7 @@ namespace FormsSkiaBikeTracker.ViewModels
                                           (
                                               new Dictionary<string, string>
                                               {
-                                                  [PresenterConstants.ReplaceMainPagePresentation] =
+                                                  [PresenterConstants.WrapWithNavigationPage] =
                                                   true.ToString()
                                               }
                                           ));

@@ -113,7 +113,7 @@ namespace FormsSkiaBikeTracker.Shared.ViewModels
 
         private void GoToSignup()
         {
-//            ShowViewModel<SignUpViewModel>();
+            ShowViewModel<SignUpViewModel>();
         }
     }
 }

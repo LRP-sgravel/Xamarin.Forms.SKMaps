@@ -8,8 +8,11 @@
 //   Copyright (c) 2017, Le rond-point
 // 
 // ***********************************************************************
+
+using System;
 using MvvmCross.Core.ViewModels;
 using MvvmCross.Forms.Presenter.Core;
+using MvvmCross.Platform;
 using Xamarin.Forms;
 
 namespace FormsSkiaBikeTracker.Forms.UI
@@ -26,31 +29,46 @@ namespace FormsSkiaBikeTracker.Forms.UI
 
         public override void Show(MvxViewModelRequest request)
         {
-            bool callBase = true;
-            bool replaceMain = false;
+            Page newPage = CreateAndSetupPage(request);
 
-            if (request.PresentationValues != null)
+            if (newPage != null)
             {
-                if (request.PresentationValues.ContainsKey(PresenterConstants.ReplaceMainPagePresentation))
+                NavigationPage mainPage = MvxFormsApp.MainPage as NavigationPage;
+                bool replaceMain = false;
+                bool wrapInNavPage = false;
+
+                if (request.PresentationValues != null)
                 {
-                    bool.TryParse(request.PresentationValues[PresenterConstants.ReplaceMainPagePresentation], out replaceMain);
+                    if (request.PresentationValues.ContainsKey(PresenterConstants.ReplaceMainPage))
+                    {
+                        bool.TryParse(request.PresentationValues[PresenterConstants.ReplaceMainPage], out replaceMain);
+                    }
+                    if (request.PresentationValues.ContainsKey(PresenterConstants.WrapWithNavigationPage))
+                    {
+                        bool.TryParse(request.PresentationValues[PresenterConstants.WrapWithNavigationPage], out wrapInNavPage);
+                    }
                 }
-            }
 
-            if (replaceMain)
-            {
-                Page newMain = CreateAndSetupPage(request);
-
-                if (newMain != null)
+                if (wrapInNavPage)
                 {
-                    SetMainPage(newMain);
-                    callBase = false;
+                    newPage = new NavigationPage(newPage);
                 }
-            }
-            
-            if (callBase)
-            {
-                base.Show(request);
+
+                if (replaceMain || mainPage == null)
+                {
+                    SetMainPage(newPage);
+                }
+                else
+                {
+                    try
+                    {
+                        mainPage.PushAsync(newPage);
+                    }
+                    catch (Exception e)
+                    {
+                        Mvx.Error("Exception pushing {0}: {1}\n{2}", newPage.GetType(), e.Message, e.StackTrace);
+                    }
+                }
             }
         }
 

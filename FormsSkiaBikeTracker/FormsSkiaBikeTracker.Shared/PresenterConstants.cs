@@ -12,6 +12,7 @@ namespace FormsSkiaBikeTracker
 {
     public class PresenterConstants
     {
-        public const string ReplaceMainPagePresentation = nameof(ReplaceMainPagePresentation);
+        public const string ReplaceMainPage = nameof(WrapWithNavigationPage);
+        public const string WrapWithNavigationPage = nameof(WrapWithNavigationPage);
     }
 }
