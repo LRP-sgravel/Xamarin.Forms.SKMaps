@@ -67,13 +67,12 @@ namespace FormsSkiaBikeTracker.Forms.UI.Controls
             _Paint?.Dispose();
         }
 
-        private static void FontResourcePathPropertyChanged(BindableObject bindable, object oldvalue, object newvalue)
+        private static void FontResourcePathPropertyChanged(BindableObject bindable, object oldValue, object newValue)
         {
             SKLabel view = bindable as SKLabel;
 
-            view.RefreshPaint();
             view.RefreshTypeface();
-            ResizePropertyChanged(bindable, oldvalue, newvalue);
+            ResizePropertyChanged(bindable, oldValue, newValue);
         }
 
         private void RefreshTypeface()
