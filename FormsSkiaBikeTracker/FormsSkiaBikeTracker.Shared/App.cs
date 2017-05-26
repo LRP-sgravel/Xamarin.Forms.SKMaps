@@ -23,6 +23,7 @@ using LRPLib.Mvx.Core;
 using LRPLib.Mvx.Services.Localization;
 using LRPLib.Services;
 using LRPLib.Services.Resources;
+using Realms;
 using SimpleCrypto;
 
 namespace FormsSkiaBikeTracker
@@ -85,6 +86,7 @@ namespace FormsSkiaBikeTracker
         {
             Mvx.RegisterSingleton(Mvx.IocConstruct<LrpBootstrapper>);
             Mvx.RegisterSingleton<ICryptoService>(new PBKDF2());
+            Mvx.RegisterType(() => Realm.GetInstance());
         }
 
         private void InitializeBootstrap()
