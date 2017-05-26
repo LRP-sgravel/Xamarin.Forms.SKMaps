@@ -71,8 +71,8 @@ namespace FormsSkiaBikeTracker.Forms.UI.Pages
 
                     RebuildUsersViewWrappers();
 
-                    _viewModelSelectedUserChangedSubscription = npc.WeakSubscribe<LoginViewModel>("SelectedUser", ViewModelSelectedUserChanged);
-                    _viewModelUsersChangedSubscription = npc.WeakSubscribe<LoginViewModel>("Users", ViewModelUsersChanged);
+                    _viewModelSelectedUserChangedSubscription = npc.WeakSubscribe<LoginViewModel>(nameof(ViewModel.SelectedUser), ViewModelSelectedUserChanged);
+                    _viewModelUsersChangedSubscription = npc.WeakSubscribe<LoginViewModel>(nameof(ViewModel.Users), ViewModelUsersChanged);
                 }
             }
         }

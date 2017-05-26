@@ -25,7 +25,7 @@ namespace FormsSkiaBikeTracker.Forms.UI.Controls
 
             if (propertyName == nameof(View))
             {
-                _contentMeasureInvalidatedSubscription = View?.WeakSubscribe("MeasureInvalidated", ContentViewMeasureInvalidated);
+                _contentMeasureInvalidatedSubscription = View?.WeakSubscribe(nameof(View.MeasureInvalidated), ContentViewMeasureInvalidated);
             }
         }
 

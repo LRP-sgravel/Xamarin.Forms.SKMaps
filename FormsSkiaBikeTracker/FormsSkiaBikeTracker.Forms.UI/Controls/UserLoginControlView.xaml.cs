@@ -65,7 +65,7 @@ namespace FormsSkiaBikeTracker.Forms.UI.Controls
                     if (_internalViewModel != null)
                     {
                         _internalPropertychangedSubscription =
-                            _internalViewModel.WeakSubscribe<UserLoginControlViewModel>("PropertyChanged", InternalVMPropertyChanged);
+                            _internalViewModel.WeakSubscribe<UserLoginControlViewModel>(nameof(_internalViewModel.PropertyChanged), InternalVMPropertyChanged);
                     }
                     else
                     {
