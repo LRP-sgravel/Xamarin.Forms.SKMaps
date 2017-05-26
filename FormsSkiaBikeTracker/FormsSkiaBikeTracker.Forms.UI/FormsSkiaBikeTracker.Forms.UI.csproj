@@ -35,6 +35,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Controls\BorderButtonView.xaml.cs">
+      <DependentUpon>BorderButtonView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\CircledImageView.cs" />
     <Compile Include="Controls\DrawnBackgroundControlView.cs" />
     <Compile Include="Controls\SKLabel.cs" />
@@ -172,6 +175,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Pages\SignUpPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Controls\BorderButtonView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

@@ -11,7 +11,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using FormsSkiaBikeTracker.Models;
@@ -21,7 +20,6 @@ using MvvmCross.Platform.WeakSubscription;
 using PropertyChanged;
 using SkiaSharp;
 using SkiaSharp.Views.Forms;
-using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace FormsSkiaBikeTracker.Forms.UI.Pages
@@ -48,15 +46,12 @@ namespace FormsSkiaBikeTracker.Forms.UI.Pages
             }
         }
 
-        private MvxWeakEventSubscription<LinearGradientBoxView> _signupPropertyChangedSubscription;
         private MvxNamedNotifyPropertyChangedEventSubscription<LoginViewModel> _viewModelSelectedUserChangedSubscription;
         private MvxNamedNotifyPropertyChangedEventSubscription<LoginViewModel> _viewModelUsersChangedSubscription;
 
         public LoginPage()
         {
             InitializeComponent();
-
-            _signupPropertyChangedSubscription = SignUpButtonBackground.WeakSubscribe("SizeChanged", SignUpBackgroundSizeChanged);
         }
 
         protected override void OnPropertyChanged(string propertyName = null)
@@ -107,22 +102,6 @@ namespace FormsSkiaBikeTracker.Forms.UI.Pages
             UsersViewWrappers = ViewModel.Users
                                          .Select(u => new UserLoginWrapper { User = u })
                                          .ToList();
-        }
-
-        private void SignUpBackgroundSizeChanged(object sender, EventArgs args)
-        {
-            const int BorderWidth = 4;
-
-            SKRect buttonRect = SignUpButtonBackground.Bounds.ToSKRect();
-            SKPath clipPath = new SKPath();
-            float cornerSize = buttonRect.Height * 0.5f;
-
-            clipPath.AddRoundedRect(buttonRect, cornerSize, cornerSize);
-            buttonRect.Inflate(new SKSize(-BorderWidth, -BorderWidth));
-            cornerSize = buttonRect.Height * 0.5f;
-            clipPath.AddRoundedRect(buttonRect, cornerSize, cornerSize, SKPathDirection.CounterClockwise);
-
-            SignUpButtonBackground.ClippingPath = clipPath;
         }
     }
 }

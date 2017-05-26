@@ -18,9 +18,7 @@
             <RowDefinition Height="2" />
             <RowDefinition Height="*" />
             <RowDefinition Height="2" />
-            <RowDefinition Height="20" />
-            <RowDefinition Height="80" />
-            <RowDefinition Height="20" />
+            <RowDefinition Height="120" />
         </Grid.RowDefinitions>
 
         <xForms:SvgImage Grid.Row="0" 
@@ -54,23 +52,10 @@
         <xForms:LinearGradientBoxView Grid.Row="3"
                                       StartColor="AliceBlue"
                                       EndColor="LightSkyBlue" />
-        
-        <controls:DrawnBackgroundControlView Grid.Row="5"
-                                             Margin="30, 10, 30, 10">
-            <controls:DrawnBackgroundControlView.Background>
-                <xForms:LinearGradientBoxView x:Name="SignUpButtonBackground"
-                                              StartColor="LightBlue"
-                                              EndColor="CadetBlue"
-                                              Direction="TopToBottom"/>
-            </controls:DrawnBackgroundControlView.Background>
-            <controls:DrawnBackgroundControlView.Foreground>
-                <Button Text="{lrp:LocalizedText SignUp}"
-                        BorderRadius="0"
-                        FontSize="22"
-                        FontAttributes="Bold"
-                        TextColor="DarkSlateGray"
-                        Command="{Binding GoToSignupCommand}"/>
-            </controls:DrawnBackgroundControlView.Foreground>
-        </controls:DrawnBackgroundControlView>
+        <controls:BorderButtonView Grid.Row="4"
+                                   Margin="20"
+                                   Text="{lrp:LocalizedText SignUp}"
+                                   BorderWidth="4"
+                                   Command="{Binding GoToSignupCommand}" />
     </Grid>
 </core:MvxContentPage>
