@@ -80,9 +80,14 @@ namespace FormsSkiaBikeTracker.Forms.UI.Controls
 
         protected override void Paint(SKCanvas canvas)
         {
+            float centerX = (float)Bounds.Width * 0.5f;
+            float centerY = (float)Bounds.Height * 0.5f;
+            float borderRadius = Math.Min(centerX, centerY) - BorderWidth * 0.5f;
+            SKRect destinationRect = SKRect.Create(0, 0, borderRadius * 2, borderRadius * 2);
+
             if (Source != null)
             {
-                canvas.DrawBitmap(Source.Bitmap, Bounds.ToSKRect());
+                canvas.DrawBitmap(Source.Bitmap, destinationRect);
             }
             else
             {
@@ -93,10 +98,6 @@ namespace FormsSkiaBikeTracker.Forms.UI.Controls
 
             if (BorderWidth > 0 && BorderColor != Color.Transparent)
             {
-                float centerX = (float)Bounds.Width * 0.5f;
-                float centerY = (float)Bounds.Height * 0.5f;
-                ;
-                float borderRadius = Math.Min(centerX, centerY) - BorderWidth * 0.5f;
                 SKPaint borderPaint = new SKPaint
                                       {
                                           Style = SKPaintStyle.Stroke,
@@ -116,9 +117,9 @@ namespace FormsSkiaBikeTracker.Forms.UI.Controls
         {
             try
             {
-                double xScale = Width / sourceRect.Width;
-                double yScale = Height / sourceRect.Height;
-                float fillScale = (float)Math.Max(xScale, yScale);
+                float xScale = (float)Width / sourceRect.Width;
+                float yScale = (float)Height / sourceRect.Height;
+                float fillScale = Math.Min(xScale, yScale);
 
                 SKMatrix initialTranslate = SKMatrix.MakeTranslation(sourceRect.Width * -0.5f,
                                                                      sourceRect.Height * -0.5f);
