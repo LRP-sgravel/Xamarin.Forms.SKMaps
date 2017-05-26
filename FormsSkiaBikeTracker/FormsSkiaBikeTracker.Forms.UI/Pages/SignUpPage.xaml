@@ -5,7 +5,78 @@
                      xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                      xmlns:core="clr-namespace:MvvmCross.Forms.Presenter.Core;assembly=MvvmCross.Forms.Presenter.Core"
                      xmlns:viewModels1="clr-namespace:FormsSkiaBikeTracker.Shared.ViewModels;assembly=FormsSkiaBikeTracker.Shared"
+                     xmlns:controls="clr-namespace:FormsSkiaBikeTracker.Forms.UI.Controls;assembly=FormsSkiaBikeTracker.Forms.UI"
+                     xmlns:lrp="clr-namespace:LRPLib.Views.XForms.Markup;assembly=LRPLib.Views.XForms"
+                     xmlns:xForms="clr-namespace:LRPLib.Views.XForms;assembly=LRPLib.Views.XForms"
                      x:Class="FormsSkiaBikeTracker.Forms.UI.Pages.SignUpPagePage">
-    <Grid>
+    <Grid RowSpacing="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="120"/>
+            <RowDefinition Height="5"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="2"/>
+            <RowDefinition Height="120"/>
+        </Grid.RowDefinitions>
+
+        <controls:CircledImageView Grid.Row="0"
+                                   Margin="0, 20, 0, 0"
+                                   BorderColor="DarkSlateGray"
+                                   BorderWidth="5"
+                                   Source="{Binding PictureBitmap}">
+            <controls:CircledImageView.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding SelectUserPictureCommand}" />
+            </controls:CircledImageView.GestureRecognizers>
+        </controls:CircledImageView>
+        
+        <controls:SKLabel Grid.Row="2"
+                          Margin="20, 0, 20, 0"
+                          VerticalOptions="End"
+                          Text="{lrp:LocalizedText Name}"
+                          TextColor="DarkSlateGray"
+                          FontResourcePath="KumarOne-Regular.ttf"
+                          FontSize="18"/>
+        <Entry Grid.Row="3"
+               Margin="20, 0, 20, 0"
+               VerticalOptions="Start"
+               FontSize="18"/>
+        
+        <controls:SKLabel Grid.Row="4"
+                          Margin="20, 0, 20, 0"
+                          VerticalOptions="End"
+                          Text="{lrp:LocalizedText Password}"
+                          TextColor="DarkSlateGray"
+                          FontResourcePath="KumarOne-Regular.ttf"
+                          FontSize="18"/>
+        <Entry Grid.Row="5"
+               Margin="20, 0, 20, 0"
+               VerticalOptions="Start"
+               FontSize="18" />
+        
+        <controls:SKLabel Grid.Row="6"
+                          Margin="20, 0, 20, 0"
+                          VerticalOptions="End"
+                          Text="{lrp:LocalizedText ConfirmPassword}"
+                          TextColor="DarkSlateGray"
+                          FontResourcePath="KumarOne-Regular.ttf"
+                          FontSize="18"/>
+        <Entry Grid.Row="7"
+               Margin="20, 0, 20, 0"
+               VerticalOptions="Start"
+               FontSize="18" />
+
+        <xForms:LinearGradientBoxView Grid.Row="8"
+                                      StartColor="AliceBlue"
+                                      EndColor="LightSkyBlue" />
+        
+        <controls:BorderButtonView Grid.Row="9"
+                                   Margin="20"
+                                   BorderWidth="4"
+                                   Text="{lrp:LocalizedText LetsRide}"
+                                   Command="{Binding RegisterUserCommand}"/>
     </Grid>
 </core:MvxContentPage>
