@@ -85,7 +85,7 @@ namespace FormsSkiaBikeTracker.Forms.UI.Controls
             float imageSize = Math.Min(centerX, centerY);
             float borderRadius = imageSize - BorderWidth * 0.5f;
 
-            if (Source != null)
+            if (Source != null && Source.Bitmap != null)
             {
                 float scaleFactor = canvas.TotalMatrix.ScaleX;
                 float nativeImageSize = imageSize * scaleFactor;
