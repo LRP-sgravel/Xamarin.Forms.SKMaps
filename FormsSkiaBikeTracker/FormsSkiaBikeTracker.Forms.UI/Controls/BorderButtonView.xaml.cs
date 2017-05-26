@@ -22,19 +22,14 @@ namespace FormsSkiaBikeTracker.Forms.UI.Controls
     public partial class BorderButtonView
     {
         public static readonly BindableProperty TextProperty = BindableProperty.Create(nameof(Text), typeof(string), typeof(BorderButtonView), string.Empty, BindingMode.OneWay, null, TextPropertyChanged);
-        public static readonly BindableProperty CommandProperty = BindableProperty.Create(nameof(Command), typeof(ICommand), typeof(BorderButtonView), null, BindingMode.OneWay, null, CommandPropertyChanged);
         public static readonly BindableProperty BorderWidthProperty = BindableProperty.Create(nameof(BorderWidth), typeof(int), typeof(BorderButtonView), 2, BindingMode.OneWay, null, BorderWidthPropertyChanged);
+        public static readonly BindableProperty CommandProperty = BindableProperty.Create(nameof(Command), typeof(ICommand), typeof(BorderButtonView), null, BindingMode.OneWay, null, CommandPropertyChanged);
+        public static readonly BindableProperty CommandParameterProperty = BindableProperty.Create(nameof(CommandParameter), typeof(object), typeof(BorderButtonView), null, BindingMode.OneWay, null, CommandParameterPropertyChanged);
 
         public string Text
         {
             get { return (string)GetValue(TextProperty); }
             set { SetValue(TextProperty, value); }
-        }
-
-        public ICommand Command
-        {
-            get { return (ICommand)GetValue(CommandProperty); }
-            set { SetValue(CommandProperty, value); }
         }
 
         public int BorderWidth
@@ -43,13 +38,25 @@ namespace FormsSkiaBikeTracker.Forms.UI.Controls
             set { SetValue(BorderWidthProperty, value); }
         }
 
+        public ICommand Command
+        {
+            get { return (ICommand)GetValue(CommandProperty); }
+            set { SetValue(CommandProperty, value); }
+        }
+
+        public object CommandParameter
+        {
+            get { return (object)GetValue(CommandParameterProperty); }
+            set { SetValue(CommandParameterProperty, value); }
+        }
+
         private MvxWeakEventSubscription<LinearGradientBoxView> _backgroundPropertyChangedSubscription;
 
         public BorderButtonView()
         {
             InitializeComponent();
 
-            _backgroundPropertyChangedSubscription = Background.WeakSubscribe("SizeChanged", SignUpBackgroundSizeChanged);
+            _backgroundPropertyChangedSubscription = Background.WeakSubscribe(nameof(Background.SizeChanged), SignUpBackgroundSizeChanged);
         }
         
         private static void TextPropertyChanged(BindableObject bindable, object oldValue, object newValue)
@@ -59,18 +66,25 @@ namespace FormsSkiaBikeTracker.Forms.UI.Controls
             view.Button.Text = view.Text;
         }
 
+        private static void BorderWidthPropertyChanged(BindableObject bindable, object oldValue, object newValue)
+        {
+            BorderButtonView view = bindable as BorderButtonView;
+
+            view.UpdateBorderMask();
+        }
+
         private static void CommandPropertyChanged(BindableObject bindable, object oldValue, object newValue)
         {
             BorderButtonView view = bindable as BorderButtonView;
 
             view.Button.Command = view.Command;
         }
-
-        private static void BorderWidthPropertyChanged(BindableObject bindable, object oldValue, object newValue)
+        
+        private static void CommandParameterPropertyChanged(BindableObject bindable, object oldvalue, object newValue)
         {
             BorderButtonView view = bindable as BorderButtonView;
 
-            view.UpdateBorderMask();
+            view.Button.CommandParameter = newValue;
         }
         
         private void SignUpBackgroundSizeChanged(object sender, EventArgs args)
