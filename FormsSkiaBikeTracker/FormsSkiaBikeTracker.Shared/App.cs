@@ -8,6 +8,8 @@
 //   Copyright (c) 2017, Le rond-point
 // 
 // ***********************************************************************
+
+using System.Globalization;
 using System.Reflection;
 using System.Threading.Tasks;
 using Acr.Settings;
@@ -72,7 +74,11 @@ namespace FormsSkiaBikeTracker
             Mvx.RegisterSingleton<IMvxTextProvider>(builder.TextProvider);
 
             // Set language
+#if DEBUG
             builder.LoadResources("fr");
+#else
+            builder.LoadResources(CultureInfo.CurrentUICulture.TwoLetterISOLanguageName);
+#endif
         }
 
         private void InitializeServices()
