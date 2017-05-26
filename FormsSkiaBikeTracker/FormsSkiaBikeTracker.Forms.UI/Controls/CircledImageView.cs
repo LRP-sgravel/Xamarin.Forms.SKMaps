@@ -82,12 +82,20 @@ namespace FormsSkiaBikeTracker.Forms.UI.Controls
         {
             float centerX = (float)Bounds.Width * 0.5f;
             float centerY = (float)Bounds.Height * 0.5f;
-            float borderRadius = Math.Min(centerX, centerY) - BorderWidth * 0.5f;
-            SKRect destinationRect = SKRect.Create(0, 0, borderRadius * 2, borderRadius * 2);
+            float imageSize = Math.Min(centerX, centerY);
+            float borderRadius = imageSize - BorderWidth * 0.5f;
 
             if (Source != null)
             {
-                canvas.DrawBitmap(Source.Bitmap, destinationRect);
+                float scaleFactor = canvas.TotalMatrix.ScaleX;
+                float nativeImageSize = imageSize * scaleFactor;
+                SKRect bitmapBounds = SKRect.Create(0, 0, Source.Bitmap.Width, Source.Bitmap.Height);
+                SKRect destinationBounds = SKRect.Create((float)(Width - nativeImageSize) * 0.5f,
+                                                         (float)(Height - nativeImageSize) * 0.5f,
+                                                         nativeImageSize,
+                                                         nativeImageSize);
+
+                canvas.DrawBitmap(Source.Bitmap, bitmapBounds, destinationBounds);
             }
             else
             {
@@ -154,7 +162,7 @@ namespace FormsSkiaBikeTracker.Forms.UI.Controls
         private void RefreshClippingMask()
         {
             float centerX = (float)Bounds.Width * 0.5f;
-            float centerY = (float)Bounds.Width * 0.5f;
+            float centerY = (float)Bounds.Height * 0.5f;
             float radius = Math.Min(centerX, centerY);
 
             SKPath circlePath = new SKPath();
