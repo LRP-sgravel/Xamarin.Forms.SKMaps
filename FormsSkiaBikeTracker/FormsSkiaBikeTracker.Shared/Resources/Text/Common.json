@@ -1,5 +1,10 @@
 ﻿{
     "Copyright": "Copyright © Le RondPoint 2017",
     "Booting...": "Starting...",
+
+    // Validation
+    "FieldRequired": "Field required",
+    "FieldsDoNotMatch": "Fields don not match",
+
     "Password": "Password"
 }

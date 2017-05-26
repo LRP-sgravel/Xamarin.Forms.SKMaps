@@ -8,7 +8,8 @@
                      xmlns:controls="clr-namespace:FormsSkiaBikeTracker.Forms.UI.Controls;assembly=FormsSkiaBikeTracker.Forms.UI"
                      xmlns:lrp="clr-namespace:LRPLib.Views.XForms.Markup;assembly=LRPLib.Views.XForms"
                      xmlns:xForms="clr-namespace:LRPLib.Views.XForms;assembly=LRPLib.Views.XForms"
-                     x:Class="FormsSkiaBikeTracker.Forms.UI.Pages.SignUpPagePage">
+                     x:Class="FormsSkiaBikeTracker.Forms.UI.Pages.SignUpPagePage"
+                     x:Name="SignUpPage">
     <Grid RowSpacing="0">
         <Grid.RowDefinitions>
             <RowDefinition Height="120"/>
@@ -40,8 +41,10 @@
                           TextColor="DarkSlateGray"
                           FontResourcePath="KumarOne-Regular.ttf"
                           FontSize="18"/>
-        <Entry Grid.Row="3"
+        <Entry x:Name="NameEntry"
+               Grid.Row="3"
                Margin="20, 0, 20, 0"
+               Text="{Binding Name, Mode=TwoWay}"
                VerticalOptions="Start"
                FontSize="18"/>
         
@@ -52,8 +55,11 @@
                           TextColor="DarkSlateGray"
                           FontResourcePath="KumarOne-Regular.ttf"
                           FontSize="18"/>
-        <Entry Grid.Row="5"
+        <Entry x:Name="PasswordEntry"
+               Grid.Row="5"
                Margin="20, 0, 20, 0"
+               Text="{Binding Password, Mode=TwoWay}"
+               IsPassword="True"
                VerticalOptions="Start"
                FontSize="18" />
         
@@ -64,8 +70,11 @@
                           TextColor="DarkSlateGray"
                           FontResourcePath="KumarOne-Regular.ttf"
                           FontSize="18"/>
-        <Entry Grid.Row="7"
+        <Entry x:Name="ConfirmationEntry"
+               Grid.Row="7"
                Margin="20, 0, 20, 0"
+               Text="{Binding PasswordConfirmation, Mode=TwoWay}"
+               IsPassword="True"
                VerticalOptions="Start"
                FontSize="18" />
 
@@ -77,6 +86,7 @@
                                    Margin="20"
                                    BorderWidth="4"
                                    Text="{lrp:LocalizedText LetsRide}"
-                                   Command="{Binding RegisterUserCommand}"/>
+                                   Command="{Binding RegisterUserCommand}"
+                                   CommandParameter="{Binding Source={x:Reference SignUpPage}, Path=CurrentErrors}"/>
     </Grid>
 </core:MvxContentPage>

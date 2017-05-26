@@ -45,6 +45,7 @@
       <DependentUpon>UserLoginControlView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\ResizableViewCell.cs" />
+    <Compile Include="Effects\RedBorderEffect.cs" />
     <Compile Include="LrpFormsPagePresenter.cs" />
     <Compile Include="Pages\SignUpPage.xaml.cs">
       <DependentUpon>SignUpPage.xaml</DependentUpon>

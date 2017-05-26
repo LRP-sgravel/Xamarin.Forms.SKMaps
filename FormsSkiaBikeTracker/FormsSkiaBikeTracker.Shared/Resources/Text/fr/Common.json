@@ -2,5 +2,9 @@
     "Copyright": "Tous droits réservés © Le RondPoint 2017",
     "Booting...": "Chargement...",
 
-    "Password": "Mot de passe",
+    // Validation
+    "FieldRequired": "Champ requis",
+    "FieldsDoNotMatch": "Les champs ne concordent pas",
+
+    "Password": "Mot de passe"
 }

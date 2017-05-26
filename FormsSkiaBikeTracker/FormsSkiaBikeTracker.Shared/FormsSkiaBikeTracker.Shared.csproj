@@ -41,6 +41,8 @@
     <Compile Include="Models\User.cs" />
     <Compile Include="PresenterConstants.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\Validation\IValidationResult.cs" />
+    <Compile Include="Services\Validation\ValidationResult.cs" />
     <Compile Include="ViewModels\LoadingViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
@@ -59,7 +61,6 @@
     <EmbeddedResource Include="Resources\Text\ViewModels.SignUpViewModel.json" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Services\" />
     <Folder Include="Views\" />
   </ItemGroup>
   <ItemGroup>
