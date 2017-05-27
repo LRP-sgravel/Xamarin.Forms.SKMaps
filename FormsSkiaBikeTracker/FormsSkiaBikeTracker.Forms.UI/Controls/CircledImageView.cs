@@ -19,7 +19,7 @@ using Xamarin.Forms;
 
 namespace FormsSkiaBikeTracker.Forms.UI.Controls
 {
-    public class CircledImageView : DrawableView
+    public class CircledImageView : SKCanvasView
     {
         public static readonly BindableProperty SourceProperty = BindableProperty.Create(nameof(Source),
                                                                                          typeof(SKBitmapImageSource),
@@ -78,12 +78,17 @@ namespace FormsSkiaBikeTracker.Forms.UI.Controls
         {
         }
 
-        protected override void Paint(SKCanvas canvas)
+        protected override void OnPaintSurface(SKPaintSurfaceEventArgs args)
         {
+            SKCanvas canvas = args.Surface.Canvas;
             float centerX = (float)Bounds.Width * 0.5f;
             float centerY = (float)Bounds.Height * 0.5f;
             float imageSize = Math.Min(centerX, centerY);
             float borderRadius = imageSize - BorderWidth * 0.5f;
+
+            args.Surface.Canvas.Clear(SKColor.Empty);
+            args.Surface.Canvas.Scale(CanvasSize.Width / (float)Width, CanvasSize.Height / (float)Height);
+            canvas.ClipPath(ClippingPath);
 
             if (Source != null && Source.Bitmap != null)
             {
@@ -171,11 +176,13 @@ namespace FormsSkiaBikeTracker.Forms.UI.Controls
             ClippingPath = circlePath;
         }
 
+        public SKPath ClippingPath { get; set; }
+
         private static void InvalidatePropertyChanged(BindableObject bindable, object oldvalue, object newvalue)
         {
             CircledImageView view = bindable as CircledImageView;
 
-            view.Invalidate();
+            view.InvalidateSurface();
         }
     }
 }
