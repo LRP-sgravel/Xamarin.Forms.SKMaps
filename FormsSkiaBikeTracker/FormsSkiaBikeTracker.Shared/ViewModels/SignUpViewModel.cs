@@ -11,12 +11,16 @@
 
 using System;
 using System.IO;
+using FormsSkiaBikeTracker.Models;
 using FormsSkiaBikeTracker.Services.Validation;
 using LRPLib.Mvx.ViewModels;
 using MvvmCross.Core.ViewModels;
 using MvvmCross.Platform.IoC;
+using MvvmCross.Platform.Platform;
 using MvvmCross.Plugins.File;
 using MvvmCross.Plugins.PictureChooser;
+using Realms;
+using SimpleCrypto;
 using SkiaSharp;
 using SkiaSharp.Views.Forms;
 
@@ -24,6 +28,10 @@ namespace FormsSkiaBikeTracker.Shared.ViewModels
 {
     public class SignUpViewModel : LrpViewModel
     {
+        private const string PictureSavePath = "../Library/AthletePictures";
+        private const string TempPictureFileName = "SignupPicture.tmp";
+        private string PictureFilePath(string fileName) => FileStore.NativePath($"{PictureSavePath}/{fileName}");
+
         [MvxInject]
         public IMvxPictureChooserTask PictureChooser { get; set; }
 
@@ -86,31 +94,31 @@ namespace FormsSkiaBikeTracker.Shared.ViewModels
             }
         }
 
-        private IMvxCommand _selectUserPictureCommand;
-        public IMvxCommand SelectUserPictureCommand
+        private IMvxCommand _selectAthletePictureCommand;
+        public IMvxCommand SelectAthletePictureCommand
         {
             get
             {
-                if (_selectUserPictureCommand == null)
+                if (_selectAthletePictureCommand == null)
                 {
-                    _selectUserPictureCommand = new MvxCommand(SelectUserPicture);
+                    _selectAthletePictureCommand = new MvxCommand(SelectAthletePicture);
                 }
 
-                return _selectUserPictureCommand;
+                return _selectAthletePictureCommand;
             }
         }
 
-        private IMvxCommand _registerUserCommand;
-        public IMvxCommand RegisterUserCommand
+        private IMvxCommand _registerAthleteCommand;
+        public IMvxCommand RegisterAthleteCommand
         {
             get
             {
-                if (_registerUserCommand == null)
+                if (_registerAthleteCommand == null)
                 {
-                    _registerUserCommand = new MvxCommand<IValidationResult>(RegisterUser);
+                    _registerAthleteCommand = new MvxCommand<IValidationResult>(RegisterAthlete);
                 }
 
-                return _registerUserCommand;
+                return _registerAthleteCommand;
             }
         }
 
@@ -121,21 +129,23 @@ namespace FormsSkiaBikeTracker.Shared.ViewModels
         public override void Start()
         {
             base.Start();
+
+            FileStore.EnsureFolderExists(PictureFilePath(string.Empty));
         }
 
-        private void SelectUserPicture()
+        private void SelectAthletePicture()
         {
             try
             {
                 PictureChooser.TakePicture(256, 95, PicturePicked, PicturePickCancelled);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 PictureChooser.ChoosePictureFromLibrary(256, 95, PicturePicked, PicturePickCancelled);
             }
         }
 
-        private void RegisterUser(IValidationResult validationResult)
+        private void RegisterAthlete(IValidationResult validationResult)
         {
             if (string.IsNullOrEmpty(Name))
             {
@@ -166,7 +176,40 @@ namespace FormsSkiaBikeTracker.Shared.ViewModels
 
             if (!validationResult.HasErrors)
             {
-                int i = 0;
+                Realm realmInstance = Realm.GetInstance();
+                PBKDF2 crypto = new PBKDF2();
+                string salt = crypto.GenerateSalt();
+                string sourcePath = PictureFilePath(TempPictureFileName);
+                string picturePath = PictureFilePath(Guid.NewGuid()
+                                                         .ToString());
+                Athlete newAthlete;
+
+                if (!FileStore.TryMove(sourcePath, picturePath, true))
+                {
+                    picturePath = null;
+                }
+
+                newAthlete = new Athlete
+                             {
+                                 Name = Name,
+                                 PicturePath = picturePath,
+                                 PasswordSalt = salt,
+                                 PasswordHash = crypto.Compute(Password, salt)
+                             };
+
+                realmInstance.Write(() =>
+                                    {
+                                        try
+                                        {
+                                            realmInstance.Add(newAthlete);
+                                        }
+                                        catch (Exception e)
+                                        {
+                                            MvxTrace.Warning(e.Message);
+                                        }
+                                    });
+
+                Close(this);
             }
         }
 
@@ -174,12 +217,9 @@ namespace FormsSkiaBikeTracker.Shared.ViewModels
         {
             if (pictureStream != null)
             {
-                string userPictureSavePath = FileStore.NativePath("../Library/Caches/UserPictures");
-                string userPictureFilePath = $"{userPictureSavePath}/SignupPicture.tmp";
+                string destinationFile = PictureFilePath(TempPictureFileName);
 
-                FileStore.EnsureFolderExists(userPictureSavePath);
-
-                FileStore.WriteFile(userPictureFilePath,
+                FileStore.WriteFile(destinationFile,
                                     fileStream =>
                                     {
                                         const int BufferSize = 10240;
@@ -198,7 +238,7 @@ namespace FormsSkiaBikeTracker.Shared.ViewModels
                                         while (readCount > 0);
                                     });
                 PictureBitmap = new SKBitmapImageSource();
-                PictureBitmap.Bitmap = SKBitmap.Decode(new SKFileStream(userPictureFilePath));
+                PictureBitmap.Bitmap = SKBitmap.Decode(new SKFileStream(destinationFile));
             }
         }
 

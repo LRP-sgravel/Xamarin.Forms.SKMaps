@@ -13,6 +13,7 @@ using System.Globalization;
 using System.Reflection;
 using System.Threading.Tasks;
 using Acr.Settings;
+using FormsSkiaBikeTracker.Models;
 using MvvmCross.Core.ViewModels;
 using MvvmCross.Localization;
 using MvvmCross.Platform;
@@ -86,7 +87,6 @@ namespace FormsSkiaBikeTracker
         {
             Mvx.RegisterSingleton(Mvx.IocConstruct<LrpBootstrapper>);
             Mvx.RegisterSingleton<ICryptoService>(new PBKDF2());
-            Mvx.RegisterType(() => Realm.GetInstance());
         }
 
         private void InitializeBootstrap()

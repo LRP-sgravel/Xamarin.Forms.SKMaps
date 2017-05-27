@@ -14,7 +14,9 @@ using FormsSkiaBikeTracker.Models;
 using FormsSkiaBikeTracker.ViewModels;
 using LRPLib.Mvx.ViewModels;
 using MvvmCross.Core.ViewModels;
+using MvvmCross.Platform;
 using MvvmCross.Platform.IoC;
+using Realms;
 using SimpleCrypto;
 
 namespace FormsSkiaBikeTracker.Shared.ViewModels
@@ -24,45 +26,45 @@ namespace FormsSkiaBikeTracker.Shared.ViewModels
         [MvxInject]
         public ICryptoService Crypto { get; set; }
 
-        private IEnumerable<User> _users;
-        public IEnumerable<User> Users
+        private IEnumerable<Athlete> _athletes;
+        public IEnumerable<Athlete> Athletes
         {
-            get { return _users; }
+            get { return _athletes; }
             set
             {
-                if (Users != value)
+                if (Athletes != value)
                 {
-                    _users = value;
+                    _athletes = value;
                     RaisePropertyChanged();
                 }
             }
         }
 
-        private User _selectedUser;
-        public User SelectedUser
+        private Athlete _selectedAthlete;
+        public Athlete SelectedAthlete
         {
-            get { return _selectedUser; }
+            get { return _selectedAthlete; }
             set
             {
-                if (SelectedUser != value)
+                if (SelectedAthlete != value)
                 {
-                    _selectedUser = value;
+                    _selectedAthlete = value;
                     RaisePropertyChanged();
                 }
             }
         }
 
-        private IMvxCommand _loginUserCommand;
-        public IMvxCommand LoginUserCommand
+        private IMvxCommand _loginAthleteCommand;
+        public IMvxCommand LoginAthleteCommand
         {
             get
             {
-                if (_loginUserCommand == null)
+                if (_loginAthleteCommand == null)
                 {
-                    _loginUserCommand = new MvxCommand<string>(LoginUser);
+                    _loginAthleteCommand = new MvxCommand<string>(LoginAthlete);
                 }
 
-                return _loginUserCommand;
+                return _loginAthleteCommand;
             }
         }
 
@@ -88,18 +90,13 @@ namespace FormsSkiaBikeTracker.Shared.ViewModels
         {
             base.Start();
 
-            Users = new List<User>
-                    {
-                        new User { Name = "Sylvain Gravel" },
-                        new User { Name = "Marco Vega" },
-                        new User { Name = "Ivan Čuljak" },
-                    };
+            Athletes = Realm.GetInstance().All<Athlete>();
         }
         
-        private void LoginUser(string password)
+        private void LoginAthlete(string password)
         {
-            string hashedPassword = Crypto.Compute(password, SelectedUser.PasswordSalt);
-            bool isPasswordValid = Crypto.Compare(SelectedUser.PasswordHash, hashedPassword);
+            string hashedPassword = Crypto.Compute(password, SelectedAthlete.PasswordSalt);
+            bool isPasswordValid = Crypto.Compare(SelectedAthlete.PasswordHash, hashedPassword);
 
             if (isPasswordValid)
             {
