@@ -33,17 +33,17 @@
         <xForms:LinearGradientBoxView Grid.Row="1"
                                       EndColor="AliceBlue"
                                       StartColor="LightSkyBlue" />
-        <ListView x:Name="UsersListView"
+        <ListView x:Name="AthletesListView"
                   Grid.Row="2"
                   RowHeight="-1"
                   HasUnevenRows="True"
                   SeparatorVisibility="None"
-                  ItemsSource="{Binding Source={x:Reference Self}, Path=UsersViewWrappers}"
-                  SelectedItem="{Binding Source={x:Reference Self}, Path=SelectedUser}">
+                  ItemsSource="{Binding Source={x:Reference Self}, Path=AthletesViewWrappers}"
+                  SelectedItem="{Binding Source={x:Reference Self}, Path=SelectedAthlete}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <controls:ResizableViewCell>
-                        <controls:UserLoginControlView User="{Binding User}"
+                        <controls:AthleteLoginControlView Athlete="{Binding Athlete}"
                                                        Expanded="{Binding IsExpanded}" />
                     </controls:ResizableViewCell>
                 </DataTemplate>

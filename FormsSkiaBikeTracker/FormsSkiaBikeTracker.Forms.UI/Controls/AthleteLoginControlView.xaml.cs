@@ -1,6 +1,6 @@
 ﻿// **********************************************************************
 // 
-//   UserLoginControlView.xaml.cs
+//   AthleteLoginControlView.xaml.cs
 //   
 //   This file is subject to the terms and conditions defined in
 //   file 'LICENSE.txt', which is part of this source code package.
@@ -10,28 +10,31 @@
 // ***********************************************************************
 
 using System.ComponentModel;
+using System.Reflection;
 using FormsSkiaBikeTracker.Models;
 using FormsSkiaBikeTracker.Shared.ViewModels;
+using MvvmCross.Platform;
 using MvvmCross.Platform.WeakSubscription;
+using Realms;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace FormsSkiaBikeTracker.Forms.UI.Controls
 {
     [XamlCompilation(XamlCompilationOptions.Skip)]
-    public partial class UserLoginControlView
+    public partial class AthleteLoginControlView
     {
-        public static readonly BindableProperty UserProperty = BindableProperty.Create(nameof(User),
-                                                                                       typeof(User),
-                                                                                       typeof(UserLoginControlView),
+        public static readonly BindableProperty AthleteProperty = BindableProperty.Create(nameof(Athlete),
+                                                                                       typeof(Athlete),
+                                                                                       typeof(AthleteLoginControlView),
                                                                                        null,
                                                                                        BindingMode.OneWay,
                                                                                        null,
-                                                                                       UserPropertyChanged);
+                                                                                       AthletePropertyChanged);
 
         public static readonly BindableProperty ExpandedProperty = BindableProperty.Create(nameof(Expanded),
                                                                                            typeof(bool),
-                                                                                           typeof(UserLoginControlView),
+                                                                                           typeof(AthleteLoginControlView),
                                                                                            false,
                                                                                            BindingMode.OneWay,
                                                                                            null,
@@ -44,16 +47,16 @@ namespace FormsSkiaBikeTracker.Forms.UI.Controls
         }
 
 
-        public User User
+        public Athlete Athlete
         {
-            get { return (User)GetValue(UserProperty); }
-            set { SetValue(UserProperty, value); }
+            get { return (Athlete)GetValue(AthleteProperty); }
+            set { SetValue(AthleteProperty, value); }
         }
 
         private double _ClosedHeightRequest { get; }
 
-        private UserLoginControlViewModel _internalViewModel;
-        public UserLoginControlViewModel InternalViewModel
+        private AthleteLoginControlViewModel _internalViewModel;
+        public AthleteLoginControlViewModel InternalViewModel
         {
             get { return _internalViewModel; }
             set
@@ -65,7 +68,7 @@ namespace FormsSkiaBikeTracker.Forms.UI.Controls
                     if (_internalViewModel != null)
                     {
                         _internalPropertychangedSubscription =
-                            _internalViewModel.WeakSubscribe<UserLoginControlViewModel>(nameof(_internalViewModel.PropertyChanged), InternalVMPropertyChanged);
+                            _internalViewModel.WeakSubscribe<AthleteLoginControlViewModel>(nameof(_internalViewModel.PropertyChanged), InternalVMPropertyChanged);
                     }
                     else
                     {
@@ -77,28 +80,33 @@ namespace FormsSkiaBikeTracker.Forms.UI.Controls
             }
         }
 
-        private MvxNamedNotifyPropertyChangedEventSubscription<UserLoginControlViewModel> _internalPropertychangedSubscription;
+        private MvxNamedNotifyPropertyChangedEventSubscription<AthleteLoginControlViewModel> _internalPropertychangedSubscription;
 
-        public UserLoginControlView()
+        public AthleteLoginControlView()
         {
             InitializeComponent();
 
             _ClosedHeightRequest = HeightRequest;
 
-            InternalViewModel = new UserLoginControlViewModel();
+            InternalViewModel = new AthleteLoginControlViewModel();
             InternalViewModel.Start();
         }
 
-        private static void UserPropertyChanged(BindableObject bindable, object oldvalue, object newvalue)
+        private static void AthletePropertyChanged(BindableObject bindable, object oldValue, object newValue)
         {
-            UserLoginControlView view = bindable as UserLoginControlView;
+            AthleteLoginControlView view = bindable as AthleteLoginControlView;
 
-            view.InternalViewModel.User = newvalue as User;
+            Athlete athlete = newValue as Athlete;
+            PropertyInfo pi = typeof(Athlete).GetProperty("PicturePath");
+            string propPath = athlete.PicturePath;
+            string propReflectPath = pi.GetValue(athlete) as string;
+
+            view.InternalViewModel.Athlete = newValue as Athlete;
         }
         
         private static void ExpandedPropertyChanged(BindableObject bindable, object oldvalue, object newvalue)
         {
-            UserLoginControlView view = bindable as UserLoginControlView;
+            AthleteLoginControlView view = bindable as AthleteLoginControlView;
 
             view.SetupPasswordLayout();
         }
@@ -136,9 +144,9 @@ namespace FormsSkiaBikeTracker.Forms.UI.Controls
 
         private void InternalVMPropertyChanged(object sender, PropertyChangedEventArgs args)
         {
-            if (args.PropertyName == nameof(UserLoginControlViewModel.User))
+            if (args.PropertyName == nameof(AthleteLoginControlViewModel.Athlete))
             {
-                User = InternalViewModel.User;
+                Athlete = InternalViewModel.Athlete;
             }
         }
     }

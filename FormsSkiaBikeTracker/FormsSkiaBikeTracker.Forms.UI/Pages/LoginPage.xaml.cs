@@ -15,11 +15,8 @@ using System.ComponentModel;
 using System.Linq;
 using FormsSkiaBikeTracker.Models;
 using FormsSkiaBikeTracker.Shared.ViewModels;
-using LRPLib.Views.XForms;
 using MvvmCross.Platform.WeakSubscription;
 using PropertyChanged;
-using SkiaSharp;
-using SkiaSharp.Views.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace FormsSkiaBikeTracker.Forms.UI.Pages
@@ -28,30 +25,37 @@ namespace FormsSkiaBikeTracker.Forms.UI.Pages
     public partial class LoginPage
     {
         [ImplementPropertyChanged]
-        public class UserLoginWrapper
+        public class AthleteLoginWrapper
         {
-            public User User { get; set; }
+            public Athlete Athlete { get; set; }
             public bool IsExpanded { get; set; }
         }
         
-        public IEnumerable<UserLoginWrapper> UsersViewWrappers { get; set; }
-        public UserLoginWrapper SelectedUser
+        public IEnumerable<AthleteLoginWrapper> AthletesViewWrappers { get; set; }
+        public AthleteLoginWrapper SelectedAthlete
         {
             set
             {
                 if (ViewModel != null)
                 {
-                    ViewModel.SelectedUser = value?.User;
+                    ViewModel.SelectedAthlete = value?.Athlete;
                 }
             }
         }
 
-        private MvxNamedNotifyPropertyChangedEventSubscription<LoginViewModel> _viewModelSelectedUserChangedSubscription;
-        private MvxNamedNotifyPropertyChangedEventSubscription<LoginViewModel> _viewModelUsersChangedSubscription;
+        private MvxNamedNotifyPropertyChangedEventSubscription<LoginViewModel> _viewModelSelectedAthleteChangedSubscription;
+        private MvxNamedNotifyPropertyChangedEventSubscription<LoginViewModel> _viewModelAthletesChangedSubscription;
 
         public LoginPage()
         {
             InitializeComponent();
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            ViewModel?.Start();
         }
 
         protected override void OnPropertyChanged(string propertyName = null)
@@ -60,47 +64,47 @@ namespace FormsSkiaBikeTracker.Forms.UI.Pages
 
             if (propertyName == nameof(BindingContext))
             {
-                _viewModelUsersChangedSubscription?.Dispose();
-                _viewModelSelectedUserChangedSubscription?.Dispose();
-                _viewModelUsersChangedSubscription = null;
-                _viewModelSelectedUserChangedSubscription = null;
+                _viewModelAthletesChangedSubscription?.Dispose();
+                _viewModelSelectedAthleteChangedSubscription?.Dispose();
+                _viewModelAthletesChangedSubscription = null;
+                _viewModelSelectedAthleteChangedSubscription = null;
 
                 if (ViewModel != null)
                 {
                     INotifyPropertyChanged npc = ViewModel;
 
-                    RebuildUsersViewWrappers();
+                    RebuildAthletesViewWrappers();
 
-                    _viewModelSelectedUserChangedSubscription = npc.WeakSubscribe<LoginViewModel>(nameof(ViewModel.SelectedUser), ViewModelSelectedUserChanged);
-                    _viewModelUsersChangedSubscription = npc.WeakSubscribe<LoginViewModel>(nameof(ViewModel.Users), ViewModelUsersChanged);
+                    _viewModelSelectedAthleteChangedSubscription = npc.WeakSubscribe<LoginViewModel>(nameof(ViewModel.SelectedAthlete), ViewModelSelectedAthleteChanged);
+                    _viewModelAthletesChangedSubscription = npc.WeakSubscribe<LoginViewModel>(nameof(ViewModel.Athletes), ViewModelAthletesChanged);
                 }
             }
         }
 
-        private void ViewModelSelectedUserChanged(object sender, EventArgs eventArgs)
+        private void ViewModelSelectedAthleteChanged(object sender, EventArgs eventArgs)
         {
-            UserLoginWrapper userWrapper = UsersViewWrappers.FirstOrDefault(w => w.User == ViewModel.SelectedUser);
+            AthleteLoginWrapper athleteWrapper = AthletesViewWrappers.FirstOrDefault(w => w.Athlete == ViewModel.SelectedAthlete);
 
-            foreach (UserLoginWrapper wrapper in UsersViewWrappers)
+            foreach (AthleteLoginWrapper wrapper in AthletesViewWrappers)
             {
                 wrapper.IsExpanded = false;
             }
 
-            if (userWrapper != null)
+            if (athleteWrapper != null)
             {
-                userWrapper.IsExpanded = true;
+                athleteWrapper.IsExpanded = true;
             }
         }
 
-        private void ViewModelUsersChanged(object sender, EventArgs eventArgs)
+        private void ViewModelAthletesChanged(object sender, EventArgs eventArgs)
         {
-            RebuildUsersViewWrappers();
+            RebuildAthletesViewWrappers();
         }
 
-        private void RebuildUsersViewWrappers()
+        private void RebuildAthletesViewWrappers()
         {
-            UsersViewWrappers = ViewModel.Users
-                                         .Select(u => new UserLoginWrapper { User = u })
+            AthletesViewWrappers = ViewModel.Athletes
+                                         .Select(a => new AthleteLoginWrapper { Athlete = a })
                                          .ToList();
         }
     }

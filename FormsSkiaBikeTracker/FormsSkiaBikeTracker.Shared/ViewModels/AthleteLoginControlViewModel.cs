@@ -1,6 +1,6 @@
 ﻿// **********************************************************************
 // 
-//   UserLoginControlViewModel.cs
+//   AthleteLoginControlViewModel.cs
 //   
 //   This file is subject to the terms and conditions defined in
 //   file 'LICENSE.txt', which is part of this source code package.
@@ -9,46 +9,61 @@
 // 
 // ***********************************************************************
 
+using System;
+using System.Reflection;
 using FormsSkiaBikeTracker.Models;
 using LRPLib.Mvx.ViewModels;
+using MvvmCross.Core.Platform;
+using MvvmCross.Platform;
 using SkiaSharp;
 
 namespace FormsSkiaBikeTracker.Shared.ViewModels
 {
-    public class UserLoginControlViewModel : LrpViewModel
+    public class AthleteLoginControlViewModel : LrpViewModel
     {
-        private User _user;
-        public User User
+        private Athlete _athlete;
+        public Athlete Athlete
         {
-            get { return _user; }
+            get { return _athlete; }
             set
             {
-                if (User != value)
+                if (Athlete != value)
                 {
-                    _user = value;
+                    _athlete = value;
                     RaisePropertyChanged();
 
-                    if (User != null)
+                    if (Athlete != null)
                     {
-                        UserPicture = SKBitmap.Decode(new SKFileStream(User.PicturePath));
+                        try
+                        {
+                            PropertyInfo pi = typeof(Athlete).GetProperty(nameof(Athlete.PicturePath));
+                            string propPath = Athlete.PicturePath;
+                            string propReflectPath = pi.GetValue(Athlete) as string;
+
+                            AthletePicture = SKBitmap.Decode(new SKFileStream(Athlete.PicturePath));
+                        }
+                        catch (Exception)
+                        {
+                            AthletePicture = null;
+                        }
                     }
                     else
                     {
-                        UserPicture = null;
+                        AthletePicture = null;
                     }
                 }
             }
         }
 
-        private SKBitmap _userPicture;
-        public SKBitmap UserPicture
+        private SKBitmap _athletePicture;
+        public SKBitmap AthletePicture
         {
-            get { return _userPicture; }
+            get { return _athletePicture; }
             set
             {
-                if (UserPicture != value)
+                if (AthletePicture != value)
                 {
-                    _userPicture = value;
+                    _athletePicture = value;
                     RaisePropertyChanged();
                 }
             }
@@ -68,7 +83,7 @@ namespace FormsSkiaBikeTracker.Shared.ViewModels
             }
         }
 
-        public UserLoginControlViewModel() : base("ViewModels." + nameof(LoginViewModel))
+        public AthleteLoginControlViewModel() : base("ViewModels." + nameof(LoginViewModel))
         {
         }
 

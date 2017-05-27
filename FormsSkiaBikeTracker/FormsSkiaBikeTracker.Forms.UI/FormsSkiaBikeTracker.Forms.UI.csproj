@@ -41,8 +41,8 @@
     <Compile Include="Controls\CircledImageView.cs" />
     <Compile Include="Controls\DrawnBackgroundControlView.cs" />
     <Compile Include="Controls\SKLabel.cs" />
-    <Compile Include="Controls\UserLoginControlView.xaml.cs">
-      <DependentUpon>UserLoginControlView.xaml</DependentUpon>
+    <Compile Include="Controls\AthleteLoginControlView.xaml.cs">
+      <DependentUpon>AthleteLoginControlView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\ResizableViewCell.cs" />
     <Compile Include="Effects\InvalidEntryBehavior.cs" />
@@ -166,7 +166,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Controls\UserLoginControlView.xaml">
+    <EmbeddedResource Include="Controls\AthleteLoginControlView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
