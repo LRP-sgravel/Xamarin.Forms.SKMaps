@@ -9,13 +9,15 @@
 // 
 // ***********************************************************************
 
+using System;
 using System.ComponentModel;
 using System.Reflection;
+using System.Windows.Input;
 using FormsSkiaBikeTracker.Models;
 using FormsSkiaBikeTracker.Shared.ViewModels;
 using MvvmCross.Platform;
 using MvvmCross.Platform.WeakSubscription;
-using Realms;
+using MvvmCross.Plugins.File;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -31,7 +33,6 @@ namespace FormsSkiaBikeTracker.Forms.UI.Controls
                                                                                        BindingMode.OneWay,
                                                                                        null,
                                                                                        AthletePropertyChanged);
-
         public static readonly BindableProperty ExpandedProperty = BindableProperty.Create(nameof(Expanded),
                                                                                            typeof(bool),
                                                                                            typeof(AthleteLoginControlView),
@@ -40,17 +41,58 @@ namespace FormsSkiaBikeTracker.Forms.UI.Controls
                                                                                            null,
                                                                                            ExpandedPropertyChanged);
 
+        public static readonly BindableProperty PasswordProperty = BindableProperty.Create(nameof(Password),
+                                                                                           typeof(string),
+                                                                                           typeof(AthleteLoginControlView),
+                                                                                           string.Empty,
+                                                                                           BindingMode.OneWayToSource,
+                                                                                           null,
+                                                                                           PasswordPropertyChanged);
+
+        public static readonly BindableProperty CommandProperty = BindableProperty.Create(nameof(Command),
+                                                                                          typeof(ICommand),
+                                                                                          typeof(AthleteLoginControlView),
+                                                                                          null,
+                                                                                          BindingMode.OneWay,
+                                                                                          null,
+                                                                                          CommandPropertyChanged);
+
+        public static readonly BindableProperty CommandParameterProperty = BindableProperty.Create(nameof(CommandParameter),
+                                                                                                   typeof(object),
+                                                                                                   typeof(AthleteLoginControlView),
+                                                                                                   null,
+                                                                                                   BindingMode.OneWay,
+                                                                                                   null,
+                                                                                                   CommandParameterPropertyChanged);
+
         public bool Expanded
         {
             get { return (bool)GetValue(ExpandedProperty); }
             set { SetValue(ExpandedProperty, value); }
         }
 
-
         public Athlete Athlete
         {
             get { return (Athlete)GetValue(AthleteProperty); }
             set { SetValue(AthleteProperty, value); }
+        }
+        
+        public string Password
+        {
+            get { return (string)GetValue(PasswordProperty); }
+            set { SetValue(PasswordProperty, value); }
+        }
+
+        public ICommand Command
+        {
+            get { return (ICommand)GetValue(CommandProperty); }
+            set { SetValue(CommandProperty, value); }
+        }
+        
+        public object CommandParameter
+        {
+            get { return GetValue(CommandParameterProperty); }
+            set { SetValue(CommandParameterProperty, value); }
         }
 
         private double _ClosedHeightRequest { get; }
@@ -67,12 +109,11 @@ namespace FormsSkiaBikeTracker.Forms.UI.Controls
 
                     if (_internalViewModel != null)
                     {
-                        _internalPropertychangedSubscription =
-                            _internalViewModel.WeakSubscribe<AthleteLoginControlViewModel>(nameof(_internalViewModel.PropertyChanged), InternalVMPropertyChanged);
+                        _internalPropertyChangedSubscription = _internalViewModel.WeakSubscribe(InternalVMPropertyChanged);
                     }
                     else
                     {
-                        _internalPropertychangedSubscription = null;
+                        _internalPropertyChangedSubscription = null;
                     }
 
                     OnPropertyChanged();
@@ -80,7 +121,7 @@ namespace FormsSkiaBikeTracker.Forms.UI.Controls
             }
         }
 
-        private MvxNamedNotifyPropertyChangedEventSubscription<AthleteLoginControlViewModel> _internalPropertychangedSubscription;
+        private MvxNotifyPropertyChangedEventSubscription _internalPropertyChangedSubscription;
 
         public AthleteLoginControlView()
         {
@@ -88,7 +129,7 @@ namespace FormsSkiaBikeTracker.Forms.UI.Controls
 
             _ClosedHeightRequest = HeightRequest;
 
-            InternalViewModel = new AthleteLoginControlViewModel();
+            InternalViewModel = Mvx.IocConstruct<AthleteLoginControlViewModel>();
             InternalViewModel.Start();
         }
 
@@ -96,30 +137,46 @@ namespace FormsSkiaBikeTracker.Forms.UI.Controls
         {
             AthleteLoginControlView view = bindable as AthleteLoginControlView;
 
-            Athlete athlete = newValue as Athlete;
-            PropertyInfo pi = typeof(Athlete).GetProperty("PicturePath");
-            string propPath = athlete.PicturePath;
-            string propReflectPath = pi.GetValue(athlete) as string;
-
             view.InternalViewModel.Athlete = newValue as Athlete;
         }
         
-        private static void ExpandedPropertyChanged(BindableObject bindable, object oldvalue, object newvalue)
+        private static void ExpandedPropertyChanged(BindableObject bindable, object oldValue, object newValue)
         {
             AthleteLoginControlView view = bindable as AthleteLoginControlView;
 
             view.SetupPasswordLayout();
+        }
+        
+        private static void PasswordPropertyChanged(BindableObject bindable, object oldValue, object newValue)
+        {
+            AthleteLoginControlView view = bindable as AthleteLoginControlView;
+
+            view.PasswordEntry.Text = newValue as string;
+        }
+
+        private static void CommandPropertyChanged(BindableObject bindable, object oldValue, object newValue)
+        {
+            AthleteLoginControlView view = bindable as AthleteLoginControlView;
+
+            view.SubmitButton.Command = newValue as ICommand;
+        }
+
+        private static void CommandParameterPropertyChanged(BindableObject bindable, object oldValue, object newValue)
+        {
+            AthleteLoginControlView view = bindable as AthleteLoginControlView;
+
+            view.SubmitButton.CommandParameter = newValue;
         }
 
         private void SetupPasswordLayout()
         {
             if (Expanded)
             {
-                AnimateHeightRequest(PasswordLayout.Height + 1);
+                AnimateHeightRequest(PasswordEntry.Height + 1);
             }
             else
             {
-                AnimateHeightRequest(-PasswordLayout.Height - 1);
+                AnimateHeightRequest(-PasswordEntry.Height - 1);
             }
         }
 
@@ -147,6 +204,10 @@ namespace FormsSkiaBikeTracker.Forms.UI.Controls
             if (args.PropertyName == nameof(AthleteLoginControlViewModel.Athlete))
             {
                 Athlete = InternalViewModel.Athlete;
+            }
+            else if (args.PropertyName == nameof(AthleteLoginControlViewModel.EnteredPassword))
+            {
+                Password = InternalViewModel.EnteredPassword;
             }
         }
     }

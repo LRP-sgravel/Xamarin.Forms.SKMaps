@@ -13,10 +13,8 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-using FormsSkiaBikeTracker.Models;
 using FormsSkiaBikeTracker.Shared.ViewModels;
 using MvvmCross.Platform.WeakSubscription;
-using PropertyChanged;
 using Xamarin.Forms.Xaml;
 
 namespace FormsSkiaBikeTracker.Forms.UI.Pages
@@ -24,13 +22,6 @@ namespace FormsSkiaBikeTracker.Forms.UI.Pages
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class LoginPage
     {
-        [ImplementPropertyChanged]
-        public class AthleteLoginWrapper
-        {
-            public Athlete Athlete { get; set; }
-            public bool IsExpanded { get; set; }
-        }
-        
         public IEnumerable<AthleteLoginWrapper> AthletesViewWrappers { get; set; }
         public AthleteLoginWrapper SelectedAthlete
         {
@@ -83,7 +74,7 @@ namespace FormsSkiaBikeTracker.Forms.UI.Pages
 
         private void ViewModelSelectedAthleteChanged(object sender, EventArgs eventArgs)
         {
-            AthleteLoginWrapper athleteWrapper = AthletesViewWrappers.FirstOrDefault(w => w.Athlete == ViewModel.SelectedAthlete);
+            AthleteLoginWrapper athleteWrapper = AthletesViewWrappers.FirstOrDefault(w => w.Athlete.Id == ViewModel.SelectedAthlete.Id);
 
             foreach (AthleteLoginWrapper wrapper in AthletesViewWrappers)
             {

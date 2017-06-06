@@ -188,7 +188,6 @@ namespace FormsSkiaBikeTracker.Shared.ViewModels
                 string sourcePath = PictureFilePath(TempPictureFileName);
                 string athletePictureRelativePath = $"{PictureSavePath}/{athleteId}";
                 string picturePath = PictureFilePath(athletePictureRelativePath);
-                Athlete newAthlete;
 
                 FileStore.EnsureFolderExists(PictureFilePath(PictureSavePath));
 
@@ -197,19 +196,20 @@ namespace FormsSkiaBikeTracker.Shared.ViewModels
                     picturePath = null;
                 }
 
-                newAthlete = new Athlete
-                             {
-                                 Id = athleteId,
-                                 Name = Name,
-                                 PicturePath = athletePictureRelativePath,
-                                 PasswordSalt = salt,
-                                 PasswordHash = crypto.Compute(Password, salt)
-                             };
-
                 realmInstance.Write(() =>
                                     {
                                         try
                                         {
+                                            Athlete newAthlete;
+                                            newAthlete = new Athlete
+                                                         {
+                                                             Id = athleteId,
+                                                             Name = Name,
+                                                             PicturePath = athletePictureRelativePath,
+                                                             PasswordSalt = salt,
+                                                             PasswordHash = crypto.Compute(Password, salt)
+                                                         };
+
                                             realmInstance.Add(newAthlete);
                                         }
                                         catch (Exception e)
@@ -231,7 +231,7 @@ namespace FormsSkiaBikeTracker.Shared.ViewModels
                 FileStore.WriteFile(destinationFile,
                                     fileStream =>
                                     {
-                                        const int BufferSize = 10240;
+                                        const int BufferSize = 1024 * 10;
                                         byte[] buffer = new byte[BufferSize];
                                         int readCount = 0;
 

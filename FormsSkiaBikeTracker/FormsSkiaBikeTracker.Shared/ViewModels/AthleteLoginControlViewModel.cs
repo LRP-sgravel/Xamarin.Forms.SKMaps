@@ -11,11 +11,9 @@
 
 using System;
 using System.IO;
-using System.Reflection;
 using FormsSkiaBikeTracker.Models;
 using FormsSkiaBikeTracker.Services.Interface;
 using LRPLib.Mvx.ViewModels;
-using MvvmCross.Platform;
 using MvvmCross.Platform.IoC;
 using MvvmCross.Plugins.File;
 using SkiaSharp;

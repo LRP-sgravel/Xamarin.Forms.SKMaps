@@ -13,6 +13,7 @@ using System.Linq;
 using System.Reflection;
 using Android.Content;
 using Flurry.Analytics;
+using FormsSkiaBikeTracker.Droid.Services;
 using MvvmCross.Platform;
 using MvvmCross.Platform.Platform;
 using MvvmCross.Droid.Views;

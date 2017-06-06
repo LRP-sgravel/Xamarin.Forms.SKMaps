@@ -32,6 +32,7 @@
                                    BorderWidth="2"
                                    BorderColor="DarkSlateGray" />
         <controls:SKLabel Grid.Row="0" Grid.Column="1"
+                          Grid.ColumnSpan="2"
                           Margin ="0, 0, 0, 10"
                           VerticalOptions="CenterAndExpand"
                           HorizontalOptions="Start"
@@ -40,12 +41,24 @@
                           FontSize="24"
                           TextColor="DarkSlateGray"/>
 
-        <Entry x:Name="PasswordLayout"
-               Grid.Row="1" Grid.Column="0"
-               Grid.ColumnSpan="2"
-               HeightRequest="0"
-               Margin="20, 0, 20, 0"
-               HorizontalOptions="Fill"
-               Placeholder="{lrp:LocalizedText Password}"/>
+        <StackLayout x:Name="PasswordLayout"
+                     Grid.Row="1" Grid.Column="0"
+                     Grid.ColumnSpan="2"
+                     Margin="20, 0, 20, 0"
+                     HeightRequest="0"
+                     HorizontalOptions="Fill"
+                     Orientation="Horizontal">
+            <Entry x:Name="PasswordEntry"
+                   HorizontalOptions="FillAndExpand"
+                   VerticalOptions="Fill"
+                   IsPassword="True"
+                   Text="{Binding EnteredPassword}"
+                   Placeholder="{lrp:LocalizedText Password}"/>
+            <Button x:Name="SubmitButton"
+                    HorizontalOptions="End"
+                    VerticalOptions="Fill"
+                    WidthRequest="30"
+                    Text=">>" />
+        </StackLayout>
     </Grid>
 </ContentView>

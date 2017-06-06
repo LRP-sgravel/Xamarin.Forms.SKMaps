@@ -10,7 +10,7 @@
                      xmlns:lrpMvx="clr-namespace:LRPLib.Mvx.Views.XForms.Markup;assembly=LRPLib.Mvx.Views.XForms"
                      xmlns:lrp="clr-namespace:LRPLib.Views.XForms.Markup;assembly=LRPLib.Views.XForms"
                      x:Class="FormsSkiaBikeTracker.Forms.UI.Pages.LoginPage"
-                     x:Name="Self"
+                     x:Name="LoginPageRoot"
                      NavigationPage.HasNavigationBar="False">
     <Grid RowSpacing="0">
         <Grid.RowDefinitions>
@@ -38,13 +38,17 @@
                   RowHeight="-1"
                   HasUnevenRows="True"
                   SeparatorVisibility="None"
-                  ItemsSource="{Binding Source={x:Reference Self}, Path=AthletesViewWrappers}"
-                  SelectedItem="{Binding Source={x:Reference Self}, Path=SelectedAthlete}">
+                  ItemsSource="{Binding Source={x:Reference LoginPageRoot}, Path=AthletesViewWrappers}"
+                  SelectedItem="{Binding Source={x:Reference LoginPageRoot}, Path=SelectedAthlete}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <controls:ResizableViewCell>
                         <controls:AthleteLoginControlView Athlete="{Binding Athlete}"
-                                                       Expanded="{Binding IsExpanded}" />
+                                                          Expanded="{Binding IsExpanded}"
+                                                          Password="{Binding EnteredPassword}"
+                                                          Command="{Binding Source={x:Reference LoginPageRoot},
+                                                                            Path=ViewModel.LoginAthleteCommand}"
+                                                          CommandParameter="{Binding EnteredPassword}" />
                     </controls:ResizableViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>

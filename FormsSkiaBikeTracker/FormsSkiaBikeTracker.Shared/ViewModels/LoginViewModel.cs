@@ -9,12 +9,14 @@
 // 
 // ***********************************************************************
 
+using System;
 using System.Collections.Generic;
 using FormsSkiaBikeTracker.Models;
 using FormsSkiaBikeTracker.ViewModels;
 using LRPLib.Mvx.ViewModels;
 using MvvmCross.Core.ViewModels;
 using MvvmCross.Platform.IoC;
+using MvvmCross.Platform.Platform;
 using Realms;
 using SimpleCrypto;
 
@@ -94,8 +96,19 @@ namespace FormsSkiaBikeTracker.Shared.ViewModels
         
         private void LoginAthlete(string password)
         {
-            string hashedPassword = Crypto.Compute(password, SelectedAthlete.PasswordSalt);
-            bool isPasswordValid = Crypto.Compare(SelectedAthlete.PasswordHash, hashedPassword);
+            bool isPasswordValid;
+
+            try
+            {
+                string hashedPassword = Crypto.Compute(password, SelectedAthlete.PasswordSalt);
+
+                isPasswordValid = Crypto.Compare(SelectedAthlete.PasswordHash, hashedPassword);
+            }
+            catch (Exception e)
+            {
+                MvxTrace.Trace(MvxTraceLevel.Diagnostic, $"Error logging in user {e.Message}");
+                isPasswordValid = false;
+            }
 
             if (isPasswordValid)
             {
