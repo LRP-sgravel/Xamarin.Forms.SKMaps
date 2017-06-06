@@ -10,17 +10,26 @@
 // ***********************************************************************
 
 using System;
+using System.IO;
 using System.Reflection;
 using FormsSkiaBikeTracker.Models;
+using FormsSkiaBikeTracker.Services.Interface;
 using LRPLib.Mvx.ViewModels;
-using MvvmCross.Core.Platform;
 using MvvmCross.Platform;
+using MvvmCross.Platform.IoC;
+using MvvmCross.Plugins.File;
 using SkiaSharp;
 
 namespace FormsSkiaBikeTracker.Shared.ViewModels
 {
     public class AthleteLoginControlViewModel : LrpViewModel
     {
+        [MvxInject]
+        public IMvxFileStore FileStore { get; set; }
+        
+        [MvxInject]
+        public IDocumentRoot DocumentRoot { get; set; }
+
         private Athlete _athlete;
         public Athlete Athlete
         {
@@ -36,11 +45,13 @@ namespace FormsSkiaBikeTracker.Shared.ViewModels
                     {
                         try
                         {
-                            PropertyInfo pi = typeof(Athlete).GetProperty(nameof(Athlete.PicturePath));
-                            string propPath = Athlete.PicturePath;
-                            string propReflectPath = pi.GetValue(Athlete) as string;
+                            string picPath = FileStore.NativePath($"{DocumentRoot.Path}/{Athlete.PicturePath}");
+                            Stream fileStream = FileStore.OpenRead(picPath);
 
-                            AthletePicture = SKBitmap.Decode(new SKFileStream(Athlete.PicturePath));
+                            using (fileStream)
+                            {
+                                AthletePicture = SKBitmap.Decode(fileStream);
+                            }
                         }
                         catch (Exception)
                         {

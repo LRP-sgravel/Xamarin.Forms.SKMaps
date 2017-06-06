@@ -48,7 +48,11 @@
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
-	<key>CFBundleShortVersionString</key>
-	<string></string>
+  <key>CFBundleShortVersionString</key>
+  <string></string>
+  <key>NSCameraUsageDescription</key>
+  <string>Take your picture</string>
+  <key>NSPhotoLibraryUsageDescription</key>
+  <string>Choose your picture</string>
 </dict>
 </plist>

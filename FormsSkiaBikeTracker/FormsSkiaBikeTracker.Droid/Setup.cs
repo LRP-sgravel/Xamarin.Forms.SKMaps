@@ -20,6 +20,7 @@ using MvvmCross.Core.ViewModels;
 using MvvmCross.Core.Views;
 using MvvmCross.Platform.IoC;
 using FormsSkiaBikeTracker.Forms.UI.Pages;
+using FormsSkiaBikeTracker.Services.Interface;
 using LRPLib.Mvx.Droid;
 
 namespace FormsSkiaBikeTracker.Droid
@@ -78,6 +79,7 @@ namespace FormsSkiaBikeTracker.Droid
         {
             base.InitializePlatformServices();
 
+            Mvx.RegisterSingleton<IDocumentRoot>(Mvx.IocConstruct<DocumentRoot>);
             SetupFlurry();
         }
 

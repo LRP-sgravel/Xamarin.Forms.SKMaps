@@ -12,6 +12,7 @@
 using System;
 using System.IO;
 using FormsSkiaBikeTracker.Models;
+using FormsSkiaBikeTracker.Services.Interface;
 using FormsSkiaBikeTracker.Services.Validation;
 using LRPLib.Mvx.ViewModels;
 using MvvmCross.Core.ViewModels;
@@ -28,15 +29,18 @@ namespace FormsSkiaBikeTracker.Shared.ViewModels
 {
     public class SignUpViewModel : LrpViewModel
     {
-        private const string PictureSavePath = "../Library/AthletePictures";
-        private const string TempPictureFileName = "SignupPicture.tmp";
-        private string PictureFilePath(string fileName) => FileStore.NativePath($"{PictureSavePath}/{fileName}");
+        private const string PictureSavePath = "/AthletePictures";
+        private const string TempPictureFileName = "/Caches/SignupPicture.tmp";
+        private string PictureFilePath(string fileName) => FileStore.NativePath($"{DocumentRoot.Path}/{fileName}");
 
         [MvxInject]
         public IMvxPictureChooserTask PictureChooser { get; set; }
 
         [MvxInject]
         public IMvxFileStore FileStore { get; set; }
+
+        [MvxInject]
+        public IDocumentRoot DocumentRoot { get; set; }
 
         private SKBitmapImageSource _pictureBitmap;
         public SKBitmapImageSource PictureBitmap
@@ -178,11 +182,15 @@ namespace FormsSkiaBikeTracker.Shared.ViewModels
             {
                 Realm realmInstance = Realm.GetInstance();
                 PBKDF2 crypto = new PBKDF2();
+                string athleteId = Guid.NewGuid()
+                                       .ToString();
                 string salt = crypto.GenerateSalt();
                 string sourcePath = PictureFilePath(TempPictureFileName);
-                string picturePath = PictureFilePath(Guid.NewGuid()
-                                                         .ToString());
+                string athletePictureRelativePath = $"{PictureSavePath}/{athleteId}";
+                string picturePath = PictureFilePath(athletePictureRelativePath);
                 Athlete newAthlete;
+
+                FileStore.EnsureFolderExists(PictureFilePath(PictureSavePath));
 
                 if (!FileStore.TryMove(sourcePath, picturePath, true))
                 {
@@ -191,8 +199,9 @@ namespace FormsSkiaBikeTracker.Shared.ViewModels
 
                 newAthlete = new Athlete
                              {
+                                 Id = athleteId,
                                  Name = Name,
-                                 PicturePath = picturePath,
+                                 PicturePath = athletePictureRelativePath,
                                  PasswordSalt = salt,
                                  PasswordHash = crypto.Compute(Password, salt)
                              };

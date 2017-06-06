@@ -14,7 +14,6 @@ using FormsSkiaBikeTracker.Models;
 using FormsSkiaBikeTracker.ViewModels;
 using LRPLib.Mvx.ViewModels;
 using MvvmCross.Core.ViewModels;
-using MvvmCross.Platform;
 using MvvmCross.Platform.IoC;
 using Realms;
 using SimpleCrypto;

@@ -15,6 +15,8 @@ namespace FormsSkiaBikeTracker.Models
 {
     public class Athlete : RealmObject
     {
+        [PrimaryKey]
+        public string Id { get; set; }
         public string Name { get; set; }
         public string PasswordHash { get; set; }
         public string PasswordSalt { get; set; }

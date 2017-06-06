@@ -20,8 +20,11 @@ using MvvmCross.Core.ViewModels;
 using MvvmCross.iOS.Platform;
 using MvvmCross.Platform.IoC;
 using FormsSkiaBikeTracker.Forms.UI.Pages;
+using FormsSkiaBikeTracker.iOS.Services;
+using FormsSkiaBikeTracker.Services.Interface;
 using Foundation;
 using LRPLib.Mvx.iOS;
+using MvvmCross.Platform;
 
 namespace FormsSkiaBikeTracker.iOS
 {
@@ -79,6 +82,7 @@ namespace FormsSkiaBikeTracker.iOS
         {
             base.InitializePlatformServices();
 
+            Mvx.RegisterSingleton<IDocumentRoot>(Mvx.IocConstruct<DocumentRoot>);
             SetupFlurry();
         }
 
