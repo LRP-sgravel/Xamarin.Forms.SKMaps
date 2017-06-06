@@ -93,6 +93,7 @@
     <Compile Include="Bootstrap\JsonPluginBootstrap.cs" />
     <Compile Include="Bootstrap\PictureChooserPluginBootstrap.cs" />
     <Compile Include="Bootstrap\ResourceLoaderPluginBootstrap.cs" />
+    <Compile Include="Bootstrap\UserInteractionPluginBootstrap.cs" />
     <Compile Include="LrpFormsIosPagePresenter.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
@@ -132,6 +133,14 @@
     </Reference>
     <Reference Include="Acr.Settings.Interface, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Acr.Settings.6.0.1\lib\Xamarin.iOS10\Acr.Settings.Interface.dll</HintPath>
+    </Reference>
+    <Reference Include="Bulboss.MvvmCross.Plugins.UserInteraction, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Bulboss.MvvmCross.Plugins.UserInteraction.1.3.1\lib\Xamarin.iOS10\Bulboss.MvvmCross.Plugins.UserInteraction.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Bulboss.MvvmCross.Plugins.UserInteraction.Touch, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Bulboss.MvvmCross.Plugins.UserInteraction.1.3.1\lib\Xamarin.iOS10\Bulboss.MvvmCross.Plugins.UserInteraction.Touch.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="DotNetCross.Memory.Unsafe, Version=0.2.3.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\DotNetCross.Memory.Unsafe.0.2.3.4\lib\netstandard1.0\DotNetCross.Memory.Unsafe.dll</HintPath>

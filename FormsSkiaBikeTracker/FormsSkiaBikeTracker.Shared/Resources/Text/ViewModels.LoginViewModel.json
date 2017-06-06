@@ -1,3 +1,4 @@
 ﻿{
-    "SignUp": "Sign up"
+  "SignUp": "Sign up",
+  "InvalidPassword":  "Invalid password",
 }

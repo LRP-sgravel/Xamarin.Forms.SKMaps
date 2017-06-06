@@ -11,6 +11,7 @@
 
 using System;
 using System.Collections.Generic;
+using Bulboss.MvvmCross.Plugins.UserInteraction;
 using FormsSkiaBikeTracker.Models;
 using FormsSkiaBikeTracker.ViewModels;
 using LRPLib.Mvx.ViewModels;
@@ -26,6 +27,9 @@ namespace FormsSkiaBikeTracker.Shared.ViewModels
     {
         [MvxInject]
         public ICryptoService Crypto { get; set; }
+
+        [MvxInject]
+        public IAlertUserInteraction AlertInteraction { get; set; }
 
         private IEnumerable<Athlete> _athletes;
         public IEnumerable<Athlete> Athletes
@@ -116,7 +120,7 @@ namespace FormsSkiaBikeTracker.Shared.ViewModels
             }
             else
             {
-//                UserDialogs
+                AlertInteraction.AlertAsync(LanguageBinder.GetText("InvalidPassword"));
             }
         }
 
