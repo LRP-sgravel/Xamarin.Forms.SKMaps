@@ -8,8 +8,11 @@
 //   Copyright (c) 2017, Le rond-point
 // 
 // ***********************************************************************
+
+using Android.Content;
 using FormsSkiaBikeTracker.Forms.UI;
 using MvvmCross.Droid.Views;
+using Plugin.CurrentActivity;
 using Xamarin.Forms;
 
 namespace FormsSkiaBikeTracker.Droid

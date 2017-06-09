@@ -34,7 +34,8 @@
         <controls:SKLabel Grid.Row="0" Grid.Column="1"
                           Grid.ColumnSpan="2"
                           Margin ="0, 0, 0, 10"
-                          VerticalOptions="CenterAndExpand"
+                          HeightRequest="30"
+                          VerticalOptions="Center"
                           HorizontalOptions="Start"
                           Text="{Binding Athlete.Name}"
                           FontResourcePath="KumarOne-Regular.ttf"
@@ -49,6 +50,7 @@
                      HorizontalOptions="Fill"
                      Orientation="Horizontal">
             <Entry x:Name="PasswordEntry"
+                   Margin="20, 0, 20, 0"
                    HorizontalOptions="FillAndExpand"
                    VerticalOptions="Fill"
                    IsPassword="True"

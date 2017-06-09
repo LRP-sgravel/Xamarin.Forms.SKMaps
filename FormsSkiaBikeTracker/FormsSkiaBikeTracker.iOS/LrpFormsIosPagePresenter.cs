@@ -8,6 +8,9 @@
 //   Copyright (c) 2017, Le rond-point
 // 
 // ***********************************************************************
+
+using System.Collections.Generic;
+using System.Linq;
 using FormsSkiaBikeTracker.Forms.UI;
 using MvvmCross.iOS.Views.Presenters;
 using UIKit;

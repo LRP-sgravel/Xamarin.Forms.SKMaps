@@ -116,7 +116,13 @@ namespace FormsSkiaBikeTracker.Shared.ViewModels
 
             if (isPasswordValid)
             {
-                ShowViewModel<MainViewModel>();
+                MvxBundle presentationBundle = new MvxBundle(new Dictionary<string, string>
+                                                             {
+                                                                 [PresenterConstants.SetAsNavigationRoot] =
+                                                                 true.ToString(),
+                                                             });
+
+                ShowViewModel<MainViewModel>(new { athleteId = SelectedAthlete.Id }, presentationBundle);
             }
             else
             {
@@ -126,7 +132,7 @@ namespace FormsSkiaBikeTracker.Shared.ViewModels
 
         private void GoToSignup()
         {
-            ShowViewModel<SignUpViewModel>();
+            ShowViewModel<SignUpViewModel>(new { signInOnCompletion = true });
         }
     }
 }

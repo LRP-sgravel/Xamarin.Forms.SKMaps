@@ -10,10 +10,13 @@
 // ***********************************************************************
 
 using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using FormsSkiaBikeTracker.Models;
 using FormsSkiaBikeTracker.Services.Interface;
 using FormsSkiaBikeTracker.Services.Validation;
+using FormsSkiaBikeTracker.ViewModels;
 using LRPLib.Mvx.ViewModels;
 using MvvmCross.Core.ViewModels;
 using MvvmCross.Platform.IoC;
@@ -125,9 +128,16 @@ namespace FormsSkiaBikeTracker.Shared.ViewModels
                 return _registerAthleteCommand;
             }
         }
+        
+        private bool _SignInOnCompletion { get; set; }
 
         public SignUpViewModel()
         {
+        }
+
+        public void Init(bool signInOnCompletion)
+        {
+            _SignInOnCompletion = signInOnCompletion;
         }
 
         public override void Start()
@@ -218,7 +228,20 @@ namespace FormsSkiaBikeTracker.Shared.ViewModels
                                         }
                                     });
 
-                Close(this);
+                if (_SignInOnCompletion)
+                {
+                    MvxBundle presentationBundle = new MvxBundle(new Dictionary<string, string>
+                                                                 {
+                                                                     [PresenterConstants.SetAsNavigationRoot] =
+                                                                     true.ToString(),
+                                                                 });
+
+                    ShowViewModel<MainViewModel>(new { athleteId = athleteId }, presentationBundle);
+                }
+                else
+                {
+                    Close(this);
+                }
             }
         }
 

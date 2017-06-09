@@ -10,6 +10,8 @@
 // ***********************************************************************
 
 using System;
+using System.Threading.Tasks;
+using LRPLib.Services;
 using MvvmCross.Core.ViewModels;
 using MvvmCross.Forms.Presenter.Core;
 using MvvmCross.Platform;
@@ -36,6 +38,7 @@ namespace FormsSkiaBikeTracker.Forms.UI
                 NavigationPage mainPage = MvxFormsApp.MainPage as NavigationPage;
                 bool replaceMain = false;
                 bool wrapInNavPage = false;
+                bool setAsNavigationRoot = false;
 
                 if (request.PresentationValues != null)
                 {
@@ -46,6 +49,10 @@ namespace FormsSkiaBikeTracker.Forms.UI
                     if (request.PresentationValues.ContainsKey(PresenterConstants.WrapWithNavigationPage))
                     {
                         bool.TryParse(request.PresentationValues[PresenterConstants.WrapWithNavigationPage], out wrapInNavPage);
+                    }
+                    if (request.PresentationValues.ContainsKey(PresenterConstants.SetAsNavigationRoot))
+                    {
+                        bool.TryParse(request.PresentationValues[PresenterConstants.SetAsNavigationRoot], out setAsNavigationRoot);
                     }
                 }
 
@@ -62,7 +69,19 @@ namespace FormsSkiaBikeTracker.Forms.UI
                 {
                     try
                     {
-                        mainPage.PushAsync(newPage);
+                        Task pushTask = mainPage.PushAsync(newPage);
+
+                        if (setAsNavigationRoot)
+                        {
+                            NavigationPage.SetHasBackButton(newPage, false);
+
+                            MainThread.RunAsync(async () =>
+                                                {
+                                                    await pushTask.ConfigureAwait(true);
+
+                                                    ClearNavigationStack(mainPage);
+                                                });
+                        }
                     }
                     catch (Exception e)
                     {
@@ -113,5 +132,13 @@ namespace FormsSkiaBikeTracker.Forms.UI
         }
 
         protected abstract void InitRootViewController(Page rootPage);
+
+        private void ClearNavigationStack(NavigationPage navPage)
+        {
+            while (navPage.Navigation.NavigationStack.Count > 1)
+            {
+                navPage.Navigation.RemovePage(navPage.Navigation.NavigationStack[0]);
+            }
+        }
     }
 }

@@ -9,10 +9,13 @@
 // 
 // ***********************************************************************
 using System.Collections.Generic;
+using System.Linq;
+using FormsSkiaBikeTracker.Models;
 using FormsSkiaBikeTracker.Shared.ViewModels;
 using LRPLib.Mvx.ViewModels;
 using LRPLib.Services;
 using MvvmCross.Core.ViewModels;
+using Realms;
 
 namespace FormsSkiaBikeTracker.ViewModels
 {
@@ -64,18 +67,26 @@ namespace FormsSkiaBikeTracker.ViewModels
 
         public void OnBootCompleted()
         {
+            MvxBundle presentationBundle = new MvxBundle(new Dictionary<string, string>
+                                                            {
+                                                                [PresenterConstants.WrapWithNavigationPage] =
+                                                                true.ToString()
+                                                            });
+
             _Bootstrapper.BootTextChanged -= UpdateBootText;
             _Bootstrapper.BootCompleted -= OnBootCompleted;
 
-            ShowViewModel<LoginViewModel>((IMvxBundle)null,
-                                          new MvxBundle
-                                          (
-                                              new Dictionary<string, string>
-                                              {
-                                                  [PresenterConstants.WrapWithNavigationPage] =
-                                                  true.ToString()
-                                              }
-                                          ));
+            if (Realm.GetInstance()
+                     .All<Athlete>()
+                     .Any())
+            {
+
+                ShowViewModel<LoginViewModel>((IMvxBundle)null, presentationBundle);
+            }
+            else
+            {
+                ShowViewModel<SignUpViewModel>(new { signInOnCompletion = true }, presentationBundle);
+            }
         }
     }
 }
