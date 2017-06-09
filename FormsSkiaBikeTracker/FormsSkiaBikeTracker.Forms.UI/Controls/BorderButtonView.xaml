@@ -16,6 +16,7 @@
                       BorderRadius="0"
                       FontSize="22"
                       FontAttributes="Bold"
+                      Clicked="ButtonClicked"
                       TextColor="DarkSlateGray"/>
           </controls:DrawnBackgroundControlView.Foreground>
       </controls:DrawnBackgroundControlView>

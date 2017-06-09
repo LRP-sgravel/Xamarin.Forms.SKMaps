@@ -26,6 +26,1256 @@ namespace FormsSkiaBikeTracker.Droid
 		
 		public static void UpdateIdValues()
 		{
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Animation.abc_fade_in = global::FormsSkiaBikeTracker.Droid.Resource.Animation.abc_fade_in;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Animation.abc_fade_out = global::FormsSkiaBikeTracker.Droid.Resource.Animation.abc_fade_out;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Animation.abc_grow_fade_in_from_bottom = global::FormsSkiaBikeTracker.Droid.Resource.Animation.abc_grow_fade_in_from_bottom;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Animation.abc_popup_enter = global::FormsSkiaBikeTracker.Droid.Resource.Animation.abc_popup_enter;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Animation.abc_popup_exit = global::FormsSkiaBikeTracker.Droid.Resource.Animation.abc_popup_exit;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Animation.abc_shrink_fade_out_from_bottom = global::FormsSkiaBikeTracker.Droid.Resource.Animation.abc_shrink_fade_out_from_bottom;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Animation.abc_slide_in_bottom = global::FormsSkiaBikeTracker.Droid.Resource.Animation.abc_slide_in_bottom;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Animation.abc_slide_in_top = global::FormsSkiaBikeTracker.Droid.Resource.Animation.abc_slide_in_top;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Animation.abc_slide_out_bottom = global::FormsSkiaBikeTracker.Droid.Resource.Animation.abc_slide_out_bottom;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Animation.abc_slide_out_top = global::FormsSkiaBikeTracker.Droid.Resource.Animation.abc_slide_out_top;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.actionBarDivider = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.actionBarDivider;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.actionBarItemBackground = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.actionBarItemBackground;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.actionBarPopupTheme = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.actionBarPopupTheme;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.actionBarSize = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.actionBarSize;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.actionBarSplitStyle = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.actionBarSplitStyle;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.actionBarStyle = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.actionBarStyle;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.actionBarTabBarStyle = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.actionBarTabBarStyle;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.actionBarTabStyle = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.actionBarTabStyle;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.actionBarTabTextStyle = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.actionBarTabTextStyle;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.actionBarTheme = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.actionBarTheme;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.actionBarWidgetTheme = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.actionBarWidgetTheme;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.actionButtonStyle = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.actionButtonStyle;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.actionDropDownStyle = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.actionDropDownStyle;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.actionLayout = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.actionLayout;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.actionMenuTextAppearance = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.actionMenuTextAppearance;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.actionMenuTextColor = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.actionMenuTextColor;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.actionModeBackground = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.actionModeBackground;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.actionModeCloseButtonStyle = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.actionModeCloseButtonStyle;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.actionModeCloseDrawable = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.actionModeCloseDrawable;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.actionModeCopyDrawable = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.actionModeCopyDrawable;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.actionModeCutDrawable = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.actionModeCutDrawable;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.actionModeFindDrawable = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.actionModeFindDrawable;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.actionModePasteDrawable = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.actionModePasteDrawable;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.actionModePopupWindowStyle = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.actionModePopupWindowStyle;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.actionModeSelectAllDrawable = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.actionModeSelectAllDrawable;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.actionModeShareDrawable = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.actionModeShareDrawable;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.actionModeSplitBackground = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.actionModeSplitBackground;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.actionModeStyle = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.actionModeStyle;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.actionModeWebSearchDrawable = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.actionModeWebSearchDrawable;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.actionOverflowButtonStyle = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.actionOverflowButtonStyle;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.actionOverflowMenuStyle = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.actionOverflowMenuStyle;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.actionProviderClass = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.actionProviderClass;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.actionViewClass = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.actionViewClass;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.activityChooserViewStyle = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.activityChooserViewStyle;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.alertDialogButtonGroupStyle = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.alertDialogButtonGroupStyle;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.alertDialogCenterButtons = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.alertDialogCenterButtons;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.alertDialogStyle = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.alertDialogStyle;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.alertDialogTheme = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.alertDialogTheme;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.allowStacking = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.allowStacking;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.arrowHeadLength = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.arrowHeadLength;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.arrowShaftLength = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.arrowShaftLength;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.autoCompleteTextViewStyle = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.autoCompleteTextViewStyle;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.background = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.background;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.backgroundSplit = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.backgroundSplit;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.backgroundStacked = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.backgroundStacked;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.backgroundTint = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.backgroundTint;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.backgroundTintMode = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.backgroundTintMode;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.barLength = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.barLength;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.borderlessButtonStyle = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.borderlessButtonStyle;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.buttonBarButtonStyle = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.buttonBarButtonStyle;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.buttonBarNegativeButtonStyle = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.buttonBarNegativeButtonStyle;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.buttonBarNeutralButtonStyle = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.buttonBarNeutralButtonStyle;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.buttonBarPositiveButtonStyle = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.buttonBarPositiveButtonStyle;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.buttonBarStyle = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.buttonBarStyle;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.buttonPanelSideLayout = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.buttonPanelSideLayout;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.buttonStyle = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.buttonStyle;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.buttonStyleSmall = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.buttonStyleSmall;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.buttonTint = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.buttonTint;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.buttonTintMode = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.buttonTintMode;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.checkboxStyle = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.checkboxStyle;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.checkedTextViewStyle = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.checkedTextViewStyle;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.closeIcon = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.closeIcon;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.closeItemLayout = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.closeItemLayout;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.collapseContentDescription = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.collapseContentDescription;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.collapseIcon = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.collapseIcon;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.color = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.color;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.colorAccent = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.colorAccent;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.colorButtonNormal = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.colorButtonNormal;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.colorControlActivated = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.colorControlActivated;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.colorControlHighlight = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.colorControlHighlight;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.colorControlNormal = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.colorControlNormal;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.colorPrimary = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.colorPrimary;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.colorPrimaryDark = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.colorPrimaryDark;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.colorSwitchThumbNormal = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.colorSwitchThumbNormal;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.commitIcon = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.commitIcon;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.contentInsetEnd = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.contentInsetEnd;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.contentInsetLeft = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.contentInsetLeft;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.contentInsetRight = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.contentInsetRight;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.contentInsetStart = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.contentInsetStart;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.controlBackground = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.controlBackground;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.customNavigationLayout = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.customNavigationLayout;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.defaultQueryHint = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.defaultQueryHint;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.dialogPreferredPadding = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.dialogPreferredPadding;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.dialogTheme = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.dialogTheme;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.displayOptions = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.displayOptions;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.divider = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.divider;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.dividerHorizontal = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.dividerHorizontal;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.dividerPadding = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.dividerPadding;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.dividerVertical = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.dividerVertical;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.drawableSize = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.drawableSize;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.drawerArrowStyle = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.drawerArrowStyle;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.dropDownListViewStyle = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.dropDownListViewStyle;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.dropdownListPreferredItemHeight = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.dropdownListPreferredItemHeight;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.editTextBackground = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.editTextBackground;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.editTextColor = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.editTextColor;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.editTextStyle = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.editTextStyle;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.elevation = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.elevation;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.expandActivityOverflowButtonDrawable = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.expandActivityOverflowButtonDrawable;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.gapBetweenBars = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.gapBetweenBars;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.goIcon = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.goIcon;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.height = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.height;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.hideOnContentScroll = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.hideOnContentScroll;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.homeAsUpIndicator = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.homeAsUpIndicator;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.homeLayout = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.homeLayout;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.icon = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.icon;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.iconifiedByDefault = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.iconifiedByDefault;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.imageButtonStyle = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.imageButtonStyle;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.indeterminateProgressStyle = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.indeterminateProgressStyle;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.initialActivityCount = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.initialActivityCount;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.isLightTheme = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.isLightTheme;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.itemPadding = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.itemPadding;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.layout = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.layout;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.listChoiceBackgroundIndicator = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.listChoiceBackgroundIndicator;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.listDividerAlertDialog = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.listDividerAlertDialog;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.listItemLayout = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.listItemLayout;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.listLayout = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.listLayout;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.listPopupWindowStyle = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.listPopupWindowStyle;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.listPreferredItemHeight = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.listPreferredItemHeight;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.listPreferredItemHeightLarge = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.listPreferredItemHeightLarge;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.listPreferredItemHeightSmall = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.listPreferredItemHeightSmall;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.listPreferredItemPaddingLeft = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.listPreferredItemPaddingLeft;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.listPreferredItemPaddingRight = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.listPreferredItemPaddingRight;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.logo = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.logo;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.logoDescription = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.logoDescription;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.maxButtonHeight = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.maxButtonHeight;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.measureWithLargestChild = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.measureWithLargestChild;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.multiChoiceItemLayout = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.multiChoiceItemLayout;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.navigationContentDescription = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.navigationContentDescription;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.navigationIcon = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.navigationIcon;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.navigationMode = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.navigationMode;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.overlapAnchor = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.overlapAnchor;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.paddingEnd = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.paddingEnd;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.paddingStart = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.paddingStart;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.panelBackground = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.panelBackground;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.panelMenuListTheme = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.panelMenuListTheme;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.panelMenuListWidth = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.panelMenuListWidth;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.popupMenuStyle = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.popupMenuStyle;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.popupTheme = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.popupTheme;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.popupWindowStyle = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.popupWindowStyle;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.preserveIconSpacing = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.preserveIconSpacing;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.progressBarPadding = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.progressBarPadding;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.progressBarStyle = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.progressBarStyle;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.queryBackground = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.queryBackground;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.queryHint = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.queryHint;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.radioButtonStyle = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.radioButtonStyle;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.ratingBarStyle = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.ratingBarStyle;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.ratingBarStyleIndicator = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.ratingBarStyleIndicator;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.ratingBarStyleSmall = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.ratingBarStyleSmall;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.searchHintIcon = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.searchHintIcon;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.searchIcon = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.searchIcon;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.searchViewStyle = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.searchViewStyle;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.seekBarStyle = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.seekBarStyle;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.selectableItemBackground = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.selectableItemBackground;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.selectableItemBackgroundBorderless = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.selectableItemBackgroundBorderless;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.showAsAction = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.showAsAction;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.showDividers = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.showDividers;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.showText = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.showText;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.singleChoiceItemLayout = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.singleChoiceItemLayout;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.spinBars = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.spinBars;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.spinnerDropDownItemStyle = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.spinnerDropDownItemStyle;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.spinnerStyle = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.spinnerStyle;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.splitTrack = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.splitTrack;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.srcCompat = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.srcCompat;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.state_above_anchor = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.state_above_anchor;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.submitBackground = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.submitBackground;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.subtitle = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.subtitle;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.subtitleTextAppearance = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.subtitleTextAppearance;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.subtitleTextColor = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.subtitleTextColor;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.subtitleTextStyle = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.subtitleTextStyle;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.suggestionRowLayout = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.suggestionRowLayout;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.switchMinWidth = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.switchMinWidth;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.switchPadding = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.switchPadding;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.switchStyle = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.switchStyle;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.switchTextAppearance = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.switchTextAppearance;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.textAllCaps = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.textAllCaps;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.textAppearanceLargePopupMenu = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.textAppearanceLargePopupMenu;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.textAppearanceListItem = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.textAppearanceListItem;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.textAppearanceListItemSmall = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.textAppearanceListItemSmall;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.textAppearanceSearchResultSubtitle = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.textAppearanceSearchResultSubtitle;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.textAppearanceSearchResultTitle = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.textAppearanceSearchResultTitle;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.textAppearanceSmallPopupMenu = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.textAppearanceSmallPopupMenu;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.textColorAlertDialogListItem = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.textColorAlertDialogListItem;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.textColorSearchUrl = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.textColorSearchUrl;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.theme = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.theme;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.thickness = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.thickness;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.thumbTextPadding = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.thumbTextPadding;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.title = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.title;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.titleMarginBottom = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.titleMarginBottom;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.titleMarginEnd = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.titleMarginEnd;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.titleMarginStart = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.titleMarginStart;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.titleMarginTop = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.titleMarginTop;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.titleMargins = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.titleMargins;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.titleTextAppearance = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.titleTextAppearance;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.titleTextColor = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.titleTextColor;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.titleTextStyle = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.titleTextStyle;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.toolbarNavigationButtonStyle = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.toolbarNavigationButtonStyle;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.toolbarStyle = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.toolbarStyle;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.track = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.track;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.voiceIcon = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.voiceIcon;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.windowActionBar = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.windowActionBar;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.windowActionBarOverlay = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.windowActionBarOverlay;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.windowActionModeOverlay = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.windowActionModeOverlay;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.windowFixedHeightMajor = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.windowFixedHeightMajor;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.windowFixedHeightMinor = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.windowFixedHeightMinor;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.windowFixedWidthMajor = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.windowFixedWidthMajor;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.windowFixedWidthMinor = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.windowFixedWidthMinor;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.windowMinWidthMajor = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.windowMinWidthMajor;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.windowMinWidthMinor = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.windowMinWidthMinor;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Attribute.windowNoTitle = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.windowNoTitle;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Boolean.abc_action_bar_embed_tabs = global::FormsSkiaBikeTracker.Droid.Resource.Boolean.abc_action_bar_embed_tabs;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Boolean.abc_action_bar_embed_tabs_pre_jb = global::FormsSkiaBikeTracker.Droid.Resource.Boolean.abc_action_bar_embed_tabs_pre_jb;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Boolean.abc_action_bar_expanded_action_views_exclusive = global::FormsSkiaBikeTracker.Droid.Resource.Boolean.abc_action_bar_expanded_action_views_exclusive;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Boolean.abc_allow_stacked_button_bar = global::FormsSkiaBikeTracker.Droid.Resource.Boolean.abc_allow_stacked_button_bar;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Boolean.abc_config_actionMenuItemAllCaps = global::FormsSkiaBikeTracker.Droid.Resource.Boolean.abc_config_actionMenuItemAllCaps;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Boolean.abc_config_allowActionMenuItemTextWithIcon = global::FormsSkiaBikeTracker.Droid.Resource.Boolean.abc_config_allowActionMenuItemTextWithIcon;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Boolean.abc_config_closeDialogWhenTouchOutside = global::FormsSkiaBikeTracker.Droid.Resource.Boolean.abc_config_closeDialogWhenTouchOutside;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Boolean.abc_config_showMenuShortcutsWhenKeyboardPresent = global::FormsSkiaBikeTracker.Droid.Resource.Boolean.abc_config_showMenuShortcutsWhenKeyboardPresent;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Color.abc_background_cache_hint_selector_material_dark = global::FormsSkiaBikeTracker.Droid.Resource.Color.abc_background_cache_hint_selector_material_dark;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Color.abc_background_cache_hint_selector_material_light = global::FormsSkiaBikeTracker.Droid.Resource.Color.abc_background_cache_hint_selector_material_light;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Color.abc_color_highlight_material = global::FormsSkiaBikeTracker.Droid.Resource.Color.abc_color_highlight_material;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Color.abc_input_method_navigation_guard = global::FormsSkiaBikeTracker.Droid.Resource.Color.abc_input_method_navigation_guard;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Color.abc_primary_text_disable_only_material_dark = global::FormsSkiaBikeTracker.Droid.Resource.Color.abc_primary_text_disable_only_material_dark;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Color.abc_primary_text_disable_only_material_light = global::FormsSkiaBikeTracker.Droid.Resource.Color.abc_primary_text_disable_only_material_light;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Color.abc_primary_text_material_dark = global::FormsSkiaBikeTracker.Droid.Resource.Color.abc_primary_text_material_dark;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Color.abc_primary_text_material_light = global::FormsSkiaBikeTracker.Droid.Resource.Color.abc_primary_text_material_light;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Color.abc_search_url_text = global::FormsSkiaBikeTracker.Droid.Resource.Color.abc_search_url_text;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Color.abc_search_url_text_normal = global::FormsSkiaBikeTracker.Droid.Resource.Color.abc_search_url_text_normal;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Color.abc_search_url_text_pressed = global::FormsSkiaBikeTracker.Droid.Resource.Color.abc_search_url_text_pressed;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Color.abc_search_url_text_selected = global::FormsSkiaBikeTracker.Droid.Resource.Color.abc_search_url_text_selected;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Color.abc_secondary_text_material_dark = global::FormsSkiaBikeTracker.Droid.Resource.Color.abc_secondary_text_material_dark;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Color.abc_secondary_text_material_light = global::FormsSkiaBikeTracker.Droid.Resource.Color.abc_secondary_text_material_light;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Color.accent_material_dark = global::FormsSkiaBikeTracker.Droid.Resource.Color.accent_material_dark;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Color.accent_material_light = global::FormsSkiaBikeTracker.Droid.Resource.Color.accent_material_light;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Color.background_floating_material_dark = global::FormsSkiaBikeTracker.Droid.Resource.Color.background_floating_material_dark;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Color.background_floating_material_light = global::FormsSkiaBikeTracker.Droid.Resource.Color.background_floating_material_light;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Color.background_material_dark = global::FormsSkiaBikeTracker.Droid.Resource.Color.background_material_dark;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Color.background_material_light = global::FormsSkiaBikeTracker.Droid.Resource.Color.background_material_light;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Color.bright_foreground_disabled_material_dark = global::FormsSkiaBikeTracker.Droid.Resource.Color.bright_foreground_disabled_material_dark;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Color.bright_foreground_disabled_material_light = global::FormsSkiaBikeTracker.Droid.Resource.Color.bright_foreground_disabled_material_light;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Color.bright_foreground_inverse_material_dark = global::FormsSkiaBikeTracker.Droid.Resource.Color.bright_foreground_inverse_material_dark;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Color.bright_foreground_inverse_material_light = global::FormsSkiaBikeTracker.Droid.Resource.Color.bright_foreground_inverse_material_light;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Color.bright_foreground_material_dark = global::FormsSkiaBikeTracker.Droid.Resource.Color.bright_foreground_material_dark;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Color.bright_foreground_material_light = global::FormsSkiaBikeTracker.Droid.Resource.Color.bright_foreground_material_light;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Color.button_material_dark = global::FormsSkiaBikeTracker.Droid.Resource.Color.button_material_dark;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Color.button_material_light = global::FormsSkiaBikeTracker.Droid.Resource.Color.button_material_light;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Color.dim_foreground_disabled_material_dark = global::FormsSkiaBikeTracker.Droid.Resource.Color.dim_foreground_disabled_material_dark;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Color.dim_foreground_disabled_material_light = global::FormsSkiaBikeTracker.Droid.Resource.Color.dim_foreground_disabled_material_light;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Color.dim_foreground_material_dark = global::FormsSkiaBikeTracker.Droid.Resource.Color.dim_foreground_material_dark;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Color.dim_foreground_material_light = global::FormsSkiaBikeTracker.Droid.Resource.Color.dim_foreground_material_light;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Color.foreground_material_dark = global::FormsSkiaBikeTracker.Droid.Resource.Color.foreground_material_dark;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Color.foreground_material_light = global::FormsSkiaBikeTracker.Droid.Resource.Color.foreground_material_light;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Color.highlighted_text_material_dark = global::FormsSkiaBikeTracker.Droid.Resource.Color.highlighted_text_material_dark;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Color.highlighted_text_material_light = global::FormsSkiaBikeTracker.Droid.Resource.Color.highlighted_text_material_light;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Color.hint_foreground_material_dark = global::FormsSkiaBikeTracker.Droid.Resource.Color.hint_foreground_material_dark;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Color.hint_foreground_material_light = global::FormsSkiaBikeTracker.Droid.Resource.Color.hint_foreground_material_light;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Color.material_blue_grey_800 = global::FormsSkiaBikeTracker.Droid.Resource.Color.material_blue_grey_800;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Color.material_blue_grey_900 = global::FormsSkiaBikeTracker.Droid.Resource.Color.material_blue_grey_900;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Color.material_blue_grey_950 = global::FormsSkiaBikeTracker.Droid.Resource.Color.material_blue_grey_950;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Color.material_deep_teal_200 = global::FormsSkiaBikeTracker.Droid.Resource.Color.material_deep_teal_200;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Color.material_deep_teal_500 = global::FormsSkiaBikeTracker.Droid.Resource.Color.material_deep_teal_500;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Color.material_grey_100 = global::FormsSkiaBikeTracker.Droid.Resource.Color.material_grey_100;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Color.material_grey_300 = global::FormsSkiaBikeTracker.Droid.Resource.Color.material_grey_300;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Color.material_grey_50 = global::FormsSkiaBikeTracker.Droid.Resource.Color.material_grey_50;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Color.material_grey_600 = global::FormsSkiaBikeTracker.Droid.Resource.Color.material_grey_600;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Color.material_grey_800 = global::FormsSkiaBikeTracker.Droid.Resource.Color.material_grey_800;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Color.material_grey_850 = global::FormsSkiaBikeTracker.Droid.Resource.Color.material_grey_850;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Color.material_grey_900 = global::FormsSkiaBikeTracker.Droid.Resource.Color.material_grey_900;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Color.primary_dark_material_dark = global::FormsSkiaBikeTracker.Droid.Resource.Color.primary_dark_material_dark;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Color.primary_dark_material_light = global::FormsSkiaBikeTracker.Droid.Resource.Color.primary_dark_material_light;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Color.primary_material_dark = global::FormsSkiaBikeTracker.Droid.Resource.Color.primary_material_dark;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Color.primary_material_light = global::FormsSkiaBikeTracker.Droid.Resource.Color.primary_material_light;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Color.primary_text_default_material_dark = global::FormsSkiaBikeTracker.Droid.Resource.Color.primary_text_default_material_dark;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Color.primary_text_default_material_light = global::FormsSkiaBikeTracker.Droid.Resource.Color.primary_text_default_material_light;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Color.primary_text_disabled_material_dark = global::FormsSkiaBikeTracker.Droid.Resource.Color.primary_text_disabled_material_dark;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Color.primary_text_disabled_material_light = global::FormsSkiaBikeTracker.Droid.Resource.Color.primary_text_disabled_material_light;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Color.ripple_material_dark = global::FormsSkiaBikeTracker.Droid.Resource.Color.ripple_material_dark;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Color.ripple_material_light = global::FormsSkiaBikeTracker.Droid.Resource.Color.ripple_material_light;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Color.secondary_text_default_material_dark = global::FormsSkiaBikeTracker.Droid.Resource.Color.secondary_text_default_material_dark;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Color.secondary_text_default_material_light = global::FormsSkiaBikeTracker.Droid.Resource.Color.secondary_text_default_material_light;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Color.secondary_text_disabled_material_dark = global::FormsSkiaBikeTracker.Droid.Resource.Color.secondary_text_disabled_material_dark;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Color.secondary_text_disabled_material_light = global::FormsSkiaBikeTracker.Droid.Resource.Color.secondary_text_disabled_material_light;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Color.switch_thumb_disabled_material_dark = global::FormsSkiaBikeTracker.Droid.Resource.Color.switch_thumb_disabled_material_dark;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Color.switch_thumb_disabled_material_light = global::FormsSkiaBikeTracker.Droid.Resource.Color.switch_thumb_disabled_material_light;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Color.switch_thumb_material_dark = global::FormsSkiaBikeTracker.Droid.Resource.Color.switch_thumb_material_dark;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Color.switch_thumb_material_light = global::FormsSkiaBikeTracker.Droid.Resource.Color.switch_thumb_material_light;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Color.switch_thumb_normal_material_dark = global::FormsSkiaBikeTracker.Droid.Resource.Color.switch_thumb_normal_material_dark;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Color.switch_thumb_normal_material_light = global::FormsSkiaBikeTracker.Droid.Resource.Color.switch_thumb_normal_material_light;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Dimension.abc_action_bar_content_inset_material = global::FormsSkiaBikeTracker.Droid.Resource.Dimension.abc_action_bar_content_inset_material;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Dimension.abc_action_bar_default_height_material = global::FormsSkiaBikeTracker.Droid.Resource.Dimension.abc_action_bar_default_height_material;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Dimension.abc_action_bar_default_padding_end_material = global::FormsSkiaBikeTracker.Droid.Resource.Dimension.abc_action_bar_default_padding_end_material;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Dimension.abc_action_bar_default_padding_start_material = global::FormsSkiaBikeTracker.Droid.Resource.Dimension.abc_action_bar_default_padding_start_material;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Dimension.abc_action_bar_icon_vertical_padding_material = global::FormsSkiaBikeTracker.Droid.Resource.Dimension.abc_action_bar_icon_vertical_padding_material;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Dimension.abc_action_bar_overflow_padding_end_material = global::FormsSkiaBikeTracker.Droid.Resource.Dimension.abc_action_bar_overflow_padding_end_material;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Dimension.abc_action_bar_overflow_padding_start_material = global::FormsSkiaBikeTracker.Droid.Resource.Dimension.abc_action_bar_overflow_padding_start_material;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Dimension.abc_action_bar_progress_bar_size = global::FormsSkiaBikeTracker.Droid.Resource.Dimension.abc_action_bar_progress_bar_size;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Dimension.abc_action_bar_stacked_max_height = global::FormsSkiaBikeTracker.Droid.Resource.Dimension.abc_action_bar_stacked_max_height;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Dimension.abc_action_bar_stacked_tab_max_width = global::FormsSkiaBikeTracker.Droid.Resource.Dimension.abc_action_bar_stacked_tab_max_width;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Dimension.abc_action_bar_subtitle_bottom_margin_material = global::FormsSkiaBikeTracker.Droid.Resource.Dimension.abc_action_bar_subtitle_bottom_margin_material;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Dimension.abc_action_bar_subtitle_top_margin_material = global::FormsSkiaBikeTracker.Droid.Resource.Dimension.abc_action_bar_subtitle_top_margin_material;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Dimension.abc_action_button_min_height_material = global::FormsSkiaBikeTracker.Droid.Resource.Dimension.abc_action_button_min_height_material;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Dimension.abc_action_button_min_width_material = global::FormsSkiaBikeTracker.Droid.Resource.Dimension.abc_action_button_min_width_material;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Dimension.abc_action_button_min_width_overflow_material = global::FormsSkiaBikeTracker.Droid.Resource.Dimension.abc_action_button_min_width_overflow_material;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Dimension.abc_alert_dialog_button_bar_height = global::FormsSkiaBikeTracker.Droid.Resource.Dimension.abc_alert_dialog_button_bar_height;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Dimension.abc_button_inset_horizontal_material = global::FormsSkiaBikeTracker.Droid.Resource.Dimension.abc_button_inset_horizontal_material;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Dimension.abc_button_inset_vertical_material = global::FormsSkiaBikeTracker.Droid.Resource.Dimension.abc_button_inset_vertical_material;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Dimension.abc_button_padding_horizontal_material = global::FormsSkiaBikeTracker.Droid.Resource.Dimension.abc_button_padding_horizontal_material;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Dimension.abc_button_padding_vertical_material = global::FormsSkiaBikeTracker.Droid.Resource.Dimension.abc_button_padding_vertical_material;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Dimension.abc_config_prefDialogWidth = global::FormsSkiaBikeTracker.Droid.Resource.Dimension.abc_config_prefDialogWidth;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Dimension.abc_control_corner_material = global::FormsSkiaBikeTracker.Droid.Resource.Dimension.abc_control_corner_material;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Dimension.abc_control_inset_material = global::FormsSkiaBikeTracker.Droid.Resource.Dimension.abc_control_inset_material;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Dimension.abc_control_padding_material = global::FormsSkiaBikeTracker.Droid.Resource.Dimension.abc_control_padding_material;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Dimension.abc_dialog_fixed_height_major = global::FormsSkiaBikeTracker.Droid.Resource.Dimension.abc_dialog_fixed_height_major;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Dimension.abc_dialog_fixed_height_minor = global::FormsSkiaBikeTracker.Droid.Resource.Dimension.abc_dialog_fixed_height_minor;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Dimension.abc_dialog_fixed_width_major = global::FormsSkiaBikeTracker.Droid.Resource.Dimension.abc_dialog_fixed_width_major;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Dimension.abc_dialog_fixed_width_minor = global::FormsSkiaBikeTracker.Droid.Resource.Dimension.abc_dialog_fixed_width_minor;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Dimension.abc_dialog_list_padding_vertical_material = global::FormsSkiaBikeTracker.Droid.Resource.Dimension.abc_dialog_list_padding_vertical_material;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Dimension.abc_dialog_min_width_major = global::FormsSkiaBikeTracker.Droid.Resource.Dimension.abc_dialog_min_width_major;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Dimension.abc_dialog_min_width_minor = global::FormsSkiaBikeTracker.Droid.Resource.Dimension.abc_dialog_min_width_minor;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Dimension.abc_dialog_padding_material = global::FormsSkiaBikeTracker.Droid.Resource.Dimension.abc_dialog_padding_material;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Dimension.abc_dialog_padding_top_material = global::FormsSkiaBikeTracker.Droid.Resource.Dimension.abc_dialog_padding_top_material;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Dimension.abc_disabled_alpha_material_dark = global::FormsSkiaBikeTracker.Droid.Resource.Dimension.abc_disabled_alpha_material_dark;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Dimension.abc_disabled_alpha_material_light = global::FormsSkiaBikeTracker.Droid.Resource.Dimension.abc_disabled_alpha_material_light;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Dimension.abc_dropdownitem_icon_width = global::FormsSkiaBikeTracker.Droid.Resource.Dimension.abc_dropdownitem_icon_width;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Dimension.abc_dropdownitem_text_padding_left = global::FormsSkiaBikeTracker.Droid.Resource.Dimension.abc_dropdownitem_text_padding_left;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Dimension.abc_dropdownitem_text_padding_right = global::FormsSkiaBikeTracker.Droid.Resource.Dimension.abc_dropdownitem_text_padding_right;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Dimension.abc_edit_text_inset_bottom_material = global::FormsSkiaBikeTracker.Droid.Resource.Dimension.abc_edit_text_inset_bottom_material;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Dimension.abc_edit_text_inset_horizontal_material = global::FormsSkiaBikeTracker.Droid.Resource.Dimension.abc_edit_text_inset_horizontal_material;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Dimension.abc_edit_text_inset_top_material = global::FormsSkiaBikeTracker.Droid.Resource.Dimension.abc_edit_text_inset_top_material;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Dimension.abc_floating_window_z = global::FormsSkiaBikeTracker.Droid.Resource.Dimension.abc_floating_window_z;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Dimension.abc_list_item_padding_horizontal_material = global::FormsSkiaBikeTracker.Droid.Resource.Dimension.abc_list_item_padding_horizontal_material;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Dimension.abc_panel_menu_list_width = global::FormsSkiaBikeTracker.Droid.Resource.Dimension.abc_panel_menu_list_width;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Dimension.abc_search_view_preferred_width = global::FormsSkiaBikeTracker.Droid.Resource.Dimension.abc_search_view_preferred_width;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Dimension.abc_search_view_text_min_width = global::FormsSkiaBikeTracker.Droid.Resource.Dimension.abc_search_view_text_min_width;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Dimension.abc_seekbar_track_background_height_material = global::FormsSkiaBikeTracker.Droid.Resource.Dimension.abc_seekbar_track_background_height_material;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Dimension.abc_seekbar_track_progress_height_material = global::FormsSkiaBikeTracker.Droid.Resource.Dimension.abc_seekbar_track_progress_height_material;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Dimension.abc_select_dialog_padding_start_material = global::FormsSkiaBikeTracker.Droid.Resource.Dimension.abc_select_dialog_padding_start_material;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Dimension.abc_switch_padding = global::FormsSkiaBikeTracker.Droid.Resource.Dimension.abc_switch_padding;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Dimension.abc_text_size_body_1_material = global::FormsSkiaBikeTracker.Droid.Resource.Dimension.abc_text_size_body_1_material;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Dimension.abc_text_size_body_2_material = global::FormsSkiaBikeTracker.Droid.Resource.Dimension.abc_text_size_body_2_material;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Dimension.abc_text_size_button_material = global::FormsSkiaBikeTracker.Droid.Resource.Dimension.abc_text_size_button_material;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Dimension.abc_text_size_caption_material = global::FormsSkiaBikeTracker.Droid.Resource.Dimension.abc_text_size_caption_material;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Dimension.abc_text_size_display_1_material = global::FormsSkiaBikeTracker.Droid.Resource.Dimension.abc_text_size_display_1_material;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Dimension.abc_text_size_display_2_material = global::FormsSkiaBikeTracker.Droid.Resource.Dimension.abc_text_size_display_2_material;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Dimension.abc_text_size_display_3_material = global::FormsSkiaBikeTracker.Droid.Resource.Dimension.abc_text_size_display_3_material;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Dimension.abc_text_size_display_4_material = global::FormsSkiaBikeTracker.Droid.Resource.Dimension.abc_text_size_display_4_material;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Dimension.abc_text_size_headline_material = global::FormsSkiaBikeTracker.Droid.Resource.Dimension.abc_text_size_headline_material;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Dimension.abc_text_size_large_material = global::FormsSkiaBikeTracker.Droid.Resource.Dimension.abc_text_size_large_material;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Dimension.abc_text_size_medium_material = global::FormsSkiaBikeTracker.Droid.Resource.Dimension.abc_text_size_medium_material;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Dimension.abc_text_size_menu_material = global::FormsSkiaBikeTracker.Droid.Resource.Dimension.abc_text_size_menu_material;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Dimension.abc_text_size_small_material = global::FormsSkiaBikeTracker.Droid.Resource.Dimension.abc_text_size_small_material;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Dimension.abc_text_size_subhead_material = global::FormsSkiaBikeTracker.Droid.Resource.Dimension.abc_text_size_subhead_material;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Dimension.abc_text_size_subtitle_material_toolbar = global::FormsSkiaBikeTracker.Droid.Resource.Dimension.abc_text_size_subtitle_material_toolbar;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Dimension.abc_text_size_title_material = global::FormsSkiaBikeTracker.Droid.Resource.Dimension.abc_text_size_title_material;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Dimension.abc_text_size_title_material_toolbar = global::FormsSkiaBikeTracker.Droid.Resource.Dimension.abc_text_size_title_material_toolbar;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Dimension.disabled_alpha_material_dark = global::FormsSkiaBikeTracker.Droid.Resource.Dimension.disabled_alpha_material_dark;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Dimension.disabled_alpha_material_light = global::FormsSkiaBikeTracker.Droid.Resource.Dimension.disabled_alpha_material_light;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Dimension.highlight_alpha_material_colored = global::FormsSkiaBikeTracker.Droid.Resource.Dimension.highlight_alpha_material_colored;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Dimension.highlight_alpha_material_dark = global::FormsSkiaBikeTracker.Droid.Resource.Dimension.highlight_alpha_material_dark;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Dimension.highlight_alpha_material_light = global::FormsSkiaBikeTracker.Droid.Resource.Dimension.highlight_alpha_material_light;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Dimension.notification_large_icon_height = global::FormsSkiaBikeTracker.Droid.Resource.Dimension.notification_large_icon_height;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Dimension.notification_large_icon_width = global::FormsSkiaBikeTracker.Droid.Resource.Dimension.notification_large_icon_width;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Dimension.notification_subtext_size = global::FormsSkiaBikeTracker.Droid.Resource.Dimension.notification_subtext_size;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Drawable.abc_ab_share_pack_mtrl_alpha = global::FormsSkiaBikeTracker.Droid.Resource.Drawable.abc_ab_share_pack_mtrl_alpha;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Drawable.abc_action_bar_item_background_material = global::FormsSkiaBikeTracker.Droid.Resource.Drawable.abc_action_bar_item_background_material;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Drawable.abc_btn_borderless_material = global::FormsSkiaBikeTracker.Droid.Resource.Drawable.abc_btn_borderless_material;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Drawable.abc_btn_check_material = global::FormsSkiaBikeTracker.Droid.Resource.Drawable.abc_btn_check_material;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Drawable.abc_btn_check_to_on_mtrl_000 = global::FormsSkiaBikeTracker.Droid.Resource.Drawable.abc_btn_check_to_on_mtrl_000;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Drawable.abc_btn_check_to_on_mtrl_015 = global::FormsSkiaBikeTracker.Droid.Resource.Drawable.abc_btn_check_to_on_mtrl_015;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Drawable.abc_btn_colored_material = global::FormsSkiaBikeTracker.Droid.Resource.Drawable.abc_btn_colored_material;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Drawable.abc_btn_default_mtrl_shape = global::FormsSkiaBikeTracker.Droid.Resource.Drawable.abc_btn_default_mtrl_shape;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Drawable.abc_btn_radio_material = global::FormsSkiaBikeTracker.Droid.Resource.Drawable.abc_btn_radio_material;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Drawable.abc_btn_radio_to_on_mtrl_000 = global::FormsSkiaBikeTracker.Droid.Resource.Drawable.abc_btn_radio_to_on_mtrl_000;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Drawable.abc_btn_radio_to_on_mtrl_015 = global::FormsSkiaBikeTracker.Droid.Resource.Drawable.abc_btn_radio_to_on_mtrl_015;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Drawable.abc_btn_rating_star_off_mtrl_alpha = global::FormsSkiaBikeTracker.Droid.Resource.Drawable.abc_btn_rating_star_off_mtrl_alpha;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Drawable.abc_btn_rating_star_on_mtrl_alpha = global::FormsSkiaBikeTracker.Droid.Resource.Drawable.abc_btn_rating_star_on_mtrl_alpha;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Drawable.abc_btn_switch_to_on_mtrl_00001 = global::FormsSkiaBikeTracker.Droid.Resource.Drawable.abc_btn_switch_to_on_mtrl_00001;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Drawable.abc_btn_switch_to_on_mtrl_00012 = global::FormsSkiaBikeTracker.Droid.Resource.Drawable.abc_btn_switch_to_on_mtrl_00012;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Drawable.abc_cab_background_internal_bg = global::FormsSkiaBikeTracker.Droid.Resource.Drawable.abc_cab_background_internal_bg;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Drawable.abc_cab_background_top_material = global::FormsSkiaBikeTracker.Droid.Resource.Drawable.abc_cab_background_top_material;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Drawable.abc_cab_background_top_mtrl_alpha = global::FormsSkiaBikeTracker.Droid.Resource.Drawable.abc_cab_background_top_mtrl_alpha;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Drawable.abc_control_background_material = global::FormsSkiaBikeTracker.Droid.Resource.Drawable.abc_control_background_material;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Drawable.abc_dialog_material_background_dark = global::FormsSkiaBikeTracker.Droid.Resource.Drawable.abc_dialog_material_background_dark;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Drawable.abc_dialog_material_background_light = global::FormsSkiaBikeTracker.Droid.Resource.Drawable.abc_dialog_material_background_light;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Drawable.abc_edit_text_material = global::FormsSkiaBikeTracker.Droid.Resource.Drawable.abc_edit_text_material;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Drawable.abc_ic_ab_back_mtrl_am_alpha = global::FormsSkiaBikeTracker.Droid.Resource.Drawable.abc_ic_ab_back_mtrl_am_alpha;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Drawable.abc_ic_clear_mtrl_alpha = global::FormsSkiaBikeTracker.Droid.Resource.Drawable.abc_ic_clear_mtrl_alpha;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Drawable.abc_ic_commit_search_api_mtrl_alpha = global::FormsSkiaBikeTracker.Droid.Resource.Drawable.abc_ic_commit_search_api_mtrl_alpha;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Drawable.abc_ic_go_search_api_mtrl_alpha = global::FormsSkiaBikeTracker.Droid.Resource.Drawable.abc_ic_go_search_api_mtrl_alpha;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Drawable.abc_ic_menu_copy_mtrl_am_alpha = global::FormsSkiaBikeTracker.Droid.Resource.Drawable.abc_ic_menu_copy_mtrl_am_alpha;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Drawable.abc_ic_menu_cut_mtrl_alpha = global::FormsSkiaBikeTracker.Droid.Resource.Drawable.abc_ic_menu_cut_mtrl_alpha;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Drawable.abc_ic_menu_moreoverflow_mtrl_alpha = global::FormsSkiaBikeTracker.Droid.Resource.Drawable.abc_ic_menu_moreoverflow_mtrl_alpha;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Drawable.abc_ic_menu_paste_mtrl_am_alpha = global::FormsSkiaBikeTracker.Droid.Resource.Drawable.abc_ic_menu_paste_mtrl_am_alpha;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Drawable.abc_ic_menu_selectall_mtrl_alpha = global::FormsSkiaBikeTracker.Droid.Resource.Drawable.abc_ic_menu_selectall_mtrl_alpha;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Drawable.abc_ic_menu_share_mtrl_alpha = global::FormsSkiaBikeTracker.Droid.Resource.Drawable.abc_ic_menu_share_mtrl_alpha;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Drawable.abc_ic_search_api_mtrl_alpha = global::FormsSkiaBikeTracker.Droid.Resource.Drawable.abc_ic_search_api_mtrl_alpha;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Drawable.abc_ic_star_black_16dp = global::FormsSkiaBikeTracker.Droid.Resource.Drawable.abc_ic_star_black_16dp;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Drawable.abc_ic_star_black_36dp = global::FormsSkiaBikeTracker.Droid.Resource.Drawable.abc_ic_star_black_36dp;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Drawable.abc_ic_star_half_black_16dp = global::FormsSkiaBikeTracker.Droid.Resource.Drawable.abc_ic_star_half_black_16dp;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Drawable.abc_ic_star_half_black_36dp = global::FormsSkiaBikeTracker.Droid.Resource.Drawable.abc_ic_star_half_black_36dp;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Drawable.abc_ic_voice_search_api_mtrl_alpha = global::FormsSkiaBikeTracker.Droid.Resource.Drawable.abc_ic_voice_search_api_mtrl_alpha;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Drawable.abc_item_background_holo_dark = global::FormsSkiaBikeTracker.Droid.Resource.Drawable.abc_item_background_holo_dark;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Drawable.abc_item_background_holo_light = global::FormsSkiaBikeTracker.Droid.Resource.Drawable.abc_item_background_holo_light;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Drawable.abc_list_divider_mtrl_alpha = global::FormsSkiaBikeTracker.Droid.Resource.Drawable.abc_list_divider_mtrl_alpha;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Drawable.abc_list_focused_holo = global::FormsSkiaBikeTracker.Droid.Resource.Drawable.abc_list_focused_holo;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Drawable.abc_list_longpressed_holo = global::FormsSkiaBikeTracker.Droid.Resource.Drawable.abc_list_longpressed_holo;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Drawable.abc_list_pressed_holo_dark = global::FormsSkiaBikeTracker.Droid.Resource.Drawable.abc_list_pressed_holo_dark;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Drawable.abc_list_pressed_holo_light = global::FormsSkiaBikeTracker.Droid.Resource.Drawable.abc_list_pressed_holo_light;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Drawable.abc_list_selector_background_transition_holo_dark = global::FormsSkiaBikeTracker.Droid.Resource.Drawable.abc_list_selector_background_transition_holo_dark;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Drawable.abc_list_selector_background_transition_holo_light = global::FormsSkiaBikeTracker.Droid.Resource.Drawable.abc_list_selector_background_transition_holo_light;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Drawable.abc_list_selector_disabled_holo_dark = global::FormsSkiaBikeTracker.Droid.Resource.Drawable.abc_list_selector_disabled_holo_dark;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Drawable.abc_list_selector_disabled_holo_light = global::FormsSkiaBikeTracker.Droid.Resource.Drawable.abc_list_selector_disabled_holo_light;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Drawable.abc_list_selector_holo_dark = global::FormsSkiaBikeTracker.Droid.Resource.Drawable.abc_list_selector_holo_dark;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Drawable.abc_list_selector_holo_light = global::FormsSkiaBikeTracker.Droid.Resource.Drawable.abc_list_selector_holo_light;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Drawable.abc_menu_hardkey_panel_mtrl_mult = global::FormsSkiaBikeTracker.Droid.Resource.Drawable.abc_menu_hardkey_panel_mtrl_mult;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Drawable.abc_popup_background_mtrl_mult = global::FormsSkiaBikeTracker.Droid.Resource.Drawable.abc_popup_background_mtrl_mult;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Drawable.abc_ratingbar_full_material = global::FormsSkiaBikeTracker.Droid.Resource.Drawable.abc_ratingbar_full_material;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Drawable.abc_ratingbar_indicator_material = global::FormsSkiaBikeTracker.Droid.Resource.Drawable.abc_ratingbar_indicator_material;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Drawable.abc_ratingbar_small_material = global::FormsSkiaBikeTracker.Droid.Resource.Drawable.abc_ratingbar_small_material;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Drawable.abc_scrubber_control_off_mtrl_alpha = global::FormsSkiaBikeTracker.Droid.Resource.Drawable.abc_scrubber_control_off_mtrl_alpha;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Drawable.abc_scrubber_control_to_pressed_mtrl_000 = global::FormsSkiaBikeTracker.Droid.Resource.Drawable.abc_scrubber_control_to_pressed_mtrl_000;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Drawable.abc_scrubber_control_to_pressed_mtrl_005 = global::FormsSkiaBikeTracker.Droid.Resource.Drawable.abc_scrubber_control_to_pressed_mtrl_005;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Drawable.abc_scrubber_primary_mtrl_alpha = global::FormsSkiaBikeTracker.Droid.Resource.Drawable.abc_scrubber_primary_mtrl_alpha;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Drawable.abc_scrubber_track_mtrl_alpha = global::FormsSkiaBikeTracker.Droid.Resource.Drawable.abc_scrubber_track_mtrl_alpha;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Drawable.abc_seekbar_thumb_material = global::FormsSkiaBikeTracker.Droid.Resource.Drawable.abc_seekbar_thumb_material;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Drawable.abc_seekbar_track_material = global::FormsSkiaBikeTracker.Droid.Resource.Drawable.abc_seekbar_track_material;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Drawable.abc_spinner_mtrl_am_alpha = global::FormsSkiaBikeTracker.Droid.Resource.Drawable.abc_spinner_mtrl_am_alpha;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Drawable.abc_spinner_textfield_background_material = global::FormsSkiaBikeTracker.Droid.Resource.Drawable.abc_spinner_textfield_background_material;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Drawable.abc_switch_thumb_material = global::FormsSkiaBikeTracker.Droid.Resource.Drawable.abc_switch_thumb_material;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Drawable.abc_switch_track_mtrl_alpha = global::FormsSkiaBikeTracker.Droid.Resource.Drawable.abc_switch_track_mtrl_alpha;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Drawable.abc_tab_indicator_material = global::FormsSkiaBikeTracker.Droid.Resource.Drawable.abc_tab_indicator_material;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Drawable.abc_tab_indicator_mtrl_alpha = global::FormsSkiaBikeTracker.Droid.Resource.Drawable.abc_tab_indicator_mtrl_alpha;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Drawable.abc_text_cursor_material = global::FormsSkiaBikeTracker.Droid.Resource.Drawable.abc_text_cursor_material;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Drawable.abc_textfield_activated_mtrl_alpha = global::FormsSkiaBikeTracker.Droid.Resource.Drawable.abc_textfield_activated_mtrl_alpha;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Drawable.abc_textfield_default_mtrl_alpha = global::FormsSkiaBikeTracker.Droid.Resource.Drawable.abc_textfield_default_mtrl_alpha;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Drawable.abc_textfield_search_activated_mtrl_alpha = global::FormsSkiaBikeTracker.Droid.Resource.Drawable.abc_textfield_search_activated_mtrl_alpha;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Drawable.abc_textfield_search_default_mtrl_alpha = global::FormsSkiaBikeTracker.Droid.Resource.Drawable.abc_textfield_search_default_mtrl_alpha;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Drawable.abc_textfield_search_material = global::FormsSkiaBikeTracker.Droid.Resource.Drawable.abc_textfield_search_material;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Drawable.notification_template_icon_bg = global::FormsSkiaBikeTracker.Droid.Resource.Drawable.notification_template_icon_bg;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Id.action0 = global::FormsSkiaBikeTracker.Droid.Resource.Id.action0;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Id.action_bar = global::FormsSkiaBikeTracker.Droid.Resource.Id.action_bar;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Id.action_bar_activity_content = global::FormsSkiaBikeTracker.Droid.Resource.Id.action_bar_activity_content;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Id.action_bar_container = global::FormsSkiaBikeTracker.Droid.Resource.Id.action_bar_container;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Id.action_bar_root = global::FormsSkiaBikeTracker.Droid.Resource.Id.action_bar_root;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Id.action_bar_spinner = global::FormsSkiaBikeTracker.Droid.Resource.Id.action_bar_spinner;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Id.action_bar_subtitle = global::FormsSkiaBikeTracker.Droid.Resource.Id.action_bar_subtitle;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Id.action_bar_title = global::FormsSkiaBikeTracker.Droid.Resource.Id.action_bar_title;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Id.action_context_bar = global::FormsSkiaBikeTracker.Droid.Resource.Id.action_context_bar;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Id.action_divider = global::FormsSkiaBikeTracker.Droid.Resource.Id.action_divider;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Id.action_menu_divider = global::FormsSkiaBikeTracker.Droid.Resource.Id.action_menu_divider;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Id.action_menu_presenter = global::FormsSkiaBikeTracker.Droid.Resource.Id.action_menu_presenter;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Id.action_mode_bar = global::FormsSkiaBikeTracker.Droid.Resource.Id.action_mode_bar;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Id.action_mode_bar_stub = global::FormsSkiaBikeTracker.Droid.Resource.Id.action_mode_bar_stub;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Id.action_mode_close_button = global::FormsSkiaBikeTracker.Droid.Resource.Id.action_mode_close_button;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Id.activity_chooser_view_content = global::FormsSkiaBikeTracker.Droid.Resource.Id.activity_chooser_view_content;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Id.alertTitle = global::FormsSkiaBikeTracker.Droid.Resource.Id.alertTitle;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Id.always = global::FormsSkiaBikeTracker.Droid.Resource.Id.always;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Id.beginning = global::FormsSkiaBikeTracker.Droid.Resource.Id.beginning;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Id.buttonPanel = global::FormsSkiaBikeTracker.Droid.Resource.Id.buttonPanel;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Id.cancel_action = global::FormsSkiaBikeTracker.Droid.Resource.Id.cancel_action;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Id.checkbox = global::FormsSkiaBikeTracker.Droid.Resource.Id.checkbox;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Id.chronometer = global::FormsSkiaBikeTracker.Droid.Resource.Id.chronometer;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Id.collapseActionView = global::FormsSkiaBikeTracker.Droid.Resource.Id.collapseActionView;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Id.contentPanel = global::FormsSkiaBikeTracker.Droid.Resource.Id.contentPanel;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Id.custom = global::FormsSkiaBikeTracker.Droid.Resource.Id.custom;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Id.customPanel = global::FormsSkiaBikeTracker.Droid.Resource.Id.customPanel;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Id.decor_content_parent = global::FormsSkiaBikeTracker.Droid.Resource.Id.decor_content_parent;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Id.default_activity_button = global::FormsSkiaBikeTracker.Droid.Resource.Id.default_activity_button;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Id.disableHome = global::FormsSkiaBikeTracker.Droid.Resource.Id.disableHome;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Id.edit_query = global::FormsSkiaBikeTracker.Droid.Resource.Id.edit_query;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Id.end = global::FormsSkiaBikeTracker.Droid.Resource.Id.end;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Id.end_padder = global::FormsSkiaBikeTracker.Droid.Resource.Id.end_padder;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Id.expand_activities_button = global::FormsSkiaBikeTracker.Droid.Resource.Id.expand_activities_button;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Id.expanded_menu = global::FormsSkiaBikeTracker.Droid.Resource.Id.expanded_menu;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Id.home = global::FormsSkiaBikeTracker.Droid.Resource.Id.home;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Id.homeAsUp = global::FormsSkiaBikeTracker.Droid.Resource.Id.homeAsUp;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Id.icon = global::FormsSkiaBikeTracker.Droid.Resource.Id.icon;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Id.ifRoom = global::FormsSkiaBikeTracker.Droid.Resource.Id.ifRoom;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Id.image = global::FormsSkiaBikeTracker.Droid.Resource.Id.image;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Id.info = global::FormsSkiaBikeTracker.Droid.Resource.Id.info;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Id.input = global::FormsSkiaBikeTracker.Droid.Resource.Id.input;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Id.line1 = global::FormsSkiaBikeTracker.Droid.Resource.Id.line1;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Id.line3 = global::FormsSkiaBikeTracker.Droid.Resource.Id.line3;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Id.listMode = global::FormsSkiaBikeTracker.Droid.Resource.Id.listMode;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Id.list_item = global::FormsSkiaBikeTracker.Droid.Resource.Id.list_item;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Id.media_actions = global::FormsSkiaBikeTracker.Droid.Resource.Id.media_actions;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Id.middle = global::FormsSkiaBikeTracker.Droid.Resource.Id.middle;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Id.multiply = global::FormsSkiaBikeTracker.Droid.Resource.Id.multiply;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Id.never = global::FormsSkiaBikeTracker.Droid.Resource.Id.never;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Id.none = global::FormsSkiaBikeTracker.Droid.Resource.Id.none;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Id.normal = global::FormsSkiaBikeTracker.Droid.Resource.Id.normal;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Id.parentPanel = global::FormsSkiaBikeTracker.Droid.Resource.Id.parentPanel;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Id.progress_circular = global::FormsSkiaBikeTracker.Droid.Resource.Id.progress_circular;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Id.progress_horizontal = global::FormsSkiaBikeTracker.Droid.Resource.Id.progress_horizontal;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Id.radio = global::FormsSkiaBikeTracker.Droid.Resource.Id.radio;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Id.screen = global::FormsSkiaBikeTracker.Droid.Resource.Id.screen;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Id.scrollIndicatorDown = global::FormsSkiaBikeTracker.Droid.Resource.Id.scrollIndicatorDown;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Id.scrollIndicatorUp = global::FormsSkiaBikeTracker.Droid.Resource.Id.scrollIndicatorUp;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Id.scrollView = global::FormsSkiaBikeTracker.Droid.Resource.Id.scrollView;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Id.search_badge = global::FormsSkiaBikeTracker.Droid.Resource.Id.search_badge;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Id.search_bar = global::FormsSkiaBikeTracker.Droid.Resource.Id.search_bar;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Id.search_button = global::FormsSkiaBikeTracker.Droid.Resource.Id.search_button;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Id.search_close_btn = global::FormsSkiaBikeTracker.Droid.Resource.Id.search_close_btn;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Id.search_edit_frame = global::FormsSkiaBikeTracker.Droid.Resource.Id.search_edit_frame;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Id.search_go_btn = global::FormsSkiaBikeTracker.Droid.Resource.Id.search_go_btn;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Id.search_mag_icon = global::FormsSkiaBikeTracker.Droid.Resource.Id.search_mag_icon;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Id.search_plate = global::FormsSkiaBikeTracker.Droid.Resource.Id.search_plate;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Id.search_src_text = global::FormsSkiaBikeTracker.Droid.Resource.Id.search_src_text;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Id.search_voice_btn = global::FormsSkiaBikeTracker.Droid.Resource.Id.search_voice_btn;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Id.select_dialog_listview = global::FormsSkiaBikeTracker.Droid.Resource.Id.select_dialog_listview;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Id.shortcut = global::FormsSkiaBikeTracker.Droid.Resource.Id.shortcut;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Id.showCustom = global::FormsSkiaBikeTracker.Droid.Resource.Id.showCustom;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Id.showHome = global::FormsSkiaBikeTracker.Droid.Resource.Id.showHome;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Id.showTitle = global::FormsSkiaBikeTracker.Droid.Resource.Id.showTitle;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Id.spacer = global::FormsSkiaBikeTracker.Droid.Resource.Id.spacer;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Id.split_action_bar = global::FormsSkiaBikeTracker.Droid.Resource.Id.split_action_bar;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Id.src_atop = global::FormsSkiaBikeTracker.Droid.Resource.Id.src_atop;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Id.src_in = global::FormsSkiaBikeTracker.Droid.Resource.Id.src_in;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Id.src_over = global::FormsSkiaBikeTracker.Droid.Resource.Id.src_over;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Id.status_bar_latest_event_content = global::FormsSkiaBikeTracker.Droid.Resource.Id.status_bar_latest_event_content;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Id.submit_area = global::FormsSkiaBikeTracker.Droid.Resource.Id.submit_area;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Id.tabMode = global::FormsSkiaBikeTracker.Droid.Resource.Id.tabMode;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Id.text = global::FormsSkiaBikeTracker.Droid.Resource.Id.text;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Id.text2 = global::FormsSkiaBikeTracker.Droid.Resource.Id.text2;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Id.textSpacerNoButtons = global::FormsSkiaBikeTracker.Droid.Resource.Id.textSpacerNoButtons;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Id.time = global::FormsSkiaBikeTracker.Droid.Resource.Id.time;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Id.title = global::FormsSkiaBikeTracker.Droid.Resource.Id.title;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Id.title_template = global::FormsSkiaBikeTracker.Droid.Resource.Id.title_template;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Id.topPanel = global::FormsSkiaBikeTracker.Droid.Resource.Id.topPanel;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Id.up = global::FormsSkiaBikeTracker.Droid.Resource.Id.up;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Id.useLogo = global::FormsSkiaBikeTracker.Droid.Resource.Id.useLogo;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Id.withText = global::FormsSkiaBikeTracker.Droid.Resource.Id.withText;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Id.wrap_content = global::FormsSkiaBikeTracker.Droid.Resource.Id.wrap_content;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Integer.abc_config_activityDefaultDur = global::FormsSkiaBikeTracker.Droid.Resource.Integer.abc_config_activityDefaultDur;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Integer.abc_config_activityShortDur = global::FormsSkiaBikeTracker.Droid.Resource.Integer.abc_config_activityShortDur;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Integer.abc_max_action_buttons = global::FormsSkiaBikeTracker.Droid.Resource.Integer.abc_max_action_buttons;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Integer.cancel_button_image_alpha = global::FormsSkiaBikeTracker.Droid.Resource.Integer.cancel_button_image_alpha;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Integer.status_bar_notification_info_maxnum = global::FormsSkiaBikeTracker.Droid.Resource.Integer.status_bar_notification_info_maxnum;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Layout.abc_action_bar_title_item = global::FormsSkiaBikeTracker.Droid.Resource.Layout.abc_action_bar_title_item;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Layout.abc_action_bar_up_container = global::FormsSkiaBikeTracker.Droid.Resource.Layout.abc_action_bar_up_container;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Layout.abc_action_bar_view_list_nav_layout = global::FormsSkiaBikeTracker.Droid.Resource.Layout.abc_action_bar_view_list_nav_layout;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Layout.abc_action_menu_item_layout = global::FormsSkiaBikeTracker.Droid.Resource.Layout.abc_action_menu_item_layout;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Layout.abc_action_menu_layout = global::FormsSkiaBikeTracker.Droid.Resource.Layout.abc_action_menu_layout;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Layout.abc_action_mode_bar = global::FormsSkiaBikeTracker.Droid.Resource.Layout.abc_action_mode_bar;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Layout.abc_action_mode_close_item_material = global::FormsSkiaBikeTracker.Droid.Resource.Layout.abc_action_mode_close_item_material;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Layout.abc_activity_chooser_view = global::FormsSkiaBikeTracker.Droid.Resource.Layout.abc_activity_chooser_view;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Layout.abc_activity_chooser_view_list_item = global::FormsSkiaBikeTracker.Droid.Resource.Layout.abc_activity_chooser_view_list_item;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Layout.abc_alert_dialog_button_bar_material = global::FormsSkiaBikeTracker.Droid.Resource.Layout.abc_alert_dialog_button_bar_material;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Layout.abc_alert_dialog_material = global::FormsSkiaBikeTracker.Droid.Resource.Layout.abc_alert_dialog_material;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Layout.abc_dialog_title_material = global::FormsSkiaBikeTracker.Droid.Resource.Layout.abc_dialog_title_material;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Layout.abc_expanded_menu_layout = global::FormsSkiaBikeTracker.Droid.Resource.Layout.abc_expanded_menu_layout;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Layout.abc_list_menu_item_checkbox = global::FormsSkiaBikeTracker.Droid.Resource.Layout.abc_list_menu_item_checkbox;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Layout.abc_list_menu_item_icon = global::FormsSkiaBikeTracker.Droid.Resource.Layout.abc_list_menu_item_icon;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Layout.abc_list_menu_item_layout = global::FormsSkiaBikeTracker.Droid.Resource.Layout.abc_list_menu_item_layout;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Layout.abc_list_menu_item_radio = global::FormsSkiaBikeTracker.Droid.Resource.Layout.abc_list_menu_item_radio;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Layout.abc_popup_menu_item_layout = global::FormsSkiaBikeTracker.Droid.Resource.Layout.abc_popup_menu_item_layout;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Layout.abc_screen_content_include = global::FormsSkiaBikeTracker.Droid.Resource.Layout.abc_screen_content_include;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Layout.abc_screen_simple = global::FormsSkiaBikeTracker.Droid.Resource.Layout.abc_screen_simple;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Layout.abc_screen_simple_overlay_action_mode = global::FormsSkiaBikeTracker.Droid.Resource.Layout.abc_screen_simple_overlay_action_mode;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Layout.abc_screen_toolbar = global::FormsSkiaBikeTracker.Droid.Resource.Layout.abc_screen_toolbar;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Layout.abc_search_dropdown_item_icons_2line = global::FormsSkiaBikeTracker.Droid.Resource.Layout.abc_search_dropdown_item_icons_2line;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Layout.abc_search_view = global::FormsSkiaBikeTracker.Droid.Resource.Layout.abc_search_view;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Layout.abc_select_dialog_material = global::FormsSkiaBikeTracker.Droid.Resource.Layout.abc_select_dialog_material;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Layout.input_dialog = global::FormsSkiaBikeTracker.Droid.Resource.Layout.input_dialog;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Layout.notification_media_action = global::FormsSkiaBikeTracker.Droid.Resource.Layout.notification_media_action;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Layout.notification_media_cancel_action = global::FormsSkiaBikeTracker.Droid.Resource.Layout.notification_media_cancel_action;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Layout.notification_template_big_media = global::FormsSkiaBikeTracker.Droid.Resource.Layout.notification_template_big_media;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Layout.notification_template_big_media_narrow = global::FormsSkiaBikeTracker.Droid.Resource.Layout.notification_template_big_media_narrow;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Layout.notification_template_lines = global::FormsSkiaBikeTracker.Droid.Resource.Layout.notification_template_lines;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Layout.notification_template_media = global::FormsSkiaBikeTracker.Droid.Resource.Layout.notification_template_media;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Layout.notification_template_part_chronometer = global::FormsSkiaBikeTracker.Droid.Resource.Layout.notification_template_part_chronometer;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Layout.notification_template_part_time = global::FormsSkiaBikeTracker.Droid.Resource.Layout.notification_template_part_time;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Layout.select_dialog_item_material = global::FormsSkiaBikeTracker.Droid.Resource.Layout.select_dialog_item_material;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Layout.select_dialog_multichoice_material = global::FormsSkiaBikeTracker.Droid.Resource.Layout.select_dialog_multichoice_material;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Layout.select_dialog_singlechoice_material = global::FormsSkiaBikeTracker.Droid.Resource.Layout.select_dialog_singlechoice_material;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Layout.support_simple_spinner_dropdown_item = global::FormsSkiaBikeTracker.Droid.Resource.Layout.support_simple_spinner_dropdown_item;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.String.abc_action_bar_home_description = global::FormsSkiaBikeTracker.Droid.Resource.String.abc_action_bar_home_description;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.String.abc_action_bar_home_description_format = global::FormsSkiaBikeTracker.Droid.Resource.String.abc_action_bar_home_description_format;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.String.abc_action_bar_home_subtitle_description_format = global::FormsSkiaBikeTracker.Droid.Resource.String.abc_action_bar_home_subtitle_description_format;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.String.abc_action_bar_up_description = global::FormsSkiaBikeTracker.Droid.Resource.String.abc_action_bar_up_description;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.String.abc_action_menu_overflow_description = global::FormsSkiaBikeTracker.Droid.Resource.String.abc_action_menu_overflow_description;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.String.abc_action_mode_done = global::FormsSkiaBikeTracker.Droid.Resource.String.abc_action_mode_done;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.String.abc_activity_chooser_view_see_all = global::FormsSkiaBikeTracker.Droid.Resource.String.abc_activity_chooser_view_see_all;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.String.abc_activitychooserview_choose_application = global::FormsSkiaBikeTracker.Droid.Resource.String.abc_activitychooserview_choose_application;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.String.abc_capital_off = global::FormsSkiaBikeTracker.Droid.Resource.String.abc_capital_off;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.String.abc_capital_on = global::FormsSkiaBikeTracker.Droid.Resource.String.abc_capital_on;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.String.abc_search_hint = global::FormsSkiaBikeTracker.Droid.Resource.String.abc_search_hint;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.String.abc_searchview_description_clear = global::FormsSkiaBikeTracker.Droid.Resource.String.abc_searchview_description_clear;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.String.abc_searchview_description_query = global::FormsSkiaBikeTracker.Droid.Resource.String.abc_searchview_description_query;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.String.abc_searchview_description_search = global::FormsSkiaBikeTracker.Droid.Resource.String.abc_searchview_description_search;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.String.abc_searchview_description_submit = global::FormsSkiaBikeTracker.Droid.Resource.String.abc_searchview_description_submit;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.String.abc_searchview_description_voice = global::FormsSkiaBikeTracker.Droid.Resource.String.abc_searchview_description_voice;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.String.abc_shareactionprovider_share_with = global::FormsSkiaBikeTracker.Droid.Resource.String.abc_shareactionprovider_share_with;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.String.abc_shareactionprovider_share_with_application = global::FormsSkiaBikeTracker.Droid.Resource.String.abc_shareactionprovider_share_with_application;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.String.abc_toolbar_collapse_description = global::FormsSkiaBikeTracker.Droid.Resource.String.abc_toolbar_collapse_description;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.String.library_name = global::FormsSkiaBikeTracker.Droid.Resource.String.library_name;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.String.status_bar_notification_info_overflow = global::FormsSkiaBikeTracker.Droid.Resource.String.status_bar_notification_info_overflow;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.AlertDialog_AppCompat = global::FormsSkiaBikeTracker.Droid.Resource.Style.AlertDialog_AppCompat;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.AlertDialog_AppCompat_Light = global::FormsSkiaBikeTracker.Droid.Resource.Style.AlertDialog_AppCompat_Light;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Animation_AppCompat_Dialog = global::FormsSkiaBikeTracker.Droid.Resource.Style.Animation_AppCompat_Dialog;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Animation_AppCompat_DropDownUp = global::FormsSkiaBikeTracker.Droid.Resource.Style.Animation_AppCompat_DropDownUp;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_AlertDialog_AppCompat = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_AlertDialog_AppCompat;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_AlertDialog_AppCompat_Light = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_AlertDialog_AppCompat_Light;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_Animation_AppCompat_Dialog = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_Animation_AppCompat_Dialog;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_Animation_AppCompat_DropDownUp = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_Animation_AppCompat_DropDownUp;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_DialogWindowTitle_AppCompat = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_DialogWindowTitle_AppCompat;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_DialogWindowTitleBackground_AppCompat = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_DialogWindowTitleBackground_AppCompat;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_TextAppearance_AppCompat = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_TextAppearance_AppCompat;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_TextAppearance_AppCompat_Body1 = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_TextAppearance_AppCompat_Body1;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_TextAppearance_AppCompat_Body2 = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_TextAppearance_AppCompat_Body2;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_TextAppearance_AppCompat_Button = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_TextAppearance_AppCompat_Button;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_TextAppearance_AppCompat_Caption = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_TextAppearance_AppCompat_Caption;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_TextAppearance_AppCompat_Display1 = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_TextAppearance_AppCompat_Display1;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_TextAppearance_AppCompat_Display2 = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_TextAppearance_AppCompat_Display2;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_TextAppearance_AppCompat_Display3 = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_TextAppearance_AppCompat_Display3;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_TextAppearance_AppCompat_Display4 = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_TextAppearance_AppCompat_Display4;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_TextAppearance_AppCompat_Headline = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_TextAppearance_AppCompat_Headline;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_TextAppearance_AppCompat_Inverse = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_TextAppearance_AppCompat_Inverse;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_TextAppearance_AppCompat_Large = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_TextAppearance_AppCompat_Large;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_TextAppearance_AppCompat_Large_Inverse = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_TextAppearance_AppCompat_Large_Inverse;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_TextAppearance_AppCompat_Light_Widget_PopupMenu_Large = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_TextAppearance_AppCompat_Light_Widget_PopupMenu_Large;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_TextAppearance_AppCompat_Light_Widget_PopupMenu_Small = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_TextAppearance_AppCompat_Light_Widget_PopupMenu_Small;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_TextAppearance_AppCompat_Medium = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_TextAppearance_AppCompat_Medium;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_TextAppearance_AppCompat_Medium_Inverse = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_TextAppearance_AppCompat_Medium_Inverse;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_TextAppearance_AppCompat_Menu = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_TextAppearance_AppCompat_Menu;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_TextAppearance_AppCompat_SearchResult = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_TextAppearance_AppCompat_SearchResult;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_TextAppearance_AppCompat_SearchResult_Subtitle = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_TextAppearance_AppCompat_SearchResult_Subtitle;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_TextAppearance_AppCompat_SearchResult_Title = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_TextAppearance_AppCompat_SearchResult_Title;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_TextAppearance_AppCompat_Small = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_TextAppearance_AppCompat_Small;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_TextAppearance_AppCompat_Small_Inverse = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_TextAppearance_AppCompat_Small_Inverse;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_TextAppearance_AppCompat_Subhead = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_TextAppearance_AppCompat_Subhead;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_TextAppearance_AppCompat_Subhead_Inverse = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_TextAppearance_AppCompat_Subhead_Inverse;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_TextAppearance_AppCompat_Title = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_TextAppearance_AppCompat_Title;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_TextAppearance_AppCompat_Title_Inverse = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_TextAppearance_AppCompat_Title_Inverse;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Menu = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Menu;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Subtitle = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Subtitle;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Subtitle_Inverse = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Subtitle_Inverse;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Title = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Title;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Title_Inverse = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Title_Inverse;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionMode_Subtitle = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionMode_Subtitle;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionMode_Title = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionMode_Title;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_Button = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_Button;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_Button_Inverse = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_Button_Inverse;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_DropDownItem = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_DropDownItem;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_PopupMenu_Large = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_PopupMenu_Large;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_PopupMenu_Small = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_PopupMenu_Small;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_Switch = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_Switch;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_TextView_SpinnerItem = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_TextView_SpinnerItem;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_TextAppearance_Widget_AppCompat_ExpandedMenu_Item = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_TextAppearance_Widget_AppCompat_ExpandedMenu_Item;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_TextAppearance_Widget_AppCompat_Toolbar_Subtitle = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_TextAppearance_Widget_AppCompat_Toolbar_Subtitle;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_TextAppearance_Widget_AppCompat_Toolbar_Title = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_TextAppearance_Widget_AppCompat_Toolbar_Title;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_Theme_AppCompat = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_Theme_AppCompat;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_Theme_AppCompat_CompactMenu = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_Theme_AppCompat_CompactMenu;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_Theme_AppCompat_Dialog = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_Theme_AppCompat_Dialog;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_Theme_AppCompat_Dialog_Alert = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_Theme_AppCompat_Dialog_Alert;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_Theme_AppCompat_Dialog_FixedSize = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_Theme_AppCompat_Dialog_FixedSize;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_Theme_AppCompat_Dialog_MinWidth = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_Theme_AppCompat_Dialog_MinWidth;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_Theme_AppCompat_DialogWhenLarge = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_Theme_AppCompat_DialogWhenLarge;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_Theme_AppCompat_Light = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_Theme_AppCompat_Light;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_Theme_AppCompat_Light_DarkActionBar = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_Theme_AppCompat_Light_DarkActionBar;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_Theme_AppCompat_Light_Dialog = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_Theme_AppCompat_Light_Dialog;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_Theme_AppCompat_Light_Dialog_Alert = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_Theme_AppCompat_Light_Dialog_Alert;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_Theme_AppCompat_Light_Dialog_FixedSize = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_Theme_AppCompat_Light_Dialog_FixedSize;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_Theme_AppCompat_Light_Dialog_MinWidth = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_Theme_AppCompat_Light_Dialog_MinWidth;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_Theme_AppCompat_Light_DialogWhenLarge = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_Theme_AppCompat_Light_DialogWhenLarge;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_ThemeOverlay_AppCompat = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_ThemeOverlay_AppCompat;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_ThemeOverlay_AppCompat_ActionBar = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_ThemeOverlay_AppCompat_ActionBar;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_ThemeOverlay_AppCompat_Dark = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_ThemeOverlay_AppCompat_Dark;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_ThemeOverlay_AppCompat_Dark_ActionBar = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_ThemeOverlay_AppCompat_Dark_ActionBar;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_ThemeOverlay_AppCompat_Light = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_ThemeOverlay_AppCompat_Light;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_V11_Theme_AppCompat_Dialog = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_V11_Theme_AppCompat_Dialog;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_V11_Theme_AppCompat_Light_Dialog = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_V11_Theme_AppCompat_Light_Dialog;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_V12_Widget_AppCompat_AutoCompleteTextView = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_V12_Widget_AppCompat_AutoCompleteTextView;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_V12_Widget_AppCompat_EditText = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_V12_Widget_AppCompat_EditText;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_V21_Theme_AppCompat = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_V21_Theme_AppCompat;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_V21_Theme_AppCompat_Dialog = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_V21_Theme_AppCompat_Dialog;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_V21_Theme_AppCompat_Light = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_V21_Theme_AppCompat_Light;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_V21_Theme_AppCompat_Light_Dialog = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_V21_Theme_AppCompat_Light_Dialog;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_V22_Theme_AppCompat = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_V22_Theme_AppCompat;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_V22_Theme_AppCompat_Light = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_V22_Theme_AppCompat_Light;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_V23_Theme_AppCompat = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_V23_Theme_AppCompat;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_V23_Theme_AppCompat_Light = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_V23_Theme_AppCompat_Light;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_V7_Theme_AppCompat = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_V7_Theme_AppCompat;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_V7_Theme_AppCompat_Dialog = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_V7_Theme_AppCompat_Dialog;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_V7_Theme_AppCompat_Light = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_V7_Theme_AppCompat_Light;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_V7_Theme_AppCompat_Light_Dialog = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_V7_Theme_AppCompat_Light_Dialog;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_V7_Widget_AppCompat_AutoCompleteTextView = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_V7_Widget_AppCompat_AutoCompleteTextView;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_V7_Widget_AppCompat_EditText = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_V7_Widget_AppCompat_EditText;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_Widget_AppCompat_ActionBar = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_Widget_AppCompat_ActionBar;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_Widget_AppCompat_ActionBar_Solid = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_Widget_AppCompat_ActionBar_Solid;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_Widget_AppCompat_ActionBar_TabBar = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_Widget_AppCompat_ActionBar_TabBar;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_Widget_AppCompat_ActionBar_TabText = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_Widget_AppCompat_ActionBar_TabText;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_Widget_AppCompat_ActionBar_TabView = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_Widget_AppCompat_ActionBar_TabView;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_Widget_AppCompat_ActionButton = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_Widget_AppCompat_ActionButton;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_Widget_AppCompat_ActionButton_CloseMode = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_Widget_AppCompat_ActionButton_CloseMode;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_Widget_AppCompat_ActionButton_Overflow = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_Widget_AppCompat_ActionButton_Overflow;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_Widget_AppCompat_ActionMode = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_Widget_AppCompat_ActionMode;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_Widget_AppCompat_ActivityChooserView = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_Widget_AppCompat_ActivityChooserView;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_Widget_AppCompat_AutoCompleteTextView = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_Widget_AppCompat_AutoCompleteTextView;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_Widget_AppCompat_Button = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_Widget_AppCompat_Button;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_Widget_AppCompat_Button_Borderless = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_Widget_AppCompat_Button_Borderless;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_Widget_AppCompat_Button_Borderless_Colored = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_Widget_AppCompat_Button_Borderless_Colored;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_Widget_AppCompat_Button_ButtonBar_AlertDialog = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_Widget_AppCompat_Button_ButtonBar_AlertDialog;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_Widget_AppCompat_Button_Colored = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_Widget_AppCompat_Button_Colored;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_Widget_AppCompat_Button_Small = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_Widget_AppCompat_Button_Small;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_Widget_AppCompat_ButtonBar = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_Widget_AppCompat_ButtonBar;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_Widget_AppCompat_ButtonBar_AlertDialog = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_Widget_AppCompat_ButtonBar_AlertDialog;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_Widget_AppCompat_CompoundButton_CheckBox = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_Widget_AppCompat_CompoundButton_CheckBox;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_Widget_AppCompat_CompoundButton_RadioButton = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_Widget_AppCompat_CompoundButton_RadioButton;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_Widget_AppCompat_CompoundButton_Switch = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_Widget_AppCompat_CompoundButton_Switch;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_Widget_AppCompat_DrawerArrowToggle = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_Widget_AppCompat_DrawerArrowToggle;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_Widget_AppCompat_DrawerArrowToggle_Common = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_Widget_AppCompat_DrawerArrowToggle_Common;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_Widget_AppCompat_DropDownItem_Spinner = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_Widget_AppCompat_DropDownItem_Spinner;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_Widget_AppCompat_EditText = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_Widget_AppCompat_EditText;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_Widget_AppCompat_ImageButton = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_Widget_AppCompat_ImageButton;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_Solid = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_Solid;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabBar = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabBar;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabText = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabText;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabText_Inverse = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabText_Inverse;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabView = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabView;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_Widget_AppCompat_Light_PopupMenu = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_Widget_AppCompat_Light_PopupMenu;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_Widget_AppCompat_Light_PopupMenu_Overflow = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_Widget_AppCompat_Light_PopupMenu_Overflow;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_Widget_AppCompat_ListPopupWindow = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_Widget_AppCompat_ListPopupWindow;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_Widget_AppCompat_ListView = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_Widget_AppCompat_ListView;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_Widget_AppCompat_ListView_DropDown = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_Widget_AppCompat_ListView_DropDown;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_Widget_AppCompat_ListView_Menu = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_Widget_AppCompat_ListView_Menu;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_Widget_AppCompat_PopupMenu = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_Widget_AppCompat_PopupMenu;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_Widget_AppCompat_PopupMenu_Overflow = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_Widget_AppCompat_PopupMenu_Overflow;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_Widget_AppCompat_PopupWindow = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_Widget_AppCompat_PopupWindow;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_Widget_AppCompat_ProgressBar = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_Widget_AppCompat_ProgressBar;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_Widget_AppCompat_ProgressBar_Horizontal = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_Widget_AppCompat_ProgressBar_Horizontal;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_Widget_AppCompat_RatingBar = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_Widget_AppCompat_RatingBar;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_Widget_AppCompat_RatingBar_Indicator = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_Widget_AppCompat_RatingBar_Indicator;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_Widget_AppCompat_RatingBar_Small = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_Widget_AppCompat_RatingBar_Small;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_Widget_AppCompat_SearchView = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_Widget_AppCompat_SearchView;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_Widget_AppCompat_SearchView_ActionBar = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_Widget_AppCompat_SearchView_ActionBar;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_Widget_AppCompat_SeekBar = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_Widget_AppCompat_SeekBar;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_Widget_AppCompat_Spinner = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_Widget_AppCompat_Spinner;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_Widget_AppCompat_Spinner_Underlined = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_Widget_AppCompat_Spinner_Underlined;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_Widget_AppCompat_TextView_SpinnerItem = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_Widget_AppCompat_TextView_SpinnerItem;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_Widget_AppCompat_Toolbar = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_Widget_AppCompat_Toolbar;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Base_Widget_AppCompat_Toolbar_Button_Navigation = global::FormsSkiaBikeTracker.Droid.Resource.Style.Base_Widget_AppCompat_Toolbar_Button_Navigation;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Platform_AppCompat = global::FormsSkiaBikeTracker.Droid.Resource.Style.Platform_AppCompat;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Platform_AppCompat_Light = global::FormsSkiaBikeTracker.Droid.Resource.Style.Platform_AppCompat_Light;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Platform_ThemeOverlay_AppCompat = global::FormsSkiaBikeTracker.Droid.Resource.Style.Platform_ThemeOverlay_AppCompat;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Platform_ThemeOverlay_AppCompat_Dark = global::FormsSkiaBikeTracker.Droid.Resource.Style.Platform_ThemeOverlay_AppCompat_Dark;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Platform_ThemeOverlay_AppCompat_Light = global::FormsSkiaBikeTracker.Droid.Resource.Style.Platform_ThemeOverlay_AppCompat_Light;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Platform_V11_AppCompat = global::FormsSkiaBikeTracker.Droid.Resource.Style.Platform_V11_AppCompat;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Platform_V11_AppCompat_Light = global::FormsSkiaBikeTracker.Droid.Resource.Style.Platform_V11_AppCompat_Light;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Platform_V14_AppCompat = global::FormsSkiaBikeTracker.Droid.Resource.Style.Platform_V14_AppCompat;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Platform_V14_AppCompat_Light = global::FormsSkiaBikeTracker.Droid.Resource.Style.Platform_V14_AppCompat_Light;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Platform_Widget_AppCompat_Spinner = global::FormsSkiaBikeTracker.Droid.Resource.Style.Platform_Widget_AppCompat_Spinner;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.RtlOverlay_DialogWindowTitle_AppCompat = global::FormsSkiaBikeTracker.Droid.Resource.Style.RtlOverlay_DialogWindowTitle_AppCompat;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_ActionBar_TitleItem = global::FormsSkiaBikeTracker.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_ActionBar_TitleItem;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_DialogTitle_Icon = global::FormsSkiaBikeTracker.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_DialogTitle_Icon;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem = global::FormsSkiaBikeTracker.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_InternalGroup = global::FormsSkiaBikeTracker.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_InternalGroup;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_Text = global::FormsSkiaBikeTracker.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_Text;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown = global::FormsSkiaBikeTracker.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Icon1 = global::FormsSkiaBikeTracker.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Icon1;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Icon2 = global::FormsSkiaBikeTracker.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Icon2;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Query = global::FormsSkiaBikeTracker.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Query;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Text = global::FormsSkiaBikeTracker.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Text;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_SearchView_MagIcon = global::FormsSkiaBikeTracker.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_SearchView_MagIcon;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.RtlUnderlay_Widget_AppCompat_ActionButton = global::FormsSkiaBikeTracker.Droid.Resource.Style.RtlUnderlay_Widget_AppCompat_ActionButton;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.RtlUnderlay_Widget_AppCompat_ActionButton_Overflow = global::FormsSkiaBikeTracker.Droid.Resource.Style.RtlUnderlay_Widget_AppCompat_ActionButton_Overflow;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.TextAppearance_AppCompat = global::FormsSkiaBikeTracker.Droid.Resource.Style.TextAppearance_AppCompat;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.TextAppearance_AppCompat_Body1 = global::FormsSkiaBikeTracker.Droid.Resource.Style.TextAppearance_AppCompat_Body1;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.TextAppearance_AppCompat_Body2 = global::FormsSkiaBikeTracker.Droid.Resource.Style.TextAppearance_AppCompat_Body2;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.TextAppearance_AppCompat_Button = global::FormsSkiaBikeTracker.Droid.Resource.Style.TextAppearance_AppCompat_Button;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.TextAppearance_AppCompat_Caption = global::FormsSkiaBikeTracker.Droid.Resource.Style.TextAppearance_AppCompat_Caption;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.TextAppearance_AppCompat_Display1 = global::FormsSkiaBikeTracker.Droid.Resource.Style.TextAppearance_AppCompat_Display1;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.TextAppearance_AppCompat_Display2 = global::FormsSkiaBikeTracker.Droid.Resource.Style.TextAppearance_AppCompat_Display2;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.TextAppearance_AppCompat_Display3 = global::FormsSkiaBikeTracker.Droid.Resource.Style.TextAppearance_AppCompat_Display3;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.TextAppearance_AppCompat_Display4 = global::FormsSkiaBikeTracker.Droid.Resource.Style.TextAppearance_AppCompat_Display4;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.TextAppearance_AppCompat_Headline = global::FormsSkiaBikeTracker.Droid.Resource.Style.TextAppearance_AppCompat_Headline;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.TextAppearance_AppCompat_Inverse = global::FormsSkiaBikeTracker.Droid.Resource.Style.TextAppearance_AppCompat_Inverse;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.TextAppearance_AppCompat_Large = global::FormsSkiaBikeTracker.Droid.Resource.Style.TextAppearance_AppCompat_Large;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.TextAppearance_AppCompat_Large_Inverse = global::FormsSkiaBikeTracker.Droid.Resource.Style.TextAppearance_AppCompat_Large_Inverse;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.TextAppearance_AppCompat_Light_SearchResult_Subtitle = global::FormsSkiaBikeTracker.Droid.Resource.Style.TextAppearance_AppCompat_Light_SearchResult_Subtitle;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.TextAppearance_AppCompat_Light_SearchResult_Title = global::FormsSkiaBikeTracker.Droid.Resource.Style.TextAppearance_AppCompat_Light_SearchResult_Title;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.TextAppearance_AppCompat_Light_Widget_PopupMenu_Large = global::FormsSkiaBikeTracker.Droid.Resource.Style.TextAppearance_AppCompat_Light_Widget_PopupMenu_Large;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.TextAppearance_AppCompat_Light_Widget_PopupMenu_Small = global::FormsSkiaBikeTracker.Droid.Resource.Style.TextAppearance_AppCompat_Light_Widget_PopupMenu_Small;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.TextAppearance_AppCompat_Medium = global::FormsSkiaBikeTracker.Droid.Resource.Style.TextAppearance_AppCompat_Medium;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.TextAppearance_AppCompat_Medium_Inverse = global::FormsSkiaBikeTracker.Droid.Resource.Style.TextAppearance_AppCompat_Medium_Inverse;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.TextAppearance_AppCompat_Menu = global::FormsSkiaBikeTracker.Droid.Resource.Style.TextAppearance_AppCompat_Menu;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.TextAppearance_AppCompat_SearchResult_Subtitle = global::FormsSkiaBikeTracker.Droid.Resource.Style.TextAppearance_AppCompat_SearchResult_Subtitle;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.TextAppearance_AppCompat_SearchResult_Title = global::FormsSkiaBikeTracker.Droid.Resource.Style.TextAppearance_AppCompat_SearchResult_Title;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.TextAppearance_AppCompat_Small = global::FormsSkiaBikeTracker.Droid.Resource.Style.TextAppearance_AppCompat_Small;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.TextAppearance_AppCompat_Small_Inverse = global::FormsSkiaBikeTracker.Droid.Resource.Style.TextAppearance_AppCompat_Small_Inverse;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.TextAppearance_AppCompat_Subhead = global::FormsSkiaBikeTracker.Droid.Resource.Style.TextAppearance_AppCompat_Subhead;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.TextAppearance_AppCompat_Subhead_Inverse = global::FormsSkiaBikeTracker.Droid.Resource.Style.TextAppearance_AppCompat_Subhead_Inverse;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.TextAppearance_AppCompat_Title = global::FormsSkiaBikeTracker.Droid.Resource.Style.TextAppearance_AppCompat_Title;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.TextAppearance_AppCompat_Title_Inverse = global::FormsSkiaBikeTracker.Droid.Resource.Style.TextAppearance_AppCompat_Title_Inverse;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Menu = global::FormsSkiaBikeTracker.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Menu;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Subtitle = global::FormsSkiaBikeTracker.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Subtitle;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Subtitle_Inverse = global::FormsSkiaBikeTracker.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Subtitle_Inverse;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Title = global::FormsSkiaBikeTracker.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Title;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Title_Inverse = global::FormsSkiaBikeTracker.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Title_Inverse;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Subtitle = global::FormsSkiaBikeTracker.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Subtitle;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Subtitle_Inverse = global::FormsSkiaBikeTracker.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Subtitle_Inverse;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Title = global::FormsSkiaBikeTracker.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Title;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Title_Inverse = global::FormsSkiaBikeTracker.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Title_Inverse;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.TextAppearance_AppCompat_Widget_Button = global::FormsSkiaBikeTracker.Droid.Resource.Style.TextAppearance_AppCompat_Widget_Button;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.TextAppearance_AppCompat_Widget_Button_Inverse = global::FormsSkiaBikeTracker.Droid.Resource.Style.TextAppearance_AppCompat_Widget_Button_Inverse;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.TextAppearance_AppCompat_Widget_DropDownItem = global::FormsSkiaBikeTracker.Droid.Resource.Style.TextAppearance_AppCompat_Widget_DropDownItem;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.TextAppearance_AppCompat_Widget_PopupMenu_Large = global::FormsSkiaBikeTracker.Droid.Resource.Style.TextAppearance_AppCompat_Widget_PopupMenu_Large;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.TextAppearance_AppCompat_Widget_PopupMenu_Small = global::FormsSkiaBikeTracker.Droid.Resource.Style.TextAppearance_AppCompat_Widget_PopupMenu_Small;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.TextAppearance_AppCompat_Widget_Switch = global::FormsSkiaBikeTracker.Droid.Resource.Style.TextAppearance_AppCompat_Widget_Switch;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.TextAppearance_AppCompat_Widget_TextView_SpinnerItem = global::FormsSkiaBikeTracker.Droid.Resource.Style.TextAppearance_AppCompat_Widget_TextView_SpinnerItem;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.TextAppearance_StatusBar_EventContent = global::FormsSkiaBikeTracker.Droid.Resource.Style.TextAppearance_StatusBar_EventContent;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.TextAppearance_StatusBar_EventContent_Info = global::FormsSkiaBikeTracker.Droid.Resource.Style.TextAppearance_StatusBar_EventContent_Info;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.TextAppearance_StatusBar_EventContent_Line2 = global::FormsSkiaBikeTracker.Droid.Resource.Style.TextAppearance_StatusBar_EventContent_Line2;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.TextAppearance_StatusBar_EventContent_Time = global::FormsSkiaBikeTracker.Droid.Resource.Style.TextAppearance_StatusBar_EventContent_Time;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.TextAppearance_StatusBar_EventContent_Title = global::FormsSkiaBikeTracker.Droid.Resource.Style.TextAppearance_StatusBar_EventContent_Title;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.TextAppearance_Widget_AppCompat_ExpandedMenu_Item = global::FormsSkiaBikeTracker.Droid.Resource.Style.TextAppearance_Widget_AppCompat_ExpandedMenu_Item;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.TextAppearance_Widget_AppCompat_Toolbar_Subtitle = global::FormsSkiaBikeTracker.Droid.Resource.Style.TextAppearance_Widget_AppCompat_Toolbar_Subtitle;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.TextAppearance_Widget_AppCompat_Toolbar_Title = global::FormsSkiaBikeTracker.Droid.Resource.Style.TextAppearance_Widget_AppCompat_Toolbar_Title;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Theme_AppCompat = global::FormsSkiaBikeTracker.Droid.Resource.Style.Theme_AppCompat;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Theme_AppCompat_CompactMenu = global::FormsSkiaBikeTracker.Droid.Resource.Style.Theme_AppCompat_CompactMenu;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Theme_AppCompat_DayNight = global::FormsSkiaBikeTracker.Droid.Resource.Style.Theme_AppCompat_DayNight;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Theme_AppCompat_DayNight_DarkActionBar = global::FormsSkiaBikeTracker.Droid.Resource.Style.Theme_AppCompat_DayNight_DarkActionBar;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Theme_AppCompat_DayNight_Dialog = global::FormsSkiaBikeTracker.Droid.Resource.Style.Theme_AppCompat_DayNight_Dialog;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Theme_AppCompat_DayNight_Dialog_Alert = global::FormsSkiaBikeTracker.Droid.Resource.Style.Theme_AppCompat_DayNight_Dialog_Alert;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Theme_AppCompat_DayNight_Dialog_MinWidth = global::FormsSkiaBikeTracker.Droid.Resource.Style.Theme_AppCompat_DayNight_Dialog_MinWidth;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Theme_AppCompat_DayNight_DialogWhenLarge = global::FormsSkiaBikeTracker.Droid.Resource.Style.Theme_AppCompat_DayNight_DialogWhenLarge;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Theme_AppCompat_DayNight_NoActionBar = global::FormsSkiaBikeTracker.Droid.Resource.Style.Theme_AppCompat_DayNight_NoActionBar;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Theme_AppCompat_Dialog = global::FormsSkiaBikeTracker.Droid.Resource.Style.Theme_AppCompat_Dialog;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Theme_AppCompat_Dialog_Alert = global::FormsSkiaBikeTracker.Droid.Resource.Style.Theme_AppCompat_Dialog_Alert;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Theme_AppCompat_Dialog_MinWidth = global::FormsSkiaBikeTracker.Droid.Resource.Style.Theme_AppCompat_Dialog_MinWidth;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Theme_AppCompat_DialogWhenLarge = global::FormsSkiaBikeTracker.Droid.Resource.Style.Theme_AppCompat_DialogWhenLarge;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Theme_AppCompat_Light = global::FormsSkiaBikeTracker.Droid.Resource.Style.Theme_AppCompat_Light;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Theme_AppCompat_Light_DarkActionBar = global::FormsSkiaBikeTracker.Droid.Resource.Style.Theme_AppCompat_Light_DarkActionBar;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Theme_AppCompat_Light_Dialog = global::FormsSkiaBikeTracker.Droid.Resource.Style.Theme_AppCompat_Light_Dialog;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Theme_AppCompat_Light_Dialog_Alert = global::FormsSkiaBikeTracker.Droid.Resource.Style.Theme_AppCompat_Light_Dialog_Alert;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Theme_AppCompat_Light_Dialog_MinWidth = global::FormsSkiaBikeTracker.Droid.Resource.Style.Theme_AppCompat_Light_Dialog_MinWidth;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Theme_AppCompat_Light_DialogWhenLarge = global::FormsSkiaBikeTracker.Droid.Resource.Style.Theme_AppCompat_Light_DialogWhenLarge;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Theme_AppCompat_Light_NoActionBar = global::FormsSkiaBikeTracker.Droid.Resource.Style.Theme_AppCompat_Light_NoActionBar;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Theme_AppCompat_NoActionBar = global::FormsSkiaBikeTracker.Droid.Resource.Style.Theme_AppCompat_NoActionBar;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.ThemeOverlay_AppCompat = global::FormsSkiaBikeTracker.Droid.Resource.Style.ThemeOverlay_AppCompat;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.ThemeOverlay_AppCompat_ActionBar = global::FormsSkiaBikeTracker.Droid.Resource.Style.ThemeOverlay_AppCompat_ActionBar;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.ThemeOverlay_AppCompat_Dark = global::FormsSkiaBikeTracker.Droid.Resource.Style.ThemeOverlay_AppCompat_Dark;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.ThemeOverlay_AppCompat_Dark_ActionBar = global::FormsSkiaBikeTracker.Droid.Resource.Style.ThemeOverlay_AppCompat_Dark_ActionBar;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.ThemeOverlay_AppCompat_Light = global::FormsSkiaBikeTracker.Droid.Resource.Style.ThemeOverlay_AppCompat_Light;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Widget_AppCompat_ActionBar = global::FormsSkiaBikeTracker.Droid.Resource.Style.Widget_AppCompat_ActionBar;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Widget_AppCompat_ActionBar_Solid = global::FormsSkiaBikeTracker.Droid.Resource.Style.Widget_AppCompat_ActionBar_Solid;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Widget_AppCompat_ActionBar_TabBar = global::FormsSkiaBikeTracker.Droid.Resource.Style.Widget_AppCompat_ActionBar_TabBar;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Widget_AppCompat_ActionBar_TabText = global::FormsSkiaBikeTracker.Droid.Resource.Style.Widget_AppCompat_ActionBar_TabText;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Widget_AppCompat_ActionBar_TabView = global::FormsSkiaBikeTracker.Droid.Resource.Style.Widget_AppCompat_ActionBar_TabView;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Widget_AppCompat_ActionButton = global::FormsSkiaBikeTracker.Droid.Resource.Style.Widget_AppCompat_ActionButton;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Widget_AppCompat_ActionButton_CloseMode = global::FormsSkiaBikeTracker.Droid.Resource.Style.Widget_AppCompat_ActionButton_CloseMode;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Widget_AppCompat_ActionButton_Overflow = global::FormsSkiaBikeTracker.Droid.Resource.Style.Widget_AppCompat_ActionButton_Overflow;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Widget_AppCompat_ActionMode = global::FormsSkiaBikeTracker.Droid.Resource.Style.Widget_AppCompat_ActionMode;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Widget_AppCompat_ActivityChooserView = global::FormsSkiaBikeTracker.Droid.Resource.Style.Widget_AppCompat_ActivityChooserView;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Widget_AppCompat_AutoCompleteTextView = global::FormsSkiaBikeTracker.Droid.Resource.Style.Widget_AppCompat_AutoCompleteTextView;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Widget_AppCompat_Button = global::FormsSkiaBikeTracker.Droid.Resource.Style.Widget_AppCompat_Button;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Widget_AppCompat_Button_Borderless = global::FormsSkiaBikeTracker.Droid.Resource.Style.Widget_AppCompat_Button_Borderless;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Widget_AppCompat_Button_Borderless_Colored = global::FormsSkiaBikeTracker.Droid.Resource.Style.Widget_AppCompat_Button_Borderless_Colored;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Widget_AppCompat_Button_ButtonBar_AlertDialog = global::FormsSkiaBikeTracker.Droid.Resource.Style.Widget_AppCompat_Button_ButtonBar_AlertDialog;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Widget_AppCompat_Button_Colored = global::FormsSkiaBikeTracker.Droid.Resource.Style.Widget_AppCompat_Button_Colored;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Widget_AppCompat_Button_Small = global::FormsSkiaBikeTracker.Droid.Resource.Style.Widget_AppCompat_Button_Small;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Widget_AppCompat_ButtonBar = global::FormsSkiaBikeTracker.Droid.Resource.Style.Widget_AppCompat_ButtonBar;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Widget_AppCompat_ButtonBar_AlertDialog = global::FormsSkiaBikeTracker.Droid.Resource.Style.Widget_AppCompat_ButtonBar_AlertDialog;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Widget_AppCompat_CompoundButton_CheckBox = global::FormsSkiaBikeTracker.Droid.Resource.Style.Widget_AppCompat_CompoundButton_CheckBox;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Widget_AppCompat_CompoundButton_RadioButton = global::FormsSkiaBikeTracker.Droid.Resource.Style.Widget_AppCompat_CompoundButton_RadioButton;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Widget_AppCompat_CompoundButton_Switch = global::FormsSkiaBikeTracker.Droid.Resource.Style.Widget_AppCompat_CompoundButton_Switch;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Widget_AppCompat_DrawerArrowToggle = global::FormsSkiaBikeTracker.Droid.Resource.Style.Widget_AppCompat_DrawerArrowToggle;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Widget_AppCompat_DropDownItem_Spinner = global::FormsSkiaBikeTracker.Droid.Resource.Style.Widget_AppCompat_DropDownItem_Spinner;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Widget_AppCompat_EditText = global::FormsSkiaBikeTracker.Droid.Resource.Style.Widget_AppCompat_EditText;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Widget_AppCompat_ImageButton = global::FormsSkiaBikeTracker.Droid.Resource.Style.Widget_AppCompat_ImageButton;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar = global::FormsSkiaBikeTracker.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_Solid = global::FormsSkiaBikeTracker.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_Solid;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_Solid_Inverse = global::FormsSkiaBikeTracker.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_Solid_Inverse;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabBar = global::FormsSkiaBikeTracker.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabBar;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabBar_Inverse = global::FormsSkiaBikeTracker.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabBar_Inverse;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabText = global::FormsSkiaBikeTracker.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabText;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabText_Inverse = global::FormsSkiaBikeTracker.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabText_Inverse;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabView = global::FormsSkiaBikeTracker.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabView;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabView_Inverse = global::FormsSkiaBikeTracker.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabView_Inverse;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Widget_AppCompat_Light_ActionButton = global::FormsSkiaBikeTracker.Droid.Resource.Style.Widget_AppCompat_Light_ActionButton;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Widget_AppCompat_Light_ActionButton_CloseMode = global::FormsSkiaBikeTracker.Droid.Resource.Style.Widget_AppCompat_Light_ActionButton_CloseMode;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Widget_AppCompat_Light_ActionButton_Overflow = global::FormsSkiaBikeTracker.Droid.Resource.Style.Widget_AppCompat_Light_ActionButton_Overflow;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Widget_AppCompat_Light_ActionMode_Inverse = global::FormsSkiaBikeTracker.Droid.Resource.Style.Widget_AppCompat_Light_ActionMode_Inverse;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Widget_AppCompat_Light_ActivityChooserView = global::FormsSkiaBikeTracker.Droid.Resource.Style.Widget_AppCompat_Light_ActivityChooserView;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Widget_AppCompat_Light_AutoCompleteTextView = global::FormsSkiaBikeTracker.Droid.Resource.Style.Widget_AppCompat_Light_AutoCompleteTextView;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Widget_AppCompat_Light_DropDownItem_Spinner = global::FormsSkiaBikeTracker.Droid.Resource.Style.Widget_AppCompat_Light_DropDownItem_Spinner;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Widget_AppCompat_Light_ListPopupWindow = global::FormsSkiaBikeTracker.Droid.Resource.Style.Widget_AppCompat_Light_ListPopupWindow;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Widget_AppCompat_Light_ListView_DropDown = global::FormsSkiaBikeTracker.Droid.Resource.Style.Widget_AppCompat_Light_ListView_DropDown;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Widget_AppCompat_Light_PopupMenu = global::FormsSkiaBikeTracker.Droid.Resource.Style.Widget_AppCompat_Light_PopupMenu;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Widget_AppCompat_Light_PopupMenu_Overflow = global::FormsSkiaBikeTracker.Droid.Resource.Style.Widget_AppCompat_Light_PopupMenu_Overflow;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Widget_AppCompat_Light_SearchView = global::FormsSkiaBikeTracker.Droid.Resource.Style.Widget_AppCompat_Light_SearchView;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Widget_AppCompat_Light_Spinner_DropDown_ActionBar = global::FormsSkiaBikeTracker.Droid.Resource.Style.Widget_AppCompat_Light_Spinner_DropDown_ActionBar;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Widget_AppCompat_ListPopupWindow = global::FormsSkiaBikeTracker.Droid.Resource.Style.Widget_AppCompat_ListPopupWindow;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Widget_AppCompat_ListView = global::FormsSkiaBikeTracker.Droid.Resource.Style.Widget_AppCompat_ListView;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Widget_AppCompat_ListView_DropDown = global::FormsSkiaBikeTracker.Droid.Resource.Style.Widget_AppCompat_ListView_DropDown;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Widget_AppCompat_ListView_Menu = global::FormsSkiaBikeTracker.Droid.Resource.Style.Widget_AppCompat_ListView_Menu;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Widget_AppCompat_PopupMenu = global::FormsSkiaBikeTracker.Droid.Resource.Style.Widget_AppCompat_PopupMenu;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Widget_AppCompat_PopupMenu_Overflow = global::FormsSkiaBikeTracker.Droid.Resource.Style.Widget_AppCompat_PopupMenu_Overflow;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Widget_AppCompat_PopupWindow = global::FormsSkiaBikeTracker.Droid.Resource.Style.Widget_AppCompat_PopupWindow;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Widget_AppCompat_ProgressBar = global::FormsSkiaBikeTracker.Droid.Resource.Style.Widget_AppCompat_ProgressBar;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Widget_AppCompat_ProgressBar_Horizontal = global::FormsSkiaBikeTracker.Droid.Resource.Style.Widget_AppCompat_ProgressBar_Horizontal;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Widget_AppCompat_RatingBar = global::FormsSkiaBikeTracker.Droid.Resource.Style.Widget_AppCompat_RatingBar;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Widget_AppCompat_RatingBar_Indicator = global::FormsSkiaBikeTracker.Droid.Resource.Style.Widget_AppCompat_RatingBar_Indicator;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Widget_AppCompat_RatingBar_Small = global::FormsSkiaBikeTracker.Droid.Resource.Style.Widget_AppCompat_RatingBar_Small;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Widget_AppCompat_SearchView = global::FormsSkiaBikeTracker.Droid.Resource.Style.Widget_AppCompat_SearchView;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Widget_AppCompat_SearchView_ActionBar = global::FormsSkiaBikeTracker.Droid.Resource.Style.Widget_AppCompat_SearchView_ActionBar;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Widget_AppCompat_SeekBar = global::FormsSkiaBikeTracker.Droid.Resource.Style.Widget_AppCompat_SeekBar;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Widget_AppCompat_Spinner = global::FormsSkiaBikeTracker.Droid.Resource.Style.Widget_AppCompat_Spinner;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Widget_AppCompat_Spinner_DropDown = global::FormsSkiaBikeTracker.Droid.Resource.Style.Widget_AppCompat_Spinner_DropDown;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Widget_AppCompat_Spinner_DropDown_ActionBar = global::FormsSkiaBikeTracker.Droid.Resource.Style.Widget_AppCompat_Spinner_DropDown_ActionBar;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Widget_AppCompat_Spinner_Underlined = global::FormsSkiaBikeTracker.Droid.Resource.Style.Widget_AppCompat_Spinner_Underlined;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Widget_AppCompat_TextView_SpinnerItem = global::FormsSkiaBikeTracker.Droid.Resource.Style.Widget_AppCompat_TextView_SpinnerItem;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Widget_AppCompat_Toolbar = global::FormsSkiaBikeTracker.Droid.Resource.Style.Widget_AppCompat_Toolbar;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Style.Widget_AppCompat_Toolbar_Button_Navigation = global::FormsSkiaBikeTracker.Droid.Resource.Style.Widget_AppCompat_Toolbar_Button_Navigation;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.ActionBar = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.ActionBar;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.ActionBar_background = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.ActionBar_background;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.ActionBar_backgroundSplit = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.ActionBar_backgroundSplit;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.ActionBar_backgroundStacked = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.ActionBar_backgroundStacked;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.ActionBar_contentInsetEnd = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.ActionBar_contentInsetEnd;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.ActionBar_contentInsetLeft = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.ActionBar_contentInsetLeft;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.ActionBar_contentInsetRight = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.ActionBar_contentInsetRight;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.ActionBar_contentInsetStart = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.ActionBar_contentInsetStart;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.ActionBar_customNavigationLayout = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.ActionBar_customNavigationLayout;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.ActionBar_displayOptions = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.ActionBar_displayOptions;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.ActionBar_divider = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.ActionBar_divider;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.ActionBar_elevation = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.ActionBar_elevation;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.ActionBar_height = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.ActionBar_height;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.ActionBar_hideOnContentScroll = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.ActionBar_hideOnContentScroll;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.ActionBar_homeAsUpIndicator = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.ActionBar_homeAsUpIndicator;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.ActionBar_homeLayout = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.ActionBar_homeLayout;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.ActionBar_icon = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.ActionBar_icon;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.ActionBar_indeterminateProgressStyle = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.ActionBar_indeterminateProgressStyle;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.ActionBar_itemPadding = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.ActionBar_itemPadding;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.ActionBar_logo = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.ActionBar_logo;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.ActionBar_navigationMode = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.ActionBar_navigationMode;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.ActionBar_popupTheme = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.ActionBar_popupTheme;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.ActionBar_progressBarPadding = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.ActionBar_progressBarPadding;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.ActionBar_progressBarStyle = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.ActionBar_progressBarStyle;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.ActionBar_subtitle = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.ActionBar_subtitle;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.ActionBar_subtitleTextStyle = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.ActionBar_subtitleTextStyle;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.ActionBar_title = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.ActionBar_title;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.ActionBar_titleTextStyle = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.ActionBar_titleTextStyle;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.ActionBarLayout = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.ActionBarLayout;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.ActionBarLayout_android_layout_gravity = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.ActionBarLayout_android_layout_gravity;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.ActionMenuItemView = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.ActionMenuItemView;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.ActionMenuItemView_android_minWidth = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.ActionMenuItemView_android_minWidth;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.ActionMenuView = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.ActionMenuView;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.ActionMode = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.ActionMode;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.ActionMode_background = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.ActionMode_background;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.ActionMode_backgroundSplit = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.ActionMode_backgroundSplit;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.ActionMode_closeItemLayout = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.ActionMode_closeItemLayout;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.ActionMode_height = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.ActionMode_height;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.ActionMode_subtitleTextStyle = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.ActionMode_subtitleTextStyle;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.ActionMode_titleTextStyle = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.ActionMode_titleTextStyle;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.ActivityChooserView = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.ActivityChooserView;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.ActivityChooserView_expandActivityOverflowButtonDrawable = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.ActivityChooserView_expandActivityOverflowButtonDrawable;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.ActivityChooserView_initialActivityCount = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.ActivityChooserView_initialActivityCount;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AlertDialog = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AlertDialog;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AlertDialog_android_layout = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AlertDialog_android_layout;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AlertDialog_buttonPanelSideLayout = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AlertDialog_buttonPanelSideLayout;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AlertDialog_listItemLayout = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AlertDialog_listItemLayout;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AlertDialog_listLayout = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AlertDialog_listLayout;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AlertDialog_multiChoiceItemLayout = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AlertDialog_multiChoiceItemLayout;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AlertDialog_singleChoiceItemLayout = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AlertDialog_singleChoiceItemLayout;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AppCompatImageView = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AppCompatImageView;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AppCompatImageView_android_src = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AppCompatImageView_android_src;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AppCompatImageView_srcCompat = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AppCompatImageView_srcCompat;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AppCompatTextView = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AppCompatTextView;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AppCompatTextView_android_textAppearance = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AppCompatTextView_android_textAppearance;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AppCompatTextView_textAllCaps = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AppCompatTextView_textAllCaps;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AppCompatTheme = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AppCompatTheme;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AppCompatTheme_actionBarDivider = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AppCompatTheme_actionBarDivider;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AppCompatTheme_actionBarItemBackground = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AppCompatTheme_actionBarItemBackground;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AppCompatTheme_actionBarPopupTheme = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AppCompatTheme_actionBarPopupTheme;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AppCompatTheme_actionBarSize = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AppCompatTheme_actionBarSize;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AppCompatTheme_actionBarSplitStyle = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AppCompatTheme_actionBarSplitStyle;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AppCompatTheme_actionBarStyle = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AppCompatTheme_actionBarStyle;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AppCompatTheme_actionBarTabBarStyle = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AppCompatTheme_actionBarTabBarStyle;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AppCompatTheme_actionBarTabStyle = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AppCompatTheme_actionBarTabStyle;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AppCompatTheme_actionBarTabTextStyle = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AppCompatTheme_actionBarTabTextStyle;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AppCompatTheme_actionBarTheme = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AppCompatTheme_actionBarTheme;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AppCompatTheme_actionBarWidgetTheme = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AppCompatTheme_actionBarWidgetTheme;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AppCompatTheme_actionButtonStyle = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AppCompatTheme_actionButtonStyle;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AppCompatTheme_actionDropDownStyle = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AppCompatTheme_actionDropDownStyle;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AppCompatTheme_actionMenuTextAppearance = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AppCompatTheme_actionMenuTextAppearance;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AppCompatTheme_actionMenuTextColor = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AppCompatTheme_actionMenuTextColor;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AppCompatTheme_actionModeBackground = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AppCompatTheme_actionModeBackground;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AppCompatTheme_actionModeCloseButtonStyle = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AppCompatTheme_actionModeCloseButtonStyle;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AppCompatTheme_actionModeCloseDrawable = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AppCompatTheme_actionModeCloseDrawable;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AppCompatTheme_actionModeCopyDrawable = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AppCompatTheme_actionModeCopyDrawable;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AppCompatTheme_actionModeCutDrawable = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AppCompatTheme_actionModeCutDrawable;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AppCompatTheme_actionModeFindDrawable = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AppCompatTheme_actionModeFindDrawable;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AppCompatTheme_actionModePasteDrawable = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AppCompatTheme_actionModePasteDrawable;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AppCompatTheme_actionModePopupWindowStyle = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AppCompatTheme_actionModePopupWindowStyle;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AppCompatTheme_actionModeSelectAllDrawable = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AppCompatTheme_actionModeSelectAllDrawable;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AppCompatTheme_actionModeShareDrawable = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AppCompatTheme_actionModeShareDrawable;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AppCompatTheme_actionModeSplitBackground = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AppCompatTheme_actionModeSplitBackground;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AppCompatTheme_actionModeStyle = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AppCompatTheme_actionModeStyle;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AppCompatTheme_actionModeWebSearchDrawable = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AppCompatTheme_actionModeWebSearchDrawable;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AppCompatTheme_actionOverflowButtonStyle = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AppCompatTheme_actionOverflowButtonStyle;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AppCompatTheme_actionOverflowMenuStyle = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AppCompatTheme_actionOverflowMenuStyle;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AppCompatTheme_activityChooserViewStyle = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AppCompatTheme_activityChooserViewStyle;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AppCompatTheme_alertDialogButtonGroupStyle = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AppCompatTheme_alertDialogButtonGroupStyle;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AppCompatTheme_alertDialogCenterButtons = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AppCompatTheme_alertDialogCenterButtons;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AppCompatTheme_alertDialogStyle = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AppCompatTheme_alertDialogStyle;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AppCompatTheme_alertDialogTheme = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AppCompatTheme_alertDialogTheme;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AppCompatTheme_android_windowAnimationStyle = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AppCompatTheme_android_windowAnimationStyle;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AppCompatTheme_android_windowIsFloating = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AppCompatTheme_android_windowIsFloating;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AppCompatTheme_autoCompleteTextViewStyle = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AppCompatTheme_autoCompleteTextViewStyle;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AppCompatTheme_borderlessButtonStyle = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AppCompatTheme_borderlessButtonStyle;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AppCompatTheme_buttonBarButtonStyle = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AppCompatTheme_buttonBarButtonStyle;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AppCompatTheme_buttonBarNegativeButtonStyle = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AppCompatTheme_buttonBarNegativeButtonStyle;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AppCompatTheme_buttonBarNeutralButtonStyle = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AppCompatTheme_buttonBarNeutralButtonStyle;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AppCompatTheme_buttonBarPositiveButtonStyle = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AppCompatTheme_buttonBarPositiveButtonStyle;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AppCompatTheme_buttonBarStyle = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AppCompatTheme_buttonBarStyle;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AppCompatTheme_buttonStyle = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AppCompatTheme_buttonStyle;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AppCompatTheme_buttonStyleSmall = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AppCompatTheme_buttonStyleSmall;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AppCompatTheme_checkboxStyle = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AppCompatTheme_checkboxStyle;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AppCompatTheme_checkedTextViewStyle = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AppCompatTheme_checkedTextViewStyle;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AppCompatTheme_colorAccent = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AppCompatTheme_colorAccent;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AppCompatTheme_colorButtonNormal = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AppCompatTheme_colorButtonNormal;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AppCompatTheme_colorControlActivated = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AppCompatTheme_colorControlActivated;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AppCompatTheme_colorControlHighlight = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AppCompatTheme_colorControlHighlight;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AppCompatTheme_colorControlNormal = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AppCompatTheme_colorControlNormal;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AppCompatTheme_colorPrimary = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AppCompatTheme_colorPrimary;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AppCompatTheme_colorPrimaryDark = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AppCompatTheme_colorPrimaryDark;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AppCompatTheme_colorSwitchThumbNormal = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AppCompatTheme_colorSwitchThumbNormal;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AppCompatTheme_controlBackground = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AppCompatTheme_controlBackground;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AppCompatTheme_dialogPreferredPadding = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AppCompatTheme_dialogPreferredPadding;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AppCompatTheme_dialogTheme = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AppCompatTheme_dialogTheme;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AppCompatTheme_dividerHorizontal = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AppCompatTheme_dividerHorizontal;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AppCompatTheme_dividerVertical = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AppCompatTheme_dividerVertical;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AppCompatTheme_dropDownListViewStyle = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AppCompatTheme_dropDownListViewStyle;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AppCompatTheme_dropdownListPreferredItemHeight = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AppCompatTheme_dropdownListPreferredItemHeight;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AppCompatTheme_editTextBackground = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AppCompatTheme_editTextBackground;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AppCompatTheme_editTextColor = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AppCompatTheme_editTextColor;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AppCompatTheme_editTextStyle = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AppCompatTheme_editTextStyle;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AppCompatTheme_homeAsUpIndicator = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AppCompatTheme_homeAsUpIndicator;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AppCompatTheme_imageButtonStyle = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AppCompatTheme_imageButtonStyle;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AppCompatTheme_listChoiceBackgroundIndicator = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AppCompatTheme_listChoiceBackgroundIndicator;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AppCompatTheme_listDividerAlertDialog = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AppCompatTheme_listDividerAlertDialog;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AppCompatTheme_listPopupWindowStyle = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AppCompatTheme_listPopupWindowStyle;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AppCompatTheme_listPreferredItemHeight = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AppCompatTheme_listPreferredItemHeight;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AppCompatTheme_listPreferredItemHeightLarge = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AppCompatTheme_listPreferredItemHeightLarge;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AppCompatTheme_listPreferredItemHeightSmall = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AppCompatTheme_listPreferredItemHeightSmall;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AppCompatTheme_listPreferredItemPaddingLeft = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AppCompatTheme_listPreferredItemPaddingLeft;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AppCompatTheme_listPreferredItemPaddingRight = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AppCompatTheme_listPreferredItemPaddingRight;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AppCompatTheme_panelBackground = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AppCompatTheme_panelBackground;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AppCompatTheme_panelMenuListTheme = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AppCompatTheme_panelMenuListTheme;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AppCompatTheme_panelMenuListWidth = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AppCompatTheme_panelMenuListWidth;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AppCompatTheme_popupMenuStyle = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AppCompatTheme_popupMenuStyle;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AppCompatTheme_popupWindowStyle = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AppCompatTheme_popupWindowStyle;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AppCompatTheme_radioButtonStyle = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AppCompatTheme_radioButtonStyle;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AppCompatTheme_ratingBarStyle = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AppCompatTheme_ratingBarStyle;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AppCompatTheme_ratingBarStyleIndicator = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AppCompatTheme_ratingBarStyleIndicator;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AppCompatTheme_ratingBarStyleSmall = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AppCompatTheme_ratingBarStyleSmall;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AppCompatTheme_searchViewStyle = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AppCompatTheme_searchViewStyle;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AppCompatTheme_seekBarStyle = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AppCompatTheme_seekBarStyle;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AppCompatTheme_selectableItemBackground = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AppCompatTheme_selectableItemBackground;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AppCompatTheme_selectableItemBackgroundBorderless = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AppCompatTheme_selectableItemBackgroundBorderless;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AppCompatTheme_spinnerDropDownItemStyle = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AppCompatTheme_spinnerDropDownItemStyle;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AppCompatTheme_spinnerStyle = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AppCompatTheme_spinnerStyle;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AppCompatTheme_switchStyle = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AppCompatTheme_switchStyle;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AppCompatTheme_textAppearanceLargePopupMenu = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AppCompatTheme_textAppearanceLargePopupMenu;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AppCompatTheme_textAppearanceListItem = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AppCompatTheme_textAppearanceListItem;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AppCompatTheme_textAppearanceListItemSmall = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AppCompatTheme_textAppearanceListItemSmall;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AppCompatTheme_textAppearanceSearchResultSubtitle = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AppCompatTheme_textAppearanceSearchResultSubtitle;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AppCompatTheme_textAppearanceSearchResultTitle = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AppCompatTheme_textAppearanceSearchResultTitle;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AppCompatTheme_textAppearanceSmallPopupMenu = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AppCompatTheme_textAppearanceSmallPopupMenu;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AppCompatTheme_textColorAlertDialogListItem = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AppCompatTheme_textColorAlertDialogListItem;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AppCompatTheme_textColorSearchUrl = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AppCompatTheme_textColorSearchUrl;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AppCompatTheme_toolbarNavigationButtonStyle = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AppCompatTheme_toolbarNavigationButtonStyle;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AppCompatTheme_toolbarStyle = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AppCompatTheme_toolbarStyle;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AppCompatTheme_windowActionBar = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AppCompatTheme_windowActionBar;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AppCompatTheme_windowActionBarOverlay = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AppCompatTheme_windowActionBarOverlay;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AppCompatTheme_windowActionModeOverlay = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AppCompatTheme_windowActionModeOverlay;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AppCompatTheme_windowFixedHeightMajor = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AppCompatTheme_windowFixedHeightMajor;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AppCompatTheme_windowFixedHeightMinor = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AppCompatTheme_windowFixedHeightMinor;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AppCompatTheme_windowFixedWidthMajor = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AppCompatTheme_windowFixedWidthMajor;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AppCompatTheme_windowFixedWidthMinor = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AppCompatTheme_windowFixedWidthMinor;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AppCompatTheme_windowMinWidthMajor = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AppCompatTheme_windowMinWidthMajor;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AppCompatTheme_windowMinWidthMinor = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AppCompatTheme_windowMinWidthMinor;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.AppCompatTheme_windowNoTitle = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.AppCompatTheme_windowNoTitle;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.ButtonBarLayout = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.ButtonBarLayout;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.ButtonBarLayout_allowStacking = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.ButtonBarLayout_allowStacking;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.CompoundButton = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.CompoundButton;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.CompoundButton_android_button = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.CompoundButton_android_button;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.CompoundButton_buttonTint = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.CompoundButton_buttonTint;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.CompoundButton_buttonTintMode = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.CompoundButton_buttonTintMode;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.DrawerArrowToggle = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.DrawerArrowToggle;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.DrawerArrowToggle_arrowHeadLength = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.DrawerArrowToggle_arrowHeadLength;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.DrawerArrowToggle_arrowShaftLength = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.DrawerArrowToggle_arrowShaftLength;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.DrawerArrowToggle_barLength = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.DrawerArrowToggle_barLength;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.DrawerArrowToggle_color = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.DrawerArrowToggle_color;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.DrawerArrowToggle_drawableSize = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.DrawerArrowToggle_drawableSize;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.DrawerArrowToggle_gapBetweenBars = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.DrawerArrowToggle_gapBetweenBars;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.DrawerArrowToggle_spinBars = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.DrawerArrowToggle_spinBars;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.DrawerArrowToggle_thickness = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.DrawerArrowToggle_thickness;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.LinearLayoutCompat = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.LinearLayoutCompat;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.LinearLayoutCompat_android_baselineAligned = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.LinearLayoutCompat_android_baselineAligned;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.LinearLayoutCompat_android_baselineAlignedChildIndex = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.LinearLayoutCompat_android_baselineAlignedChildIndex;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.LinearLayoutCompat_android_gravity = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.LinearLayoutCompat_android_gravity;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.LinearLayoutCompat_android_orientation = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.LinearLayoutCompat_android_orientation;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.LinearLayoutCompat_android_weightSum = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.LinearLayoutCompat_android_weightSum;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.LinearLayoutCompat_divider = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.LinearLayoutCompat_divider;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.LinearLayoutCompat_dividerPadding = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.LinearLayoutCompat_dividerPadding;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.LinearLayoutCompat_measureWithLargestChild = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.LinearLayoutCompat_measureWithLargestChild;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.LinearLayoutCompat_showDividers = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.LinearLayoutCompat_showDividers;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.LinearLayoutCompat_Layout = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.LinearLayoutCompat_Layout;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_gravity = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_gravity;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_height = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_height;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_weight = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_weight;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_width = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_width;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.ListPopupWindow = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.ListPopupWindow;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.ListPopupWindow_android_dropDownHorizontalOffset = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.ListPopupWindow_android_dropDownHorizontalOffset;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.ListPopupWindow_android_dropDownVerticalOffset = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.ListPopupWindow_android_dropDownVerticalOffset;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.MenuGroup = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.MenuGroup;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.MenuGroup_android_checkableBehavior = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.MenuGroup_android_checkableBehavior;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.MenuGroup_android_enabled = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.MenuGroup_android_enabled;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.MenuGroup_android_id = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.MenuGroup_android_id;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.MenuGroup_android_menuCategory = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.MenuGroup_android_menuCategory;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.MenuGroup_android_orderInCategory = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.MenuGroup_android_orderInCategory;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.MenuGroup_android_visible = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.MenuGroup_android_visible;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.MenuItem = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.MenuItem;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.MenuItem_actionLayout = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.MenuItem_actionLayout;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.MenuItem_actionProviderClass = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.MenuItem_actionProviderClass;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.MenuItem_actionViewClass = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.MenuItem_actionViewClass;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.MenuItem_android_alphabeticShortcut = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.MenuItem_android_alphabeticShortcut;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.MenuItem_android_checkable = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.MenuItem_android_checkable;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.MenuItem_android_checked = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.MenuItem_android_checked;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.MenuItem_android_enabled = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.MenuItem_android_enabled;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.MenuItem_android_icon = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.MenuItem_android_icon;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.MenuItem_android_id = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.MenuItem_android_id;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.MenuItem_android_menuCategory = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.MenuItem_android_menuCategory;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.MenuItem_android_numericShortcut = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.MenuItem_android_numericShortcut;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.MenuItem_android_onClick = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.MenuItem_android_onClick;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.MenuItem_android_orderInCategory = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.MenuItem_android_orderInCategory;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.MenuItem_android_title = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.MenuItem_android_title;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.MenuItem_android_titleCondensed = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.MenuItem_android_titleCondensed;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.MenuItem_android_visible = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.MenuItem_android_visible;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.MenuItem_showAsAction = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.MenuItem_showAsAction;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.MenuView = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.MenuView;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.MenuView_android_headerBackground = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.MenuView_android_headerBackground;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.MenuView_android_horizontalDivider = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.MenuView_android_horizontalDivider;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.MenuView_android_itemBackground = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.MenuView_android_itemBackground;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.MenuView_android_itemIconDisabledAlpha = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.MenuView_android_itemIconDisabledAlpha;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.MenuView_android_itemTextAppearance = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.MenuView_android_itemTextAppearance;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.MenuView_android_verticalDivider = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.MenuView_android_verticalDivider;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.MenuView_android_windowAnimationStyle = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.MenuView_android_windowAnimationStyle;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.MenuView_preserveIconSpacing = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.MenuView_preserveIconSpacing;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.PopupWindow = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.PopupWindow;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.PopupWindow_android_popupBackground = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.PopupWindow_android_popupBackground;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.PopupWindow_overlapAnchor = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.PopupWindow_overlapAnchor;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.PopupWindowBackgroundState = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.PopupWindowBackgroundState;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.PopupWindowBackgroundState_state_above_anchor = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.PopupWindowBackgroundState_state_above_anchor;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.SearchView = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.SearchView;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.SearchView_android_focusable = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.SearchView_android_focusable;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.SearchView_android_imeOptions = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.SearchView_android_imeOptions;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.SearchView_android_inputType = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.SearchView_android_inputType;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.SearchView_android_maxWidth = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.SearchView_android_maxWidth;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.SearchView_closeIcon = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.SearchView_closeIcon;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.SearchView_commitIcon = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.SearchView_commitIcon;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.SearchView_defaultQueryHint = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.SearchView_defaultQueryHint;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.SearchView_goIcon = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.SearchView_goIcon;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.SearchView_iconifiedByDefault = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.SearchView_iconifiedByDefault;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.SearchView_layout = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.SearchView_layout;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.SearchView_queryBackground = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.SearchView_queryBackground;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.SearchView_queryHint = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.SearchView_queryHint;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.SearchView_searchHintIcon = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.SearchView_searchHintIcon;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.SearchView_searchIcon = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.SearchView_searchIcon;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.SearchView_submitBackground = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.SearchView_submitBackground;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.SearchView_suggestionRowLayout = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.SearchView_suggestionRowLayout;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.SearchView_voiceIcon = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.SearchView_voiceIcon;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.Spinner = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.Spinner;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.Spinner_android_dropDownWidth = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.Spinner_android_dropDownWidth;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.Spinner_android_entries = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.Spinner_android_entries;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.Spinner_android_popupBackground = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.Spinner_android_popupBackground;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.Spinner_android_prompt = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.Spinner_android_prompt;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.Spinner_popupTheme = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.Spinner_popupTheme;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.SwitchCompat = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.SwitchCompat;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.SwitchCompat_android_textOff = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.SwitchCompat_android_textOff;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.SwitchCompat_android_textOn = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.SwitchCompat_android_textOn;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.SwitchCompat_android_thumb = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.SwitchCompat_android_thumb;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.SwitchCompat_showText = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.SwitchCompat_showText;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.SwitchCompat_splitTrack = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.SwitchCompat_splitTrack;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.SwitchCompat_switchMinWidth = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.SwitchCompat_switchMinWidth;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.SwitchCompat_switchPadding = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.SwitchCompat_switchPadding;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.SwitchCompat_switchTextAppearance = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.SwitchCompat_switchTextAppearance;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.SwitchCompat_thumbTextPadding = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.SwitchCompat_thumbTextPadding;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.SwitchCompat_track = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.SwitchCompat_track;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.TextAppearance = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.TextAppearance;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.TextAppearance_android_shadowColor = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.TextAppearance_android_shadowColor;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.TextAppearance_android_shadowDx = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.TextAppearance_android_shadowDx;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.TextAppearance_android_shadowDy = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.TextAppearance_android_shadowDy;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.TextAppearance_android_shadowRadius = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.TextAppearance_android_shadowRadius;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.TextAppearance_android_textColor = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.TextAppearance_android_textColor;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.TextAppearance_android_textSize = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.TextAppearance_android_textSize;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.TextAppearance_android_textStyle = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.TextAppearance_android_textStyle;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.TextAppearance_android_typeface = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.TextAppearance_android_typeface;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.TextAppearance_textAllCaps = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.TextAppearance_textAllCaps;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.Toolbar = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.Toolbar;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.Toolbar_android_gravity = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.Toolbar_android_gravity;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.Toolbar_android_minHeight = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.Toolbar_android_minHeight;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.Toolbar_collapseContentDescription = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.Toolbar_collapseContentDescription;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.Toolbar_collapseIcon = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.Toolbar_collapseIcon;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.Toolbar_contentInsetEnd = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.Toolbar_contentInsetEnd;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.Toolbar_contentInsetLeft = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.Toolbar_contentInsetLeft;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.Toolbar_contentInsetRight = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.Toolbar_contentInsetRight;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.Toolbar_contentInsetStart = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.Toolbar_contentInsetStart;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.Toolbar_logo = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.Toolbar_logo;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.Toolbar_logoDescription = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.Toolbar_logoDescription;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.Toolbar_maxButtonHeight = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.Toolbar_maxButtonHeight;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.Toolbar_navigationContentDescription = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.Toolbar_navigationContentDescription;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.Toolbar_navigationIcon = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.Toolbar_navigationIcon;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.Toolbar_popupTheme = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.Toolbar_popupTheme;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.Toolbar_subtitle = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.Toolbar_subtitle;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.Toolbar_subtitleTextAppearance = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.Toolbar_subtitleTextAppearance;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.Toolbar_subtitleTextColor = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.Toolbar_subtitleTextColor;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.Toolbar_title = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.Toolbar_title;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.Toolbar_titleMarginBottom = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.Toolbar_titleMarginBottom;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.Toolbar_titleMarginEnd = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.Toolbar_titleMarginEnd;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.Toolbar_titleMarginStart = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.Toolbar_titleMarginStart;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.Toolbar_titleMarginTop = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.Toolbar_titleMarginTop;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.Toolbar_titleMargins = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.Toolbar_titleMargins;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.Toolbar_titleTextAppearance = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.Toolbar_titleTextAppearance;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.Toolbar_titleTextColor = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.Toolbar_titleTextColor;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.View = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.View;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.View_android_focusable = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.View_android_focusable;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.View_android_theme = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.View_android_theme;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.View_paddingEnd = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.View_paddingEnd;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.View_paddingStart = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.View_paddingStart;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.View_theme = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.View_theme;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.ViewBackgroundHelper = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.ViewBackgroundHelper;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.ViewBackgroundHelper_android_background = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.ViewBackgroundHelper_android_background;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.ViewBackgroundHelper_backgroundTint = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.ViewBackgroundHelper_backgroundTint;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.ViewBackgroundHelper_backgroundTintMode = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.ViewBackgroundHelper_backgroundTintMode;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.ViewStubCompat = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.ViewStubCompat;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.ViewStubCompat_android_id = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.ViewStubCompat_android_id;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.ViewStubCompat_android_inflatedId = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.ViewStubCompat_android_inflatedId;
+			global::Bulboss.MvvmCross.Plugins.UserInteraction.Droid.Resource.Styleable.ViewStubCompat_android_layout = global::FormsSkiaBikeTracker.Droid.Resource.Styleable.ViewStubCompat_android_layout;
 			global::MvvmCross.Binding.Droid.Resource.Attribute.MvxBind = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.MvxBind;
 			global::MvvmCross.Binding.Droid.Resource.Attribute.MvxDropDownItemTemplate = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.MvxDropDownItemTemplate;
 			global::MvvmCross.Binding.Droid.Resource.Attribute.MvxGroupItemTemplate = global::FormsSkiaBikeTracker.Droid.Resource.Attribute.MvxGroupItemTemplate;
@@ -2279,8 +3529,8 @@ namespace FormsSkiaBikeTracker.Droid
 			// aapt resource value: 0x7f07000c
 			public const int MvxBindingTagUnique = 2131165196;
 			
-			// aapt resource value: 0x7f07008d
-			public const int action0 = 2131165325;
+			// aapt resource value: 0x7f07008e
+			public const int action0 = 2131165326;
 			
 			// aapt resource value: 0x7f07005c
 			public const int action_bar = 2131165276;
@@ -2306,8 +3556,8 @@ namespace FormsSkiaBikeTracker.Droid
 			// aapt resource value: 0x7f07005d
 			public const int action_context_bar = 2131165277;
 			
-			// aapt resource value: 0x7f070091
-			public const int action_divider = 2131165329;
+			// aapt resource value: 0x7f070092
+			public const int action_divider = 2131165330;
 			
 			// aapt resource value: 0x7f070003
 			public const int action_menu_divider = 2131165187;
@@ -2342,8 +3592,8 @@ namespace FormsSkiaBikeTracker.Droid
 			// aapt resource value: 0x7f070046
 			public const int buttonPanel = 2131165254;
 			
-			// aapt resource value: 0x7f07008e
-			public const int cancel_action = 2131165326;
+			// aapt resource value: 0x7f07008f
+			public const int cancel_action = 2131165327;
 			
 			// aapt resource value: 0x7f07002d
 			public const int center = 2131165229;
@@ -2357,8 +3607,8 @@ namespace FormsSkiaBikeTracker.Droid
 			// aapt resource value: 0x7f070054
 			public const int checkbox = 2131165268;
 			
-			// aapt resource value: 0x7f070094
-			public const int chronometer = 2131165332;
+			// aapt resource value: 0x7f070095
+			public const int chronometer = 2131165333;
 			
 			// aapt resource value: 0x7f070035
 			public const int clip_horizontal = 2131165237;
@@ -2408,8 +3658,8 @@ namespace FormsSkiaBikeTracker.Droid
 			// aapt resource value: 0x7f07001e
 			public const int end = 2131165214;
 			
-			// aapt resource value: 0x7f070099
-			public const int end_padder = 2131165337;
+			// aapt resource value: 0x7f07009a
+			public const int end_padder = 2131165338;
 			
 			// aapt resource value: 0x7f070025
 			public const int enterAlways = 2131165221;
@@ -2453,11 +3703,14 @@ namespace FormsSkiaBikeTracker.Droid
 			// aapt resource value: 0x7f070041
 			public const int image = 2131165249;
 			
-			// aapt resource value: 0x7f07009a
-			public const int imageView1 = 2131165338;
+			// aapt resource value: 0x7f07009b
+			public const int imageView1 = 2131165339;
 			
-			// aapt resource value: 0x7f070098
-			public const int info = 2131165336;
+			// aapt resource value: 0x7f070099
+			public const int info = 2131165337;
+			
+			// aapt resource value: 0x7f070074
+			public const int input = 2131165300;
 			
 			// aapt resource value: 0x7f070000
 			public const int item_touch_helper_previous_elevation = 2131165184;
@@ -2465,11 +3718,11 @@ namespace FormsSkiaBikeTracker.Droid
 			// aapt resource value: 0x7f070031
 			public const int left = 2131165233;
 			
-			// aapt resource value: 0x7f070092
-			public const int line1 = 2131165330;
+			// aapt resource value: 0x7f070093
+			public const int line1 = 2131165331;
 			
-			// aapt resource value: 0x7f070096
-			public const int line3 = 2131165334;
+			// aapt resource value: 0x7f070097
+			public const int line3 = 2131165335;
 			
 			// aapt resource value: 0x7f07000d
 			public const int listMode = 2131165197;
@@ -2477,8 +3730,8 @@ namespace FormsSkiaBikeTracker.Droid
 			// aapt resource value: 0x7f070043
 			public const int list_item = 2131165251;
 			
-			// aapt resource value: 0x7f070090
-			public const int media_actions = 2131165328;
+			// aapt resource value: 0x7f070091
+			public const int media_actions = 2131165329;
 			
 			// aapt resource value: 0x7f07001f
 			public const int middle = 2131165215;
@@ -2486,77 +3739,77 @@ namespace FormsSkiaBikeTracker.Droid
 			// aapt resource value: 0x7f070039
 			public const int mini = 2131165241;
 			
-			// aapt resource value: 0x7f07007f
-			public const int mr_art = 2131165311;
-			
-			// aapt resource value: 0x7f070074
-			public const int mr_chooser_list = 2131165300;
-			
-			// aapt resource value: 0x7f070077
-			public const int mr_chooser_route_desc = 2131165303;
+			// aapt resource value: 0x7f070080
+			public const int mr_art = 2131165312;
 			
 			// aapt resource value: 0x7f070075
-			public const int mr_chooser_route_icon = 2131165301;
-			
-			// aapt resource value: 0x7f070076
-			public const int mr_chooser_route_name = 2131165302;
-			
-			// aapt resource value: 0x7f07007c
-			public const int mr_close = 2131165308;
-			
-			// aapt resource value: 0x7f070082
-			public const int mr_control_divider = 2131165314;
-			
-			// aapt resource value: 0x7f070088
-			public const int mr_control_play_pause = 2131165320;
-			
-			// aapt resource value: 0x7f07008b
-			public const int mr_control_subtitle = 2131165323;
-			
-			// aapt resource value: 0x7f07008a
-			public const int mr_control_title = 2131165322;
-			
-			// aapt resource value: 0x7f070089
-			public const int mr_control_title_container = 2131165321;
-			
-			// aapt resource value: 0x7f07007d
-			public const int mr_custom_control = 2131165309;
-			
-			// aapt resource value: 0x7f07007e
-			public const int mr_default_control = 2131165310;
-			
-			// aapt resource value: 0x7f070079
-			public const int mr_dialog_area = 2131165305;
+			public const int mr_chooser_list = 2131165301;
 			
 			// aapt resource value: 0x7f070078
-			public const int mr_expandable_area = 2131165304;
+			public const int mr_chooser_route_desc = 2131165304;
 			
-			// aapt resource value: 0x7f07008c
-			public const int mr_group_expand_collapse = 2131165324;
+			// aapt resource value: 0x7f070076
+			public const int mr_chooser_route_icon = 2131165302;
 			
-			// aapt resource value: 0x7f070080
-			public const int mr_media_main_control = 2131165312;
+			// aapt resource value: 0x7f070077
+			public const int mr_chooser_route_name = 2131165303;
 			
-			// aapt resource value: 0x7f07007b
-			public const int mr_name = 2131165307;
-			
-			// aapt resource value: 0x7f070081
-			public const int mr_playback_control = 2131165313;
-			
-			// aapt resource value: 0x7f07007a
-			public const int mr_title_bar = 2131165306;
+			// aapt resource value: 0x7f07007d
+			public const int mr_close = 2131165309;
 			
 			// aapt resource value: 0x7f070083
-			public const int mr_volume_control = 2131165315;
+			public const int mr_control_divider = 2131165315;
+			
+			// aapt resource value: 0x7f070089
+			public const int mr_control_play_pause = 2131165321;
+			
+			// aapt resource value: 0x7f07008c
+			public const int mr_control_subtitle = 2131165324;
+			
+			// aapt resource value: 0x7f07008b
+			public const int mr_control_title = 2131165323;
+			
+			// aapt resource value: 0x7f07008a
+			public const int mr_control_title_container = 2131165322;
+			
+			// aapt resource value: 0x7f07007e
+			public const int mr_custom_control = 2131165310;
+			
+			// aapt resource value: 0x7f07007f
+			public const int mr_default_control = 2131165311;
+			
+			// aapt resource value: 0x7f07007a
+			public const int mr_dialog_area = 2131165306;
+			
+			// aapt resource value: 0x7f070079
+			public const int mr_expandable_area = 2131165305;
+			
+			// aapt resource value: 0x7f07008d
+			public const int mr_group_expand_collapse = 2131165325;
+			
+			// aapt resource value: 0x7f070081
+			public const int mr_media_main_control = 2131165313;
+			
+			// aapt resource value: 0x7f07007c
+			public const int mr_name = 2131165308;
+			
+			// aapt resource value: 0x7f070082
+			public const int mr_playback_control = 2131165314;
+			
+			// aapt resource value: 0x7f07007b
+			public const int mr_title_bar = 2131165307;
 			
 			// aapt resource value: 0x7f070084
-			public const int mr_volume_group_list = 2131165316;
+			public const int mr_volume_control = 2131165316;
 			
-			// aapt resource value: 0x7f070086
-			public const int mr_volume_item_icon = 2131165318;
+			// aapt resource value: 0x7f070085
+			public const int mr_volume_group_list = 2131165317;
 			
 			// aapt resource value: 0x7f070087
-			public const int mr_volume_slider = 2131165319;
+			public const int mr_volume_item_icon = 2131165319;
+			
+			// aapt resource value: 0x7f070088
+			public const int mr_volume_slider = 2131165320;
 			
 			// aapt resource value: 0x7f070018
 			public const int multiply = 2131165208;
@@ -2657,8 +3910,8 @@ namespace FormsSkiaBikeTracker.Droid
 			// aapt resource value: 0x7f070015
 			public const int showTitle = 2131165205;
 			
-			// aapt resource value: 0x7f07009b
-			public const int sliding_tabs = 2131165339;
+			// aapt resource value: 0x7f07009c
+			public const int sliding_tabs = 2131165340;
 			
 			// aapt resource value: 0x7f07006e
 			public const int snackbar_action = 2131165294;
@@ -2687,8 +3940,8 @@ namespace FormsSkiaBikeTracker.Droid
 			// aapt resource value: 0x7f070033
 			public const int start = 2131165235;
 			
-			// aapt resource value: 0x7f07008f
-			public const int status_bar_latest_event_content = 2131165327;
+			// aapt resource value: 0x7f070090
+			public const int status_bar_latest_event_content = 2131165328;
 			
 			// aapt resource value: 0x7f070067
 			public const int submit_area = 2131165287;
@@ -2696,17 +3949,17 @@ namespace FormsSkiaBikeTracker.Droid
 			// aapt resource value: 0x7f07000f
 			public const int tabMode = 2131165199;
 			
-			// aapt resource value: 0x7f070097
-			public const int text = 2131165335;
+			// aapt resource value: 0x7f070098
+			public const int text = 2131165336;
 			
-			// aapt resource value: 0x7f070095
-			public const int text2 = 2131165333;
+			// aapt resource value: 0x7f070096
+			public const int text2 = 2131165334;
 			
 			// aapt resource value: 0x7f07004f
 			public const int textSpacerNoButtons = 2131165263;
 			
-			// aapt resource value: 0x7f070093
-			public const int time = 2131165331;
+			// aapt resource value: 0x7f070094
+			public const int time = 2131165332;
 			
 			// aapt resource value: 0x7f070045
 			public const int title = 2131165253;
@@ -2714,8 +3967,8 @@ namespace FormsSkiaBikeTracker.Droid
 			// aapt resource value: 0x7f07004a
 			public const int title_template = 2131165258;
 			
-			// aapt resource value: 0x7f07009c
-			public const int toolbar = 2131165340;
+			// aapt resource value: 0x7f07009d
+			public const int toolbar = 2131165341;
 			
 			// aapt resource value: 0x7f070034
 			public const int top = 2131165236;
@@ -2735,8 +3988,8 @@ namespace FormsSkiaBikeTracker.Droid
 			// aapt resource value: 0x7f07000a
 			public const int view_offset_helper = 2131165194;
 			
-			// aapt resource value: 0x7f070085
-			public const int volume_item_container = 2131165317;
+			// aapt resource value: 0x7f070086
+			public const int volume_item_container = 2131165318;
 			
 			// aapt resource value: 0x7f070024
 			public const int withText = 2131165220;
@@ -2931,67 +4184,70 @@ namespace FormsSkiaBikeTracker.Droid
 			public const int design_navigation_menu_item = 2130903076;
 			
 			// aapt resource value: 0x7f030025
-			public const int mr_chooser_dialog = 2130903077;
+			public const int input_dialog = 2130903077;
 			
 			// aapt resource value: 0x7f030026
-			public const int mr_chooser_list_item = 2130903078;
+			public const int mr_chooser_dialog = 2130903078;
 			
 			// aapt resource value: 0x7f030027
-			public const int mr_controller_material_dialog_b = 2130903079;
+			public const int mr_chooser_list_item = 2130903079;
 			
 			// aapt resource value: 0x7f030028
-			public const int mr_controller_volume_item = 2130903080;
+			public const int mr_controller_material_dialog_b = 2130903080;
 			
 			// aapt resource value: 0x7f030029
-			public const int mr_playback_control = 2130903081;
+			public const int mr_controller_volume_item = 2130903081;
 			
 			// aapt resource value: 0x7f03002a
-			public const int mr_volume_control = 2130903082;
+			public const int mr_playback_control = 2130903082;
 			
 			// aapt resource value: 0x7f03002b
-			public const int notification_media_action = 2130903083;
+			public const int mr_volume_control = 2130903083;
 			
 			// aapt resource value: 0x7f03002c
-			public const int notification_media_cancel_action = 2130903084;
+			public const int notification_media_action = 2130903084;
 			
 			// aapt resource value: 0x7f03002d
-			public const int notification_template_big_media = 2130903085;
+			public const int notification_media_cancel_action = 2130903085;
 			
 			// aapt resource value: 0x7f03002e
-			public const int notification_template_big_media_narrow = 2130903086;
+			public const int notification_template_big_media = 2130903086;
 			
 			// aapt resource value: 0x7f03002f
-			public const int notification_template_lines = 2130903087;
+			public const int notification_template_big_media_narrow = 2130903087;
 			
 			// aapt resource value: 0x7f030030
-			public const int notification_template_media = 2130903088;
+			public const int notification_template_lines = 2130903088;
 			
 			// aapt resource value: 0x7f030031
-			public const int notification_template_part_chronometer = 2130903089;
+			public const int notification_template_media = 2130903089;
 			
 			// aapt resource value: 0x7f030032
-			public const int notification_template_part_time = 2130903090;
+			public const int notification_template_part_chronometer = 2130903090;
 			
 			// aapt resource value: 0x7f030033
-			public const int select_dialog_item_material = 2130903091;
+			public const int notification_template_part_time = 2130903091;
 			
 			// aapt resource value: 0x7f030034
-			public const int select_dialog_multichoice_material = 2130903092;
+			public const int select_dialog_item_material = 2130903092;
 			
 			// aapt resource value: 0x7f030035
-			public const int select_dialog_singlechoice_material = 2130903093;
+			public const int select_dialog_multichoice_material = 2130903093;
 			
 			// aapt resource value: 0x7f030036
-			public const int SplashScreen = 2130903094;
+			public const int select_dialog_singlechoice_material = 2130903094;
 			
 			// aapt resource value: 0x7f030037
-			public const int support_simple_spinner_dropdown_item = 2130903095;
+			public const int SplashScreen = 2130903095;
 			
 			// aapt resource value: 0x7f030038
-			public const int tabs = 2130903096;
+			public const int support_simple_spinner_dropdown_item = 2130903096;
 			
 			// aapt resource value: 0x7f030039
-			public const int toolbar = 2130903097;
+			public const int tabs = 2130903097;
+			
+			// aapt resource value: 0x7f03003a
+			public const int toolbar = 2130903098;
 			
 			static Layout()
 			{
@@ -3071,6 +4327,9 @@ namespace FormsSkiaBikeTracker.Droid
 			
 			// aapt resource value: 0x7f080025
 			public const int character_counter_pattern = 2131230757;
+			
+			// aapt resource value: 0x7f080026
+			public const int library_name = 2131230758;
 			
 			// aapt resource value: 0x7f080000
 			public const int mr_button_content_description = 2131230720;

@@ -1,4 +1,5 @@
 ﻿{
-  "SignUp": "S'inscrire",
-  "InvalidPassword": "Mot de passe invalide"
+    "Login": "Connection",
+    "SignUp": "S'inscrire",
+    "InvalidPassword": "Mot de passe invalide"
 }

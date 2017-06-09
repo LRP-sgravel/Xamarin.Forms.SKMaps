@@ -26,6 +26,8 @@ namespace FormsSkiaBikeTracker.Forms.UI.Controls
         public static readonly BindableProperty CommandProperty = BindableProperty.Create(nameof(Command), typeof(ICommand), typeof(BorderButtonView), null, BindingMode.OneWay, null, CommandPropertyChanged);
         public static readonly BindableProperty CommandParameterProperty = BindableProperty.Create(nameof(CommandParameter), typeof(object), typeof(BorderButtonView), null, BindingMode.OneWay, null, CommandParameterPropertyChanged);
 
+        public event EventHandler Clicked;
+
         public string Text
         {
             get { return (string)GetValue(TextProperty); }
@@ -104,6 +106,11 @@ namespace FormsSkiaBikeTracker.Forms.UI.Controls
             clipPath.AddRoundedRect(buttonRect, cornerSize, cornerSize, SKPathDirection.CounterClockwise);
 
             Background.ClippingPath = clipPath;
+        }
+
+        private void ButtonClicked(object sender, EventArgs args)
+        {
+            Clicked?.Invoke(sender, args);
         }
     }
 }

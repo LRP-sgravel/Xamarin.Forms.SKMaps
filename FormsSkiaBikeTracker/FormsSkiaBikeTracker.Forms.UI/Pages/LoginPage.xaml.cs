@@ -15,6 +15,7 @@ using System.ComponentModel;
 using System.Linq;
 using FormsSkiaBikeTracker.Shared.ViewModels;
 using MvvmCross.Platform.WeakSubscription;
+using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace FormsSkiaBikeTracker.Forms.UI.Pages
@@ -46,7 +47,7 @@ namespace FormsSkiaBikeTracker.Forms.UI.Pages
         {
             base.OnAppearing();
 
-            ViewModel?.Start();
+            NavigationPage.SetBackButtonTitle(this, string.Empty);
         }
 
         protected override void OnPropertyChanged(string propertyName = null)
@@ -97,6 +98,11 @@ namespace FormsSkiaBikeTracker.Forms.UI.Pages
             AthletesViewWrappers = ViewModel.Athletes
                                          .Select(a => new AthleteLoginWrapper { Athlete = a })
                                          .ToList();
+        }
+
+        private void SignupButtonClicked(object sender, EventArgs e)
+        {
+            NavigationPage.SetBackButtonTitle(this, ViewModel.LanguageBinder.GetText("Cancel"));
         }
     }
 }

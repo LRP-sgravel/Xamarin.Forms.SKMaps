@@ -9,7 +9,7 @@
                      xmlns:lrp="clr-namespace:LRPLib.Views.XForms.Markup;assembly=LRPLib.Views.XForms"
                      xmlns:xForms="clr-namespace:LRPLib.Views.XForms;assembly=LRPLib.Views.XForms"
                      x:Class="FormsSkiaBikeTracker.Forms.UI.Pages.SignUpPagePage"
-                     NavigationPage.BackButtonTitle ="{lrp:LocalizedText Cancel}"
+                     Title="{lrp:LocalizedText SigningUp}"
                      x:Name="SignUpPage">
     <ScrollView>
         <Grid RowSpacing="0">

@@ -11,6 +11,8 @@
                      xmlns:lrp="clr-namespace:LRPLib.Views.XForms.Markup;assembly=LRPLib.Views.XForms"
                      x:Class="FormsSkiaBikeTracker.Forms.UI.Pages.LoginPage"
                      x:Name="LoginPageRoot"
+                     Title="{lrp:LocalizedText Login}"
+                     NavigationPage.BackButtonTitle="{lrp:LocalizedText Cancel}"
                      NavigationPage.HasNavigationBar="False">
     <Grid RowSpacing="0">
         <Grid.RowDefinitions>
@@ -60,6 +62,7 @@
                                    Margin="20"
                                    Text="{lrp:LocalizedText SignUp}"
                                    BorderWidth="4"
+                                   Clicked="SignupButtonClicked"
                                    Command="{Binding GoToSignupCommand}" />
     </Grid>
 </core:MvxContentPage>
