@@ -38,7 +38,7 @@
                           VerticalOptions="Center"
                           HorizontalOptions="Start"
                           Text="{Binding Athlete.Name}"
-                          FontResourcePath="KumarOne-Regular.ttf"
+                          FontResourcePath="KumarOne-Regular.otf"
                           FontSize="24"
                           TextColor="DarkSlateGray"/>
 

@@ -41,7 +41,7 @@
                               VerticalOptions="End"
                               Text="{lrp:LocalizedText Name}"
                               TextColor="DarkSlateGray"
-                              FontResourcePath="KumarOne-Regular.ttf"
+                              FontResourcePath="KumarOne-Regular.otf"
                               FontSize="18"/>
             <Entry x:Name="NameEntry"
                    Grid.Row="3"
@@ -55,7 +55,7 @@
                               VerticalOptions="End"
                               Text="{lrp:LocalizedText Password}"
                               TextColor="DarkSlateGray"
-                              FontResourcePath="KumarOne-Regular.ttf"
+                              FontResourcePath="KumarOne-Regular.otf"
                               FontSize="18"/>
             <Entry x:Name="PasswordEntry"
                    Grid.Row="5"
@@ -70,7 +70,7 @@
                               VerticalOptions="End"
                               Text="{lrp:LocalizedText ConfirmPassword}"
                               TextColor="DarkSlateGray"
-                              FontResourcePath="KumarOne-Regular.ttf"
+                              FontResourcePath="KumarOne-Regular.otf"
                               FontSize="18"/>
             <Entry x:Name="ConfirmationEntry"
                    Grid.Row="7"
