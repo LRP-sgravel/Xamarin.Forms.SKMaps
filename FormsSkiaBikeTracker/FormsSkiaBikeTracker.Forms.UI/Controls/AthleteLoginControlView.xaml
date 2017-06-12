@@ -8,6 +8,13 @@
              HeightRequest="79"
              IsClippedToBounds="True">
     
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <GridLength x:Key="EntrySize">
+            </GridLength>
+        </ResourceDictionary>
+    </ContentView.Resources>
+    
     <Grid x:Name="ContentGrid"
           BindingContext="{Binding Source={x:Reference Name=Control}, Path=InternalViewModel}"
           Margin="0, 0, 0, 10"
@@ -16,7 +23,14 @@
 
         <Grid.RowDefinitions>
             <RowDefinition Height="80" />
-            <RowDefinition Height="30" />
+            <RowDefinition x:Name="PasswordEntryRow">
+                <RowDefinition.Height>
+                    <OnPlatform x:TypeArguments="GridLength">
+                        <On Platform="iOS" Value="40" />
+                        <On Platform="Android" Value="55" />
+                    </OnPlatform>
+                </RowDefinition.Height>
+            </RowDefinition>
         </Grid.RowDefinitions>
             
         <Grid.ColumnDefinitions>
@@ -50,7 +64,7 @@
                      HorizontalOptions="Fill"
                      Orientation="Horizontal">
             <Entry x:Name="PasswordEntry"
-                   Margin="20, 0, 20, 0"
+                   Margin="20, 5, 20, 5"
                    HorizontalOptions="FillAndExpand"
                    VerticalOptions="Fill"
                    IsPassword="True"
@@ -59,7 +73,6 @@
             <Button x:Name="SubmitButton"
                     HorizontalOptions="End"
                     VerticalOptions="Fill"
-                    WidthRequest="30"
                     Text=">>" />
         </StackLayout>
     </Grid>

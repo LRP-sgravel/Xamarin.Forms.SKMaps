@@ -13,7 +13,7 @@
           </controls:DrawnBackgroundControlView.Background>
           <controls:DrawnBackgroundControlView.Foreground>
               <Button x:Name="Button"
-                      BorderRadius="0"
+                      BorderWidth="0"
                       FontSize="22"
                       FontAttributes="Bold"
                       Clicked="ButtonClicked"

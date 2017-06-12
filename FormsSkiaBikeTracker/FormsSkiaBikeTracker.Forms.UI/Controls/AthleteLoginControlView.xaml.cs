@@ -170,13 +170,15 @@ namespace FormsSkiaBikeTracker.Forms.UI.Controls
 
         private void SetupPasswordLayout()
         {
+            double entryHeight = PasswordEntryRow.Height.Value + 1;
+
             if (Expanded)
             {
-                AnimateHeightRequest(PasswordEntry.Height + 1);
+                AnimateHeightRequest(entryHeight);
             }
             else
             {
-                AnimateHeightRequest(-PasswordEntry.Height - 1);
+                AnimateHeightRequest(-entryHeight);
             }
         }
 

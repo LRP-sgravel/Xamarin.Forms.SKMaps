@@ -152,7 +152,7 @@
       <HintPath>..\..\packages\LRPLib.1.1.0\lib\portable-net40+sl5+windowsphone8+windows8+MonoAndroid40+MonoTouch10\LRPLib.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="LRPLib.Mvx, Version=1.0.6365.21126, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="LRPLib.Mvx, Version=1.0.6372.22129, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\LRPLib.Mvx.1.1.0\lib\Xamarin.iOS10\LRPLib.Mvx.dll</HintPath>
       <Private>True</Private>
     </Reference>
