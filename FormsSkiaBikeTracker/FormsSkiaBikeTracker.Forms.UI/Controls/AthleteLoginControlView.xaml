@@ -8,13 +8,6 @@
              HeightRequest="79"
              IsClippedToBounds="True">
     
-    <ContentView.Resources>
-        <ResourceDictionary>
-            <GridLength x:Key="EntrySize">
-            </GridLength>
-        </ResourceDictionary>
-    </ContentView.Resources>
-    
     <Grid x:Name="ContentGrid"
           BindingContext="{Binding Source={x:Reference Name=Control}, Path=InternalViewModel}"
           Margin="0, 0, 0, 10"

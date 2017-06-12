@@ -47,11 +47,12 @@
                 <DataTemplate>
                     <controls:ResizableViewCell>
                         <controls:AthleteLoginControlView Athlete="{Binding Athlete}"
-                                                            Expanded="{Binding IsExpanded}"
-                                                            Password="{Binding EnteredPassword}"
-                                                            Command="{Binding Source={x:Reference LoginPageRoot},
-                                                                            Path=ViewModel.LoginAthleteCommand}"
-                                                            CommandParameter="{Binding EnteredPassword}" />
+                                                          BackgroundColor="{Binding BackgroundColor}"
+                                                          Expanded="{Binding IsExpanded}"
+                                                          Password="{Binding EnteredPassword}"
+                                                          Command="{Binding Source={x:Reference LoginPageRoot},
+                                                                          Path=ViewModel.LoginAthleteCommand}"
+                                                          CommandParameter="{Binding EnteredPassword}" />
                     </controls:ResizableViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
