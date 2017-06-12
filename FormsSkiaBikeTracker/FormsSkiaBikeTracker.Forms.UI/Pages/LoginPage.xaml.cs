@@ -96,8 +96,8 @@ namespace FormsSkiaBikeTracker.Forms.UI.Pages
         private void RebuildAthletesViewWrappers()
         {
             AthletesViewWrappers = ViewModel.Athletes
-                                         .Select(a => new AthleteLoginWrapper { Athlete = a })
-                                         .ToList();
+                                            .Select(a => new AthleteLoginWrapper { Athlete = a })
+                                            .ToList();
         }
 
         private void SignupButtonClicked(object sender, EventArgs e)
