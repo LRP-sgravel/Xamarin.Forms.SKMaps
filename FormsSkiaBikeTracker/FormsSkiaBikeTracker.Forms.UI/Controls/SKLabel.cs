@@ -84,17 +84,14 @@ namespace FormsSkiaBikeTracker.Forms.UI.Controls
             Stream resStream = _resourceLocator.ResourcesAssembly.GetManifestResourceStream(resourcePath);
 
             _Typeface?.Dispose();
+                _Typeface = null;
 
             if (resStream != null)
             {
-                using (resStream)
-                {
-                    _Typeface = SKTypeface.FromStream(resStream);
-                }
+                _Typeface = SKTypeface.FromStream(resStream);
             }
             else
             {
-                _Typeface = null;
             }
         }
 
