@@ -1,3 +1,4 @@
+using System;
 using FormsSkiaBikeTracker.Models;
 using PropertyChanged;
 using Xamarin.Forms;

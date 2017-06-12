@@ -142,7 +142,7 @@ namespace FormsSkiaBikeTracker.Forms.UI.Controls
         {
             if (HasSomethingToDraw())
             {
-                canvas.DrawText(Text, 0, (float)Height - (_Paint.FontMetrics.Descent * 0.5f), _Paint);
+                canvas.DrawText(Text, 0, (float)Height, _Paint);
             }
         }
 

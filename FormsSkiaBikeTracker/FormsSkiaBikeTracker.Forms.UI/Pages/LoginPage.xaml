@@ -9,6 +9,7 @@
                      xmlns:xForms="clr-namespace:LRPLib.Views.XForms;assembly=LRPLib.Views.XForms"
                      xmlns:lrpMvx="clr-namespace:LRPLib.Mvx.Views.XForms.Markup;assembly=LRPLib.Mvx.Views.XForms"
                      xmlns:lrp="clr-namespace:LRPLib.Views.XForms.Markup;assembly=LRPLib.Views.XForms"
+                     xmlns:effects="clr-namespace:FormsSkiaBikeTracker.Forms.UI.Effects;assembly=FormsSkiaBikeTracker.Forms.UI"
                      x:Class="FormsSkiaBikeTracker.Forms.UI.Pages.LoginPage"
                      x:Name="LoginPageRoot"
                      Title="{lrp:LocalizedText Login}"
@@ -41,8 +42,7 @@
                     RowHeight="-1"
                     HasUnevenRows="True"
                     SeparatorVisibility="None"
-                    ItemsSource="{Binding Source={x:Reference LoginPageRoot}, Path=AthletesViewWrappers}"
-                    SelectedItem="{Binding Source={x:Reference LoginPageRoot}, Path=SelectedAthlete}">
+                    ItemsSource="{Binding Source={x:Reference LoginPageRoot}, Path=AthletesViewWrappers}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <controls:ResizableViewCell>
@@ -51,11 +51,21 @@
                                                           Expanded="{Binding IsExpanded}"
                                                           Password="{Binding EnteredPassword}"
                                                           Command="{Binding Source={x:Reference LoginPageRoot},
-                                                                          Path=ViewModel.LoginAthleteCommand}"
-                                                          CommandParameter="{Binding EnteredPassword}" />
+                                                                            Path=ViewModel.LoginAthleteCommand}"
+                                                          CommandParameter="{Binding EnteredPassword}">
+                            <controls:AthleteLoginControlView.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding Source={x:Reference LoginPageRoot},
+                                                                        Path=ViewModel.SelectAthleteCommand}"
+                                                      CommandParameter="{Binding Athlete}" />
+                            </controls:AthleteLoginControlView.GestureRecognizers>
+                        </controls:AthleteLoginControlView>
                     </controls:ResizableViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
+        
+            <ListView.Effects>
+                <effects:NoSelectionListViewEffect />
+            </ListView.Effects>
         </ListView>
         <xForms:LinearGradientBoxView Grid.Row="3"
                                         StartColor="AliceBlue"

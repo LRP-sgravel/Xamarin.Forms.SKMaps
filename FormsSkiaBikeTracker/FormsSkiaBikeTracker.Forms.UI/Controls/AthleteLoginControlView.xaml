@@ -47,7 +47,7 @@
                           Text="{Binding Athlete.Name}"
                           FontResourcePath="KumarOne-Regular.otf"
                           FontSize="24"
-                          TextColor="DarkSlateGray"/>
+                          TextColor="DarkSlateGray" />
 
         <StackLayout x:Name="PasswordLayout"
                      Grid.Row="1" Grid.Column="0"

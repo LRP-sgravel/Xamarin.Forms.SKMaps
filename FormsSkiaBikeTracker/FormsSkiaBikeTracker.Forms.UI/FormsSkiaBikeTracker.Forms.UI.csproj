@@ -46,6 +46,7 @@
     </Compile>
     <Compile Include="Controls\ResizableViewCell.cs" />
     <Compile Include="Effects\InvalidEntryBehavior.cs" />
+    <Compile Include="Effects\NoSelectionListViewEffect.cs" />
     <Compile Include="LrpFormsPagePresenter.cs" />
     <Compile Include="Models\LoginPage.AthleteLoginWrapper.cs" />
     <Compile Include="Pages\SignUpPage.xaml.cs">

@@ -87,6 +87,25 @@ namespace FormsSkiaBikeTracker.Shared.ViewModels
             }
         }
 
+        private IMvxCommand _selectAthleteCommand;
+        public IMvxCommand SelectAthleteCommand
+        {
+            get
+            {
+                if (_selectAthleteCommand == null)
+                {
+                    _selectAthleteCommand = new MvxCommand<Athlete>(SelectAthlete);
+                }
+
+                return _selectAthleteCommand;
+            }
+        }
+
+        private void SelectAthlete(Athlete pickedAthlete)
+        {
+            SelectedAthlete = pickedAthlete;
+        }
+
         public LoginViewModel()
         {
         }

@@ -99,6 +99,7 @@
     <Compile Include="AppDelegate.cs" />
     <Compile Include="Services\DocumentRoot.cs" />
     <Compile Include="Setup.cs" />
+    <Compile Include="UI\Effects\NoSelectionListViewEffect.cs" />
     <None Include="app.config" />
     <None Include="Entitlements.plist" />
     <None Include="Info.plist">
