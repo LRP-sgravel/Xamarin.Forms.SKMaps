@@ -54,11 +54,11 @@
     <EmbeddedResource Include="Resources\Text\fr\Common.json" />
     <EmbeddedResource Include="Resources\Text\Common.json" />
     <None Include="packages.config" />
-    <EmbeddedResource Include="Resources\Fonts\KumarOne-Regular.ttf" />
     <EmbeddedResource Include="Resources\Text\ViewModels.LoginViewModel.json" />
     <EmbeddedResource Include="Resources\Text\fr\ViewModels.LoginViewModel.json" />
     <EmbeddedResource Include="Resources\Text\fr\ViewModels.SignUpViewModel.json" />
     <EmbeddedResource Include="Resources\Text\ViewModels.SignUpViewModel.json" />
+    <EmbeddedResource Include="Resources\Fonts\KumarOne-Regular.otf" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
