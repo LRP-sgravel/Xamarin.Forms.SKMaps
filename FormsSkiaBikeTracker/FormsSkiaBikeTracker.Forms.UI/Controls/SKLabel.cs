@@ -128,7 +128,7 @@ namespace FormsSkiaBikeTracker.Forms.UI.Controls
                 _Paint.MeasureText(Text, ref textBounds);
                 requestRect = textBounds.ToFormsRect();
 
-                requestRect.Height += _Paint.FontMetrics.Descent;
+                requestRect.Height = _Paint.FontMetrics.Descent - _Paint.FontMetrics.Ascent;
                 requestRect.Width = Math.Ceiling(Math.Min(requestRect.Width, widthConstraint));
                 requestRect.Height = Math.Ceiling(Math.Min(requestRect.Height, heightConstraint));
 
@@ -142,7 +142,7 @@ namespace FormsSkiaBikeTracker.Forms.UI.Controls
         {
             if (HasSomethingToDraw())
             {
-                canvas.DrawText(Text, 0, (float)Height, _Paint);
+                canvas.DrawText(Text, 0, (float)Height - _Paint.FontMetrics.Descent * 0.5f, _Paint);
             }
         }
 

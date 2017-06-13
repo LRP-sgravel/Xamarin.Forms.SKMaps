@@ -41,7 +41,6 @@
         <controls:SKLabel Grid.Row="0" Grid.Column="1"
                           Grid.ColumnSpan="2"
                           Margin ="0, 0, 0, 10"
-                          HeightRequest="30"
                           VerticalOptions="Center"
                           HorizontalOptions="Start"
                           Text="{Binding Athlete.Name}"
@@ -52,12 +51,12 @@
         <StackLayout x:Name="PasswordLayout"
                      Grid.Row="1" Grid.Column="0"
                      Grid.ColumnSpan="2"
-                     Margin="20, 0, 20, 0"
+                     Margin="20, 0, 0, 0"
                      HeightRequest="0"
                      HorizontalOptions="Fill"
                      Orientation="Horizontal">
             <Entry x:Name="PasswordEntry"
-                   Margin="20, 5, 20, 5"
+                   Margin="20, 5, 10, 5"
                    HorizontalOptions="FillAndExpand"
                    VerticalOptions="Fill"
                    IsPassword="True"
@@ -66,6 +65,8 @@
             <Button x:Name="SubmitButton"
                     HorizontalOptions="End"
                     VerticalOptions="Fill"
+                    FontSize="20"
+                    TextColor="DarkSlateGray"
                     Text=">>" />
         </StackLayout>
     </Grid>
