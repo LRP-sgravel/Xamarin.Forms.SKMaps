@@ -39,6 +39,9 @@ namespace FormsSkiaBikeTracker.Shared.ViewModels
         private string PictureFilePath(string fileName) => FileStore.NativePath($"{DocumentRoot.Path}/{fileName}");
 
         [MvxInject]
+        public ICryptoService Crypto { get; set; }
+
+        [MvxInject]
         public IMvxPictureChooserTask PictureChooser { get; set; }
 
         [MvxInject]
@@ -182,10 +185,9 @@ namespace FormsSkiaBikeTracker.Shared.ViewModels
             if (!validationResult.HasErrors)
             {
                 Realm realmInstance = Realm.GetInstance();
-                PBKDF2 crypto = new PBKDF2();
                 string athleteId = Guid.NewGuid()
                                        .ToString();
-                string salt = crypto.GenerateSalt();
+                string salt = Crypto.GenerateSalt();
                 string athletePictureRelativePath = SaveUserPicture(athleteId);
 
                 realmInstance.Write(() =>
@@ -199,7 +201,7 @@ namespace FormsSkiaBikeTracker.Shared.ViewModels
                             Name = Name,
                             PicturePath = athletePictureRelativePath,
                             PasswordSalt = salt,
-                            PasswordHash = crypto.Compute(Password, salt)
+                            PasswordHash = Crypto.Compute(Password, salt)
                         };
 
                         realmInstance.Add(newAthlete);
