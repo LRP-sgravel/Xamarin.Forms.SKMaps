@@ -77,7 +77,7 @@ namespace FormsSkiaBikeTracker.Forms.UI
 
                             MainThread.RunAsync(async () =>
                                                 {
-                                                    await pushTask.ConfigureAwait(true);
+                                                    await pushTask.ConfigureAwait(false);
 
                                                     ClearNavigationStack(mainPage);
                                                 });
