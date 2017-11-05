@@ -1,6 +1,6 @@
 ﻿// **********************************************************************
 // 
-//   PointExtension.cs
+//   PositionExtension.cs
 //   
 //   This file is subject to the terms and conditions defined in
 //   file 'LICENSE.txt', which is part of this source code package.
@@ -10,15 +10,20 @@
 // ***********************************************************************
 
 using CoreLocation;
-using Xamarin.Forms;
+using Xamarin.Forms.Maps;
 
 namespace FormsSkiaBikeTracker.iOS.Helpers
 {
-    public static class PointExtension
+    public static class PositionExtension
     {
-        public static CLLocationCoordinate2D ToLocationCoordinate(this Point self)
+        public static CLLocationCoordinate2D ToLocationCoordinate(this Position self)
         {
-            return new CLLocationCoordinate2D(self.X, self.Y);
+            return new CLLocationCoordinate2D(self.Latitude, self.Longitude);
+        }
+
+        public static Position ToPosition(this CLLocationCoordinate2D self)
+        {
+            return new Position(self.Latitude, self.Longitude);
         }
     }
 }

@@ -80,7 +80,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="LRPLib.Mvx, Version=1.0.6372.22129, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\LRPLib.Mvx.1.1.0\lib\portable-net45+netcore45+wpa81+MonoAndroid10+Xamarin.iOS10\LRPLib.Mvx.dll</HintPath>
+      <HintPath>..\..\packages\LRPLib.Mvx.1.1.1\lib\portable-net45+netcore45+wpa81+MonoAndroid10+Xamarin.iOS10\LRPLib.Mvx.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="MvvmCross.Binding, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">

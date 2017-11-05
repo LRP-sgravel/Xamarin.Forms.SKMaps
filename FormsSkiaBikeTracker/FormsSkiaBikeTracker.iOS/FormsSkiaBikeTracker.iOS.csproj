@@ -13,6 +13,21 @@
     <AssemblyName>FormsSkiaBikeTracker.iOS</AssemblyName>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
     <DebugSymbols>true</DebugSymbols>
@@ -94,8 +109,8 @@
     <Compile Include="Bootstrap\PictureChooserPluginBootstrap.cs" />
     <Compile Include="Bootstrap\ResourceLoaderPluginBootstrap.cs" />
     <Compile Include="Bootstrap\UserInteractionPluginBootstrap.cs" />
-    <Compile Include="Helpers\PointExtension.cs" />
-    <Compile Include="Helpers\RectangleExtension.cs" />
+    <Compile Include="Helpers\PositionExtension.cs" />
+    <Compile Include="Helpers\MapSpanExtension.cs" />
     <Compile Include="LrpFormsIosPagePresenter.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
@@ -157,11 +172,11 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="LRPLib.Mvx, Version=1.0.6372.22129, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\LRPLib.Mvx.1.1.0\lib\Xamarin.iOS10\LRPLib.Mvx.dll</HintPath>
+      <HintPath>..\..\packages\LRPLib.Mvx.1.1.1\lib\Xamarin.iOS10\LRPLib.Mvx.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="LRPLib.Mvx.iOS, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\LRPLib.Mvx.1.1.0\lib\Xamarin.iOS10\LRPLib.Mvx.iOS.dll</HintPath>
+      <HintPath>..\..\packages\LRPLib.Mvx.1.1.1\lib\Xamarin.iOS10\LRPLib.Mvx.iOS.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="LRPLib.Mvx.Views.XForms, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -330,16 +345,22 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\FormsSkiaBikeTracker.Forms.UI\FormsSkiaBikeTracker.Forms.UI.csproj">
+      <Project>{2ca00f2b-622e-4b8a-9ce9-1a3d09fbfb61}</Project>
+      <Name>FormsSkiaBikeTracker.Forms.UI</Name>
+    </ProjectReference>
     <ProjectReference Include="..\FormsSkiaBikeTracker.Shared\FormsSkiaBikeTracker.Shared.csproj">
       <Project>{BAA1AFD6-59ED-46F7-9E05-7C9EA1E25FC3}</Project>
       <Name>FormsSkiaBikeTracker.Shared</Name>
     </ProjectReference>
-    <ProjectReference Include="..\FormsSkiaBikeTracker.Forms.UI\FormsSkiaBikeTracker.Forms.UI.csproj">
-      <Project>{BAA1AFD6-59ED-46F7-9E05-7C9EA1E25FC3}</Project>
-      <Name>FormsSkiaBikeTracker.Forms.UI</Name>
-    </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
   <ItemGroup>
     <None Include="FodyWeavers.xml" />
   </ItemGroup>

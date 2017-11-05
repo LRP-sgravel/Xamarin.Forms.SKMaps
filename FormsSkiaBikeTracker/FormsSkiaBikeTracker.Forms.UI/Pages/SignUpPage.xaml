@@ -12,15 +12,15 @@
                      Title="{lrp:LocalizedText SigningUp}"
                      x:Name="SignUpPage">
     <ScrollView>
-        <Grid RowSpacing="0">
+        <Grid RowSpacing="3">
             <Grid.RowDefinitions>
                 <RowDefinition Height="120"/>
                 <RowDefinition Height="5"/>
+                <RowDefinition Height="25"/>
                 <RowDefinition Height="40"/>
+                <RowDefinition Height="25"/>
                 <RowDefinition Height="40"/>
-                <RowDefinition Height="40"/>
-                <RowDefinition Height="40"/>
-                <RowDefinition Height="40"/>
+                <RowDefinition Height="25"/>
                 <RowDefinition Height="60"/>
                 <RowDefinition Height="2"/>
                 <RowDefinition Height="120"/>

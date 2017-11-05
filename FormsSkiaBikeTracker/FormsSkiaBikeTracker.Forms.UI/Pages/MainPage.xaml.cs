@@ -8,6 +8,8 @@
 //   Copyright (c) 2017, Le rond-point
 // 
 // ***********************************************************************
+
+using Xamarin.Forms.Maps;
 using Xamarin.Forms.Xaml;
 
 namespace FormsSkiaBikeTracker.Forms.UI.Pages
@@ -18,6 +20,8 @@ namespace FormsSkiaBikeTracker.Forms.UI.Pages
         public MainPage()
         {
             InitializeComponent();
+
+            MapControl.MoveToRegion(new MapSpan(new Position(0, 0), 0.5, 0.5));
         }
     }
 }

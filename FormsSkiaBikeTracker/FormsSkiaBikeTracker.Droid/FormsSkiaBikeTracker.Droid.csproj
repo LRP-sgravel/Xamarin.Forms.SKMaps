@@ -76,11 +76,11 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="LRPLib.Mvx, Version=1.0.6372.22129, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\LRPLib.Mvx.1.1.0\lib\MonoAndroid70\LRPLib.Mvx.dll</HintPath>
+      <HintPath>..\..\packages\LRPLib.Mvx.1.1.1\lib\MonoAndroid70\LRPLib.Mvx.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="LRPLib.Mvx.Droid, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\LRPLib.Mvx.1.1.0\lib\MonoAndroid70\LRPLib.Mvx.Droid.dll</HintPath>
+      <HintPath>..\..\packages\LRPLib.Mvx.1.1.1\lib\MonoAndroid70\LRPLib.Mvx.Droid.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="LRPLib.Mvx.Views.XForms, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -362,7 +362,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FormsSkiaBikeTracker.Forms.UI\FormsSkiaBikeTracker.Forms.UI.csproj">
-      <Project>{fc69c11b-8d56-4d29-89c9-5bd7e60b3cec}</Project>
+      <Project>{2ca00f2b-622e-4b8a-9ce9-1a3d09fbfb61}</Project>
       <Name>FormsSkiaBikeTracker.Forms.UI</Name>
     </ProjectReference>
     <ProjectReference Include="..\FormsSkiaBikeTracker.Shared\FormsSkiaBikeTracker.Shared.csproj">

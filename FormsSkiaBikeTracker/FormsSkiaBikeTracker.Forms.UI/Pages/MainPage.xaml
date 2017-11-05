@@ -3,6 +3,7 @@
                      xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                      xmlns:core="clr-namespace:MvvmCross.Forms.Presenter.Core;assembly=MvvmCross.Forms.Presenter.Core"
                      xmlns:controls="clr-namespace:FormsSkiaBikeTracker.Forms.UI.Controls;assembly=FormsSkiaBikeTracker.Forms.UI"
+                     xmlns:maps="clr-namespace:FormsSkiaBikeTracker.Forms.UI.Controls.Maps;assembly=FormsSkiaBikeTracker.Forms.UI"
                      x:Class="FormsSkiaBikeTracker.Forms.UI.Pages.MainPage"
                      Title="MainPage">
     <Grid RowSpacing="0">
@@ -16,13 +17,15 @@
         / -->
         
         <BoxView Grid.Row="0"
-                Color="IndianRed" />
+                 Color="IndianRed" />
         
-        <controls:OverlayedMap Grid.Row="1"
+        <controls:OverlayedMap x:Name="MapControl"
+                               Grid.Row="1"
                                VerticalOptions="FillAndExpand"
                                HorizontalOptions="FillAndExpand"
                                IsShowingUser="True">
             <controls:OverlayedMap.MapOverlays>
+                <maps:ImageMapOverlay />
             </controls:OverlayedMap.MapOverlays>
         </controls:OverlayedMap>
 
