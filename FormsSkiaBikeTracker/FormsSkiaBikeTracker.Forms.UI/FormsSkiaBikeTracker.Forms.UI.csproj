@@ -42,6 +42,8 @@
     <Compile Include="Controls\Maps\ImageMapOverlay.cs" />
     <Compile Include="Controls\Maps\DrawableMapOverlay.cs" />
     <Compile Include="Controls\DrawnBackgroundControlView.cs" />
+    <Compile Include="Controls\Maps\MatrixBuilderExtension.cs" />
+    <Compile Include="Controls\Maps\SKMapCanvas.cs" />
     <Compile Include="Controls\OverlayedMap.cs" />
     <Compile Include="Controls\SKLabel.cs" />
     <Compile Include="Controls\AthleteLoginControlView.xaml.cs">
@@ -50,6 +52,9 @@
     <Compile Include="Controls\ResizableViewCell.cs" />
     <Compile Include="Effects\InvalidEntryBehavior.cs" />
     <Compile Include="Effects\NoSelectionListViewEffect.cs" />
+    <Compile Include="Helpers\LinearAlgebraExtensions.cs" />
+    <Compile Include="Helpers\MapSpanExtensions.cs" />
+    <Compile Include="Helpers\SKMapExtensions.cs" />
     <Compile Include="LrpFormsPagePresenter.cs" />
     <Compile Include="Models\LoginPage.AthleteLoginWrapper.cs" />
     <Compile Include="Pages\SignUpPage.xaml.cs">
@@ -86,6 +91,9 @@
     <Reference Include="LRPLib.Views.XForms, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\LRPLib.Views.XForms.1.1.0\lib\portable-net45+netcore45+wpa81+MonoAndroid10+Xamarin.iOS10\LRPLib.Views.XForms.dll</HintPath>
       <Private>True</Private>
+    </Reference>
+    <Reference Include="MathNet.Numerics, Version=3.20.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\MathNet.Numerics.3.20.0\lib\portable-net45+netcore45+MonoAndroid1+MonoTouch1\MathNet.Numerics.dll</HintPath>
     </Reference>
     <Reference Include="MvvmCross.Binding, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\MvvmCross.Binding.4.4.0\lib\portable-net45+win+wpa81+wp80\MvvmCross.Binding.dll</HintPath>

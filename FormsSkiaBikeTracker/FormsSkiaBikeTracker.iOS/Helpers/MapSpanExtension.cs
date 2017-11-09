@@ -9,7 +9,9 @@
 // 
 // ***********************************************************************
 
+using FormsSkiaBikeTracker.Forms.UI.Helpers;
 using MapKit;
+using Xamarin.Forms;
 using Xamarin.Forms.Maps;
 
 namespace FormsSkiaBikeTracker.iOS.Helpers
@@ -18,10 +20,8 @@ namespace FormsSkiaBikeTracker.iOS.Helpers
     {
         public static MKMapRect ToMapRect(this MapSpan self)
         {
-            Position gpsTopLeft = new Position(self.Center.Latitude + self.LatitudeDegrees, self.Center.Longitude - self.LongitudeDegrees);
-            Position gpsBottomRight = new Position(self.Center.Latitude - self.LatitudeDegrees, self.Center.Longitude + self.LongitudeDegrees);
-            MKMapPoint mapTopLeft = MKMapPoint.FromCoordinate(gpsTopLeft.ToLocationCoordinate());
-            MKMapPoint mapBottomRight = MKMapPoint.FromCoordinate(gpsBottomRight.ToLocationCoordinate());
+            MKMapPoint mapTopLeft = MKMapPoint.FromCoordinate(self.TopLeft().ToLocationCoordinate());
+            MKMapPoint mapBottomRight = MKMapPoint.FromCoordinate(self.BottomRight().ToLocationCoordinate());
             MKMapSize mapSize = new MKMapSize(mapBottomRight.X - mapTopLeft.X,
                                               mapBottomRight.Y - mapTopLeft.Y);
 
@@ -39,7 +39,14 @@ namespace FormsSkiaBikeTracker.iOS.Helpers
             Position gpsCenter = new Position((gpsTopLeft.Latitude + gpsBottomRight.Latitude) * 0.5,
                                               (gpsTopLeft.Longitude + gpsBottomRight.Longitude) * 0.5);
 
-            return new MapSpan(gpsCenter, gpsTopLeft.Latitude - gpsBottomRight.Latitude, gpsBottomRight.Longitude - gpsTopLeft.Longitude);
+            return new MapSpan(gpsCenter,
+                               (gpsTopLeft.Latitude - gpsBottomRight.Latitude) * 0.5,
+                               (gpsBottomRight.Longitude - gpsTopLeft.Longitude) * 0.5);
+        }
+
+        public static Rectangle ToRectangle(this MKMapRect self)
+        {
+            return new Rectangle(self.MinX, self.MinY, self.Width, self.Height);
         }
     }
 }
