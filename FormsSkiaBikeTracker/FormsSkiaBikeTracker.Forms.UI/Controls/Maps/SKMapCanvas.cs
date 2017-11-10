@@ -206,6 +206,28 @@ namespace FormsSkiaBikeTracker.Forms.UI.Controls.Maps
             _Canvas.DrawPath(path.MapCanvasPath, paint);
         }
 
+        public void DrawImage(SKImage image, Position gpsPosition, SKPaint paint = null)
+        {
+            SKPoint canvasPosition = ConvertPositionToLocal(gpsPosition);
+            SKRect destination = new SKRect(canvasPosition.X - image.Width  * 0.5f,
+                                            canvasPosition.Y - image.Height * 0.5f,
+                                            canvasPosition.X + image.Width * 0.5f,
+                                            canvasPosition.Y + image.Height * 0.5f);
+
+            _Canvas.DrawImage(image, destination, paint);
+        }
+
+        public void DrawImage(SKImage image, MapSpan gpsSpan, SKPaint paint = null)
+        {
+            DrawImage(image, new SKRect(0, 0, image.Width, image.Height), gpsSpan, paint);
+        }
+
+        public void DrawImage(SKImage image, SKRect source, MapSpan gpsSpan, SKPaint paint = null)
+        {
+            SKRect canvasDest = ConvertRectangleToLocal(gpsSpan);
+
+            _Canvas.DrawImage(image, source, canvasDest, paint);
+        }
 
         public void DrawPicture(SKPicture picture, Position gpsPosition, SKSize pixelSize, SKPaint paint = null)
         {

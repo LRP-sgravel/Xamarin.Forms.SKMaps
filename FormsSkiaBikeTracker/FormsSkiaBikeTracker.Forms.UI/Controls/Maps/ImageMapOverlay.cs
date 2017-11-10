@@ -9,14 +9,9 @@
 // 
 // ***********************************************************************
 
-using System;
-using System.IO;
-using System.Reflection;
-using LRPLib.Mvx.Views.XForms.Views;
 using LRPLib.Services.Resources;
 using LRPLib.Views.XForms.Extensions;
 using MvvmCross.Platform;
-using MvvmCross.Platform.Platform;
 using SkiaSharp;
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
@@ -89,9 +84,7 @@ namespace FormsSkiaBikeTracker.Forms.UI.Controls.Maps
             string resPath = resLocator.GetResourcePath(ResourceKeys.ImagesKey, "symbol_logo.svg");
             SKSvg logoSvg = new SKSvg();
             logoSvg.Load(resLocator.ResourcesAssembly.GetManifestResourceStream(resPath));
-            canvas.DrawPicture(logoSvg.Picture, GpsBounds.Center, new SKSize(50, 50));
-
-            canvas.DrawPicture(logoSvg.Picture);
+            canvas.DrawPicture(logoSvg.Picture, GpsBounds.Center, new SKSize(100, 100));
         }
     }
 }
