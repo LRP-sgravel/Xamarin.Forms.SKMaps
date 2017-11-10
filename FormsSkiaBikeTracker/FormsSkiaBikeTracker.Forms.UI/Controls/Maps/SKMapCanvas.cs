@@ -206,6 +206,30 @@ namespace FormsSkiaBikeTracker.Forms.UI.Controls.Maps
             _Canvas.DrawPath(path.MapCanvasPath, paint);
         }
 
+
+        public void DrawPicture(SKPicture picture, Position gpsPosition, SKSize pixelSize, SKPaint paint = null)
+        {
+            Matrix<double> matrix = GetPictureDrawMatrix(picture, gpsPosition, pixelSize);
+            SKMatrix canvasMatrix = matrix.ToSKMatrix();
+
+            _Canvas.DrawPicture(picture, ref canvasMatrix, paint);
+        }
+
+        private Matrix<double> GetPictureDrawMatrix(SKPicture picture, Position gpsPosition, SKSize pixelSize)
+        {
+            Matrix<double> matrix = Matrix<double>.Build.DenseIdentity(3, 3);
+            SKPoint canvasPoint = ConvertPositionToLocal(gpsPosition);
+            SKRect sourceRect = picture.CullRect;
+            float xScale = pixelSize.Width / sourceRect.Width;
+            float yScale = pixelSize.Height / sourceRect.Height;
+
+            matrix *= Matrix<double>.Build.Translation(canvasPoint.X, canvasPoint.Y);
+            matrix *= Matrix<double>.Build.Scale(xScale, -yScale);
+            matrix *= Matrix<double>.Build.Translation(sourceRect.Width * -0.5, sourceRect.Height * -0.5);
+
+            return matrix;
+        }
+
         internal SKPoint ConvertPositionToLocal(Position position)
         {
             Point mercatorStart = position.ToMercator();

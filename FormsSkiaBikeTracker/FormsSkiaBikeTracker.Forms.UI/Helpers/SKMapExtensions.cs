@@ -10,6 +10,7 @@
 // ***********************************************************************
 
 using System;
+using MathNet.Numerics.LinearAlgebra;
 using SkiaSharp;
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
@@ -65,6 +66,22 @@ namespace FormsSkiaBikeTracker.Forms.UI.Helpers
             double longitude = ((mercatorCoords.X - MercatorCenterOffset) / MercatorRadius) * 180.0 / Math.PI;
 
             return new Position(latitude, longitude);
+        }
+
+        public static SKMatrix ToSKMatrix(this Matrix<double> doubleMatrix)
+        {
+            return new SKMatrix
+                   {
+                       ScaleX = (float)doubleMatrix[0, 0],
+                       SkewX = (float)doubleMatrix[0, 1],
+                       TransX = (float)doubleMatrix[0, 2],
+                       SkewY = (float)doubleMatrix[1, 0],
+                       ScaleY = (float)doubleMatrix[1, 1],
+                       TransY = (float)doubleMatrix[1, 2],
+                       Persp0 = (float)doubleMatrix[2, 0],
+                       Persp1 = (float)doubleMatrix[2, 1],
+                       Persp2 = (float)doubleMatrix[2, 2],
+                   };
         }
     }
 }

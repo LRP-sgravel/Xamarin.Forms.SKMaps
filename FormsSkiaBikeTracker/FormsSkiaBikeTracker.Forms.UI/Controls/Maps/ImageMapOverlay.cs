@@ -9,7 +9,14 @@
 // 
 // ***********************************************************************
 
+using System;
+using System.IO;
+using System.Reflection;
+using LRPLib.Mvx.Views.XForms.Views;
+using LRPLib.Services.Resources;
 using LRPLib.Views.XForms.Extensions;
+using MvvmCross.Platform;
+using MvvmCross.Platform.Platform;
 using SkiaSharp;
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
@@ -34,30 +41,40 @@ namespace FormsSkiaBikeTracker.Forms.UI.Controls.Maps
             if (canvasMapRect.Center.Latitude > 0)
             {
                 canvas.DrawLine(new Position(canvasMapRect.Center.Latitude + canvasMapRect.LatitudeDegrees, canvasMapRect.Center.Longitude),
-                                new Position(canvasMapRect.Center.Latitude - canvasMapRect.LatitudeDegrees, canvasMapRect.Center.Longitude + canvasMapRect.LongitudeDegrees),
+                                new Position(canvasMapRect.Center.Latitude - canvasMapRect.LatitudeDegrees,
+                                             canvasMapRect.Center.Longitude + canvasMapRect.LongitudeDegrees),
                                 paint);
-                canvas.DrawLine(new Position(canvasMapRect.Center.Latitude - canvasMapRect.LatitudeDegrees, canvasMapRect.Center.Longitude + canvasMapRect.LongitudeDegrees),
-                                new Position(canvasMapRect.Center.Latitude - canvasMapRect.LatitudeDegrees, canvasMapRect.Center.Longitude - canvasMapRect.LongitudeDegrees),
+                canvas.DrawLine(new Position(canvasMapRect.Center.Latitude - canvasMapRect.LatitudeDegrees,
+                                             canvasMapRect.Center.Longitude + canvasMapRect.LongitudeDegrees),
+                                new Position(canvasMapRect.Center.Latitude - canvasMapRect.LatitudeDegrees,
+                                             canvasMapRect.Center.Longitude - canvasMapRect.LongitudeDegrees),
                                 paint);
-                canvas.DrawLine(new Position(canvasMapRect.Center.Latitude - canvasMapRect.LatitudeDegrees, canvasMapRect.Center.Longitude - canvasMapRect.LongitudeDegrees),
+                canvas.DrawLine(new Position(canvasMapRect.Center.Latitude - canvasMapRect.LatitudeDegrees,
+                                             canvasMapRect.Center.Longitude - canvasMapRect.LongitudeDegrees),
                                 new Position(canvasMapRect.Center.Latitude + canvasMapRect.LatitudeDegrees, canvasMapRect.Center.Longitude),
                                 paint);
             }
             else
             {
                 canvas.DrawLine(new Position(canvasMapRect.Center.Latitude - canvasMapRect.LatitudeDegrees, canvasMapRect.Center.Longitude),
-                                new Position(canvasMapRect.Center.Latitude + canvasMapRect.LatitudeDegrees, canvasMapRect.Center.Longitude + canvasMapRect.LongitudeDegrees),
+                                new Position(canvasMapRect.Center.Latitude + canvasMapRect.LatitudeDegrees,
+                                             canvasMapRect.Center.Longitude + canvasMapRect.LongitudeDegrees),
                                 paint);
-                canvas.DrawLine(new Position(canvasMapRect.Center.Latitude + canvasMapRect.LatitudeDegrees, canvasMapRect.Center.Longitude + canvasMapRect.LongitudeDegrees),
-                                new Position(canvasMapRect.Center.Latitude + canvasMapRect.LatitudeDegrees, canvasMapRect.Center.Longitude - canvasMapRect.LongitudeDegrees),
+                canvas.DrawLine(new Position(canvasMapRect.Center.Latitude + canvasMapRect.LatitudeDegrees,
+                                             canvasMapRect.Center.Longitude + canvasMapRect.LongitudeDegrees),
+                                new Position(canvasMapRect.Center.Latitude + canvasMapRect.LatitudeDegrees,
+                                             canvasMapRect.Center.Longitude - canvasMapRect.LongitudeDegrees),
                                 paint);
-                canvas.DrawLine(new Position(canvasMapRect.Center.Latitude + canvasMapRect.LatitudeDegrees, canvasMapRect.Center.Longitude - canvasMapRect.LongitudeDegrees),
+                canvas.DrawLine(new Position(canvasMapRect.Center.Latitude + canvasMapRect.LatitudeDegrees,
+                                             canvasMapRect.Center.Longitude - canvasMapRect.LongitudeDegrees),
                                 new Position(canvasMapRect.Center.Latitude - canvasMapRect.LatitudeDegrees, canvasMapRect.Center.Longitude),
                                 paint);
             }
 
             paint.Style = SKPaintStyle.Stroke;
             paint.StrokeWidth = 10;
+            paint.StrokeCap = SKStrokeCap.Round;
+            paint.StrokeJoin = SKStrokeJoin.Round;
             paint.Color = Color.Red.ToSKColor();
             SKMapPath zonePath = canvas.GetMapPath();
 
@@ -67,6 +84,14 @@ namespace FormsSkiaBikeTracker.Forms.UI.Controls.Maps
             zonePath.Close();
 
             canvas.DrawPath(zonePath, paint);
+
+            IResourceLocator resLocator = Mvx.Resolve<IResourceLocator>();
+            string resPath = resLocator.GetResourcePath(ResourceKeys.ImagesKey, "symbol_logo.svg");
+            SKSvg logoSvg = new SKSvg();
+            logoSvg.Load(resLocator.ResourcesAssembly.GetManifestResourceStream(resPath));
+            canvas.DrawPicture(logoSvg.Picture, GpsBounds.Center, new SKSize(50, 50));
+
+            canvas.DrawPicture(logoSvg.Picture);
         }
     }
 }

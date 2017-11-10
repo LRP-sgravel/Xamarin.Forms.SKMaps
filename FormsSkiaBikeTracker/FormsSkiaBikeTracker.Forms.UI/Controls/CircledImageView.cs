@@ -142,7 +142,7 @@ namespace FormsSkiaBikeTracker.Forms.UI.Controls
                 SKMatrix.Concat(ref result, result, scale);
                 SKMatrix.Concat(ref result, result, initialTranslate);
 
-                return  result;
+                return result;
             }
             catch (Exception)
             {
