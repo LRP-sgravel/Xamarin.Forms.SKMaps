@@ -32,7 +32,7 @@ namespace FormsSkiaBikeTracker.Forms.UI.Controls.Maps
             _Canvas = new SKCanvas(bitmap);
             _MercatorRenderArea = mercatorRenderArea;
             _ScaleFactor = scaleFactor;
-            _MercatorMatrix = CreateIdentityMatrix();
+            _MercatorMatrix = CreateTileBaseMatrix();
             _MatrixStack = new Stack<Matrix<double>>();
         }
 
@@ -55,7 +55,7 @@ namespace FormsSkiaBikeTracker.Forms.UI.Controls.Maps
             }
             else
             {
-                _MercatorMatrix = CreateIdentityMatrix();
+                _MercatorMatrix = CreateTileBaseMatrix();
             }
         }
 
@@ -71,7 +71,7 @@ namespace FormsSkiaBikeTracker.Forms.UI.Controls.Maps
             else
             {
                 _MatrixStack.Clear();
-                _MercatorMatrix = CreateIdentityMatrix();
+                _MercatorMatrix = CreateTileBaseMatrix();
             }
         }
 
@@ -178,10 +178,9 @@ namespace FormsSkiaBikeTracker.Forms.UI.Controls.Maps
 
         public void DrawOval(MapSpan rect, SKPaint paint)
         {
-            Rectangle mercatorRect = rect.ToMercator();
-            SKRect localRect = ApplyMatrix(mercatorRect);
+            SKRect canvasRect = ConvertRectangleToLocal(rect);
 
-            _Canvas.DrawOval(localRect, paint);
+            _Canvas.DrawOval(canvasRect, paint);
         }
 
         public void DrawLine(float latitude, float longitude, float latitudeDegrees, float longitudeDegrees, SKPaint paint)
@@ -191,15 +190,37 @@ namespace FormsSkiaBikeTracker.Forms.UI.Controls.Maps
 
         public void DrawLine(Position start, Position end, SKPaint paint)
         {
-            Point mercatorStart = start.ToMercator();
-            Point mercatorEnd = end.ToMercator();
-            SKPoint localStart = ApplyMatrix(mercatorStart);
-            SKPoint localEnd = ApplyMatrix(mercatorEnd);
+            SKPoint canvasStart = ConvertPositionToLocal(start);
+            SKPoint canvasEnd = ConvertPositionToLocal(end);
 
-            _Canvas.DrawLine(localStart.X, localStart.Y, localEnd.X, localEnd.Y, paint);
+            _Canvas.DrawLine(canvasStart.X, canvasStart.Y, canvasEnd.X, canvasEnd.Y, paint);
         }
 
-        private Matrix<double> CreateIdentityMatrix()
+        public SKMapPath GetMapPath()
+        {
+            return new SKMapPath(this);
+        }
+
+        public void DrawPath(SKMapPath path, SKPaint paint)
+        {
+            _Canvas.DrawPath(path.MapCanvasPath, paint);
+        }
+
+        internal SKPoint ConvertPositionToLocal(Position position)
+        {
+            Point mercatorStart = position.ToMercator();
+
+            return ApplyMatrix(mercatorStart);
+        }
+
+        internal SKRect ConvertRectangleToLocal(MapSpan rect)
+        {
+            Rectangle mercatorRect = rect.ToMercator();
+
+            return ApplyMatrix(mercatorRect);
+        }
+
+        private Matrix<double> CreateTileBaseMatrix()
         {
             Matrix<double> result = Matrix<double>.Build.DenseIdentity(3, 3);
 

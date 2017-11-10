@@ -44,6 +44,7 @@
     <Compile Include="Controls\DrawnBackgroundControlView.cs" />
     <Compile Include="Controls\Maps\MatrixBuilderExtension.cs" />
     <Compile Include="Controls\Maps\SKMapCanvas.cs" />
+    <Compile Include="Controls\Maps\SKMapPath.cs" />
     <Compile Include="Controls\OverlayedMap.cs" />
     <Compile Include="Controls\SKLabel.cs" />
     <Compile Include="Controls\AthleteLoginControlView.xaml.cs">
