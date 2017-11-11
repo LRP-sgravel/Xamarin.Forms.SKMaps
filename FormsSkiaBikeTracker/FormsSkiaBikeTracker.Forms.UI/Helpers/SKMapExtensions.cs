@@ -24,15 +24,17 @@ namespace FormsSkiaBikeTracker.Forms.UI.Helpers
         public const double MercatorCenterOffset = 134217728;
         private const double MercatorRadius = MercatorCenterOffset / Math.PI;
 
-        public static Rectangle ToMercator(this MapSpan gpsRect)
+        public static Rectangle ToMercator(this MapSpan gpsSpan)
         {
-            Point gpsTopLeft = gpsRect.TopLeft().ToMercator();
-            Point gpsBottomRight = gpsRect.BottomRight().ToMercator();
+            Position topLeftGps = gpsSpan.TopLeft();
+            Position bottomRightGps = gpsSpan.BottomRight();
+            Point canvasTopLeft = topLeftGps.ToMercator();
+            Point canvasBottomRight = bottomRightGps.ToMercator();
 
-            return new Rectangle(gpsTopLeft.X,
-                                 gpsTopLeft.Y,
-                                 gpsBottomRight.X - gpsTopLeft.X,
-                                 gpsBottomRight.Y - gpsTopLeft.Y);
+            return new Rectangle(canvasTopLeft.X,
+                                 canvasTopLeft.Y,
+                                 canvasBottomRight.X - canvasTopLeft.X,
+                                 canvasBottomRight.Y - canvasTopLeft.Y);
         }
 
         public static Point ToMercator(this Position gpsCoords)

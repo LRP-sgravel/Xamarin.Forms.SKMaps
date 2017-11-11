@@ -10,6 +10,7 @@
 // ***********************************************************************
 
 using MathNet.Numerics.LinearAlgebra;
+using SkiaSharp;
 using Xamarin.Forms;
 
 namespace FormsSkiaBikeTracker.Forms.UI.Helpers
@@ -33,8 +34,8 @@ namespace FormsSkiaBikeTracker.Forms.UI.Helpers
 
             result[0, 0] = point.Left;
             result[0, 1] = point.Right;
-            result[1, 0] = point.Top;
-            result[1, 1] = point.Bottom;
+            result[1, 0] = point.Bottom;
+            result[1, 1] = point.Top;
             result[2, 0] = 1;
             result[2, 1] = 1;
 

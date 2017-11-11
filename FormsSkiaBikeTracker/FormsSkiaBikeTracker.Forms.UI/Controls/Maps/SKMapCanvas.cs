@@ -14,6 +14,7 @@ using System.Collections.Generic;
 using FormsSkiaBikeTracker.Forms.UI.Helpers;
 using MathNet.Numerics.LinearAlgebra;
 using SkiaSharp;
+using SkiaSharp.Views.Forms;
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
 
@@ -39,6 +40,11 @@ namespace FormsSkiaBikeTracker.Forms.UI.Controls.Maps
         public void Dispose()
         {
             _Canvas?.Dispose();
+        }
+
+        public SKMapPath GetEmptyMapPath()
+        {
+            return new SKMapPath(this);
         }
 
         public void Save()
@@ -176,9 +182,9 @@ namespace FormsSkiaBikeTracker.Forms.UI.Controls.Maps
             DrawOval(new MapSpan(new Position(latitude, longitude), latitudeDegrees, longitudeDegrees), paint);
         }
 
-        public void DrawOval(MapSpan rect, SKPaint paint)
+        public void DrawOval(MapSpan gpsSpan, SKPaint paint)
         {
-            SKRect canvasRect = ConvertRectangleToLocal(rect);
+            SKRect canvasRect = ConvertSpanToLocal(gpsSpan);
 
             _Canvas.DrawOval(canvasRect, paint);
         }
@@ -194,11 +200,6 @@ namespace FormsSkiaBikeTracker.Forms.UI.Controls.Maps
             SKPoint canvasEnd = ConvertPositionToLocal(end);
 
             _Canvas.DrawLine(canvasStart.X, canvasStart.Y, canvasEnd.X, canvasEnd.Y, paint);
-        }
-
-        public SKMapPath GetMapPath()
-        {
-            return new SKMapPath(this);
         }
 
         public void DrawPath(SKMapPath path, SKPaint paint)
@@ -217,6 +218,13 @@ namespace FormsSkiaBikeTracker.Forms.UI.Controls.Maps
             _Canvas.DrawImage(image, destination, paint);
         }
 
+        public void DrawRect(MapSpan gpsSpan, SKPaint paint)
+        {
+            SKRect canvasDest = ConvertSpanToLocal(gpsSpan);
+
+            _Canvas.DrawRect(canvasDest, paint);
+        }
+
         public void DrawImage(SKImage image, MapSpan gpsSpan, SKPaint paint = null)
         {
             DrawImage(image, new SKRect(0, 0, image.Width, image.Height), gpsSpan, paint);
@@ -224,7 +232,7 @@ namespace FormsSkiaBikeTracker.Forms.UI.Controls.Maps
 
         public void DrawImage(SKImage image, SKRect source, MapSpan gpsSpan, SKPaint paint = null)
         {
-            SKRect canvasDest = ConvertRectangleToLocal(gpsSpan);
+            SKRect canvasDest = ConvertSpanToLocal(gpsSpan);
 
             _Canvas.DrawImage(image, source, canvasDest, paint);
         }
@@ -259,11 +267,25 @@ namespace FormsSkiaBikeTracker.Forms.UI.Controls.Maps
             return ApplyMatrix(mercatorStart);
         }
 
-        internal SKRect ConvertRectangleToLocal(MapSpan rect)
+        internal SKRect ConvertSpanToLocal(MapSpan gpsSpan)
         {
-            Rectangle mercatorRect = rect.ToMercator();
+            Rectangle mercatorRect = gpsSpan.ToMercator();
 
             return ApplyMatrix(mercatorRect);
+        }
+
+        internal Position ConvertLocalToPosition(SKPoint canvasPoint)
+        {
+            Point mercatorPoint = ApplyInverseMatrix(canvasPoint);
+
+            return mercatorPoint.ToGps();
+        }
+
+        internal MapSpan ConvertLocalToSpan(SKRect canvasBounds)
+        {
+            Rectangle mercatorRect = ApplyInverseMatrix(canvasBounds);
+
+            return mercatorRect.ToGps();
         }
 
         private Matrix<double> CreateTileBaseMatrix()
@@ -281,7 +303,7 @@ namespace FormsSkiaBikeTracker.Forms.UI.Controls.Maps
             Matrix<double> source = mercatorRect.ToMatrix();
             Matrix<double> rect = _MercatorMatrix * source;
 
-            return new SKRect((float)rect[0, 0], (float)rect[0, 1], (float)rect[1, 0], (float)rect[1, 1]);
+            return new SKRect((float)rect[0, 0], (float)rect[1, 1], (float)rect[0, 1], (float)rect[1, 0]);
         }
 
         private SKPoint ApplyMatrix(Point mercatorPoint)
@@ -290,6 +312,22 @@ namespace FormsSkiaBikeTracker.Forms.UI.Controls.Maps
             Vector<double> result = _MercatorMatrix.Multiply(point);
 
             return new SKPoint((float)result[0], (float)result[1]);
+        }
+
+        private Rectangle ApplyInverseMatrix(SKRect canvasRect)
+        {
+            Matrix<double> source = canvasRect.ToFormsRect().ToMatrix();
+            Matrix<double> rect = _MercatorMatrix.Inverse() * source;
+
+            return new Rectangle((float)rect[0, 0], (float)rect[1, 0], (float)(rect[0, 1] - rect[0, 0]), (float)(rect[1, 1] - rect[1, 0]));
+        }
+
+        private Point ApplyInverseMatrix(SKPoint canvasPoint)
+        {
+            Vector<double> source = canvasPoint.ToFormsPoint().ToVector();
+            Vector<double> point = _MercatorMatrix.Inverse() * source;
+
+            return new Point((float)point[0], (float)point[1]);
         }
     }
 }

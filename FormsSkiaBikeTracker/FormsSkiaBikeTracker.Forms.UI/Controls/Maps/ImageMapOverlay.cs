@@ -48,6 +48,11 @@ namespace FormsSkiaBikeTracker.Forms.UI.Controls.Maps
                                              canvasMapRect.Center.Longitude - canvasMapRect.LongitudeDegrees),
                                 new Position(canvasMapRect.Center.Latitude + canvasMapRect.LatitudeDegrees, canvasMapRect.Center.Longitude),
                                 paint);
+
+                paint.Color = Color.Fuchsia.MultiplyAlpha(0.3).ToSKColor();
+
+                canvas.DrawOval(new MapSpan(canvasMapRect.Center, canvasMapRect.LatitudeDegrees, canvasMapRect.LongitudeDegrees / 2),
+                                paint);
             }
             else
             {
@@ -64,6 +69,11 @@ namespace FormsSkiaBikeTracker.Forms.UI.Controls.Maps
                                              canvasMapRect.Center.Longitude - canvasMapRect.LongitudeDegrees),
                                 new Position(canvasMapRect.Center.Latitude - canvasMapRect.LatitudeDegrees, canvasMapRect.Center.Longitude),
                                 paint);
+
+                paint.Color = Color.Fuchsia.MultiplyAlpha(0.3).ToSKColor();
+
+                canvas.DrawOval(new MapSpan(canvasMapRect.Center, canvasMapRect.LatitudeDegrees / 2, canvasMapRect.LongitudeDegrees),
+                                paint);
             }
 
             paint.Style = SKPaintStyle.Stroke;
@@ -71,12 +81,15 @@ namespace FormsSkiaBikeTracker.Forms.UI.Controls.Maps
             paint.StrokeCap = SKStrokeCap.Round;
             paint.StrokeJoin = SKStrokeJoin.Round;
             paint.Color = Color.Red.ToSKColor();
-            SKMapPath zonePath = canvas.GetMapPath();
+            SKMapPath zonePath = canvas.GetEmptyMapPath();
 
             zonePath.MoveTo((float)(GpsBounds.Center.Latitude - GpsBounds.LatitudeDegrees), (float)GpsBounds.Center.Longitude);
             zonePath.LineTo((float)(GpsBounds.Center.Latitude + GpsBounds.LatitudeDegrees), (float)(GpsBounds.Center.Longitude + GpsBounds.LongitudeDegrees));
             zonePath.LineTo((float)(GpsBounds.Center.Latitude + GpsBounds.LatitudeDegrees), (float)(GpsBounds.Center.Longitude - GpsBounds.LongitudeDegrees));
             zonePath.Close();
+
+            paint.Color = Color.Red.MultiplyAlpha(0.3).ToSKColor();
+            canvas.DrawRect(zonePath.Bounds, paint);
 
             canvas.DrawPath(zonePath, paint);
 
