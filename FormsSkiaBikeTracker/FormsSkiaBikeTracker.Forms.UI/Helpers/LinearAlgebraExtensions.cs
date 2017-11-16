@@ -41,5 +41,31 @@ namespace FormsSkiaBikeTracker.Forms.UI.Helpers
 
             return result;
         }
+
+        public static Point ToPoint(this Vector<double> pointVector)
+        {
+            return new Point(pointVector[0], pointVector[1]);
+        }
+
+        public static SKPoint ToSKPoint(this Vector<double> pointVector)
+        {
+            return new SKPoint((float)pointVector[0], (float)pointVector[1]);
+        }
+
+        public static Rectangle ToRectangle(this Matrix<double> rectMatrix)
+        {
+            return new Rectangle(rectMatrix[0, 0],
+                                 rectMatrix[1, 0],
+                                 rectMatrix[0, 1] - rectMatrix[0, 0],
+                                 rectMatrix[1, 1] - rectMatrix[1, 0]);
+        }
+
+        public static SKRect ToSKRect(this Matrix<double> rectMatrix)
+        {
+            return new SKRect((float)rectMatrix[0, 0],
+                              (float)rectMatrix[1, 1],
+                              (float)rectMatrix[0, 1],
+                              (float)rectMatrix[1, 0]);
+        }
     }
 }

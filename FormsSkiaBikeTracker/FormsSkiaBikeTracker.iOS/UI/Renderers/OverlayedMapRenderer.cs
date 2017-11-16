@@ -18,16 +18,13 @@ using CoreGraphics;
 using CoreLocation;
 using FormsSkiaBikeTracker.Forms.UI.Controls;
 using FormsSkiaBikeTracker.Forms.UI.Controls.Maps;
-using FormsSkiaBikeTracker.Forms.UI.Helpers;
 using FormsSkiaBikeTracker.iOS.Helpers;
 using FormsSkiaBikeTracker.iOS.UI.Renderers;
 using MapKit;
-using MathNet.Numerics.LinearAlgebra;
 using MvvmCross.Platform.Platform;
 using MvvmCross.Platform.WeakSubscription;
 using SkiaSharp;
 using SkiaSharp.Views.iOS;
-using UIKit;
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
 using Xamarin.Forms.Maps.iOS;
@@ -107,7 +104,7 @@ namespace FormsSkiaBikeTracker.iOS.UI.Renderers
 
                 mapCanvas.Clear();
                 
-                _SharedOverlay.DrawOnMap(mapCanvas, rectSpan);
+                _SharedOverlay.DrawOnMap(mapCanvas, rectSpan, zoomScale);
 
                 context.SaveState();
                 context.DrawImage(coreDrawRect, overlayBitmap.ToCGImage());

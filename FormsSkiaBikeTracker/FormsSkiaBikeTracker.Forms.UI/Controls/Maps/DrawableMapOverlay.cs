@@ -35,6 +35,6 @@ namespace FormsSkiaBikeTracker.Forms.UI.Controls.Maps
         {
         }
 
-        public abstract void DrawOnMap(SKMapCanvas canvas, MapSpan canvasMapRect);
+        public abstract void DrawOnMap(SKMapCanvas canvas, MapSpan canvasMapRect, double pixelScale);
     }
 }

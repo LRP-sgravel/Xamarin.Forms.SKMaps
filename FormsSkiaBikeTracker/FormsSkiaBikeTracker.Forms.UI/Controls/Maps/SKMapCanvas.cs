@@ -22,6 +22,8 @@ namespace FormsSkiaBikeTracker.Forms.UI.Controls.Maps
 {
     public class SKMapCanvas : IDisposable
     {
+        public static double MaxZoomScale => Math.Pow(2, -18);
+
         private SKCanvas _Canvas { get; }
         private Rectangle _MercatorRenderArea { get; }
         private double _ScaleFactor { get; }
@@ -245,6 +247,33 @@ namespace FormsSkiaBikeTracker.Forms.UI.Controls.Maps
             _Canvas.DrawPicture(picture, ref canvasMatrix, paint);
         }
 
+        public static MapSpan PixelsToMaximumMapSizeAtZoom(Size pixelsSize, double zoomScale)
+        {
+            return PixelsToMapSize(pixelsSize,
+                                   new Point(SKMapExtensions.MercatorCenterOffset, SKMapExtensions.MercatorCenterOffset),
+                                   zoomScale);
+        }
+
+        public static MapSpan PixelsToMapSize(Size pixelsSize, Position mapPosition, double zoomScale)
+        {
+            Point mercatorPosition = mapPosition.ToMercator();
+
+            return PixelsToMapSize(pixelsSize, mercatorPosition, zoomScale);
+        }
+
+        internal static MapSpan PixelsToMapSize(Size pixelsSize, Point mercatorPosition, double zoomScale)
+        {
+            Rectangle sizeRect = new Rectangle(0, 0, pixelsSize.Width, pixelsSize.Height);
+            Rectangle mercatorRectAtOrigin = new Rectangle(mercatorPosition.X - 128,
+                                                           mercatorPosition.Y - 128,
+                                                           256,
+                                                           256);
+            Matrix<double> mercatorAtZoom = CreateTileBaseMatrix(mercatorRectAtOrigin, zoomScale);
+            Matrix<double> originSize = mercatorAtZoom.Inverse() * sizeRect.ToMatrix();
+
+            return originSize.ToRectangle().ToGps();
+        }
+
         private Matrix<double> GetPictureDrawMatrix(SKPicture picture, Position gpsPosition, SKSize pixelSize)
         {
             Matrix<double> matrix = Matrix<double>.Build.DenseIdentity(3, 3);
@@ -290,10 +319,15 @@ namespace FormsSkiaBikeTracker.Forms.UI.Controls.Maps
 
         private Matrix<double> CreateTileBaseMatrix()
         {
+            return CreateTileBaseMatrix(_MercatorRenderArea, _ScaleFactor);
+        }
+
+        private static Matrix<double> CreateTileBaseMatrix(Rectangle mercatorArea , double scale)
+        {
             Matrix<double> result = Matrix<double>.Build.DenseIdentity(3, 3);
 
-            result *= Matrix<double>.Build.Scale(_ScaleFactor, -_ScaleFactor);
-            result *= Matrix<double>.Build.Translation(-_MercatorRenderArea.Left, -_MercatorRenderArea.Bottom);
+            result *= Matrix<double>.Build.Scale(scale, -scale);
+            result *= Matrix<double>.Build.Translation(-mercatorArea.Left, -mercatorArea.Bottom);
 
             return result;
         }
@@ -303,7 +337,7 @@ namespace FormsSkiaBikeTracker.Forms.UI.Controls.Maps
             Matrix<double> source = mercatorRect.ToMatrix();
             Matrix<double> rect = _MercatorMatrix * source;
 
-            return new SKRect((float)rect[0, 0], (float)rect[1, 1], (float)rect[0, 1], (float)rect[1, 0]);
+            return rect.ToSKRect();
         }
 
         private SKPoint ApplyMatrix(Point mercatorPoint)
@@ -311,15 +345,20 @@ namespace FormsSkiaBikeTracker.Forms.UI.Controls.Maps
             Vector<double> point = mercatorPoint.ToVector();
             Vector<double> result = _MercatorMatrix.Multiply(point);
 
-            return new SKPoint((float)result[0], (float)result[1]);
+            return result.ToSKPoint();
         }
 
         private Rectangle ApplyInverseMatrix(SKRect canvasRect)
         {
-            Matrix<double> source = canvasRect.ToFormsRect().ToMatrix();
+            return ApplyInverseMatrix(canvasRect.ToFormsRect());
+        }
+
+        private Rectangle ApplyInverseMatrix(Rectangle canvasRect)
+        {
+            Matrix<double> source = canvasRect.ToMatrix();
             Matrix<double> rect = _MercatorMatrix.Inverse() * source;
 
-            return new Rectangle((float)rect[0, 0], (float)rect[1, 0], (float)(rect[0, 1] - rect[0, 0]), (float)(rect[1, 1] - rect[1, 0]));
+            return rect.ToRectangle();
         }
 
         private Point ApplyInverseMatrix(SKPoint canvasPoint)
@@ -327,7 +366,7 @@ namespace FormsSkiaBikeTracker.Forms.UI.Controls.Maps
             Vector<double> source = canvasPoint.ToFormsPoint().ToVector();
             Vector<double> point = _MercatorMatrix.Inverse() * source;
 
-            return new Point((float)point[0], (float)point[1]);
+            return point.ToPoint();
         }
     }
 }
