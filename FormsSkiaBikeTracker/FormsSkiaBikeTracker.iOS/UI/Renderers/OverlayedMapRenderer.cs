@@ -14,6 +14,7 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Linq;
+using System.Threading.Tasks;
 using CoreGraphics;
 using CoreLocation;
 using FormsSkiaBikeTracker.Forms.UI.Controls;
@@ -67,9 +68,9 @@ namespace FormsSkiaBikeTracker.iOS.UI.Renderers
         {
             private MapOverlay _NativeOverlay => Overlay as MapOverlay;
             private DrawableMapOverlay _SharedOverlay { get; }
-            private MKMapRect _OverlayMapRect { get; set; }
 
             private MvxNamedNotifyPropertyChangedEventSubscription<DrawableMapOverlay> _boundsChangedSubscription;
+            private Queue<SKBitmap> _overlayBitmapPool = new Queue<SKBitmap>();
 
             public MapOverlayRenderer(DrawableMapOverlay sharedOverlay, IMKOverlay overlay) : base(overlay)
             {
@@ -79,36 +80,66 @@ namespace FormsSkiaBikeTracker.iOS.UI.Renderers
                 UpdateBoundsAndRefresh();
             }
 
-            private void OverlayGpsBoundsChanged(object sender, PropertyChangedEventArgs e)
+            private void OverlayGpsBoundsChanged(object sender, PropertyChangedEventArgs args)
             {
                 UpdateBoundsAndRefresh();
             }
 
             private void UpdateBoundsAndRefresh()
             {
-                _OverlayMapRect = _NativeOverlay.BoundingMapRect;
-                SetNeedsDisplay(_OverlayMapRect);
+                SetNeedsDisplay(_NativeOverlay.BoundingMapRect);
             }
 
             public override void DrawMapRect(MKMapRect mapRect, nfloat zoomScale, CGContext context)
             {
                 CGRect coreDrawRect = RectForMapRect(mapRect);
-                SKBitmap overlayBitmap = new SKBitmap(256, 256, SKColorType.Rgba8888, SKAlphaType.Premul);
-                SKMapCanvas mapCanvas = new SKMapCanvas(overlayBitmap, mapRect.ToRectangle(), zoomScale);
+                SKBitmap drawBitmap = GetOverlayBitmap();
+                SKMapCanvas mapCanvas = new SKMapCanvas(drawBitmap, mapRect.ToRectangle(), zoomScale);
                 MapSpan rectSpan = mapRect.ToMapSpan();
 
                 MvxTrace.Trace(MvxTraceLevel.Diagnostic,
                                $"Drawing tile at ({coreDrawRect.Left}, {coreDrawRect.Top}; " +
-                                                $"{coreDrawRect.Width}, {coreDrawRect.Height}) " +
+                               $"{coreDrawRect.Width}, {coreDrawRect.Height}) " +
                                $"with zoom {zoomScale}.");
 
-                mapCanvas.Clear();
-                
                 _SharedOverlay.DrawOnMap(mapCanvas, rectSpan, zoomScale);
 
                 context.SaveState();
-                context.DrawImage(coreDrawRect, overlayBitmap.ToCGImage());
+                context.DrawImage(coreDrawRect, drawBitmap.ToCGImage());
                 context.RestoreState();
+
+                // Let's exit this method so MapKit renders to screen while we free our resources in the background.
+                Task.Run(() => ReleaseOverlayBitmap(drawBitmap));
+            }
+
+            private SKBitmap GetOverlayBitmap()
+            {
+                SKBitmap overlayBitmap;
+
+                lock (_overlayBitmapPool)
+                {
+                    if (_overlayBitmapPool.Count == 0)
+                    {
+                        overlayBitmap = new SKBitmap(SKMapCanvas.MapTileSize, SKMapCanvas.MapTileSize, SKColorType.Rgba8888, SKAlphaType.Premul);
+                        overlayBitmap.Erase(SKColor.Empty);
+                    }
+                    else
+                    {
+                        overlayBitmap = _overlayBitmapPool.Dequeue();
+                    }
+                }
+
+                return overlayBitmap;
+            }
+
+            private void ReleaseOverlayBitmap(SKBitmap tileBitmap)
+            {
+                tileBitmap.Erase(SKColor.Empty);
+
+                lock (_overlayBitmapPool)
+                {
+                    _overlayBitmapPool.Enqueue(tileBitmap);
+                }
             }
         }
 

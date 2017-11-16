@@ -22,6 +22,7 @@ namespace FormsSkiaBikeTracker.Forms.UI.Controls.Maps
 {
     public class SKMapCanvas : IDisposable
     {
+        public const int MapTileSize = 256;
         public static double MaxZoomScale => Math.Pow(2, -18);
 
         private SKCanvas _Canvas { get; }
@@ -264,10 +265,10 @@ namespace FormsSkiaBikeTracker.Forms.UI.Controls.Maps
         internal static MapSpan PixelsToMapSize(Size pixelsSize, Point mercatorPosition, double zoomScale)
         {
             Rectangle sizeRect = new Rectangle(0, 0, pixelsSize.Width, pixelsSize.Height);
-            Rectangle mercatorRectAtOrigin = new Rectangle(mercatorPosition.X - 128,
-                                                           mercatorPosition.Y - 128,
-                                                           256,
-                                                           256);
+            Rectangle mercatorRectAtOrigin = new Rectangle(mercatorPosition.X - MapTileSize * 0.5,
+                                                           mercatorPosition.Y - MapTileSize * 0.5,
+                                                           MapTileSize,
+                                                           MapTileSize);
             Matrix<double> mercatorAtZoom = CreateTileBaseMatrix(mercatorRectAtOrigin, zoomScale);
             Matrix<double> originSize = mercatorAtZoom.Inverse() * sizeRect.ToMatrix();
 
