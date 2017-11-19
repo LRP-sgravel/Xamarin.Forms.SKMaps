@@ -58,6 +58,7 @@
     <Compile Include="Helpers\SKMapExtensions.cs" />
     <Compile Include="LrpFormsPagePresenter.cs" />
     <Compile Include="Models\LoginPage.AthleteLoginWrapper.cs" />
+    <Compile Include="Models\SKMapPosition.cs" />
     <Compile Include="Pages\SignUpPage.xaml.cs">
       <DependentUpon>SignUpPage.xaml</DependentUpon>
     </Compile>

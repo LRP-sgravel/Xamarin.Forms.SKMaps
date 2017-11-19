@@ -20,33 +20,26 @@ namespace FormsSkiaBikeTracker.iOS.Helpers
     {
         public static MKMapRect ToMapRect(this MapSpan self)
         {
-            MKMapPoint mapTopLeft = MKMapPoint.FromCoordinate(self.TopLeft().ToLocationCoordinate());
-            MKMapPoint mapBottomRight = MKMapPoint.FromCoordinate(self.BottomRight().ToLocationCoordinate());
-            MKMapSize mapSize = new MKMapSize(mapBottomRight.X - mapTopLeft.X,
-                                              mapBottomRight.Y - mapTopLeft.Y);
+            Rectangle mercator = self.ToMercator();
 
-            return new MKMapRect(mapTopLeft, mapSize);
+            return mercator.ToMapRect();
         }
 
         public static MapSpan ToMapSpan(this MKMapRect self)
         {
-            MKMapPoint mapTopLeft = new MKMapPoint(self.MinX, self.MinY);
-            MKMapPoint mapBottomRight = new MKMapPoint(self.MaxX, self.MaxY);
-            Position gpsTopLeft = MKMapPoint.ToCoordinate(mapTopLeft)
-                                            .ToPosition();
-            Position gpsBottomRight = MKMapPoint.ToCoordinate(mapBottomRight)
-                                                .ToPosition();
-            Position gpsCenter = new Position((gpsTopLeft.Latitude + gpsBottomRight.Latitude) * 0.5,
-                                              (gpsTopLeft.Longitude + gpsBottomRight.Longitude) * 0.5);
+            Rectangle mercator = new Rectangle(self.MinX, self.MinY, self.Width, self.Height);
 
-            return new MapSpan(gpsCenter,
-                               (gpsTopLeft.Latitude - gpsBottomRight.Latitude) * 0.5,
-                               (gpsBottomRight.Longitude - gpsTopLeft.Longitude) * 0.5);
+            return mercator.ToGps();
         }
 
         public static Rectangle ToRectangle(this MKMapRect self)
         {
             return new Rectangle(self.MinX, self.MinY, self.Width, self.Height);
+        }
+
+        public static MKMapRect ToMapRect(this Rectangle self)
+        {
+            return new MKMapRect(new MKMapPoint(self.X, self.Y), new MKMapSize(self.Width, self.Height));
         }
     }
 }

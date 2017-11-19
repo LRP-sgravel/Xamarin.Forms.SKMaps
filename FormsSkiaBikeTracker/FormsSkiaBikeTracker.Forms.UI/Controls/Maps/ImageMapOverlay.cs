@@ -19,18 +19,18 @@ namespace FormsSkiaBikeTracker.Forms.UI.Controls.Maps
 {
     public class ImageMapOverlay : DrawableMapOverlay
     {
-        private MapSpan strokeWidthArea;
+        private Size strokeWidthArea;
         private MapSpan baseBounds;
 
         public ImageMapOverlay()
         {
-            this.strokeWidthArea = SKMapCanvas.PixelsToMaximumMapSizeAtZoom(new Size(10, 10), SKMapCanvas.MaxZoomScale);
+            this.strokeWidthArea = SKMapCanvas.PixelsToMaximumMapSizeAtZoom(new Size(50, 50), SKMapCanvas.MaxZoomScale);
 
-            baseBounds = new MapSpan(new Position(0, 179), 1, 1);
+            baseBounds = new MapSpan(new Position(0, -180), 1, 1);
             GpsBounds = new MapSpan(baseBounds.Center,
-                                    baseBounds.LatitudeDegrees + strokeWidthArea.LatitudeDegrees,
-                                    baseBounds.LongitudeDegrees + strokeWidthArea.LongitudeDegrees);
-            GpsBounds = baseBounds;
+                                    baseBounds.LatitudeDegrees + strokeWidthArea.Height,
+                                    baseBounds.LongitudeDegrees + strokeWidthArea.Width);
+//            GpsBounds = baseBounds;
         }
 
         public override void DrawOnMap(SKMapCanvas canvas, MapSpan canvasMapRect, double pixelScale)
@@ -78,7 +78,7 @@ namespace FormsSkiaBikeTracker.Forms.UI.Controls.Maps
             paint.StrokeWidth = 10;
             paint.StrokeCap = SKStrokeCap.Round;
             paint.StrokeJoin = SKStrokeJoin.Round;
-/*            paint.Color = Color.Red.ToSKColor();
+            paint.Color = Color.Red.ToSKColor();
             SKMapPath zonePath = canvas.GetEmptyMapPath();
 
             zonePath.MoveTo((float)(baseBounds.Center.Latitude - baseBounds.LatitudeDegrees), (float)baseBounds.Center.Longitude);
@@ -86,13 +86,13 @@ namespace FormsSkiaBikeTracker.Forms.UI.Controls.Maps
             zonePath.LineTo((float)(baseBounds.Center.Latitude + baseBounds.LatitudeDegrees), (float)(baseBounds.Center.Longitude - baseBounds.LongitudeDegrees));
             zonePath.Close();
 
-            canvas.DrawPath(zonePath, paint);*/
+            canvas.DrawPath(zonePath, paint);
 
             paint.Color = Color.Green.MultiplyAlpha(0.5).ToSKColor();
-            MapSpan currentScaleStrokeArea = SKMapCanvas.PixelsToMapSize(new Size(10, 10), baseBounds.Center, pixelScale);
+            Size currentScaleStrokeArea = SKMapCanvas.PixelsToMapSize(new Size(5, 5), baseBounds.Center, pixelScale);
             MapSpan insetBounds = new MapSpan(baseBounds.Center,
-                                      baseBounds.LatitudeDegrees - currentScaleStrokeArea.LatitudeDegrees,
-                                      baseBounds.LongitudeDegrees - currentScaleStrokeArea.LongitudeDegrees);
+                                              baseBounds.LatitudeDegrees - currentScaleStrokeArea.Height,
+                                              baseBounds.LongitudeDegrees - currentScaleStrokeArea.Width);
             canvas.DrawRect(insetBounds, paint);
 
             paint.StrokeWidth = 1;
@@ -106,7 +106,7 @@ namespace FormsSkiaBikeTracker.Forms.UI.Controls.Maps
             string resPath = resLocator.GetResourcePath(ResourceKeys.ImagesKey, "symbol_logo.svg");
             SKSvg logoSvg = new SKSvg();
             logoSvg.Load(resLocator.ResourcesAssembly.GetManifestResourceStream(resPath));
-//            canvas.DrawPicture(logoSvg.Picture, baseBounds.Center, new SKSize(100, 100));
+            canvas.DrawPicture(logoSvg.Picture, baseBounds.Center, new Size(100, 100));
         }
     }
 }

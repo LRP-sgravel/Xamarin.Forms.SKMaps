@@ -28,14 +28,14 @@ namespace FormsSkiaBikeTracker.Forms.UI.Helpers
             return result;
         }
 
-        public static Matrix<double> ToMatrix(this Rectangle point)
+        public static Matrix<double> ToMatrix(this Rectangle rect)
         {
             Matrix<double> result = Matrix<double>.Build.Dense(3, 2);
 
-            result[0, 0] = point.Left;
-            result[0, 1] = point.Right;
-            result[1, 0] = point.Bottom;
-            result[1, 1] = point.Top;
+            result[0, 0] = rect.Left;
+            result[0, 1] = rect.Right;
+            result[1, 1] = rect.Bottom;
+            result[1, 0] = rect.Top;
             result[2, 0] = 1;
             result[2, 1] = 1;
 
@@ -57,7 +57,7 @@ namespace FormsSkiaBikeTracker.Forms.UI.Helpers
             return new Rectangle(rectMatrix[0, 0],
                                  rectMatrix[1, 0],
                                  rectMatrix[0, 1] - rectMatrix[0, 0],
-                                 rectMatrix[1, 1] - rectMatrix[1, 0]);
+                                 rectMatrix[1, 0] - rectMatrix[1, 1]);
         }
 
         public static SKRect ToSKRect(this Matrix<double> rectMatrix)

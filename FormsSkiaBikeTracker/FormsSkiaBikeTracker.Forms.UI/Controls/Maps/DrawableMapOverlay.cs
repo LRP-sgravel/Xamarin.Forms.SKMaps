@@ -9,6 +9,7 @@
 // 
 // ***********************************************************************
 
+using FormsSkiaBikeTracker.Forms.UI.Helpers;
 using LRPLib.Views.XForms;
 using SkiaSharp;
 using Xamarin.Forms;
@@ -22,8 +23,8 @@ namespace FormsSkiaBikeTracker.Forms.UI.Controls.Maps
 
         public MapSpan GpsBounds
         {
-            get { return (MapSpan)GetValue(GpsBoundsProperty); }
-            set { SetValue(GpsBoundsProperty, value); }
+            get => (MapSpan)GetValue(GpsBoundsProperty);
+            set => SetValue(GpsBoundsProperty, value.WrapIfRequired());
         }
 
         protected DrawableMapOverlay()
