@@ -8,8 +8,8 @@
                      Title="MainPage">
     <Grid RowSpacing="0">
         <Grid.RowDefinitions>
-            <RowDefinition Height="200" />
-            <RowDefinition Height="*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="4*" />
         </Grid.RowDefinitions>
 
         <!-- QuickStatsBanner Grid.Row="0"

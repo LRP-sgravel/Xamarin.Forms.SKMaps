@@ -24,13 +24,14 @@ namespace FormsSkiaBikeTracker.Forms.UI.Controls.Maps
     {
         public const int MapTileSize = 256;
         public const int HalfMapTileSize = 256 >> 1;
-        public static double MaxZoomScale => Math.Pow(2, -18);
+        public const int MaxZoomLevel = 17;
+        public static double MaxZoomScale => Math.Pow(2, -MaxZoomLevel);
 
         private SKCanvas _Canvas { get; }
         private Rectangle _MercatorRenderArea { get; }
         private double _ScaleFactor { get; }
         private Matrix<double> _MercatorMatrix { get; set; }
-        private Stack<Matrix<double>> _MatrixStack { get; set; }
+        private Stack<Matrix<double>> _MatrixStack { get; } = new Stack<Matrix<double>>();
 
         public SKMapCanvas(SKBitmap bitmap, Rectangle mercatorRenderArea, double scaleFactor)
         {
@@ -38,7 +39,6 @@ namespace FormsSkiaBikeTracker.Forms.UI.Controls.Maps
             _MercatorRenderArea = mercatorRenderArea;
             _ScaleFactor = scaleFactor;
             _MercatorMatrix = CreateTileBaseMatrix();
-            _MatrixStack = new Stack<Matrix<double>>();
         }
 
         public void Dispose()
