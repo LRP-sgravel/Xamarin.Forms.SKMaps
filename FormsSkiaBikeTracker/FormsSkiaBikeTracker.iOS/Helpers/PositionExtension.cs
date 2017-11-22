@@ -11,6 +11,8 @@
 
 using CoreLocation;
 using FormsSkiaBikeTracker.Forms.UI.Pages;
+using FormsSkiaBikeTracker.Shared.Helpers;
+using FormsSkiaBikeTracker.Shared.Models.Maps;
 using Xamarin.Forms.Maps;
 
 namespace FormsSkiaBikeTracker.iOS.Helpers
@@ -20,9 +22,9 @@ namespace FormsSkiaBikeTracker.iOS.Helpers
         public static CLLocationCoordinate2D ToLocationCoordinate(this SKMapPosition self)
         {
             Position position = new Position(self.Latitude,
-                                             (self.Longitude + Forms.UI.Helpers.MapSpanExtension.MaxLongitude) %
-                                             Forms.UI.Helpers.MapSpanExtension.WorldLongitude +
-                                             Forms.UI.Helpers.MapSpanExtension.MinLongitude);
+                                             (self.Longitude + MapSpanExtensions.MaxLongitude) %
+                                             MapSpanExtensions.WorldLongitude +
+                                             MapSpanExtensions.MinLongitude);
 
             return position.ToLocationCoordinate();
         }

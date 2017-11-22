@@ -9,7 +9,9 @@
 // 
 // ***********************************************************************
 
-namespace FormsSkiaBikeTracker.Forms.UI.Pages
+using Xamarin.Forms.Maps;
+
+namespace FormsSkiaBikeTracker.Shared.Models.Maps
 {
     public class SKMapPosition
     {
@@ -17,10 +19,21 @@ namespace FormsSkiaBikeTracker.Forms.UI.Pages
         public double Latitude { get; set; }
         public double Longitude { get; set; }
 
+        public SKMapPosition(Position position)
+        {
+            Latitude = position.Latitude;
+            Longitude = position.Longitude;
+        }
+
         public SKMapPosition(double latitude, double longitude)
         {
             Latitude = latitude;
             Longitude = longitude;
+        }
+
+        public Position ToPosition()
+        {
+            return new Position(Latitude, Longitude);
         }
     }
 }

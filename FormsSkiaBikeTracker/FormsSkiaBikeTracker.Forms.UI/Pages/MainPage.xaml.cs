@@ -21,7 +21,7 @@ namespace FormsSkiaBikeTracker.Forms.UI.Pages
         {
             InitializeComponent();
 
-            MapControl.MoveToRegion(new MapSpan(new Position(0, 0), 0.5, 0.5));
+            MapControl.MoveToRegion(new MapSpan(new Position(84.5, 179.5), 0.5, 0.5));
         }
     }
 }

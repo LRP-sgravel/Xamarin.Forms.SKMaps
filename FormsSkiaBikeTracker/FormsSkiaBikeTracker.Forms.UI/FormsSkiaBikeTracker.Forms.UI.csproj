@@ -39,6 +39,9 @@
       <DependentUpon>BorderButtonView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\CircledImageView.cs" />
+    <Compile Include="Controls\Maps\Test2xScaleOffsetMapOverlay.cs" />
+    <Compile Include="Controls\Maps\TestLineMapOverlay.cs" />
+    <Compile Include="Controls\Maps\TestMapOverlay.cs" />
     <Compile Include="Controls\Maps\ImageMapOverlay.cs" />
     <Compile Include="Controls\Maps\DrawableMapOverlay.cs" />
     <Compile Include="Controls\DrawnBackgroundControlView.cs" />
@@ -53,12 +56,8 @@
     <Compile Include="Controls\ResizableViewCell.cs" />
     <Compile Include="Effects\InvalidEntryBehavior.cs" />
     <Compile Include="Effects\NoSelectionListViewEffect.cs" />
-    <Compile Include="Helpers\LinearAlgebraExtensions.cs" />
-    <Compile Include="Helpers\MapSpanExtensions.cs" />
-    <Compile Include="Helpers\SKMapExtensions.cs" />
     <Compile Include="LrpFormsPagePresenter.cs" />
     <Compile Include="Models\LoginPage.AthleteLoginWrapper.cs" />
-    <Compile Include="Models\SKMapPosition.cs" />
     <Compile Include="Pages\SignUpPage.xaml.cs">
       <DependentUpon>SignUpPage.xaml</DependentUpon>
     </Compile>

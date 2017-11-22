@@ -13,7 +13,7 @@ using MathNet.Numerics.LinearAlgebra;
 using SkiaSharp;
 using Xamarin.Forms;
 
-namespace FormsSkiaBikeTracker.Forms.UI.Helpers
+namespace FormsSkiaBikeTracker.Shared.Helpers
 {
     public static class LinearAlgebraExtensions
     {

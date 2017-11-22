@@ -23,10 +23,7 @@ namespace FormsSkiaBikeTracker.Forms.UI.Controls
                                                                                               typeof(OverlayedMap),
                                                                                               new ObservableCollection<DrawableMapOverlay>());
 
-        public ObservableCollection<DrawableMapOverlay> MapOverlays
-        {
-            get { return (ObservableCollection<DrawableMapOverlay>)GetValue(MapOverlaysProperty); }
-        }
+        public ObservableCollection<DrawableMapOverlay> MapOverlays => (ObservableCollection<DrawableMapOverlay>)GetValue(MapOverlaysProperty);
 
         public OverlayedMap()
         {

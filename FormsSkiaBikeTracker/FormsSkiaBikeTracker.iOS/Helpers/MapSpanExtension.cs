@@ -9,7 +9,9 @@
 // 
 // ***********************************************************************
 
-using FormsSkiaBikeTracker.Forms.UI.Helpers;
+using FormsSkiaBikeTracker.Forms.UI.Pages;
+using FormsSkiaBikeTracker.Shared.Helpers;
+using FormsSkiaBikeTracker.Shared.Models.Maps;
 using MapKit;
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
@@ -25,7 +27,7 @@ namespace FormsSkiaBikeTracker.iOS.Helpers
             return mercator.ToMapRect();
         }
 
-        public static MapSpan ToMapSpan(this MKMapRect self)
+        public static SKMapSpan ToMapSpan(this MKMapRect self)
         {
             Rectangle mercator = new Rectangle(self.MinX, self.MinY, self.Width, self.Height);
 

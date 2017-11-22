@@ -10,13 +10,13 @@
 // ***********************************************************************
 
 using System;
-using FormsSkiaBikeTracker.Forms.UI.Pages;
+using FormsSkiaBikeTracker.Shared.Models.Maps;
 using MathNet.Numerics.LinearAlgebra;
 using SkiaSharp;
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
 
-namespace FormsSkiaBikeTracker.Forms.UI.Helpers
+namespace FormsSkiaBikeTracker.Shared.Helpers
 {
     public static class SKMapExtensions
     {
@@ -27,6 +27,11 @@ namespace FormsSkiaBikeTracker.Forms.UI.Helpers
         private const double MercatorRadius = MercatorCenterOffset / Math.PI;
 
         public static Rectangle ToMercator(this MapSpan gpsSpan)
+        {
+            return new SKMapSpan(gpsSpan).ToMercator();
+        }
+
+        public static Rectangle ToMercator(this SKMapSpan gpsSpan)
         {
             SKMapPosition topLeftGps = gpsSpan.TopLeft();
             SKMapPosition bottomRightGps = gpsSpan.BottomRight();
@@ -41,21 +46,12 @@ namespace FormsSkiaBikeTracker.Forms.UI.Helpers
 
         public static Point ToMercator(this Position gpsCoords)
         {
-            double x = MercatorCenterOffset +
-                            MercatorRadius * gpsCoords.Longitude * Math.PI / 180.0;
-            double y = MercatorCenterOffset -
-                            MercatorRadius *
-                            Math.Log((1 + Math.Sin(gpsCoords.Latitude * Math.PI / 180.0)) /
-                                    (1 - Math.Sin(gpsCoords.Latitude * Math.PI / 180.0))) /
-                            2.0;
-
-            return new Point(x, y);
+            return new SKMapPosition(gpsCoords).ToMercator();
         }
 
         public static Point ToMercator(this SKMapPosition gpsCoords)
         {
-            double x = MercatorCenterOffset +
-                            MercatorRadius * gpsCoords.Longitude * Math.PI / 180.0;
+            double x = (gpsCoords.Longitude + MapSpanExtensions.MaxLongitude) / MapSpanExtensions.WorldLongitude * MercatorMapSize;
             double y = MercatorCenterOffset -
                             MercatorRadius *
                             Math.Log((1 + Math.Sin(gpsCoords.Latitude * Math.PI / 180.0)) /
@@ -66,29 +62,31 @@ namespace FormsSkiaBikeTracker.Forms.UI.Helpers
         }
 
         // Inverse Mercator
-        public static MapSpan ToGps(this Rectangle mercatorRect)
+        public static SKMapSpan ToGps(this Rectangle mercatorRect)
         {
             SKMapPosition canvasTopLeft = new Point(mercatorRect.Left, mercatorRect.Top).ToSKMapPosition();
             SKMapPosition canvasBottomRight = new Point(mercatorRect.Right, mercatorRect.Bottom).ToSKMapPosition();
+            double centerLatitude = (canvasTopLeft.Latitude + canvasBottomRight.Latitude) * 0.5;
+            double centerLongitude = (canvasTopLeft.Longitude + canvasBottomRight.Longitude) * 0.5;
+            double spanLatitude = (canvasTopLeft.Latitude - canvasBottomRight.Latitude) * 0.5;
+            double spanLongitude = (canvasBottomRight.Longitude - canvasTopLeft.Longitude) * 0.5;
 
-            return new MapSpan(new Position((canvasTopLeft.Latitude + canvasBottomRight.Latitude) * 0.5,
-                                            (canvasTopLeft.Longitude + canvasBottomRight.Longitude) * 0.5),
-                               Math.Abs(canvasTopLeft.Latitude - canvasBottomRight.Latitude) * 0.5,
-                               Math.Abs(canvasTopLeft.Longitude - canvasBottomRight.Longitude) * 0.5);
+            return new SKMapSpan(new Position(centerLatitude, centerLongitude),
+                                 spanLatitude,
+                                 spanLongitude);
         }
 
         public static Position ToGps(this Point mercatorCoords)
         {
-            double latitude = (Math.PI / 2.0 - 2.0 * Math.Atan(Math.Exp((mercatorCoords.Y - MercatorCenterOffset) / MercatorRadius))) * 180.0 / Math.PI;
-            double longitude = ((mercatorCoords.X - MercatorCenterOffset) / MercatorRadius) * 180.0 / Math.PI;
+            SKMapPosition mapPosition = mercatorCoords.ToSKMapPosition();
 
-            return new Position(latitude, longitude);
+            return new Position(mapPosition.Latitude, mapPosition.Longitude);
         }
 
         internal static SKMapPosition ToSKMapPosition(this Point mercatorCoords)
         {
             double latitude = (Math.PI / 2.0 - 2.0 * Math.Atan(Math.Exp((mercatorCoords.Y - MercatorCenterOffset) / MercatorRadius))) * 180.0 / Math.PI;
-            double longitude = ((mercatorCoords.X - MercatorCenterOffset) / MercatorRadius) * 180.0 / Math.PI;
+            double longitude = (mercatorCoords.X / MercatorMapSize) * MapSpanExtensions.WorldLongitude - MapSpanExtensions.MaxLongitude;
 
             return new SKMapPosition(latitude, longitude);
         }

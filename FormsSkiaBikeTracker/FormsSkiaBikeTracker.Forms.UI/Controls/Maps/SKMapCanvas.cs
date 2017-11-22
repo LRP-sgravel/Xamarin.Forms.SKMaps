@@ -11,7 +11,10 @@
 
 using System;
 using System.Collections.Generic;
-using FormsSkiaBikeTracker.Forms.UI.Helpers;
+using System.Diagnostics;
+using FormsSkiaBikeTracker.Forms.UI.Pages;
+using FormsSkiaBikeTracker.Shared.Helpers;
+using FormsSkiaBikeTracker.Shared.Models.Maps;
 using MathNet.Numerics.LinearAlgebra;
 using SkiaSharp;
 using SkiaSharp.Views.Forms;
@@ -35,10 +38,13 @@ namespace FormsSkiaBikeTracker.Forms.UI.Controls.Maps
 
         public SKMapCanvas(SKBitmap bitmap, Rectangle mercatorRenderArea, double scaleFactor)
         {
-            _Canvas = new SKCanvas(bitmap);
             _MercatorRenderArea = mercatorRenderArea;
             _ScaleFactor = scaleFactor;
             _MercatorMatrix = CreateTileBaseMatrix();
+
+            _Canvas = new SKCanvas(bitmap);
+            _Canvas.Scale(1, -1);
+            _Canvas.Translate(0, -bitmap.Height);
         }
 
         public void Dispose()
@@ -95,34 +101,34 @@ namespace FormsSkiaBikeTracker.Forms.UI.Controls.Maps
             _MercatorMatrix = matrix;
         }
 
-        public void RotateDegrees(float degrees)
+        public void RotateDegrees(double degrees)
         {
             _MercatorMatrix *= Matrix<double>.Build.RotationDegrees(degrees);
         }
 
-        public void RotateDegrees(float degrees, float offsetX, float offsetY)
+        public void RotateDegrees(double degrees, double offsetX, double offsetY)
         {
             RotateDegrees(degrees, new Position(offsetX, offsetY));
         }
 
-        public void RotateDegrees(float degrees, Position gpsOffset)
+        public void RotateDegrees(double degrees, Position gpsOffset)
         {
             Point mercatorReference = gpsOffset.ToMercator();
 
             _MercatorMatrix *= Matrix<double>.Build.RotationDegreesAround(degrees, mercatorReference.X, mercatorReference.Y);
         }
 
-        public void RotateRadians(float radians)
+        public void RotateRadians(double radians)
         {
             _MercatorMatrix *= Matrix<double>.Build.RotationRadians(radians);
         }
 
-        public void RotateRadians(float radians, float offsetX, float offsetY)
+        public void RotateRadians(double radians, double offsetX, double offsetY)
         {
             RotateRadians(radians, new Position(offsetX, offsetY));
         }
 
-        public void RotateRadians(float radians, Position gpsOffset)
+        public void RotateRadians(double radians, Position gpsOffset)
         {
             Point mercatorReference = gpsOffset.ToMercator();
 
@@ -181,7 +187,7 @@ namespace FormsSkiaBikeTracker.Forms.UI.Controls.Maps
             _Canvas.Clear(color);
         }
 
-        public void DrawOval(float latitude, float longitude, float latitudeDegrees, float longitudeDegrees, SKPaint paint)
+        public void DrawOval(double latitude, double longitude, double latitudeDegrees, double longitudeDegrees, SKPaint paint)
         {
             DrawOval(new MapSpan(new Position(latitude, longitude), latitudeDegrees, longitudeDegrees), paint);
         }
@@ -193,15 +199,20 @@ namespace FormsSkiaBikeTracker.Forms.UI.Controls.Maps
             _Canvas.DrawOval(canvasRect, paint);
         }
 
-        public void DrawLine(float latitude, float longitude, float latitudeDegrees, float longitudeDegrees, SKPaint paint)
+        public void DrawLine(double startLatitude, double startLongitude, double endLatitude, double endLongitude, SKPaint paint, bool shortLine = true)
         {
-            DrawLine(new Position(latitude, longitude), new Position(latitudeDegrees, longitudeDegrees), paint);
+            DrawLine(new SKMapPosition(startLatitude, startLongitude), new SKMapPosition(endLatitude, endLongitude), paint, shortLine);
         }
 
-        public void DrawLine(Position start, Position end, SKPaint paint)
+        public void DrawLine(Position start, Position end, SKPaint paint, bool shortLine = true)
         {
-            Tuple<Position, Position> line = new Tuple<Position, Position>(start, end);
-            Tuple<SKPoint, SKPoint> canvasLine = ConvertLineToLocal(line);
+            DrawLine(new SKMapPosition(start), new SKMapPosition(end), paint, shortLine);
+        }
+
+        internal void DrawLine(SKMapPosition start, SKMapPosition end, SKPaint paint, bool shortLine = true)
+        {
+            Tuple<SKMapPosition, SKMapPosition> line = new Tuple<SKMapPosition, SKMapPosition>(start, end);
+            Tuple<SKPoint, SKPoint> canvasLine = ConvertLineToLocal(line, shortLine);
 
             _Canvas.DrawLine(canvasLine.Item1.X, canvasLine.Item1.Y, canvasLine.Item2.X, canvasLine.Item2.Y, paint);
         }
@@ -248,12 +259,12 @@ namespace FormsSkiaBikeTracker.Forms.UI.Controls.Maps
 
         public static Size PixelsToMaximumMapSizeAtZoom(Size pixelsSize, double zoomScale)
         {
-            MapSpan gpsArea = PixelsToMaximumMapSpanAtZoom(pixelsSize, zoomScale);
+            SKMapSpan gpsArea = PixelsToMaximumMapSpanAtZoom(pixelsSize, zoomScale);
 
             return new Size(gpsArea.LongitudeDegrees * 2, gpsArea.LatitudeDegrees * 2);
         }
 
-        public static MapSpan PixelsToMaximumMapSpanAtZoom(Size pixelsSize, double zoomScale)
+        public static SKMapSpan PixelsToMaximumMapSpanAtZoom(Size pixelsSize, double zoomScale)
         {
             return PixelsToMapSpan(pixelsSize,
                                            new Point(SKMapExtensions.MercatorCenterOffset, SKMapExtensions.MercatorCenterOffset),
@@ -262,19 +273,19 @@ namespace FormsSkiaBikeTracker.Forms.UI.Controls.Maps
 
         public static Size PixelsToMapSize(Size pixelsSize, Position mapPosition, double zoomScale)
         {
-            MapSpan gpsArea = PixelsToMapSpan(pixelsSize, mapPosition, zoomScale);
+            SKMapSpan gpsArea = PixelsToMapSpan(pixelsSize, mapPosition, zoomScale);
 
             return new Size(gpsArea.LongitudeDegrees * 2, gpsArea.LatitudeDegrees * 2);
         }
 
-        public static MapSpan PixelsToMapSpan(Size pixelsSize, Position mapPosition, double zoomScale)
+        public static SKMapSpan PixelsToMapSpan(Size pixelsSize, Position mapPosition, double zoomScale)
         {
             Point mercatorPosition = mapPosition.ToMercator();
 
             return PixelsToMapSpan(pixelsSize, mercatorPosition, zoomScale);
         }
 
-        internal static MapSpan PixelsToMapSpan(Size pixelsSize, Point mercatorPosition, double zoomScale)
+        internal static SKMapSpan PixelsToMapSpan(Size pixelsSize, Point mercatorPosition, double zoomScale)
         {
             Rectangle sizeRect = new Rectangle(0, 0, pixelsSize.Width, pixelsSize.Height);
             Rectangle mercatorRectAtPosition = new Rectangle(mercatorPosition.X - pixelsSize.Width / zoomScale * 0.5,
@@ -293,7 +304,7 @@ namespace FormsSkiaBikeTracker.Forms.UI.Controls.Maps
             Matrix<double> matrix = Matrix<double>.Build.DenseIdentity(3, 3);
             Point mercatorPosition = gpsPosition.ToMercator();
             SKRect sourceRect = picture.CullRect;
-            MapSpan drawSpan = PixelsToMapSpan(pixelSize, gpsPosition, _ScaleFactor);
+            SKMapSpan drawSpan = PixelsToMapSpan(pixelSize, gpsPosition, _ScaleFactor);
             double xScale = pixelSize.Width / sourceRect.Width;
             double yScale = pixelSize.Height / sourceRect.Height;
             SKPoint canvasPoint;
@@ -335,42 +346,47 @@ namespace FormsSkiaBikeTracker.Forms.UI.Controls.Maps
                 // We cross the 180th meridian to the right and are drawing to a tile on the left side of the map, so wrap around
                 mercatorRect.X -= SKMapExtensions.MercatorMapSize;
             }
-
-            if (gpsSpan.Crosses180thMeridianLeft() && _MercatorRenderArea.Right > SKMapExtensions.MercatorCenterOffset)
+            else if (gpsSpan.Crosses180thMeridianLeft() && _MercatorRenderArea.Right > SKMapExtensions.MercatorCenterOffset)
             {
-                // We cross the 180th meridian to the right and are drawing to a tile on the left side of the map, so wrap around
+                // We cross the 180th meridian to the left and are drawing to a tile on the right side of the map, so wrap around
                 mercatorRect.X += SKMapExtensions.MercatorMapSize;
             }
 
             return ApplyMatrix(mercatorRect);
         }
 
-        internal Tuple<SKPoint, SKPoint> ConvertLineToLocal(Tuple<Position, Position> gpsLine, bool shortLine = true)
+        internal Tuple<SKPoint, SKPoint> ConvertLineToLocal(Tuple<SKMapPosition, SKMapPosition> gpsLine, bool toShortLine = true)
         {
             Point mercatorStart = gpsLine.Item1.ToMercator();
             Point mercatorEnd = gpsLine.Item2.ToMercator();
-            bool isLongLine = Math.Abs(mercatorEnd.X - mercatorStart.X) > SKMapExtensions.MercatorCenterOffset;
+            bool isShortLine = Math.Abs(mercatorEnd.X - mercatorStart.X) < SKMapExtensions.MercatorCenterOffset;
 
-/*            if (shortLine != isLongLine)
+            if (toShortLine != isShortLine)
             {
+                if (mercatorEnd.X < 0)
+                {
+                    mercatorEnd.X += SKMapExtensions.MercatorMapSize;
+                }
+                else
+                {
+                    mercatorStart.X += SKMapExtensions.MercatorMapSize;
+                }
+            }
+
+            if (mercatorStart.X > SKMapExtensions.MercatorMapSize && _MercatorRenderArea.Left < SKMapExtensions.MercatorCenterOffset)
+            {
+                // We cross the 180th meridian to the right and are drawing to a tile on the left side of the map, so wrap around
+                mercatorStart.X -= SKMapExtensions.MercatorMapSize;
+                mercatorEnd.X -= SKMapExtensions.MercatorMapSize;
+            }
+            else if (mercatorEnd.X < 0 && _MercatorRenderArea.Right > SKMapExtensions.MercatorCenterOffset)
+            {
+                // We cross the 180th meridian to the left and are drawing to a tile on the right side of the map, so wrap around
                 mercatorStart.X += SKMapExtensions.MercatorMapSize;
-            }*/
+                mercatorEnd.X += SKMapExtensions.MercatorMapSize;
+            }
 
             return new Tuple<SKPoint, SKPoint>(ApplyMatrix(mercatorStart), ApplyMatrix(mercatorEnd));
-
-/*            if (gpsSpan.Crosses180thMeridianRight() && _MercatorRenderArea.Left < SKMapExtensions.MercatorCenterOffset)
-            {
-                // We cross the 180th meridian to the right and are drawing to a tile on the left side of the map, so wrap around
-                mercatorRect.X -= SKMapExtensions.MercatorMapSize;
-            }
-
-            if (gpsSpan.Crosses180thMeridianLeft() && _MercatorRenderArea.Right > SKMapExtensions.MercatorCenterOffset)
-            {
-                // We cross the 180th meridian to the right and are drawing to a tile on the left side of the map, so wrap around
-                mercatorRect.X += SKMapExtensions.MercatorMapSize;
-            }
-
-            return new Tuple<SKPoint, SKPoint>(canvasStart, canvasEnd);*/
         }
 
         internal Position ConvertLocalToPosition(SKPoint canvasPoint)
@@ -380,7 +396,7 @@ namespace FormsSkiaBikeTracker.Forms.UI.Controls.Maps
             return mercatorPoint.ToGps();
         }
 
-        internal MapSpan ConvertLocalToSpan(SKRect canvasBounds)
+        internal SKMapSpan ConvertLocalToSpan(SKRect canvasBounds)
         {
             Rectangle mercatorRect = ApplyInverseMatrix(canvasBounds);
 
@@ -396,8 +412,8 @@ namespace FormsSkiaBikeTracker.Forms.UI.Controls.Maps
         {
             Matrix<double> result = Matrix<double>.Build.DenseIdentity(3, 3);
 
-            result *= Matrix<double>.Build.Scale(scale, -scale);
-            result *= Matrix<double>.Build.Translation(-mercatorArea.Left, -mercatorArea.Bottom);
+            result *= Matrix<double>.Build.Scale(scale);
+            result *= Matrix<double>.Build.Translation(-mercatorArea.Left, -mercatorArea.Top);
 
             return result;
         }

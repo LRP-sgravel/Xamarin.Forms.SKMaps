@@ -9,6 +9,8 @@
 // 
 // ***********************************************************************
 
+using FormsSkiaBikeTracker.Forms.UI.Pages;
+using FormsSkiaBikeTracker.Shared.Models.Maps;
 using SkiaSharp;
 using Xamarin.Forms.Maps;
 
@@ -40,23 +42,23 @@ namespace FormsSkiaBikeTracker.Forms.UI.Controls.Maps
             set => MapCanvasPath.FillType = value;
         }
 
-        public MapSpan Bounds
+        public SKMapSpan Bounds
         {
             get
             {
                 SKRect canvasBounds = MapCanvasPath.Bounds;
-                MapSpan gpsSpan = _MapCanvas.ConvertLocalToSpan(canvasBounds);
+                SKMapSpan gpsSpan = _MapCanvas.ConvertLocalToSpan(canvasBounds);
 
                 return gpsSpan;
             }
         }
 
-        public MapSpan TightBounds
+        public SKMapSpan TightBounds
         {
             get
             {
                 SKRect canvasTightBounds = MapCanvasPath.TightBounds;
-                MapSpan gpsSpan = _MapCanvas.ConvertLocalToSpan(canvasTightBounds);
+                SKMapSpan gpsSpan = _MapCanvas.ConvertLocalToSpan(canvasTightBounds);
 
                 return gpsSpan;
             }

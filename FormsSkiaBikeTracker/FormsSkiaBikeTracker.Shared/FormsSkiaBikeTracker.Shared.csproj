@@ -37,7 +37,12 @@
   <ItemGroup>
     <Compile Include="App.cs" />
     <Compile Include="Constants.cs" />
+    <Compile Include="Helpers\LinearAlgebraExtensions.cs" />
+    <Compile Include="Helpers\MapSpanExtensions.cs" />
+    <Compile Include="Helpers\SKMapExtensions.cs" />
     <Compile Include="Models\Athlete.cs" />
+    <Compile Include="Models\Maps\SKMapSpan.cs" />
+    <Compile Include="Models\Maps\SKMapPosition.cs" />
     <Compile Include="PresenterConstants.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\Interface\IDocumentRoot.cs" />
@@ -82,6 +87,9 @@
     <Reference Include="LRPLib.Mvx, Version=1.0.6372.22129, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\LRPLib.Mvx.1.1.1\lib\portable-net45+netcore45+wpa81+MonoAndroid10+Xamarin.iOS10\LRPLib.Mvx.dll</HintPath>
       <Private>True</Private>
+    </Reference>
+    <Reference Include="MathNet.Numerics, Version=3.20.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\MathNet.Numerics.3.20.0\lib\portable-net45+netcore45+MonoAndroid1+MonoTouch1\MathNet.Numerics.dll</HintPath>
     </Reference>
     <Reference Include="MvvmCross.Binding, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\MvvmCross.Binding.4.4.0\lib\portable-net45+win+wpa81+wp80\MvvmCross.Binding.dll</HintPath>
@@ -147,6 +155,9 @@
     </Reference>
     <Reference Include="Xamarin.Forms.Core, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Xamarin.Forms.2.3.4.247\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Forms.Maps, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xamarin.Forms.Maps.2.3.4.247\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10\Xamarin.Forms.Maps.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.Forms.Platform, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Xamarin.Forms.2.3.4.247\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.Platform.dll</HintPath>

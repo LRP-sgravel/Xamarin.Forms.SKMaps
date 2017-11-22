@@ -19,8 +19,10 @@ using CoreGraphics;
 using CoreLocation;
 using FormsSkiaBikeTracker.Forms.UI.Controls;
 using FormsSkiaBikeTracker.Forms.UI.Controls.Maps;
+using FormsSkiaBikeTracker.Forms.UI.Pages;
 using FormsSkiaBikeTracker.iOS.Helpers;
 using FormsSkiaBikeTracker.iOS.UI.Renderers;
+using FormsSkiaBikeTracker.Shared.Models.Maps;
 using MapKit;
 using MvvmCross.Platform.Platform;
 using MvvmCross.Platform.WeakSubscription;
@@ -95,12 +97,7 @@ namespace FormsSkiaBikeTracker.iOS.UI.Renderers
                 CGRect coreDrawRect = RectForMapRect(mapRect);
                 SKBitmap drawBitmap = GetOverlayBitmap();
                 SKMapCanvas mapCanvas = new SKMapCanvas(drawBitmap, mapRect.ToRectangle(), zoomScale);
-                MapSpan rectSpan = mapRect.ToMapSpan();
-
-                MvxTrace.Trace(MvxTraceLevel.Diagnostic,
-                               $"Drawing tile at ({coreDrawRect.Left}, {coreDrawRect.Top}; " +
-                               $"{coreDrawRect.Width}, {coreDrawRect.Height}) " +
-                               $"with zoom {zoomScale}.");
+                SKMapSpan rectSpan = mapRect.ToMapSpan();
 
                 _SharedOverlay.DrawOnMap(mapCanvas, rectSpan, zoomScale);
 
@@ -153,28 +150,49 @@ namespace FormsSkiaBikeTracker.iOS.UI.Renderers
                 _SharedControl.MapOverlays.CollectionChanged -= MapOverlaysCollectionChanged;
             }
 
+#if DEBUG
+            if (_NativeControl != null)
+            {
+                _NativeControl.RegionWillChange -= MapRegionWillChange;
+            }
+#endif
+
             base.OnElementChanged(e);
 
             if (_NativeControl != null)
             {
-                try
-                {
-                    _NativeControl.OverlayRenderer = OverlayedMapDelegate.OverlayRenderer;
-                }
-                catch (Exception exception)
-                {
-                    Console.WriteLine(exception);
-                    throw;
-                }
+                _NativeControl.OverlayRenderer = OverlayedMapDelegate.OverlayRenderer;
+#if DEBUG
+                _NativeControl.RegionWillChange += MapRegionWillChange;
+#endif
 
                 if (_SharedControl?.MapOverlays != null)
                 {
-                    SetupMapOverlays();
-
                     _SharedControl.MapOverlays.CollectionChanged += MapOverlaysCollectionChanged;
+                    SetupMapOverlays();
                 }
             }
         }
+
+#if DEBUG
+        private void MapRegionWillChange(object sender, MKMapViewChangeEventArgs args)
+        {
+            if (_SharedControl?.MapOverlays != null)
+            {
+                foreach (DrawableMapOverlay overlay in _SharedControl?.MapOverlays)
+                {
+                    MapOverlay nativeOverlay = _NativeControl.Overlays.FirstOrDefault(o => (o as MapOverlay).SharedOverlay == overlay) as MapOverlay;
+
+                    if (nativeOverlay != null)
+                    {
+                        MKOverlayRenderer renderer = _NativeControl.RendererForOverlay(nativeOverlay);
+
+                        renderer?.SetNeedsDisplay();
+                    }
+                }
+            }
+        }
+#endif
 
         private void MapOverlaysCollectionChanged(object sender, NotifyCollectionChangedEventArgs args)
         {

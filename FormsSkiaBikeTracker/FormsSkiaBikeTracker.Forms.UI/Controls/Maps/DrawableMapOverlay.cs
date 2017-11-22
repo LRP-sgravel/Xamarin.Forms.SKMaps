@@ -9,7 +9,9 @@
 // 
 // ***********************************************************************
 
-using FormsSkiaBikeTracker.Forms.UI.Helpers;
+using FormsSkiaBikeTracker.Forms.UI.Pages;
+using FormsSkiaBikeTracker.Shared.Helpers;
+using FormsSkiaBikeTracker.Shared.Models.Maps;
 using LRPLib.Views.XForms;
 using SkiaSharp;
 using Xamarin.Forms;
@@ -36,6 +38,6 @@ namespace FormsSkiaBikeTracker.Forms.UI.Controls.Maps
         {
         }
 
-        public abstract void DrawOnMap(SKMapCanvas canvas, MapSpan canvasMapRect, double pixelScale);
+        public abstract void DrawOnMap(SKMapCanvas canvas, SKMapSpan canvasMapRect, double pixelScale);
     }
 }

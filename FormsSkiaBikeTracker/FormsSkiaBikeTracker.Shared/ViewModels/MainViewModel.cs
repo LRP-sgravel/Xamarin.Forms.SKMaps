@@ -9,9 +9,16 @@
 // 
 // ***********************************************************************
 
+using System.Diagnostics;
 using FormsSkiaBikeTracker.Models;
+using FormsSkiaBikeTracker.Shared.Helpers;
+using FormsSkiaBikeTracker.Shared.Models.Maps;
 using LRPLib.Mvx.ViewModels;
+using MvvmCross.Core.ViewModels;
+using MvvmCross.Platform.Platform;
 using Realms;
+using Xamarin.Forms;
+using Xamarin.Forms.Maps;
 
 namespace FormsSkiaBikeTracker.ViewModels
 {
@@ -29,6 +36,35 @@ namespace FormsSkiaBikeTracker.ViewModels
                     RaisePropertyChanged();
                 }
             }
+        }
+
+        private IMvxCommand _testCoordsCommand;
+        public IMvxCommand TestCoordsCommand
+        {
+            get
+            {
+                if (_testCoordsCommand == null)
+                {
+                    _testCoordsCommand = new MvxCommand(TestCoords);
+                }
+
+                return _testCoordsCommand;
+            }
+        }
+
+        private void TestCoords()
+        {
+            Rectangle largeTile = new Rectangle(0, 0, 256, 256);
+            Rectangle smallTile = new Rectangle(0, 0, 128, 128);
+            SKMapSpan largeSpan = largeTile.ToGps();
+            SKMapSpan smallSpan = smallTile.ToGps();
+
+            Debug.WriteLine($"Large bounds for tile {largeTile}\n" +
+                            $"({largeSpan.Center.Longitude + largeSpan.LongitudeDegrees}, {largeSpan.Center.Latitude - largeSpan.LatitudeDegrees}; \n" +
+                            $"{largeSpan.Center.Longitude - largeSpan.LongitudeDegrees}, {largeSpan.Center.Latitude + largeSpan.LatitudeDegrees})");
+            Debug.WriteLine($"Small bounds for tile {smallTile}\n" +
+                            $"({smallSpan.Center.Longitude + smallSpan.LongitudeDegrees}, {smallSpan.Center.Latitude - smallSpan.LatitudeDegrees}; \n" +
+                            $"{smallSpan.Center.Longitude - smallSpan.LongitudeDegrees}, {smallSpan.Center.Latitude + smallSpan.LatitudeDegrees})");
         }
 
         public MainViewModel()
