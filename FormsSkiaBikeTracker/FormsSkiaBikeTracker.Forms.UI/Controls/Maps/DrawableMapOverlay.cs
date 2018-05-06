@@ -9,7 +9,7 @@
 // 
 // ***********************************************************************
 
-using FormsSkiaBikeTracker.Forms.UI.Pages;
+using System;
 using FormsSkiaBikeTracker.Shared.Helpers;
 using FormsSkiaBikeTracker.Shared.Models.Maps;
 using LRPLib.Views.XForms;
@@ -21,6 +21,8 @@ namespace FormsSkiaBikeTracker.Forms.UI.Controls.Maps
 {
     public abstract class DrawableMapOverlay : DrawableView
     {
+        public event EventHandler<MapSpan> RequestInvalidate;
+
         public static readonly BindableProperty GpsBoundsProperty = BindableProperty.Create(nameof(GpsBounds), typeof(MapSpan), typeof(DrawableMapOverlay), new MapSpan(new Position(0, 0), 0.1, 0.1));
 
         public MapSpan GpsBounds
@@ -32,10 +34,20 @@ namespace FormsSkiaBikeTracker.Forms.UI.Controls.Maps
         protected DrawableMapOverlay()
         {
             HasTransparency = true;
+            GpsBounds = MapSpanExtensions.WorldSpan;
         }
 
-        protected override void Paint(SKCanvas canvas)
+        protected sealed override void Paint(SKCanvas canvas)
         {
+            // Use the DrawOnMap method
+        }
+
+        protected new void Invalidate()
+        {
+            if (IsVisible)
+            {
+                RequestInvalidate?.Invoke(this, GpsBounds);
+            }
         }
 
         public abstract void DrawOnMap(SKMapCanvas canvas, SKMapSpan canvasMapRect, double pixelScale);

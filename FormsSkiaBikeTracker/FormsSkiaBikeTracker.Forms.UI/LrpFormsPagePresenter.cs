@@ -1,11 +1,11 @@
 ﻿// **********************************************************************
 // 
-//   LrpFormsPagePresenter.cs
+//   LRPFormsPagePresenter.cs
 //   
 //   This file is subject to the terms and conditions defined in
 //   file 'LICENSE.txt', which is part of this source code package.
 //   
-//   Copyright (c) 2017, Le rond-point
+//   Copyright (c) 2017, Sylvain Gravel
 // 
 // ***********************************************************************
 
@@ -19,13 +19,13 @@ using Xamarin.Forms;
 
 namespace FormsSkiaBikeTracker.Forms.UI
 {
-    public abstract class LrpFormsPagePresenter : MvxFormsPagePresenter
+    public abstract class LRPFormsPagePresenter : MvxFormsPagePresenter
     {
-        protected LrpFormsPagePresenter()
+        protected LRPFormsPagePresenter()
         {
         }
 
-        protected LrpFormsPagePresenter(Application mvxFormsApp) : base(mvxFormsApp)
+        protected LRPFormsPagePresenter(Application mvxFormsApp) : base(mvxFormsApp)
         {
         }
 
@@ -43,30 +43,19 @@ namespace FormsSkiaBikeTracker.Forms.UI
                 if (request.PresentationValues != null)
                 {
                     if (request.PresentationValues.ContainsKey(PresenterConstants.ReplaceMainPage))
-                    {
                         bool.TryParse(request.PresentationValues[PresenterConstants.ReplaceMainPage], out replaceMain);
-                    }
                     if (request.PresentationValues.ContainsKey(PresenterConstants.WrapWithNavigationPage))
-                    {
                         bool.TryParse(request.PresentationValues[PresenterConstants.WrapWithNavigationPage], out wrapInNavPage);
-                    }
                     if (request.PresentationValues.ContainsKey(PresenterConstants.SetAsNavigationRoot))
-                    {
                         bool.TryParse(request.PresentationValues[PresenterConstants.SetAsNavigationRoot], out setAsNavigationRoot);
-                    }
                 }
 
                 if (wrapInNavPage)
-                {
                     newPage = new NavigationPage(newPage);
-                }
 
                 if (replaceMain || mainPage == null)
-                {
                     SetMainPage(newPage);
-                }
                 else
-                {
                     try
                     {
                         Task pushTask = mainPage.PushAsync(newPage);
@@ -76,18 +65,17 @@ namespace FormsSkiaBikeTracker.Forms.UI
                             NavigationPage.SetHasBackButton(newPage, false);
 
                             MainThread.RunAsync(async () =>
-                                                {
-                                                    await pushTask.ConfigureAwait(false);
+                                {
+                                    await pushTask.ConfigureAwait(false);
 
-                                                    ClearNavigationStack(mainPage);
-                                                });
+                                    ClearNavigationStack(mainPage);
+                                });
                         }
                     }
                     catch (Exception e)
                     {
                         Mvx.Error("Exception pushing {0}: {1}\n{2}", newPage.GetType(), e.Message, e.StackTrace);
                     }
-                }
             }
         }
 
@@ -136,9 +124,7 @@ namespace FormsSkiaBikeTracker.Forms.UI
         private void ClearNavigationStack(NavigationPage navPage)
         {
             while (navPage.Navigation.NavigationStack.Count > 1)
-            {
                 navPage.Navigation.RemovePage(navPage.Navigation.NavigationStack[0]);
-            }
         }
     }
 }

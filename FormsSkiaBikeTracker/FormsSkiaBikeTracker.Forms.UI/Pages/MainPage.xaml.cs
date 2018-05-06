@@ -9,19 +9,41 @@
 // 
 // ***********************************************************************
 
+using System.ComponentModel;
+using MvvmCross.Platform.WeakSubscription;
 using Xamarin.Forms.Maps;
-using Xamarin.Forms.Xaml;
 
 namespace FormsSkiaBikeTracker.Forms.UI.Pages
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MainPage
     {
+        private object _locationChangedSubscriotion;
+
         public MainPage()
         {
             InitializeComponent();
+        }
 
-            MapControl.MoveToRegion(new MapSpan(new Position(84.5, 179.5), 0.5, 0.5));
+        protected override void OnBindingContextChanged()
+        {
+            base.OnBindingContextChanged();
+
+            _locationChangedSubscriotion = null;
+
+            if (ViewModel != null)
+            {
+                _locationChangedSubscriotion = ViewModel.WeakSubscribe(() => ViewModel.LastUserLocation, UserLocationChanged);
+            }
+        }
+
+        private void UserLocationChanged(object sender, PropertyChangedEventArgs propertyChangedEventArgs)
+        {
+            if (ViewModel.UserLocationAcquired)
+            {
+                MapControl.MoveToRegion(new MapSpan(ViewModel.LastUserLocation,
+                                                    MapControl.VisibleRegion.LatitudeDegrees,
+                                                    MapControl.VisibleRegion.LongitudeDegrees));
+            }
         }
     }
 }

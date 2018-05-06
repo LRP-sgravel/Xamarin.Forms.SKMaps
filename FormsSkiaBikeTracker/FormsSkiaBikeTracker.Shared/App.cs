@@ -9,11 +9,11 @@
 // 
 // ***********************************************************************
 
-using System.Globalization;
 using System.Reflection;
 using System.Threading.Tasks;
 using Acr.Settings;
-using FormsSkiaBikeTracker.Models;
+using FormsSkiaBikeTracker.Services;
+using FormsSkiaBikeTracker.Services.Interface;
 using MvvmCross.Core.ViewModels;
 using MvvmCross.Localization;
 using MvvmCross.Platform;
@@ -24,7 +24,6 @@ using LRPLib.Mvx.Core;
 using LRPLib.Mvx.Services.Localization;
 using LRPLib.Services;
 using LRPLib.Services.Resources;
-using Realms;
 using SimpleCrypto;
 
 namespace FormsSkiaBikeTracker
@@ -86,7 +85,17 @@ namespace FormsSkiaBikeTracker
         private void InitializeServices()
         {
             Mvx.RegisterSingleton(Mvx.IocConstruct<LrpBootstrapper>);
-            Mvx.RegisterSingleton<ICryptoService>(new PBKDF2());
+            Mvx.RegisterSingleton<ICryptoService>(() => new PBKDF2());
+            Mvx.RegisterSingleton<ILocationTracker>(InitializeLocationTracker);
+        }
+
+        private ILocationTracker InitializeLocationTracker()
+        {
+            ILocationTracker tracker = Mvx.IocConstruct<LocationTracker>();
+
+            tracker.Start(8, 3, false);
+
+            return tracker;
         }
 
         private void InitializeBootstrap()

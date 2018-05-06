@@ -46,5 +46,17 @@ namespace FormsSkiaBikeTracker.Shared.Models.Maps
         {
             return new MapSpan(Center.ToPosition(), LatitudeDegrees, LongitudeDegrees);
         }
+
+        public bool FastIntersects(SKMapSpan span)
+        {
+            return Math.Abs(Center.Latitude - span.Center.Latitude) < (LatitudeDegrees + span.LatitudeDegrees) ||
+                   Math.Abs(Center.Longitude - span.Center.Longitude) < (LongitudeDegrees + span.LongitudeDegrees);
+
+        }
+
+        public bool FastIntersects(MapSpan span)
+        {
+            return FastIntersects(new SKMapSpan(span));
+        }
     }
 }

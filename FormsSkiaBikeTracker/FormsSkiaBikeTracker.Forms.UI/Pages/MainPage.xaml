@@ -1,11 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<core:MvxContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+
+<core:MvxContentPage x:TypeArguments="viewModels:MainViewModel"
+                     xmlns="http://xamarin.com/schemas/2014/forms"
                      xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                      xmlns:core="clr-namespace:MvvmCross.Forms.Presenter.Core;assembly=MvvmCross.Forms.Presenter.Core"
                      xmlns:controls="clr-namespace:FormsSkiaBikeTracker.Forms.UI.Controls;assembly=FormsSkiaBikeTracker.Forms.UI"
                      xmlns:maps="clr-namespace:FormsSkiaBikeTracker.Forms.UI.Controls.Maps;assembly=FormsSkiaBikeTracker.Forms.UI"
+                     xmlns:lrpMvx="clr-namespace:LRPLib.Mvx.Views.XForms.Markup;assembly=LRPLib.Mvx.Views.XForms"
+                     xmlns:viewModels="clr-namespace:FormsSkiaBikeTracker.ViewModels;assembly=FormsSkiaBikeTracker.Shared"
+                     xmlns:ui="clr-namespace:FormsSkiaBikeTracker.Forms.UI;assembly=FormsSkiaBikeTracker.Forms.UI"
                      x:Class="FormsSkiaBikeTracker.Forms.UI.Pages.MainPage"
                      Title="MainPage">
+    <core:MvxContentPage.Resources>
+        <ResourceDictionary>
+          <ui:DebugConverter x:Key="DebugConverter" />
+        </ResourceDictionary>
+    </core:MvxContentPage.Resources>
+
     <Grid RowSpacing="0">
         <Grid.RowDefinitions>
             <RowDefinition Height="1*" />
@@ -18,22 +29,18 @@
         
         <StackLayout Grid.Row="0"
                      Orientation="Horizontal"
-                        BackgroundColor="IndianRed">
-            <Button WidthRequest="100"
-                    HeightRequest="60"
-                    Text="Test coords"
-                    Command="{Binding TestCoordsCommand}"/>
+                     BackgroundColor="IndianRed">
         </StackLayout>
         
         <controls:OverlayedMap x:Name="MapControl"
                                Grid.Row="1"
                                VerticalOptions="FillAndExpand"
                                HorizontalOptions="FillAndExpand"
-                               IsShowingUser="True">
+                               IsShowingUser="False">
             <controls:OverlayedMap.MapOverlays>
-                <!-- maps:TestMapOverlay / -->
-                <maps:TestLineMapOverlay />
-                <!-- maps:Test2xScaleOffsetMapOverlay / -->
+                <maps:IconOverlay Icon="{lrpMvx:EmbeddedImage symbol_logo.svg}"
+                                  Position="{Binding LastUserLocation, Converter={StaticResource DebugConverter}}"
+                                  IsVisible="{Binding UserLocationAcquired}"/>
            </controls:OverlayedMap.MapOverlays>
         </controls:OverlayedMap>
 

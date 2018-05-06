@@ -101,7 +101,7 @@ namespace FormsSkiaBikeTracker.Droid
             LrpLibViews.Init();
             LrpLibMvxViews.Init();
 
-            LrpFormsAndroidPagePresenter presenter = Mvx.Resolve<IMvxViewPresenter>() as LrpFormsAndroidPagePresenter;
+            LRPFormsAndroidPagePresenter presenter = Mvx.Resolve<IMvxViewPresenter>() as LRPFormsAndroidPagePresenter;
             presenter.MvxFormsApp = mvxFormsApp;
 
             IsAppInForeground = true;

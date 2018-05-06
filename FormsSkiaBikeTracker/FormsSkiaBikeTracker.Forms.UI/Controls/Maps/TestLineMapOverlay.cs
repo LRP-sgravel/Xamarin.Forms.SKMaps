@@ -9,7 +9,6 @@
 // 
 // ***********************************************************************
 
-using FormsSkiaBikeTracker.Forms.UI.Pages;
 using FormsSkiaBikeTracker.Shared.Helpers;
 using FormsSkiaBikeTracker.Shared.Models.Maps;
 using LRPLib.Views.XForms.Extensions;

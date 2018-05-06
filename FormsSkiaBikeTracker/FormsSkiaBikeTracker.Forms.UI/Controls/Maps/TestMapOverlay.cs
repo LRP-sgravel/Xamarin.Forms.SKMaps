@@ -9,7 +9,6 @@
 // 
 // ***********************************************************************
 
-using FormsSkiaBikeTracker.Forms.UI.Pages;
 using FormsSkiaBikeTracker.Shared.Models.Maps;
 using LRPLib.Services.Resources;
 using LRPLib.Views.XForms.Extensions;
@@ -29,7 +28,7 @@ namespace FormsSkiaBikeTracker.Forms.UI.Controls.Maps
         {
             this.strokeWidthArea = SKMapCanvas.PixelsToMaximumMapSizeAtZoom(new Size(50, 50), SKMapCanvas.MaxZoomScale);
 
-            baseBounds = new MapSpan(new Position(0, -180), 1, 1);
+            baseBounds = new MapSpan(new Position(37, -122), 1, 1);
             GpsBounds = new MapSpan(baseBounds.Center,
                                     baseBounds.LatitudeDegrees + strokeWidthArea.Height,
                                     baseBounds.LongitudeDegrees + strokeWidthArea.Width);

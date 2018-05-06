@@ -45,7 +45,9 @@
     <Compile Include="Models\Maps\SKMapPosition.cs" />
     <Compile Include="PresenterConstants.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\Interface\ILocationTracker.cs" />
     <Compile Include="Services\Interface\IDocumentRoot.cs" />
+    <Compile Include="Services\LocationTracker.cs" />
     <Compile Include="Services\Validation\IValidationResult.cs" />
     <Compile Include="Services\Validation\ValidationResult.cs" />
     <Compile Include="ViewModels\LoadingViewModel.cs" />
@@ -114,6 +116,9 @@
     </Reference>
     <Reference Include="MvvmCross.Plugins.JsonLocalization, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\MvvmCross.Plugin.JsonLocalization.4.4.0\lib\portable-net45+win+wpa81+wp80\MvvmCross.Plugins.JsonLocalization.dll</HintPath>
+    </Reference>
+    <Reference Include="MvvmCross.Plugins.Location, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\MvvmCross.Plugin.Location.4.4.0\lib\portable-net45+win+wpa81+wp80\MvvmCross.Plugins.Location.dll</HintPath>
     </Reference>
     <Reference Include="MvvmCross.Plugins.Messenger, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\MvvmCross.Plugin.Messenger.4.4.0\lib\portable-net45+win+wpa81+wp80\MvvmCross.Plugins.Messenger.dll</HintPath>

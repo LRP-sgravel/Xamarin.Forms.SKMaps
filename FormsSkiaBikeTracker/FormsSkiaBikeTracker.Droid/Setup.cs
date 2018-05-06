@@ -51,7 +51,7 @@ namespace FormsSkiaBikeTracker.Droid
 
         protected override IMvxAndroidViewPresenter CreateViewPresenter()
         {
-            LrpFormsAndroidPagePresenter presenter = new LrpFormsAndroidPagePresenter();
+            LRPFormsAndroidPagePresenter presenter = new LRPFormsAndroidPagePresenter();
             Mvx.RegisterSingleton<IMvxViewPresenter>(presenter);
 
             return presenter;
@@ -76,6 +76,7 @@ namespace FormsSkiaBikeTracker.Droid
                 PropertyInjectorOptions = MvxPropertyInjectorOptions.MvxInject
             };
         }
+
         protected override void InitializePlatformServices()
         {
             base.InitializePlatformServices();

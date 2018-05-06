@@ -15,16 +15,15 @@ using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
+using CoreFoundation;
 using CoreGraphics;
 using CoreLocation;
 using FormsSkiaBikeTracker.Forms.UI.Controls;
 using FormsSkiaBikeTracker.Forms.UI.Controls.Maps;
-using FormsSkiaBikeTracker.Forms.UI.Pages;
 using FormsSkiaBikeTracker.iOS.Helpers;
 using FormsSkiaBikeTracker.iOS.UI.Renderers;
 using FormsSkiaBikeTracker.Shared.Models.Maps;
 using MapKit;
-using MvvmCross.Platform.Platform;
 using MvvmCross.Platform.WeakSubscription;
 using SkiaSharp;
 using SkiaSharp.Views.iOS;
@@ -44,7 +43,7 @@ namespace FormsSkiaBikeTracker.iOS.UI.Renderers
             {
                 if (overlay is MapOverlay)
                 {
-                    return new MapOverlayRenderer((overlay as MapOverlay).SharedOverlay, overlay);
+                    return new MapOverlayRenderer(mapView, (overlay as MapOverlay).SharedOverlay, overlay);
                 }
 
                 return null;
@@ -70,26 +69,40 @@ namespace FormsSkiaBikeTracker.iOS.UI.Renderers
         {
             private MapOverlay _NativeOverlay => Overlay as MapOverlay;
             private DrawableMapOverlay _SharedOverlay { get; }
+            private MKMapView _NativeMap { get; }
 
-            private MvxNamedNotifyPropertyChangedEventSubscription<DrawableMapOverlay> _boundsChangedSubscription;
+            private object _boundsChangedSubscription;
+            private object _overlayDirtySubscription;
             private Queue<SKBitmap> _overlayBitmapPool = new Queue<SKBitmap>();
 
-            public MapOverlayRenderer(DrawableMapOverlay sharedOverlay, IMKOverlay overlay) : base(overlay)
+            public MapOverlayRenderer(MKMapView mapView, DrawableMapOverlay sharedOverlay, IMKOverlay overlay) : base(overlay)
             {
                 _SharedOverlay = sharedOverlay;
+                _NativeMap = mapView;
 
                 _boundsChangedSubscription = _SharedOverlay.WeakSubscribe<DrawableMapOverlay>(nameof(_SharedOverlay.GpsBounds), OverlayGpsBoundsChanged);
-                UpdateBoundsAndRefresh();
+                _overlayDirtySubscription = new MvxWeakEventSubscription<DrawableMapOverlay, MapSpan>(_SharedOverlay, nameof(_SharedOverlay.RequestInvalidate), MarkOverlayDirty);
             }
 
             private void OverlayGpsBoundsChanged(object sender, PropertyChangedEventArgs args)
             {
-                UpdateBoundsAndRefresh();
+                InvalidateSpan(_SharedOverlay.GpsBounds);
             }
 
-            private void UpdateBoundsAndRefresh()
+            private void MarkOverlayDirty(object sender, MapSpan area)
             {
-                SetNeedsDisplay(_NativeOverlay.BoundingMapRect);
+                InvalidateSpan(area);
+            }
+
+            private void InvalidateSpan(MapSpan area)
+            {
+                // TODO: Check if we need to do a full or partial refresh...
+
+                if (_SharedOverlay.IsVisible)
+                {
+                    _NativeMap.RemoveOverlay(_NativeOverlay);
+                    _NativeMap.AddOverlay(_NativeOverlay);
+                }
             }
 
             public override void DrawMapRect(MKMapRect mapRect, nfloat zoomScale, CGContext context)
@@ -99,11 +112,14 @@ namespace FormsSkiaBikeTracker.iOS.UI.Renderers
                 SKMapCanvas mapCanvas = new SKMapCanvas(drawBitmap, mapRect.ToRectangle(), zoomScale);
                 SKMapSpan rectSpan = mapRect.ToMapSpan();
 
-                _SharedOverlay.DrawOnMap(mapCanvas, rectSpan, zoomScale);
+                if (rectSpan.FastIntersects(_SharedOverlay.GpsBounds))
+                {
+                    _SharedOverlay.DrawOnMap(mapCanvas, rectSpan, zoomScale);
 
-                context.SaveState();
-                context.DrawImage(coreDrawRect, drawBitmap.ToCGImage());
-                context.RestoreState();
+                    context.SaveState();
+                    context.DrawImage(coreDrawRect, drawBitmap.ToCGImage());
+                    context.RestoreState();
+                }
 
                 // Let's exit this method so MapKit renders to screen while we free our resources in the background.
                 Task.Run(() => ReleaseOverlayBitmap(drawBitmap));
@@ -150,7 +166,7 @@ namespace FormsSkiaBikeTracker.iOS.UI.Renderers
                 _SharedControl.MapOverlays.CollectionChanged -= MapOverlaysCollectionChanged;
             }
 
-#if DEBUG
+#if DEBUG_MAP
             if (_NativeControl != null)
             {
                 _NativeControl.RegionWillChange -= MapRegionWillChange;
@@ -162,7 +178,7 @@ namespace FormsSkiaBikeTracker.iOS.UI.Renderers
             if (_NativeControl != null)
             {
                 _NativeControl.OverlayRenderer = OverlayedMapDelegate.OverlayRenderer;
-#if DEBUG
+#if DEBUG_MAP
                 _NativeControl.RegionWillChange += MapRegionWillChange;
 #endif
 
@@ -174,7 +190,7 @@ namespace FormsSkiaBikeTracker.iOS.UI.Renderers
             }
         }
 
-#if DEBUG
+#if DEBUG_MAP
         private void MapRegionWillChange(object sender, MKMapViewChangeEventArgs args)
         {
             if (_SharedControl?.MapOverlays != null)

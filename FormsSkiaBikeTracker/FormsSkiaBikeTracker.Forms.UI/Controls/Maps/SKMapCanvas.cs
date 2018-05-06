@@ -11,8 +11,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using FormsSkiaBikeTracker.Forms.UI.Pages;
 using FormsSkiaBikeTracker.Shared.Helpers;
 using FormsSkiaBikeTracker.Shared.Models.Maps;
 using MathNet.Numerics.LinearAlgebra;
@@ -249,6 +247,26 @@ namespace FormsSkiaBikeTracker.Forms.UI.Controls.Maps
             _Canvas.DrawImage(image, source, canvasDest, paint);
         }
 
+        public void DrawBitmap(SKBitmap bitmap, MapSpan gpsSpan, SKPaint paint = null)
+        {
+            DrawBitmap(bitmap, new SKRect(0, 0, bitmap.Width, bitmap.Height), gpsSpan, paint);
+        }
+
+        public void DrawBitmap(SKBitmap bitmap, Position gpsPosition, SKPaint paint = null)
+        {
+            Size imageMapSize = PixelsToMapSize(new Size(bitmap.Width, bitmap.Height), gpsPosition, _ScaleFactor);
+            MapSpan imageMapSpan = new MapSpan(gpsPosition, imageMapSize.Height * 0.5, imageMapSize.Width * 0.5);
+
+            DrawBitmap(bitmap, imageMapSpan, paint);
+        }
+
+        public void DrawBitmap(SKBitmap bitmap, SKRect source, MapSpan gpsSpan, SKPaint paint = null)
+        {
+            SKRect canvasDest = ConvertSpanToLocal(gpsSpan);
+
+            _Canvas.DrawBitmap(bitmap, source, canvasDest, paint);
+        }
+
         public void DrawPicture(SKPicture picture, Position gpsPosition, Size destinationSize, SKPaint paint = null)
         {
             Matrix<double> matrix = GetPictureDrawMatrix(picture, gpsPosition, destinationSize);
@@ -256,7 +274,7 @@ namespace FormsSkiaBikeTracker.Forms.UI.Controls.Maps
 
             _Canvas.DrawPicture(picture, ref canvasMatrix, paint);
         }
-
+        
         public static Size PixelsToMaximumMapSizeAtZoom(Size pixelsSize, double zoomScale)
         {
             SKMapSpan gpsArea = PixelsToMaximumMapSpanAtZoom(pixelsSize, zoomScale);
@@ -298,7 +316,7 @@ namespace FormsSkiaBikeTracker.Forms.UI.Controls.Maps
             return originSize.ToRectangle()
                              .ToGps();
         }
-
+        
         private Matrix<double> GetPictureDrawMatrix(SKPicture picture, Position gpsPosition, Size pixelSize)
         {
             Matrix<double> matrix = Matrix<double>.Build.DenseIdentity(3, 3);

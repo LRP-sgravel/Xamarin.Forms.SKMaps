@@ -18,7 +18,7 @@ using Xamarin.Forms;
 
 namespace FormsSkiaBikeTracker.iOS
 {
-    public class LrpFormsIosPagePresenter : LrpFormsPagePresenter, IMvxIosViewPresenter
+    public class LrpFormsIosPagePresenter : LRPFormsPagePresenter, IMvxIosViewPresenter
     {
         private UIWindow _Window { get; }
 

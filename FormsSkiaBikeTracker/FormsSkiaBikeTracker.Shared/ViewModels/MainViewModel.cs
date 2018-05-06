@@ -9,25 +9,27 @@
 // 
 // ***********************************************************************
 
-using System.Diagnostics;
+using System;
 using FormsSkiaBikeTracker.Models;
-using FormsSkiaBikeTracker.Shared.Helpers;
-using FormsSkiaBikeTracker.Shared.Models.Maps;
+using FormsSkiaBikeTracker.Services.Interface;
 using LRPLib.Mvx.ViewModels;
-using MvvmCross.Core.ViewModels;
-using MvvmCross.Platform.Platform;
+using MvvmCross.Platform.IoC;
+using MvvmCross.Platform.WeakSubscription;
+using MvvmCross.Plugins.Location;
 using Realms;
-using Xamarin.Forms;
 using Xamarin.Forms.Maps;
 
 namespace FormsSkiaBikeTracker.ViewModels
 {
     public class MainViewModel : LrpViewModel
     {
+        [MvxInject]
+        public ILocationTracker LocationTracker { get; set; }
+
         private Athlete _athlete;
         public Athlete Athlete
         {
-            get { return _athlete; }
+            get => _athlete;
             set
             {
                 if (Athlete != value)
@@ -38,34 +40,35 @@ namespace FormsSkiaBikeTracker.ViewModels
             }
         }
 
-        private IMvxCommand _testCoordsCommand;
-        public IMvxCommand TestCoordsCommand
+        private bool _userLocationAcquired;
+        public bool UserLocationAcquired
         {
-            get
+            get => _userLocationAcquired;
+            set
             {
-                if (_testCoordsCommand == null)
+                if (UserLocationAcquired != value)
                 {
-                    _testCoordsCommand = new MvxCommand(TestCoords);
+                    _userLocationAcquired = value;
+                    RaisePropertyChanged();
                 }
-
-                return _testCoordsCommand;
             }
         }
 
-        private void TestCoords()
+        private Position _lastUserLocation;
+        public Position LastUserLocation
         {
-            Rectangle largeTile = new Rectangle(0, 0, 256, 256);
-            Rectangle smallTile = new Rectangle(0, 0, 128, 128);
-            SKMapSpan largeSpan = largeTile.ToGps();
-            SKMapSpan smallSpan = smallTile.ToGps();
-
-            Debug.WriteLine($"Large bounds for tile {largeTile}\n" +
-                            $"({largeSpan.Center.Longitude + largeSpan.LongitudeDegrees}, {largeSpan.Center.Latitude - largeSpan.LatitudeDegrees}; \n" +
-                            $"{largeSpan.Center.Longitude - largeSpan.LongitudeDegrees}, {largeSpan.Center.Latitude + largeSpan.LatitudeDegrees})");
-            Debug.WriteLine($"Small bounds for tile {smallTile}\n" +
-                            $"({smallSpan.Center.Longitude + smallSpan.LongitudeDegrees}, {smallSpan.Center.Latitude - smallSpan.LatitudeDegrees}; \n" +
-                            $"{smallSpan.Center.Longitude - smallSpan.LongitudeDegrees}, {smallSpan.Center.Latitude + smallSpan.LatitudeDegrees})");
+            get => _lastUserLocation;
+            set
+            {
+                if (LastUserLocation != value)
+                {
+                    _lastUserLocation = value;
+                    RaisePropertyChanged();
+                }
+            }
         }
+
+        private object _locationChangedSubscription;
 
         public MainViewModel()
         {
@@ -80,6 +83,17 @@ namespace FormsSkiaBikeTracker.ViewModels
         public override void Start()
         {
             base.Start();
+
+            _locationChangedSubscription = new MvxWeakEventSubscription<ILocationTracker, MvxGeoLocation>(LocationTracker,
+                                                                                                          nameof(LocationTracker.Moved),
+                                                                                                          UserLocationUpdated);
+        }
+
+        private void UserLocationUpdated(object sender, MvxGeoLocation location)
+        {
+            UserLocationAcquired = true;
+            LastUserLocation = new Position(location.Coordinates.Latitude,
+                                            location.Coordinates.Longitude);
         }
     }
 }

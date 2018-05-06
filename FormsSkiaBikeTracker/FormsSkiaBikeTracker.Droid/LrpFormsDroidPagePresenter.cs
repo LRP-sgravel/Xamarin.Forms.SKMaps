@@ -1,30 +1,27 @@
 ﻿// **********************************************************************
 // 
-//   LrpFormsDroidPagePresenter.cs
+//   LRPFormsDroidPagePresenter.cs
 //   
 //   This file is subject to the terms and conditions defined in
 //   file 'LICENSE.txt', which is part of this source code package.
 //   
-//   Copyright (c) 2017, Le rond-point
+//   Copyright (c) 2017, Sylvain Gravel
 // 
 // ***********************************************************************
 
-using Android.Content;
 using FormsSkiaBikeTracker.Forms.UI;
 using MvvmCross.Droid.Views;
-using Plugin.CurrentActivity;
 using Xamarin.Forms;
 
 namespace FormsSkiaBikeTracker.Droid
 {
-    public class LrpFormsAndroidPagePresenter : LrpFormsPagePresenter, IMvxAndroidViewPresenter
+    public class LRPFormsAndroidPagePresenter : LRPFormsPagePresenter, IMvxAndroidViewPresenter
     {
-        public LrpFormsAndroidPagePresenter() : base()
+        public LRPFormsAndroidPagePresenter() : base()
         {
-
         }
 
-        public LrpFormsAndroidPagePresenter(Application mvxFormsApp) : base(mvxFormsApp)
+        public LRPFormsAndroidPagePresenter(Application mvxFormsApp) : base(mvxFormsApp)
         {
         }
 
