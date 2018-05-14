@@ -1,0 +1,63 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\Fonts\KumarOne-Regular.otf" />
+    <None Remove="Resources\Images\full_logo.svg" />
+    <None Remove="Resources\Images\symbol_logo.svg" />
+    <None Remove="Resources\Text\Common.json" />
+    <None Remove="Resources\Text\fr\Common.json" />
+    <None Remove="Resources\Text\fr\ViewModels.LoginViewModel.json" />
+    <None Remove="Resources\Text\fr\ViewModels.SignUpViewModel.json" />
+    <None Remove="Resources\Text\ViewModels.LoginViewModel.json" />
+    <None Remove="Resources\Text\ViewModels.SignUpViewModel.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Fonts\KumarOne-Regular.otf" />
+    <EmbeddedResource Include="Resources\Images\full_logo.svg" />
+    <EmbeddedResource Include="Resources\Images\symbol_logo.svg" />
+    <EmbeddedResource Include="Resources\Text\Common.json" />
+    <EmbeddedResource Include="Resources\Text\fr\Common.json" />
+    <EmbeddedResource Include="Resources\Text\fr\ViewModels.LoginViewModel.json" />
+    <EmbeddedResource Include="Resources\Text\fr\ViewModels.SignUpViewModel.json" />
+    <EmbeddedResource Include="Resources\Text\ViewModels.LoginViewModel.json" />
+    <EmbeddedResource Include="Resources\Text\ViewModels.SignUpViewModel.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Acr.Settings" Version="9.0.0" />
+    <PackageReference Include="Acr.UserDialogs" Version="7.0.1" />
+    <PackageReference Include="LRPFramework" Version="2.0.0" />
+    <PackageReference Include="LRPFramework.Mvx" Version="2.0.0" />
+    <PackageReference Include="Microsoft.AppCenter.Analytics" Version="1.6.0" />
+    <PackageReference Include="Microsoft.AppCenter.Crashes" Version="1.6.0" />
+    <PackageReference Include="Microsoft.NETCore.Platforms" Version="2.0.2" />
+    <PackageReference Include="MvvmCross.Forms" Version="6.0.1" />
+    <PackageReference Include="MvvmCross.Plugin.JsonLocalization" Version="6.0.1" />
+    <PackageReference Include="MvvmCross.Plugin.Location" Version="6.0.1" />
+    <PackageReference Include="MvvmCross.Plugin.PictureChooser" Version="6.0.1" />
+    <PackageReference Include="PropertyChanged.Fody" Version="2.1.4" />
+    <PackageReference Include="Realm" Version="2.2.0" />
+    <PackageReference Include="SimpleCrypto.NetCore" Version="1.0.0" />
+    <PackageReference Include="SkiaSharp" Version="1.60.0" />
+    <PackageReference Include="System.Collections.Immutable" Version="1.4.0" />
+    <PackageReference Include="System.Console" Version="4.3.1" />
+    <PackageReference Include="System.Linq.Queryable" Version="4.3.0" />
+    <PackageReference Include="System.Net.Http" Version="4.3.3" />
+    <PackageReference Include="System.Reflection.TypeExtensions" Version="4.4.0" />
+    <PackageReference Include="System.Security.Cryptography.Algorithms" Version="4.3.1" />
+    <PackageReference Include="System.Security.Cryptography.X509Certificates" Version="4.3.2" />
+    <PackageReference Include="System.Xml.ReaderWriter" Version="4.3.1" />
+    <PackageReference Include="Xamarin.Build.Download" Version="0.4.11" />
+    <PackageReference Include="Xamarin.Forms.Maps" Version="2.5.1.527436" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+
+</Project>

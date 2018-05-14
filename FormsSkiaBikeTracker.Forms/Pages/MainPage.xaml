@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<mvx:MvxContentPage x:TypeArguments="viewModels:MainViewModel"
+                    xmlns="http://xamarin.com/schemas/2014/forms"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                    xmlns:mvx="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
+                    xmlns:converters="clr-namespace:FormsSkiaBikeTracker.Forms.Converters;assembly=FormsSkiaBikeTracker.Forms"
+                    xmlns:overlays="clr-namespace:Xamarin.Forms.Maps.Overlays;assembly=Xamarin.Forms.Maps.Overlays"
+                    xmlns:lrpMvxForms="clr-namespace:LRPFramework.Mvx.Views.Forms.Markup;assembly=LRPFramework.Mvx.Views.Forms"
+                    xmlns:maps="clr-namespace:FormsSkiaBikeTracker.Forms.Controls.Maps;assembly=FormsSkiaBikeTracker.Forms"
+                    xmlns:viewModels="clr-namespace:FormsSkiaBikeTracker.ViewModels;assembly=FormsSkiaBikeTracker.Shared"
+                    x:Class="FormsSkiaBikeTracker.Forms.Pages.MainPage"
+                    Title="MainPage">
+    <mvx:MvxContentPage.Resources>
+        <ResourceDictionary>
+            <converters:DebugConverter x:Key="DebugConverter" />
+        </ResourceDictionary>
+    </mvx:MvxContentPage.Resources>
+
+    <Grid RowSpacing="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="4*" />
+        </Grid.RowDefinitions>
+
+        <!-- QuickStatsBanner Grid.Row="0"
+        
+        / -->
+
+        <StackLayout Grid.Row="0"
+                     Orientation="Horizontal"
+                     BackgroundColor="IndianRed">
+        </StackLayout>
+
+        <overlays:OverlayedMap x:Name="MapControl"
+                               Grid.Row="1"
+                               VerticalOptions="FillAndExpand"
+                               HorizontalOptions="FillAndExpand"
+                               IsShowingUser="False">
+            <overlays:OverlayedMap.MapOverlays>
+                <maps:ImageOverlay Icon="{lrpMvxForms:EmbeddedImage symbol_logo.svg}"
+                                  Position="{Binding LastUserLocation, Converter={StaticResource DebugConverter}}"
+                                  IsVisible="{Binding UserLocationAcquired}"/>
+            </overlays:OverlayedMap.MapOverlays>
+        </overlays:OverlayedMap>
+
+    </Grid>
+</mvx:MvxContentPage>

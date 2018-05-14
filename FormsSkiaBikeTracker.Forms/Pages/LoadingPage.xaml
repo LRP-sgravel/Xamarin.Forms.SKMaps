@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<mvx:MvxContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+                      xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                      xmlns:lrp="clr-namespace:LRPFramework.Views.Forms.Markup;assembly=LRPFramework.Views.Forms"
+                      xmlns:mvx="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
+                      x:Class="FormsSkiaBikeTracker.Forms.Pages.LoadingPage">
+
+    <AbsoluteLayout>
+        <Image AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+               AbsoluteLayout.LayoutFlags="All"
+               Source="Default.png"
+               Aspect="AspectFit" />
+        <Label AbsoluteLayout.LayoutBounds="0, 0.75, 1, .05"
+               AbsoluteLayout.LayoutFlags="All"
+               Text="{Binding StatusText}"
+               HorizontalTextAlignment="Center"
+               VerticalTextAlignment="Center"
+               FontSize="16" />
+        <Label AbsoluteLayout.LayoutBounds="0, 1, 1, .05"
+               AbsoluteLayout.LayoutFlags="All"
+               Text="{lrp:LocalizedText Copyright}"
+               HorizontalTextAlignment="Center"
+               VerticalTextAlignment="Center"
+               FontSize="12" />
+    </AbsoluteLayout>
+
+</mvx:MvxContentPage>
