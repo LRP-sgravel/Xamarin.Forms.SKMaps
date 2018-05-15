@@ -10,11 +10,13 @@
 // ***********************************************************************
 
 using System.ComponentModel;
+using MvvmCross.Forms.Presenters.Attributes;
 using MvvmCross.WeakSubscription;
 using Xamarin.Forms.Maps;
 
 namespace FormsSkiaBikeTracker.Forms.Pages
 {
+    [MvxContentPagePresentation(NoHistory = true)]
     public partial class MainPage
     {
         private object _locationChangedSubscriotion;
