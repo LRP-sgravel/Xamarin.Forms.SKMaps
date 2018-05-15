@@ -95,6 +95,7 @@ namespace FormsSkiaBikeTracker.Forms.Controls.Maps
 
             // More precise/zoom based culling to reduce drawing calls
             if (Icon != null && canvasMapRect.FastIntersects(centeredSpan))
+            {
                 if (_svgIcon != null)
                 {
                     canvas.DrawPicture(_svgIcon.Picture, Position, IconSizePixels);
@@ -105,6 +106,7 @@ namespace FormsSkiaBikeTracker.Forms.Controls.Maps
 
                     canvas.DrawBitmap(_bitmapIcon, new MapSpan(Position, iconArea.LatitudeDegrees, iconArea.LongitudeDegrees));
                 }
+            }
         }
 
         private void UpdateBounds()

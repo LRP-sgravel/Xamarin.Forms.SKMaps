@@ -340,6 +340,20 @@
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FormsSkiaBikeTracker.Forms\FormsSkiaBikeTracker.Forms.csproj">
+      <Project>{40bd2756-6ad1-45b9-9ecc-c633f43a23b0}</Project>
+      <Name>FormsSkiaBikeTracker.Forms</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FormsSkiaBikeTracker.Shared\FormsSkiaBikeTracker.Shared.csproj">
+      <Project>{74fb9ea6-55ec-4d1c-abf3-6147b48f9003}</Project>
+      <Name>FormsSkiaBikeTracker.Shared</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Xamarin.Forms.Maps.Overlays\Xamarin.Forms.Maps.Overlays.csproj">
+      <Project>{c3b1e01c-d9a0-4616-8b76-0305e0777a49}</Project>
+      <Name>Xamarin.Forms.Maps.Overlays</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

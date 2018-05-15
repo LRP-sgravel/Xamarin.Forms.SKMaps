@@ -105,22 +105,23 @@ namespace Xamarin.Forms.Maps.Overlays.Platforms.Ios.UI.Renderers
 
             public override void DrawMapRect(MKMapRect mapRect, nfloat zoomScale, CGContext context)
             {
-                CGRect coreDrawRect = RectForMapRect(mapRect);
-                SKBitmap drawBitmap = GetOverlayBitmap();
-                SKMapCanvas mapCanvas = new SKMapCanvas(drawBitmap, mapRect.ToRectangle(), zoomScale);
                 SKMapSpan rectSpan = mapRect.ToMapSpan();
 
-                if (rectSpan.FastIntersects(_SharedOverlay.GpsBounds))
+                if (_SharedOverlay.IsVisible && rectSpan.FastIntersects(_SharedOverlay.GpsBounds))
                 {
+                    CGRect coreDrawRect = RectForMapRect(mapRect);
+                    SKBitmap drawBitmap = GetOverlayBitmap();
+                    SKMapCanvas mapCanvas = new SKMapCanvas(drawBitmap, mapRect.ToRectangle(), zoomScale);
+
                     _SharedOverlay.DrawOnMap(mapCanvas, rectSpan, zoomScale);
 
                     context.SaveState();
                     context.DrawImage(coreDrawRect, drawBitmap.ToCGImage());
                     context.RestoreState();
-                }
 
-                // Let's exit this method so MapKit renders to screen while we free our resources in the background.
-                Task.Run(() => ReleaseOverlayBitmap(drawBitmap));
+                    // Let's exit this method so MapKit renders to screen while we free our resources in the background.
+                    Task.Run(() => ReleaseOverlayBitmap(drawBitmap));
+                    }
             }
 
             private SKBitmap GetOverlayBitmap()
@@ -210,9 +211,12 @@ namespace Xamarin.Forms.Maps.Overlays.Platforms.Ios.UI.Renderers
 
         private void MapOverlaysCollectionChanged(object sender, NotifyCollectionChangedEventArgs args)
         {
-            IList<DrawableMapOverlay> newItems = args.NewItems as IList<DrawableMapOverlay>;
-            IList<DrawableMapOverlay> removedItems = args.OldItems as IList<DrawableMapOverlay>;
-
+            IEnumerable<DrawableMapOverlay> newItems = args.NewItems?
+                                                           .Cast<DrawableMapOverlay>()
+                                                           .DefaultIfEmpty();
+            IEnumerable<DrawableMapOverlay> removedItems = args.OldItems?
+                                                               .Cast<DrawableMapOverlay>()
+                                                               .DefaultIfEmpty();
             switch (args.Action)
             {
                 case NotifyCollectionChangedAction.Add:

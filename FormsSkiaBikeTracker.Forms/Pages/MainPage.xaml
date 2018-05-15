@@ -39,8 +39,8 @@
                                IsShowingUser="False">
             <overlays:OverlayedMap.MapOverlays>
                 <maps:ImageOverlay Icon="{lrpMvxForms:EmbeddedImage symbol_logo.svg}"
-                                  Position="{Binding LastUserLocation, Converter={StaticResource DebugConverter}}"
-                                  IsVisible="{Binding UserLocationAcquired}"/>
+                                   Position="{Binding LastUserLocation, Converter={StaticResource DebugConverter}}"
+                                   IsVisible="{Binding UserLocationAcquired}"/>
             </overlays:OverlayedMap.MapOverlays>
         </overlays:OverlayedMap>
 
