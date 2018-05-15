@@ -10,14 +10,12 @@
 // ***********************************************************************
 
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using FormsSkiaBikeTracker.Models;
 using FormsSkiaBikeTracker.Shared.ViewModels;
 using LRPFramework.Mvx.ViewModels;
 using LRPFramework.Services;
-using MvvmCross.ViewModels;
 using Realms;
 
 namespace FormsSkiaBikeTracker.ViewModels

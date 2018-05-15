@@ -8,18 +8,15 @@
 //   Copyright (c) 2017, Le rond-point
 // 
 // ***********************************************************************
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
+
 using Flurry.Analytics;
-using FormsSkiaBikeTracker.Forms.Pages;
 using FormsSkiaBikeTracker.iOS.Services;
 using FormsSkiaBikeTracker.Services.Interface;
 using Foundation;
 using LRPFramework.Mvx.Views.Forms.iOS;
 using MvvmCross;
 using MvvmCross.IoC;
-using TestApp.Forms;
+using FormsSkiaBikeTracker.Forms;
 
 namespace FormsSkiaBikeTracker.iOS
 {

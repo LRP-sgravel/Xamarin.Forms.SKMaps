@@ -14,7 +14,6 @@
   <ItemGroup>
     <PackageReference Include="LRPFramework.Mvx.Views.Forms" Version="2.0.0" />
     <PackageReference Include="LRPFramework.Views.Forms" Version="2.0.0" />
-    <PackageReference Include="PropertyChanged.Fody" Version="2.1.4" />
     <PackageReference Include="SkiaSharp.Svg" Version="1.60.0" />
     <PackageReference Include="Xamarin.Forms" Version="2.5.1.527436" />
     <PackageReference Include="Xamarin.Forms.Maps" Version="2.5.1.527436" />

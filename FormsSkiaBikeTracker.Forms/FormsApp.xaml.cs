@@ -1,6 +1,6 @@
 ﻿using MvvmCross.Forms.Core;
 
-namespace TestApp.Forms
+namespace FormsSkiaBikeTracker.Forms
 {
 	public partial class FormsApp : MvxFormsApplication
     {

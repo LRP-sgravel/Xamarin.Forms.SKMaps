@@ -20,7 +20,7 @@ using LRPFramework.Mvx.Views.Forms;
 using LRPFramework.Views;
 using LRPFramework.Views.Forms;
 using MvvmCross.Forms.Platforms.Ios.Core;
-using TestApp.Forms;
+using FormsSkiaBikeTracker.Forms;
 
 [assembly: ResolutionGroupName(Constants.GeneralNamespace)]
 namespace FormsSkiaBikeTracker.Ios

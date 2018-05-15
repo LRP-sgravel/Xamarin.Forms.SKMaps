@@ -85,9 +85,8 @@ namespace FormsSkiaBikeTracker.ViewModels
 
         public override Task Initialize()
         {
-            _locationChangedSubscription = new MvxWeakEventSubscription<ILocationTracker, LocationMovedEventArgs>(LocationTracker,
-                                                                                                                  nameof(LocationTracker.Moved),
-                                                                                                                  UserLocationUpdated);
+            _locationChangedSubscription = LocationTracker.WeakSubscribe<ILocationTracker, LocationMovedEventArgs>(nameof(LocationTracker.Moved),
+                                                                                                                   UserLocationUpdated);
 
             return base.Initialize();
         }

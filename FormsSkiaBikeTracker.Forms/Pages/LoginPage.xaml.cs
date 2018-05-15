@@ -21,7 +21,19 @@ namespace FormsSkiaBikeTracker.Forms.Pages
 {
     public partial class LoginPage
     {
-        public IEnumerable<AthleteLoginWrapper> AthletesViewWrappers { get; set; }
+        private IEnumerable<AthleteLoginWrapper> _athletesViewWrappers;
+        public IEnumerable<AthleteLoginWrapper> AthletesViewWrappers
+        {
+            get => _athletesViewWrappers;
+            set
+            {
+                if (AthletesViewWrappers != value)
+                {
+                    _athletesViewWrappers = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
 
         private MvxNamedNotifyPropertyChangedEventSubscription<LoginViewModel> _viewModelSelectedAthleteChangedSubscription;
         private MvxNamedNotifyPropertyChangedEventSubscription<LoginViewModel> _viewModelAthletesChangedSubscription;

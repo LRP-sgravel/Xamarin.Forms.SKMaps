@@ -31,6 +31,7 @@
   <ItemGroup>
     <PackageReference Include="Acr.Settings" Version="9.0.0" />
     <PackageReference Include="Acr.UserDialogs" Version="7.0.1" />
+    <PackageReference Include="Fody" Version="2.4.6" />
     <PackageReference Include="LRPFramework" Version="2.0.0" />
     <PackageReference Include="LRPFramework.Mvx" Version="2.0.0" />
     <PackageReference Include="Microsoft.AppCenter.Analytics" Version="1.6.0" />
@@ -40,8 +41,9 @@
     <PackageReference Include="MvvmCross.Plugin.JsonLocalization" Version="6.0.1" />
     <PackageReference Include="MvvmCross.Plugin.Location" Version="6.0.1" />
     <PackageReference Include="MvvmCross.Plugin.PictureChooser" Version="6.0.1" />
-    <PackageReference Include="PropertyChanged.Fody" Version="2.1.4" />
-    <PackageReference Include="Realm" Version="2.2.0" />
+    <PackageReference Include="Realm" Version="3.0.0" />
+    <PackageReference Include="Realm.Database" Version="3.0.0" />
+    <PackageReference Include="Realm.DataBinding" Version="1.2.0" />
     <PackageReference Include="SimpleCrypto.NetCore" Version="1.0.0" />
     <PackageReference Include="SkiaSharp" Version="1.60.0" />
     <PackageReference Include="System.Collections.Immutable" Version="1.4.0" />
