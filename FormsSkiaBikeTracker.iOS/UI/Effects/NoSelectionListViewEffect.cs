@@ -1,12 +1,12 @@
 ﻿using System.Linq;
-using FormsSkiaBikeTracker.iOS.UI.Effects;
+using FormsSkiaBikeTracker.Ios.UI.Effects;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
 using UIKit;
 using SharedNoSelectionEffect = FormsSkiaBikeTracker.Forms.UI.Effects.NoSelectionListViewEffect;
 
 [assembly: ExportEffect(typeof(NoSelectionListViewEffect), nameof(NoSelectionListViewEffect))]
-namespace FormsSkiaBikeTracker.iOS.UI.Effects
+namespace FormsSkiaBikeTracker.Ios.UI.Effects
 {
     class NoSelectionListViewEffect : PlatformEffect
     {

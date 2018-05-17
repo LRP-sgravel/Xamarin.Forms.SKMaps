@@ -52,13 +52,14 @@ namespace FormsSkiaBikeTracker.Forms.Controls
             set => SetValue(CommandParameterProperty, value);
         }
 
-        private MvxWeakEventSubscription<LinearGradientBoxView> _backgroundPropertyChangedSubscription;
+        private object _backgroundPropertyChangedSubscription;
 
         public BorderButtonView()
         {
             InitializeComponent();
 
-            _backgroundPropertyChangedSubscription = Background.WeakSubscribe(nameof(Background.SizeChanged), SignUpBackgroundSizeChanged);
+            _backgroundPropertyChangedSubscription = Background.WeakSubscribe(nameof(Background.SizeChanged),
+                                                                              SignUpBackgroundSizeChanged);
         }
         
         private static void TextPropertyChanged(BindableObject bindable, object oldValue, object newValue)

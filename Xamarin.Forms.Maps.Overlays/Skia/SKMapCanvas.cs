@@ -48,7 +48,7 @@ namespace Xamarin.Forms.Maps.Overlays.Skia
             _Canvas?.Dispose();
         }
 
-        public SKMapPath GetEmptyMapPath()
+        public SKMapPath CreateEmptyMapPath()
         {
             return new SKMapPath(this);
         }

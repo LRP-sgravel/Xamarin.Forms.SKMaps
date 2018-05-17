@@ -9,16 +9,21 @@
 // 
 // ***********************************************************************
 
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
 using Flurry.Analytics;
-using FormsSkiaBikeTracker.iOS.Services;
 using FormsSkiaBikeTracker.Services.Interface;
 using Foundation;
 using LRPFramework.Mvx.Views.Forms.iOS;
 using MvvmCross;
 using MvvmCross.IoC;
 using FormsSkiaBikeTracker.Forms;
+using FormsSkiaBikeTracker.Ios.Services;
+using LRPFramework.Services.Threading;
+using MvvmCross.Binding;
 
-namespace FormsSkiaBikeTracker.iOS
+namespace FormsSkiaBikeTracker.Ios
 {
     public class Setup : LRPFormsIosSetup<MvxApp, FormsApp>
     {
@@ -29,13 +34,14 @@ namespace FormsSkiaBikeTracker.iOS
                 PropertyInjectorOptions = MvxPropertyInjectorOptions.MvxInject
             };
         }
-
+        
         protected override void InitializePlatformServices()
         {
             base.InitializePlatformServices();
 
-            Mvx.RegisterSingleton<IDocumentRoot>(Mvx.IocConstruct<DocumentRoot>);
-            SetupFlurry();
+            Mvx.LazyConstructAndRegisterSingleton<IDocumentRoot, DocumentRoot>();
+
+            Mvx.CallbackWhenRegistered<MainThread>(SetupFlurry);
         }
 
         private void SetupFlurry()

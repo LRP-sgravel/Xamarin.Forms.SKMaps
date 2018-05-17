@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 
-<mvx:MvxContentPage x:TypeArguments="viewModels1:SignUpViewModel"
+<mvx:MvxContentPage x:TypeArguments="viewmodels:SignUpViewModel"
                      xmlns="http://xamarin.com/schemas/2014/forms"
                      xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-                     xmlns:viewModels1="clr-namespace:FormsSkiaBikeTracker.Shared.ViewModels;assembly=FormsSkiaBikeTracker.Shared"
+                     xmlns:viewmodels="clr-namespace:FormsSkiaBikeTracker.Shared.ViewModels;assembly=FormsSkiaBikeTracker.Shared"
                      xmlns:lrpMvxForms="clr-namespace:LRPFramework.Views.Forms.Markup;assembly=LRPFramework.Views.Forms"
                      xmlns:mvx="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
                      xmlns:controls="clr-namespace:FormsSkiaBikeTracker.Forms.Controls;assembly=FormsSkiaBikeTracker.Forms"

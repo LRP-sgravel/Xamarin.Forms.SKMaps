@@ -17,7 +17,7 @@ namespace FormsSkiaBikeTracker.Forms.Controls
 {
     public class ResizableViewCell : ViewCell
     {
-        private MvxWeakEventSubscription<View> _contentMeasureInvalidatedSubscription;
+        private object _contentMeasureInvalidatedSubscription;
 
         protected override void OnPropertyChanged(string propertyName = null)
         {
@@ -25,7 +25,8 @@ namespace FormsSkiaBikeTracker.Forms.Controls
 
             if (propertyName == nameof(View))
             {
-                _contentMeasureInvalidatedSubscription = View?.WeakSubscribe(nameof(View.MeasureInvalidated), ContentViewMeasureInvalidated);
+                _contentMeasureInvalidatedSubscription = View?.WeakSubscribe(nameof(View.MeasureInvalidated),
+                                                                             ContentViewMeasureInvalidated);
             }
         }
 

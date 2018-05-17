@@ -10,10 +10,8 @@
 // ***********************************************************************
 
 using Foundation;
-using UIKit;
 using Xamarin.Forms;
 using FormsSkiaBikeTracker;
-using FormsSkiaBikeTracker.iOS;
 using LRPFramework.Mvx;
 using LRPFramework.Mvx.Views;
 using LRPFramework.Mvx.Views.Forms;
@@ -31,8 +29,6 @@ namespace FormsSkiaBikeTracker.Ios
     [Register("AppDelegate")]
     public partial class AppDelegate : MvxFormsApplicationDelegate<Setup, MvxApp, FormsApp>
     {
-        UIWindow _window;
-
         protected override void RunAppStart(object hint = null)
         {
 #if ENABLE_TEST_CLOUD

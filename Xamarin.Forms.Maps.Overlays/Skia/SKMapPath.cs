@@ -16,7 +16,7 @@ namespace Xamarin.Forms.Maps.Overlays.Skia
 {
     public class SKMapPath
     {
-        public SKPath MapCanvasPath { get; }
+        internal SKPath MapCanvasPath { get; }
 
         private SKMapCanvas _MapCanvas { get; }
 

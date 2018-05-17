@@ -20,18 +20,14 @@ namespace FormsSkiaBikeTracker.Forms.Pages
     {
         public IValidationResult CurrentErrors { get; } = new ValidationResult();
 
-        private MvxWeakEventSubscription<IValidationResult> _errorsChangedSubscription;
+        private object _errorsChangedSubscription;
 
         public SignUpPagePage()
         {
             InitializeComponent();
 
-            _errorsChangedSubscription = CurrentErrors.WeakSubscribe(nameof(CurrentErrors.ErrorsChanged), ValidationResultErrorsChanged);
-        }
-
-        protected override void OnPropertyChanged(string propertyName = null)
-        {
-            base.OnPropertyChanged(propertyName);
+            _errorsChangedSubscription = CurrentErrors.WeakSubscribe(nameof(CurrentErrors.ErrorsChanged),
+                                                                     ValidationResultErrorsChanged);
         }
 
         private void ValidationResultErrorsChanged(object sender, EventArgs e)

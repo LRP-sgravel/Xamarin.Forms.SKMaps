@@ -27,7 +27,7 @@ namespace FormsSkiaBikeTracker.Forms.Controls.Maps
             GpsBounds = new MapSpan(new Position(MapSpanExtensions.MaxLatitude - 1, -179), 1, 1);
         }
 
-        public override void DrawOnMap(SKMapCanvas canvas, SKMapSpan canvasMapRect, double pixelScale)
+        public override void DrawOnMap(SKMapCanvas canvas, SKMapSpan canvasMapRect, double zoomScale)
         {
             SKPaint paint = new SKPaint();
 

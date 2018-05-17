@@ -88,9 +88,9 @@ namespace FormsSkiaBikeTracker.Forms.Controls.Maps
             overlay.UpdateIconArea();
         }
 
-        public override void DrawOnMap(SKMapCanvas canvas, SKMapSpan canvasMapRect, double pixelScale)
+        public override void DrawOnMap(SKMapCanvas canvas, SKMapSpan canvasMapRect, double zoomScale)
         {
-            SKMapSpan zoomSpan = SKMapCanvas.PixelsToMaximumMapSpanAtZoom(IconSizePixels, pixelScale);
+            SKMapSpan zoomSpan = SKMapCanvas.PixelsToMaximumMapSpanAtZoom(IconSizePixels, zoomScale);
             SKMapSpan centeredSpan = new SKMapSpan(Position, zoomSpan.LatitudeDegrees, zoomSpan.LongitudeDegrees);
 
             // More precise/zoom based culling to reduce drawing calls
@@ -102,7 +102,7 @@ namespace FormsSkiaBikeTracker.Forms.Controls.Maps
                 }
                 else if (_bitmapIcon != null)
                 {
-                    SKMapSpan iconArea = SKMapCanvas.PixelsToMaximumMapSpanAtZoom(IconSizePixels, pixelScale);
+                    SKMapSpan iconArea = SKMapCanvas.PixelsToMaximumMapSpanAtZoom(IconSizePixels, zoomScale);
 
                     canvas.DrawBitmap(_bitmapIcon, new MapSpan(Position, iconArea.LatitudeDegrees, iconArea.LongitudeDegrees));
                 }

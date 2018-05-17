@@ -184,7 +184,12 @@ namespace FormsSkiaBikeTracker.Forms.Controls
             double startViewHeight = HeightRequest;
             double startPasswordHeight = PasswordLayout.HeightRequest;
 
-            this.Animate($"Animation-{offset}",
+            HeightRequest = startViewHeight + offset;
+            PasswordLayout.HeightRequest = startPasswordHeight + offset;
+
+            // This worked well in Forms 2.3.4, but in 2.5 it drags the whole UI thread down...
+
+/*            this.Animate($"Animation-{offset}",
                          p =>
                          {
                              HeightRequest = startViewHeight + p;
@@ -195,7 +200,7 @@ namespace FormsSkiaBikeTracker.Forms.Controls
                          offset,
                          16,
                          250,
-                         Easing.CubicInOut);
+                         Easing.CubicInOut);*/
         }
 
         private void InternalVMPropertyChanged(object sender, PropertyChangedEventArgs args)

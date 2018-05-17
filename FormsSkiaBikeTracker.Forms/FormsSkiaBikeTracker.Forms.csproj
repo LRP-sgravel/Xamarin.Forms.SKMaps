@@ -15,6 +15,7 @@
     <PackageReference Include="LRPFramework.Mvx.Views.Forms" Version="2.0.0" />
     <PackageReference Include="LRPFramework.Views.Forms" Version="2.0.0" />
     <PackageReference Include="SkiaSharp.Svg" Version="1.60.0" />
+    <PackageReference Include="System.Net.Http" Version="4.3.3" />
     <PackageReference Include="Xamarin.Forms" Version="2.5.1.527436" />
     <PackageReference Include="Xamarin.Forms.Maps" Version="2.5.1.527436" />
   </ItemGroup>
@@ -22,6 +23,12 @@
   <ItemGroup>
     <ProjectReference Include="..\FormsSkiaBikeTracker.Shared\FormsSkiaBikeTracker.Shared.csproj" />
     <ProjectReference Include="..\Xamarin.Forms.Maps.Overlays\Xamarin.Forms.Maps.Overlays.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Controls\QuickStatsBanner.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
 
 </Project>

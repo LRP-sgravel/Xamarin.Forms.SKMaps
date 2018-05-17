@@ -67,8 +67,10 @@ namespace FormsSkiaBikeTracker.Forms.Pages
 
                     RebuildAthletesViewWrappers();
 
-                    _viewModelSelectedAthleteChangedSubscription = npc.WeakSubscribe<LoginViewModel>(nameof(ViewModel.SelectedAthlete), ViewModelSelectedAthleteChanged);
-                    _viewModelAthletesChangedSubscription = npc.WeakSubscribe<LoginViewModel>(nameof(ViewModel.Athletes), ViewModelAthletesChanged);
+                    _viewModelSelectedAthleteChangedSubscription = npc.WeakSubscribe<LoginViewModel>(nameof(ViewModel.SelectedAthlete),
+                                                                                                     ViewModelSelectedAthleteChanged);
+                    _viewModelAthletesChangedSubscription = npc.WeakSubscribe<LoginViewModel>(nameof(ViewModel.Athletes),
+                                                                                              ViewModelAthletesChanged);
                 }
             }
         }

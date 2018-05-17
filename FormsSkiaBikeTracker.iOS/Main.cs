@@ -10,7 +10,7 @@
 // ***********************************************************************
 using UIKit;
 
-namespace FormsSkiaBikeTracker.iOS
+namespace FormsSkiaBikeTracker.Ios
 {
     public class Application
     {

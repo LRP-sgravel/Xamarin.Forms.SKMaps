@@ -15,12 +15,11 @@ using System.Threading.Tasks;
 using Acr.UserDialogs;
 using FormsSkiaBikeTracker.Models;
 using FormsSkiaBikeTracker.ViewModels;
-using LRPFramework.Services;
 using LRPFramework.Mvx.ViewModels;
+using LRPFramework.Services.Threading;
 using MvvmCross.Commands;
 using MvvmCross.IoC;
 using MvvmCross.Logging;
-using MvvmCross.ViewModels;
 using Realms;
 using SimpleCrypto;
 
@@ -63,46 +62,13 @@ namespace FormsSkiaBikeTracker.Shared.ViewModels
         }
 
         private IMvxCommand _loginAthleteCommand;
-        public IMvxCommand LoginAthleteCommand
-        {
-            get
-            {
-                if (_loginAthleteCommand == null)
-                {
-                    _loginAthleteCommand = new MvxCommand<string>(LoginAthlete);
-                }
-
-                return _loginAthleteCommand;
-            }
-        }
+        public IMvxCommand LoginAthleteCommand => _loginAthleteCommand ?? (_loginAthleteCommand = new MvxCommand<string>(LoginAthlete));
 
         private IMvxCommand _goToSignupCommand;
-        public IMvxCommand GoToSignupCommand
-        {
-            get
-            {
-                if (_goToSignupCommand == null)
-                {
-                    _goToSignupCommand = new MvxCommand(GoToSignup);
-                }
-
-                return _goToSignupCommand;
-            }
-        }
+        public IMvxCommand GoToSignupCommand => _goToSignupCommand ?? (_goToSignupCommand = new MvxCommand(GoToSignup));
 
         private IMvxCommand _selectAthleteCommand;
-        public IMvxCommand SelectAthleteCommand
-        {
-            get
-            {
-                if (_selectAthleteCommand == null)
-                {
-                    _selectAthleteCommand = new MvxCommand<Athlete>(SelectAthlete);
-                }
-
-                return _selectAthleteCommand;
-            }
-        }
+        public IMvxCommand SelectAthleteCommand => _selectAthleteCommand ?? (_selectAthleteCommand = new MvxCommand<Athlete>(SelectAthlete));
 
         private void SelectAthlete(Athlete pickedAthlete)
         {

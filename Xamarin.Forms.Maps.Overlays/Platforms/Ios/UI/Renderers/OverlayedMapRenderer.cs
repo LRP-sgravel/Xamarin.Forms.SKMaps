@@ -78,8 +78,10 @@ namespace Xamarin.Forms.Maps.Overlays.Platforms.Ios.UI.Renderers
                 _SharedOverlay = sharedOverlay;
                 _NativeMap = mapView;
 
-                _boundsChangedSubscription = _SharedOverlay.WeakSubscribe<DrawableMapOverlay>(nameof(_SharedOverlay.GpsBounds), OverlayGpsBoundsChanged);
-                _overlayDirtySubscription = new MvxWeakEventSubscription<DrawableMapOverlay, MapSpan>(_SharedOverlay, nameof(_SharedOverlay.RequestInvalidate), MarkOverlayDirty);
+                _boundsChangedSubscription = _SharedOverlay.WeakSubscribe<DrawableMapOverlay>(nameof(_SharedOverlay.GpsBounds),
+                                                                                              OverlayGpsBoundsChanged);
+                _overlayDirtySubscription = _SharedOverlay.WeakSubscribe<DrawableMapOverlay, MapSpan>(nameof(_SharedOverlay.RequestInvalidate),
+                                                                                                      MarkOverlayDirty);
             }
 
             private void OverlayGpsBoundsChanged(object sender, PropertyChangedEventArgs args)

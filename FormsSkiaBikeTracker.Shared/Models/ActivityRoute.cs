@@ -1,27 +1,28 @@
 ﻿// **********************************************************************
 // 
-//   Athlete.cs
+//   ActivityRoute.cs
 //   
 //   This file is subject to the terms and conditions defined in
 //   file 'LICENSE.txt', which is part of this source code package.
 //   
-//   Copyright (c) 2017, Le rond-point
+//   Copyright (c) 2018, Sylvain Gravel
 // 
 // ***********************************************************************
 
 using System.Collections.Generic;
+using System.Linq;
+using FormsSkiaBikeTracker.Services.Interface;
 using Realms;
+using Xamarin.Forms.Maps;
 
 namespace FormsSkiaBikeTracker.Models
 {
-    public class Athlete : RealmObject
+    public class ActivityRoute : RealmObject, IRoute
     {
         [PrimaryKey]
-        public string Id { get; set; }
-        public string Name { get; set; }
-        public string PasswordHash { get; set; }
-        public string PasswordSalt { get; set; }
-        public string PicturePath { get; set; }
-        public IList<Activity> Activities { get; }
+        public long Id { get; set; }
+        public IList<RoutePoint> RealmPoints { get; }
+
+        public IEnumerable<Position> Points => RealmPoints.Select(r => r.ToPosition());
     }
 }

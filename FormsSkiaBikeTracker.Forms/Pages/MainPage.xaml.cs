@@ -11,6 +11,7 @@
 
 using System.ComponentModel;
 using MvvmCross.Forms.Presenters.Attributes;
+using MvvmCross.Logging;
 using MvvmCross.WeakSubscription;
 using Xamarin.Forms.Maps;
 
@@ -34,7 +35,8 @@ namespace FormsSkiaBikeTracker.Forms.Pages
 
             if (ViewModel != null)
             {
-                _locationChangedSubscriotion = ViewModel.WeakSubscribe(() => ViewModel.LastUserLocation, UserLocationChanged);
+                _locationChangedSubscriotion = ViewModel.WeakSubscribe(() => ViewModel.LastUserLocation,
+                                                                       UserLocationChanged);
             }
         }
 
@@ -42,9 +44,8 @@ namespace FormsSkiaBikeTracker.Forms.Pages
         {
             if (ViewModel.UserLocationAcquired)
             {
-                MapControl.MoveToRegion(new MapSpan(ViewModel.LastUserLocation,
-                                                    MapControl.VisibleRegion.LatitudeDegrees,
-                                                    MapControl.VisibleRegion.LongitudeDegrees));
+                MapControl.MoveToRegion(MapSpan.FromCenterAndRadius(ViewModel.LastUserLocation,
+                                                                    MapControl.VisibleRegion.Radius));
             }
         }
     }

@@ -1,6 +1,6 @@
 ﻿using FormsSkiaBikeTracker.Services.Interface;
 
-namespace FormsSkiaBikeTracker.iOS.Services
+namespace FormsSkiaBikeTracker.Ios.Services
 {
     public class DocumentRoot : IDocumentRoot
     {

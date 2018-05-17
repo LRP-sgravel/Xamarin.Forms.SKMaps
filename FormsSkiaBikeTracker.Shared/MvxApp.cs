@@ -9,7 +9,6 @@
 // 
 // ***********************************************************************
 
-using System.Globalization;
 using System.Reflection;
 using System.Threading.Tasks;
 using Acr.Settings;
@@ -21,6 +20,7 @@ using FormsSkiaBikeTracker.ViewModels;
 using LRPFramework.Mvx.Services.Localization;
 using LRPFramework.Services;
 using LRPFramework.Services.Resources;
+using LRPFramework.Services.Threading;
 using MvvmCross;
 using MvvmCross.IoC;
 using MvvmCross.Plugin.JsonLocalization;
@@ -45,6 +45,29 @@ namespace FormsSkiaBikeTracker
             base.Initialize();
         }
 
+        private void InitializeServices()
+        {
+            Mvx.LazyConstructAndRegisterSingleton<ILRPBootstrapper, LRPBootstrapper>();
+            Mvx.LazyConstructAndRegisterSingleton<ICryptoService, PBKDF2>();
+            Mvx.RegisterSingleton<ILocationTracker>(InitializeLocationTracker);
+            Mvx.RegisterSingleton<IResourceLocator>(InitializeResources);
+            Mvx.RegisterSingleton<IUserDialogs>(UserDialogs.Instance);
+            Mvx.RegisterSingleton<ISettings>(CrossSettings.Current);
+            Mvx.RegisterType<IRouteRecorder, RouteRecorder>();
+
+            Mvx.CallbackWhenRegistered<MainThread>(InitializeText);
+            Mvx.CallbackWhenRegistered<MainThread>(InitializeBootstrap);
+        }
+
+        private ILocationTracker InitializeLocationTracker()
+        {
+            ILocationTracker tracker = Mvx.IocConstruct<LocationTracker>();
+
+            tracker.Start(10, 5, false);
+
+            return tracker;
+        }
+        
         public static IResourceLocator InitializeResources()
         {
             Assembly currentAssembly = Assembly.Load(new AssemblyName("FormsSkiaBikeTracker.Shared"));
@@ -71,28 +94,6 @@ namespace FormsSkiaBikeTracker
 #else
             builder.LoadResources(CultureInfo.CurrentUICulture.TwoLetterISOLanguageName);
 #endif
-        }
-
-        private void InitializeServices()
-        {
-            Mvx.LazyConstructAndRegisterSingleton<ILRPBootstrapper, LRPBootstrapper>();
-            Mvx.RegisterSingleton<ICryptoService>(() => new PBKDF2());
-            Mvx.RegisterSingleton<ILocationTracker>(InitializeLocationTracker);
-            Mvx.RegisterSingleton<IResourceLocator>(InitializeResources);
-            Mvx.RegisterSingleton<IUserDialogs>(UserDialogs.Instance);
-            Mvx.RegisterSingleton<ISettings>(CrossSettings.Current);
-
-            Mvx.CallbackWhenRegistered<MainThread>(InitializeText);
-            Mvx.CallbackWhenRegistered<MainThread>(InitializeBootstrap);
-        }
-
-        private ILocationTracker InitializeLocationTracker()
-        {
-            ILocationTracker tracker = Mvx.IocConstruct<LocationTracker>();
-
-            tracker.Start(8, 3, false);
-
-            return tracker;
         }
 
         private void InitializeBootstrap()

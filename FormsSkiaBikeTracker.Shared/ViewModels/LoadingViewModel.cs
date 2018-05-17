@@ -16,13 +16,15 @@ using FormsSkiaBikeTracker.Models;
 using FormsSkiaBikeTracker.Shared.ViewModels;
 using LRPFramework.Mvx.ViewModels;
 using LRPFramework.Services;
+using MvvmCross.IoC;
 using Realms;
 
 namespace FormsSkiaBikeTracker.ViewModels
 {
     class LoadingViewModel : LRPViewModel
     {
-        private ILRPBootstrapper _Bootstrapper { get; }
+        [MvxInject]
+        public ILRPBootstrapper Bootstrapper { get; set; }
 
         private string _statusTextId;
         private string _StatusTextId
@@ -40,11 +42,6 @@ namespace FormsSkiaBikeTracker.ViewModels
 
         public string StatusText => string.IsNullOrEmpty(_StatusTextId) ? _StatusTextId : LanguageBinder.GetText(_StatusTextId);
 
-        public LoadingViewModel(ILRPBootstrapper bootstrapper)
-        {
-            _Bootstrapper = bootstrapper;
-        }
-
         public override void Prepare()
         {
             base.Prepare();
@@ -54,8 +51,8 @@ namespace FormsSkiaBikeTracker.ViewModels
 
         public override Task Initialize()
         {
-            _Bootstrapper.BootTextChanged += UpdateBootText;
-            _Bootstrapper.BootCompleted += OnBootCompleted;
+            Bootstrapper.BootTextChanged += UpdateBootText;
+            Bootstrapper.BootCompleted += OnBootCompleted;
 
             return base.Initialize();
         }
@@ -67,8 +64,8 @@ namespace FormsSkiaBikeTracker.ViewModels
 
         public void OnBootCompleted(object sender, EventArgs args)
         {
-            _Bootstrapper.BootTextChanged -= UpdateBootText;
-            _Bootstrapper.BootCompleted -= OnBootCompleted;
+            Bootstrapper.BootTextChanged -= UpdateBootText;
+            Bootstrapper.BootCompleted -= OnBootCompleted;
 
             if (Realm.GetInstance()
                      .All<Athlete>()

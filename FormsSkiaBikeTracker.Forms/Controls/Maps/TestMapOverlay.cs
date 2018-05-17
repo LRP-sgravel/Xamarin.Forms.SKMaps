@@ -36,7 +36,7 @@ namespace FormsSkiaBikeTracker.Forms.Controls.Maps
                                     baseBounds.LongitudeDegrees + strokeWidthArea.Width);
         }
 
-        public override void DrawOnMap(SKMapCanvas canvas, SKMapSpan canvasMapRect, double pixelScale)
+        public override void DrawOnMap(SKMapCanvas canvas, SKMapSpan canvasMapRect, double zoomScale)
         {
             SKPaint paint = new SKPaint();
 
@@ -82,7 +82,7 @@ namespace FormsSkiaBikeTracker.Forms.Controls.Maps
             paint.StrokeCap = SKStrokeCap.Round;
             paint.StrokeJoin = SKStrokeJoin.Round;
             paint.Color = Color.Red.ToSKColor();
-            SKMapPath zonePath = canvas.GetEmptyMapPath();
+            SKMapPath zonePath = canvas.CreateEmptyMapPath();
 
             zonePath.MoveTo((float)(baseBounds.Center.Latitude - baseBounds.LatitudeDegrees), (float)baseBounds.Center.Longitude);
             zonePath.LineTo((float)(baseBounds.Center.Latitude + baseBounds.LatitudeDegrees), (float)(baseBounds.Center.Longitude + baseBounds.LongitudeDegrees));
@@ -92,7 +92,7 @@ namespace FormsSkiaBikeTracker.Forms.Controls.Maps
             canvas.DrawPath(zonePath, paint);
 
             paint.Color = Color.Green.MultiplyAlpha(0.5).ToSKColor();
-            Size currentScaleStrokeArea = SKMapCanvas.PixelsToMapSize(new Size(5, 5), baseBounds.Center, pixelScale);
+            Size currentScaleStrokeArea = SKMapCanvas.PixelsToMapSize(new Size(5, 5), baseBounds.Center, zoomScale);
             MapSpan insetBounds = new MapSpan(baseBounds.Center,
                                               baseBounds.LatitudeDegrees - currentScaleStrokeArea.Height,
                                               baseBounds.LongitudeDegrees - currentScaleStrokeArea.Width);

@@ -10,7 +10,6 @@
 // ***********************************************************************
 
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 using FormsSkiaBikeTracker.Models;
@@ -18,9 +17,9 @@ using FormsSkiaBikeTracker.Services.Interface;
 using FormsSkiaBikeTracker.Services.Validation;
 using FormsSkiaBikeTracker.ViewModels;
 using LRPFramework.Mvx.ViewModels;
-using LRPFramework.Services;
+using LRPFramework.Services.Threading;
+using MvvmCross;
 using MvvmCross.Commands;
-using MvvmCross.ViewModels;
 using MvvmCross.IoC;
 using MvvmCross.Logging;
 using MvvmCross.Plugin.File;
@@ -36,13 +35,9 @@ namespace FormsSkiaBikeTracker.Shared.ViewModels
         private const string PictureSavePath = "AthletePictures";
         private const string TempPicturePath = "Caches";
         private const string TempPictureFileName = TempPicturePath + "/SignupPicture.tmp";
-        private string PictureFilePath(string fileName) => FileStore.NativePath($"{DocumentRoot.Path}/{fileName}");
 
         [MvxInject]
         public ICryptoService Crypto { get; set; }
-
-        [MvxInject]
-        public IMvxPictureChooserTask PictureChooser { get; set; }
 
         [MvxInject]
         public IMvxFileStore FileStore { get; set; }
@@ -105,36 +100,23 @@ namespace FormsSkiaBikeTracker.Shared.ViewModels
                 }
             }
         }
-
-        private IMvxCommand _selectAthletePictureCommand;
-        public IMvxCommand SelectAthletePictureCommand
-        {
-            get
-            {
-                if (_selectAthletePictureCommand == null)
-                {
-                    _selectAthletePictureCommand = new MvxAsyncCommand(SelectAthletePicture);
-                }
-
-                return _selectAthletePictureCommand;
-            }
-        }
-
-        private IMvxCommand _registerAthleteCommand;
-        public IMvxCommand RegisterAthleteCommand
-        {
-            get
-            {
-                if (_registerAthleteCommand == null)
-                {
-                    _registerAthleteCommand = new MvxCommand<IValidationResult>(RegisterAthlete);
-                }
-
-                return _registerAthleteCommand;
-            }
-        }
         
         private bool _SignInOnCompletion { get; set; }
+
+        private IMvxCommand _selectAthletePictureCommand;
+        public IMvxCommand SelectAthletePictureCommand => _selectAthletePictureCommand ?? (_selectAthletePictureCommand = new MvxAsyncCommand(SelectAthletePicture));
+
+        private IMvxCommand _registerAthleteCommand;
+        public IMvxCommand RegisterAthleteCommand => _registerAthleteCommand ?? (_registerAthleteCommand = new MvxCommand<IValidationResult>(RegisterAthlete));
+
+        private string PictureFilePath(string fileName) => FileStore.NativePath($"{DocumentRoot.Path}/{fileName}");
+
+        public override void Start()
+        {
+            base.Start();
+
+            FileStore.EnsureFolderExists(PictureFilePath(string.Empty));
+        }
 
         public override void Prepare(bool signInOnCompletion)
         {
@@ -143,26 +125,20 @@ namespace FormsSkiaBikeTracker.Shared.ViewModels
             _SignInOnCompletion = signInOnCompletion;
         }
 
-        public override Task Initialize()
-        {
-            FileStore.EnsureFolderExists(PictureFilePath(string.Empty));
-
-            return base.Initialize();
-        }
-
         private Task SelectAthletePicture()
         {
             return MainThread.RunAsync(async () =>
                                        {
                                            Stream pictureStream;
+                                           IMvxPictureChooserTask pictureChooser = Mvx.Resolve<IMvxPictureChooserTask>();
 
                                            try
                                            {
-                                               pictureStream = await PictureChooser.TakePicture(256, 95);
+                                               pictureStream = await pictureChooser.TakePicture(256, 95);
                                            }
                                            catch (Exception)
                                            {
-                                               pictureStream = await PictureChooser.ChoosePictureFromLibrary(256, 95);
+                                               pictureStream = await pictureChooser.ChoosePictureFromLibrary(256, 95);
                                            }
 
                                            if (pictureStream != null)

@@ -48,6 +48,6 @@ namespace Xamarin.Forms.Maps.Overlays.Skia
             }
         }
 
-        public abstract void DrawOnMap(SKMapCanvas canvas, SKMapSpan canvasMapRect, double pixelScale);
+        public abstract void DrawOnMap(SKMapCanvas canvas, SKMapSpan canvasMapRect, double zoomScale);
     }
 }

@@ -29,7 +29,7 @@ namespace FormsSkiaBikeTracker.Forms.Controls.Maps
             GpsBounds = MapSpanExtensions.WorldSpan;
         }
 
-        public override void DrawOnMap(SKMapCanvas canvas, SKMapSpan canvasMapRect, double pixelScale)
+        public override void DrawOnMap(SKMapCanvas canvas, SKMapSpan canvasMapRect, double zoomScale)
         {
             SKPaint paint = new SKPaint();
 
