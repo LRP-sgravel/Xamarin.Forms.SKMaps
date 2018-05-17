@@ -49,20 +49,6 @@ namespace FormsSkiaBikeTracker.ViewModels
             }
         }
 
-        private bool _userLocationAcquired;
-        public bool UserLocationAcquired
-        {
-            get => _userLocationAcquired;
-            set
-            {
-                if (UserLocationAcquired != value)
-                {
-                    _userLocationAcquired = value;
-                    RaisePropertyChanged();
-                }
-            }
-        }
-
         private Position _lastUserLocation;
         public Position LastUserLocation
         {
@@ -76,6 +62,21 @@ namespace FormsSkiaBikeTracker.ViewModels
                 }
             }
         }
+
+        private bool _firstLocationAcquired;
+        public bool FirstLocationAcquired
+        {
+            get => _firstLocationAcquired;
+            set
+            {
+                if (FirstLocationAcquired != value)
+                {
+                    _firstLocationAcquired = value;
+                    RaisePropertyChanged();
+                }
+            }
+        }
+
 
         private IRouteRecorder _Recorder { get; set; }
         private Activity _CurrentActivity { get; set; }
@@ -168,7 +169,7 @@ namespace FormsSkiaBikeTracker.ViewModels
 
         private void UserLocationUpdated(object sender, LocationMovedEventArgs args)
         {
-            UserLocationAcquired = true;
+            FirstLocationAcquired = true;
             LastUserLocation = new Position(args.Location.Coordinates.Latitude,
                                             args.Location.Coordinates.Longitude);
         }

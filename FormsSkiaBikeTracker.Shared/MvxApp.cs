@@ -63,7 +63,7 @@ namespace FormsSkiaBikeTracker
         {
             ILocationTracker tracker = Mvx.IocConstruct<LocationTracker>();
 
-            tracker.Start(10, 5, false);
+            tracker.Start(3, 2, false);
 
             return tracker;
         }

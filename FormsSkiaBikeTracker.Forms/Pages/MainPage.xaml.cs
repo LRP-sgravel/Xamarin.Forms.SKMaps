@@ -9,9 +9,10 @@
 // 
 // ***********************************************************************
 
+using System;
 using System.ComponentModel;
+using MvvmCross.Base;
 using MvvmCross.Forms.Presenters.Attributes;
-using MvvmCross.Logging;
 using MvvmCross.WeakSubscription;
 using Xamarin.Forms.Maps;
 
@@ -20,7 +21,7 @@ namespace FormsSkiaBikeTracker.Forms.Pages
     [MvxContentPagePresentation(NoHistory = true)]
     public partial class MainPage
     {
-        private object _locationChangedSubscriotion;
+        private object _locationChangedSubscription;
 
         public MainPage()
         {
@@ -31,18 +32,32 @@ namespace FormsSkiaBikeTracker.Forms.Pages
         {
             base.OnBindingContextChanged();
 
-            _locationChangedSubscriotion = null;
+            _locationChangedSubscription = null;
 
             if (ViewModel != null)
             {
-                _locationChangedSubscriotion = ViewModel.WeakSubscribe(() => ViewModel.LastUserLocation,
+                _locationChangedSubscription = ViewModel.WeakSubscribe(() => ViewModel.LastUserLocation,
                                                                        UserLocationChanged);
             }
         }
 
         private void UserLocationChanged(object sender, PropertyChangedEventArgs propertyChangedEventArgs)
         {
-            if (ViewModel.UserLocationAcquired)
+            // Used to initally center the map on the user on first location acquisition
+            CenterOnUser();
+
+            _locationChangedSubscription?.DisposeIfDisposable();
+            _locationChangedSubscription = null;
+        }
+
+        private void CenterOnUser(object sender, EventArgs e)
+        {
+            CenterOnUser();
+        }
+
+        private void CenterOnUser()
+        {
+            if (ViewModel.FirstLocationAcquired)
             {
                 MapControl.MoveToRegion(MapSpan.FromCenterAndRadius(ViewModel.LastUserLocation,
                                                                     MapControl.VisibleRegion.Radius));

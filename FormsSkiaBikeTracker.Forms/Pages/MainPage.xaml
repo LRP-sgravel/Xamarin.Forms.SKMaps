@@ -4,8 +4,9 @@
                     xmlns="http://xamarin.com/schemas/2014/forms"
                     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                     xmlns:mvx="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
-                    xmlns:overlays="clr-namespace:Xamarin.Forms.Maps.Overlays;assembly=Xamarin.Forms.Maps.Overlays"
+                    xmlns:lrpForms="clr-namespace:LRPFramework.Views.Forms;assembly=LRPFramework.Views.Forms"
                     xmlns:lrpMvxForms="clr-namespace:LRPFramework.Mvx.Views.Forms.Markup;assembly=LRPFramework.Mvx.Views.Forms"
+                    xmlns:overlays="clr-namespace:Xamarin.Forms.Maps.Overlays;assembly=Xamarin.Forms.Maps.Overlays"
                     xmlns:maps="clr-namespace:FormsSkiaBikeTracker.Forms.Controls.Maps;assembly=FormsSkiaBikeTracker.Forms"
                     xmlns:viewModels="clr-namespace:FormsSkiaBikeTracker.ViewModels;assembly=FormsSkiaBikeTracker.Shared"
                     xmlns:controls="clr-namespace:FormsSkiaBikeTracker.Forms.Controls;assembly=FormsSkiaBikeTracker.Forms"
@@ -24,21 +25,51 @@
             </controls:QuickStatsBanner.GestureRecognizers>
         </controls:QuickStatsBanner>
 
-        <overlays:OverlayedMap x:Name="MapControl"
-                               Grid.Row="1"
-                               VerticalOptions="FillAndExpand"
-                               HorizontalOptions="FillAndExpand"
-                               IsShowingUser="False">
-            <overlays:OverlayedMap.MapOverlays>
-                <maps:ImageOverlay Icon="{lrpMvxForms:EmbeddedImage symbol_logo.svg}"
-                                   Position="{Binding LastUserLocation}"
-                                   IsVisible="{Binding UserLocationAcquired}" />
-                <maps:RouteOverlay Route="{Binding ActivityRoute}"
-                                   LineColor="Red"
-                                   LineWidth="3"
-                                   IsVisible="{Binding ActivityRoute, Converter={StaticResource IsNotNull}}"/>
-            </overlays:OverlayedMap.MapOverlays>
-        </overlays:OverlayedMap>
+        <RelativeLayout Grid.Row="1"
+                        VerticalOptions="FillAndExpand"
+                        HorizontalOptions="FillAndExpand">
+            <overlays:OverlayedMap x:Name="MapControl"
+                                   RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,
+                                                                                         Property=Width,
+                                                                                         Factor=1,
+                                                                                         Constant=0}"
+                                   RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,
+                                                                                          Property=Height,
+                                                                                          Factor=1,
+                                                                                          Constant=0}"
+                                   IsShowingUser="False">
+                <overlays:OverlayedMap.MapOverlays>
+                    <maps:ImageOverlay Icon="{lrpMvxForms:EmbeddedImage symbol_logo.svg}"
+                                       Position="{Binding LastUserLocation}"
+                                       IsVisible="{Binding UserLocationAcquired}" />
+                    <maps:RouteOverlay Route="{Binding ActivityRoute}"
+                                       LineColor="Red"
+                                       LineWidth="3"
+                                       IsVisible="{Binding ActivityRoute, Converter={StaticResource IsNotNull}}"/>
+                </overlays:OverlayedMap.MapOverlays>
+            </overlays:OverlayedMap>
 
+            <lrpForms:SvgImage RelativeLayout.WidthConstraint="{ConstraintExpression Type=Constant,
+                                                                                     Factor=0,
+                                                                                     Constant=32}"
+                               RelativeLayout.HeightConstraint="{ConstraintExpression Type=Constant,
+                                                                                      Factor=0,
+                                                                                      Constant=32}"
+                               RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToView,
+                                                                                 ElementName=MapControl,
+                                                                                 Property=Width,
+                                                                                 Factor=1,
+                                                                                 Constant=-52}"
+                               RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView,
+                                                                                 ElementName=MapControl,
+                                                                                 Property=Height,
+                                                                                 Factor=1,
+                                                                                 Constant=-52}"
+                               Source="{lrpMvxForms:EmbeddedImage location-arrow-outline.svg}">
+                <lrpForms:SvgImage.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="CenterOnUser" />
+                </lrpForms:SvgImage.GestureRecognizers>
+            </lrpForms:SvgImage>
+        </RelativeLayout>
     </Grid>
 </mvx:MvxContentPage>
