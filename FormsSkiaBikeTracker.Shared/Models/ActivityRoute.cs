@@ -19,8 +19,6 @@ namespace FormsSkiaBikeTracker.Models
 {
     public class ActivityRoute : RealmObject, IRoute
     {
-        [PrimaryKey]
-        public long Id { get; set; }
         public IList<RoutePoint> RealmPoints { get; }
 
         public IEnumerable<Position> Points => RealmPoints.Select(r => r.ToPosition());

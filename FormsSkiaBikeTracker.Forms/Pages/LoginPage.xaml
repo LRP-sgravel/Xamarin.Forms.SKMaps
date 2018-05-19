@@ -3,7 +3,7 @@
 <mvx:MvxContentPage x:TypeArguments="viewModels:LoginViewModel"
                      xmlns="http://xamarin.com/schemas/2014/forms"
                      xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-                     xmlns:viewModels="clr-namespace:FormsSkiaBikeTracker.Shared.ViewModels;assembly=FormsSkiaBikeTracker.Shared"
+                     xmlns:viewModels="clr-namespace:FormsSkiaBikeTracker.ViewModels;assembly=FormsSkiaBikeTracker"
                      xmlns:lrpForms="clr-namespace:LRPFramework.Views.Forms.Markup;assembly=LRPFramework.Views.Forms"
                      xmlns:lrpViews="clr-namespace:LRPFramework.Views.Forms;assembly=LRPFramework.Views.Forms"
                      xmlns:lrpMvxForms="clr-namespace:LRPFramework.Mvx.Views.Forms.Markup;assembly=LRPFramework.Mvx.Views.Forms"

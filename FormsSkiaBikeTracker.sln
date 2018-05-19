@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xamarin.Forms.Maps.Overlays
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Maps", "Maps", "{813524EA-8569-49F2-8066-F44326321F2C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FormsSkiaBikeTracker.Shared", "FormsSkiaBikeTracker.Shared\FormsSkiaBikeTracker.Shared.csproj", "{74FB9EA6-55EC-4D1C-ABF3-6147B48F9003}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FormsSkiaBikeTracker", "FormsSkiaBikeTracker.Shared\FormsSkiaBikeTracker.csproj", "{74FB9EA6-55EC-4D1C-ABF3-6147B48F9003}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormsSkiaBikeTracker.iOS", "FormsSkiaBikeTracker.iOS\FormsSkiaBikeTracker.iOS.csproj", "{86AC82C4-7D41-4CF5-88CA-099EB6E233A4}"
 EndProject

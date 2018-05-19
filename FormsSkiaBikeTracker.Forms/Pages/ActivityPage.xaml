@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 
-<mvx:MvxContentPage x:TypeArguments="viewModels:MainViewModel"
+<mvx:MvxContentPage x:TypeArguments="viewModels:ActivityViewModel"
                     xmlns="http://xamarin.com/schemas/2014/forms"
                     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                     xmlns:mvx="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
@@ -8,22 +8,23 @@
                     xmlns:lrpMvxForms="clr-namespace:LRPFramework.Mvx.Views.Forms.Markup;assembly=LRPFramework.Mvx.Views.Forms"
                     xmlns:overlays="clr-namespace:Xamarin.Forms.Maps.Overlays;assembly=Xamarin.Forms.Maps.Overlays"
                     xmlns:maps="clr-namespace:FormsSkiaBikeTracker.Forms.Controls.Maps;assembly=FormsSkiaBikeTracker.Forms"
-                    xmlns:viewModels="clr-namespace:FormsSkiaBikeTracker.ViewModels;assembly=FormsSkiaBikeTracker.Shared"
+                    xmlns:viewModels="clr-namespace:FormsSkiaBikeTracker.ViewModels;assembly=FormsSkiaBikeTracker"
                     xmlns:controls="clr-namespace:FormsSkiaBikeTracker.Forms.Controls;assembly=FormsSkiaBikeTracker.Forms"
-                    x:Class="FormsSkiaBikeTracker.Forms.Pages.MainPage"
-                    Title="MainPage">
+                    x:Class="FormsSkiaBikeTracker.Forms.Pages.ActivityPage">
 
     <Grid RowSpacing="0">
         <Grid.RowDefinitions>
             <RowDefinition Height="1*" />
-            <RowDefinition Height="4*" />
+            <RowDefinition Height="7*" />
         </Grid.RowDefinitions>
 
-        <controls:QuickStatsBanner Grid.Row="0">
-            <controls:QuickStatsBanner.GestureRecognizers>
-                <TapGestureRecognizer Command="{Binding ToggleRecordingCommand}" />
-            </controls:QuickStatsBanner.GestureRecognizers>
-        </controls:QuickStatsBanner>
+        <controls:QuickStatsBanner x:Name="QuickStatsBanner"
+                                   Grid.Row="0"
+                                   SpeedUnit="{Binding Athlete.DistanceUnit}"
+                                   CurrentSpeed="{Binding CurrentSpeed}"
+                                   TotalDistanceTraveled="{Binding TotalDistance}"
+                                   IsActivityRunning="{Binding IsActivityRunning}"
+                                   StartStopCommand="{Binding ToggleRecordingCommand}" />
 
         <RelativeLayout Grid.Row="1"
                         VerticalOptions="FillAndExpand"

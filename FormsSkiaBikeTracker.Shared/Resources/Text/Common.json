@@ -4,9 +4,15 @@
 
     // Validation
     "FieldRequired": "Field required",
-    "FieldsDoNotMatch": "Fields don not match",
+    "FieldsDoNotMatch": "Fields do not match",
 
     "Cancel": "Cancel",
 
-    "Password": "Password"
+    "Password": "Password",
+
+    // Distance units
+    "KilometerShortDistance" : "km",
+    "MilesShortDistance" : "mi",
+    "KilometerShortSpeed" : "km/h",
+    "MilesShortSpeed" : "mi/h"
 }

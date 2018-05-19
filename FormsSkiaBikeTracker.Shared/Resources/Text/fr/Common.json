@@ -8,5 +8,14 @@
 
     "Cancel": "Annuler",
 
-    "Password": "Mot de passe"
+    "Password": "Mot de passe",
+
+    // Distance units
+    "KilometersShortDistance" : "km",
+    "MetersShortDistance" : "m",
+    "MilesShortDistance" : "mi",
+    "KilometersShortSpeed" : "km/h",
+    "MetersShortSpeed" : "m/h",
+    "MilesShortSpeed" : "mi/h"
+
 }

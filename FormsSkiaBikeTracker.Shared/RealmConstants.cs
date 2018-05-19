@@ -1,6 +1,6 @@
 ﻿// **********************************************************************
 // 
-//   RealmGpsCoordinates.cs
+//   Constants.cs
 //   
 //   This file is subject to the terms and conditions defined in
 //   file 'LICENSE.txt', which is part of this source code package.
@@ -10,18 +10,11 @@
 // ***********************************************************************
 
 using Realms;
-using Xamarin.Forms.Maps;
 
-namespace FormsSkiaBikeTracker.Models
+namespace FormsSkiaBikeTracker
 {
-    public class RoutePoint : RealmObject
+    public class RealmConstants
     {
-        public double Latitude { get; set; }
-        public double Longitude { get; set; }
-
-        public Position ToPosition()
-        {
-            return new Position(Latitude, Longitude);
-        }
+        public static RealmConfiguration RealmConfiguration => new RealmConfiguration { SchemaVersion = 1 };
     }
 }

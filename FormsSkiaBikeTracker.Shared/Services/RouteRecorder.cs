@@ -10,8 +10,8 @@
 // ***********************************************************************
 
 using System;
-using FormsSkiaBikeTracker.Extensions;
 using FormsSkiaBikeTracker.Models;
+using FormsSkiaBikeTracker.Extensions;
 using FormsSkiaBikeTracker.Services.Interface;
 using MvvmCross.WeakSubscription;
 

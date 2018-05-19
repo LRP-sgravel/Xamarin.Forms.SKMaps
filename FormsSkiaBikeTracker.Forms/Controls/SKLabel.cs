@@ -14,6 +14,7 @@ using System.IO;
 using LRPFramework.Services.Resources;
 using LRPFramework.Views.Forms;
 using MvvmCross;
+using MvvmCross.Logging;
 using SkiaSharp;
 using SkiaSharp.Views.Forms;
 using Xamarin.Forms;
@@ -92,6 +93,7 @@ namespace FormsSkiaBikeTracker.Forms.Controls
             }
             else
             {
+                MvxLog.Instance.Log(MvxLogLevel.Warn, () => "Could not find font resource");
             }
         }
 

@@ -19,11 +19,11 @@ using Xamarin.Forms.Maps;
 namespace FormsSkiaBikeTracker.Forms.Pages
 {
     [MvxContentPagePresentation(NoHistory = true)]
-    public partial class MainPage
+    public partial class ActivityPage
     {
         private object _locationChangedSubscription;
 
-        public MainPage()
+        public ActivityPage()
         {
             InitializeComponent();
         }
@@ -36,6 +36,7 @@ namespace FormsSkiaBikeTracker.Forms.Pages
 
             if (ViewModel != null)
             {
+                Title = ViewModel.LanguageBinder.GetText("RideDude");
                 _locationChangedSubscription = ViewModel.WeakSubscribe(() => ViewModel.LastUserLocation,
                                                                        UserLocationChanged);
             }

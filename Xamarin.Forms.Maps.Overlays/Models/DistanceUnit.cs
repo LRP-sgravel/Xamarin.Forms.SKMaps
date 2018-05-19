@@ -1,6 +1,6 @@
 ﻿// **********************************************************************
 // 
-//   RecordedActivity.cs
+//   DistanceUnits.cs
 //   
 //   This file is subject to the terms and conditions defined in
 //   file 'LICENSE.txt', which is part of this source code package.
@@ -9,14 +9,12 @@
 // 
 // ***********************************************************************
 
-using Realms;
-
-namespace FormsSkiaBikeTracker.Models
+namespace Xamarin.Forms.Maps.Overlays.Models
 {
-    public class RecordedActivity : RealmObject
+    public enum DistanceUnit
     {
-        [PrimaryKey]
-        public long Id { get; set; }
-        public ActivityRoute Route { get; set; }
+        Kilometer = 0,
+        Meters,
+        Miles
     }
 }

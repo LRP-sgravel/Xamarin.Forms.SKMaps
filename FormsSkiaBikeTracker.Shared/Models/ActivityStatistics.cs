@@ -15,8 +15,6 @@ namespace FormsSkiaBikeTracker.Models
 {
     public class ActivityStatistics : RealmObject
     {
-        [PrimaryKey]
-        public long Id { get; set; }
-        public Activity Activity { get; set; }
+        public double DistanceMeters { get; set; }
     }
 }

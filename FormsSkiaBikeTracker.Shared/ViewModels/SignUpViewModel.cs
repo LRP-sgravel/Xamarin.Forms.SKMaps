@@ -10,6 +10,7 @@
 // ***********************************************************************
 
 using System;
+using System.Globalization;
 using System.IO;
 using System.Threading.Tasks;
 using FormsSkiaBikeTracker.Models;
@@ -27,8 +28,9 @@ using MvvmCross.Plugin.PictureChooser;
 using Realms;
 using SimpleCrypto;
 using SkiaSharp;
+using Xamarin.Forms.Maps.Overlays.Models;
 
-namespace FormsSkiaBikeTracker.Shared.ViewModels
+namespace FormsSkiaBikeTracker.ViewModels
 {
     public class SignUpViewModel : LRPViewModel<bool>
     {
@@ -158,9 +160,8 @@ namespace FormsSkiaBikeTracker.Shared.ViewModels
 
             if (!validationResult.HasErrors)
             {
-                Realm realmInstance = Realm.GetInstance();
-                string athleteId = Guid.NewGuid()
-                                       .ToString();
+                Realm realmInstance = Realm.GetInstance(RealmConstants.RealmConfiguration);
+                string athleteId = Guid.NewGuid().ToString();
                 string salt = Crypto.GenerateSalt();
                 string athletePictureRelativePath = SaveUserPicture(athleteId);
 
@@ -171,11 +172,12 @@ namespace FormsSkiaBikeTracker.Shared.ViewModels
                         Athlete newAthlete;
                         newAthlete = new Athlete
                         {
-                            Id = athleteId,
                             Name = Name,
+                            Id = athleteId,
                             PicturePath = athletePictureRelativePath,
                             PasswordSalt = salt,
-                            PasswordHash = Crypto.Compute(Password, salt)
+                            PasswordHash = Crypto.Compute(Password, salt),
+                            DistanceUnit = RegionInfo.CurrentRegion.IsMetric ? DistanceUnit.Kilometer : DistanceUnit.Miles
                         };
 
                         realmInstance.Add(newAthlete);
@@ -188,7 +190,7 @@ namespace FormsSkiaBikeTracker.Shared.ViewModels
 
                 if (_SignInOnCompletion)
                 {
-                    NavigationService.Navigate<MainViewModel, string>(athleteId);
+                    NavigationService.Navigate<ActivityViewModel, string>(athleteId);
                 }
                 else
                 {

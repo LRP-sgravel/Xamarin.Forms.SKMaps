@@ -26,11 +26,12 @@ using MvvmCross.Logging;
 using MvvmCross.WeakSubscription;
 using Realms;
 using Xamarin.Forms.Maps;
+using Xamarin.Forms.Maps.Overlays.Extensions;
 
 namespace FormsSkiaBikeTracker.ViewModels
 {
     [MvxContentPagePresentation(NoHistory = true, Animated = true)]
-    public class MainViewModel : LRPViewModel<string>
+    public class ActivityViewModel : LRPViewModel<string>
     {
         [MvxInject]
         public ILocationTracker LocationTracker { get; set; }
@@ -63,24 +64,6 @@ namespace FormsSkiaBikeTracker.ViewModels
             }
         }
 
-        private bool _firstLocationAcquired;
-        public bool FirstLocationAcquired
-        {
-            get => _firstLocationAcquired;
-            set
-            {
-                if (FirstLocationAcquired != value)
-                {
-                    _firstLocationAcquired = value;
-                    RaisePropertyChanged();
-                }
-            }
-        }
-
-
-        private IRouteRecorder _Recorder { get; set; }
-        private Activity _CurrentActivity { get; set; }
-
         private IMutableRoute _activityRoute;
         public IMutableRoute ActivityRoute
         {
@@ -95,8 +78,56 @@ namespace FormsSkiaBikeTracker.ViewModels
             }
         }
 
+        private bool _firstLocationAcquired;
+        public bool FirstLocationAcquired
+        {
+            get => _firstLocationAcquired;
+            set
+            {
+                if (FirstLocationAcquired != value)
+                {
+                    _firstLocationAcquired = value;
+                    RaisePropertyChanged();
+                }
+            }
+        }
+
+        private double _currentSpeed;
+        public double CurrentSpeed
+        {
+            get => _currentSpeed;
+            set
+            {
+                if (CurrentSpeed != value)
+                {
+                    _currentSpeed = value;
+                    RaisePropertyChanged();
+                }
+            }
+        }
+
+        private double _totalDistance;
+        public double TotalDistance
+        {
+            get => _totalDistance;
+            set
+            {
+                if (TotalDistance != value)
+                {
+                    _totalDistance = value;
+                    RaisePropertyChanged();
+                }
+            }
+        }
+
+        public bool IsActivityRunning => _CurrentActivity != null;
+
         private IMvxCommand _toggleRecordingCommand;
         public IMvxCommand ToggleRecordingCommand => _toggleRecordingCommand ?? (_toggleRecordingCommand = new MvxCommand(ToggleRecording));
+        
+        private IRouteRecorder _Recorder { get; set; }
+        private Activity _CurrentActivity { get; set; }
+        private DateTimeOffset _LastLocationTime { get; set; } = DateTimeOffset.MinValue;
 
         private object _locationChangedSubscription;
         private object _recordingActivitySubscription;
@@ -113,7 +144,7 @@ namespace FormsSkiaBikeTracker.ViewModels
         {
             base.Prepare(athleteId);
 
-            Athlete = Realm.GetInstance()
+            Athlete = Realm.GetInstance(RealmConstants.RealmConfiguration)
                            .Find<Athlete>(athleteId);
         }
 
@@ -128,13 +159,14 @@ namespace FormsSkiaBikeTracker.ViewModels
                     ActivityRoute = _Recorder.Start();
                     _CurrentActivity = await CreateNewActivityFromRecording(ActivityRoute, Athlete)
                                            .ConfigureAwait(false);
+                    
 
                     _recordingActivitySubscription = ActivityRoute.WeakSubscribe<IMutableRoute, PointsAddedEventArgs>(nameof(ActivityRoute.PointsAdded),
                                                                                                                       OnNewPointRecorded);
                 }
-                catch (Exception e)
+                catch(Exception e)
                 {
-                    MvxLog.Instance.Log(MvxLogLevel.Error, () => "Failed to create new activity");
+                    MvxLog.Instance.Log(MvxLogLevel.Error, () => "Failed to create new activity", e);
                 }
             }
             else
@@ -144,53 +176,101 @@ namespace FormsSkiaBikeTracker.ViewModels
                 _Recorder.Stop();
                 _Recorder = null;
             }
+
+            RaisePropertyChanged(nameof(IsActivityRunning));
         }
 
         private async Task<Activity> CreateNewActivityFromRecording(IMutableRoute activityRoute, Athlete athlete)
         {
             Activity result = null;
 
-            await Realm.GetInstance()
-                       .WriteAsync(realmInstance =>
+            TotalDistance = 0;
+
+            Realm realmInstance = Realm.GetInstance(RealmConstants.RealmConfiguration);
+            realmInstance.Write(() =>
                            {
                                result = new Activity();
                                result.StartTime = DateTimeOffset.Now;
                                result.Route = new ActivityRoute();
 
                                athlete.Activities.Add(result);
-                           })
-                       .ConfigureAwait(false);
 
-            await SavePointsToActivity(result.Id, activityRoute.Points.ToList())
-                .ConfigureAwait(false);
+                               SavePointsToActivity(result, activityRoute.Points.ToList());
+                           });
 
             return result;
         }
 
         private void UserLocationUpdated(object sender, LocationMovedEventArgs args)
         {
+            Position newLocation = new Position(args.Location.Coordinates.Latitude,
+                                                args.Location.Coordinates.Longitude);
+            DateTimeOffset now = DateTimeOffset.UtcNow;
+
+            UpdateActivityStatistics(newLocation, now);
+
             FirstLocationAcquired = true;
-            LastUserLocation = new Position(args.Location.Coordinates.Latitude,
-                                            args.Location.Coordinates.Longitude);
+            _LastLocationTime = now;
+            LastUserLocation = newLocation;
+        }
+
+        private void UpdateActivityStatistics(Position location, DateTimeOffset locationTime)
+        {
+            if (_LastLocationTime > DateTimeOffset.MinValue)
+            {
+                Distance distanceTravelled = LastUserLocation.FastDistanceTo(location);
+                double timeElapsed = locationTime.TimeOfDay.TotalHours - _LastLocationTime.TimeOfDay.TotalHours;
+
+                CurrentSpeed = distanceTravelled.ToDistanceUnit(Athlete.DistanceUnit) / timeElapsed;
+
+                if (_CurrentActivity != null)
+                {
+                    Realm realmInstance = Realm.GetInstance(RealmConstants.RealmConfiguration);
+
+                    TotalDistance += distanceTravelled.ToDistanceUnit(Athlete.DistanceUnit);
+
+                    realmInstance.Write(() =>
+                        {
+                            Activity activity = realmInstance.Find<Activity>(_CurrentActivity.Id);
+
+                            if (activity.Statistics == null)
+                            {
+                                activity.Statistics = new ActivityStatistics();
+                            }
+
+                            activity.Statistics.DistanceMeters += distanceTravelled.Meters;
+                        });
+                }
+            }
         }
 
         private void OnNewPointRecorded(object sender, PointsAddedEventArgs args)
         {
-            SavePointsToActivity(_CurrentActivity.Id, args.NewPoints)
+            SavePointsToActivityAsync(_CurrentActivity.Id, args.NewPoints)
                 .ForgetAndCatch();
         }
 
-        private Task SavePointsToActivity(long activityId, IEnumerable<Position> points)
+        private Task SavePointsToActivityAsync(string activityId, IEnumerable<Position> points)
         {
-            return Realm.GetInstance()
+            return Realm.GetInstance(RealmConstants.RealmConfiguration)
                         .WriteAsync(realmInstance =>
                             {
+                                List<Activity> activities = realmInstance.All<Activity>().ToList();
                                 Activity activity = realmInstance.Find<Activity>(activityId);
-                                foreach (RoutePoint newPoint in points.Select(p => p.ToRoutePoint()))
+
+                                if (activity != null)
                                 {
-                                    activity.Route.RealmPoints.Add(newPoint);
+                                    SavePointsToActivity(activity, points);
                                 }
                             });
+        }
+
+        private void SavePointsToActivity(Activity activity, IEnumerable<Position> points)
+        {
+            foreach (RoutePoint newPoint in points.Select(p => p.ToRoutePoint()))
+            {
+                activity.Route.RealmPoints.Add(newPoint);
+            }
         }
     }
 }

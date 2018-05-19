@@ -12,7 +12,7 @@
 using System.ComponentModel;
 using System.Windows.Input;
 using FormsSkiaBikeTracker.Models;
-using FormsSkiaBikeTracker.Shared.ViewModels;
+using FormsSkiaBikeTracker.ViewModels;
 using MvvmCross;
 using MvvmCross.WeakSubscription;
 using Xamarin.Forms;

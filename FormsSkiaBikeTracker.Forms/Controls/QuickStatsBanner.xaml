@@ -1,10 +1,68 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:FormsSkiaBikeTracker.Forms.Controls;assembly=FormsSkiaBikeTracker.Forms"
+             xmlns:lrpForms="clr-namespace:LRPFramework.Views.Forms;assembly=LRPFramework.Views.Forms"
+             xmlns:lrpMvxForms="clr-namespace:LRPFramework.Views.Forms.Markup;assembly=LRPFramework.Views.Forms"
              x:Class="FormsSkiaBikeTracker.Forms.Controls.QuickStatsBanner">
-  <ContentView.Content>
-      <StackLayout Orientation="Horizontal"
-                   BackgroundColor="IndianRed">
-      </StackLayout>
-  </ContentView.Content>
+    <ContentView.Content>
+        <Grid HorizontalOptions="FillAndExpand"
+              VerticalOptions="FillAndExpand">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <controls:SKLabel x:Name="SpeedHeaderLabel"
+                              Grid.Row="0" Grid.Column="0"
+                              Margin="0, 0, 0, 2"
+                              HorizontalOptions="Center"
+                              VerticalOptions="End"
+                              TextColor="DarkGreen"
+                              FontResourcePath="KumarOne-Regular.otf"
+                              FontSize="18" />
+            <controls:SKLabel x:Name="CurrentSpeedLabel"
+                              Grid.Row="1" Grid.Column="0"
+                              Margin="0, 2, 0, 0"
+                              HorizontalOptions="Center"
+                              VerticalOptions="Start"
+                              TextColor="DarkGreen"
+                              FontResourcePath="KumarOne-Regular.otf"
+                              FontSize="18" />
+
+            <controls:SKLabel x:Name="DistanceHeaderLabel"
+                              Grid.Row="0" Grid.Column="1"
+                              Margin="0, 0, 0, 2"
+                              HorizontalOptions="Center"
+                              VerticalOptions="End"
+                              TextColor="DarkBlue"
+                              FontResourcePath="KumarOne-Regular.otf"
+                              FontSize="18"
+                              Text="{lrpMvxForms:LocalizedText Distance}" />
+            <controls:SKLabel x:Name="DistanceLabel"
+                              Grid.Row="1" Grid.Column="1"
+                              Margin="0, 2, 0, 0"
+                              HorizontalOptions="Center"
+                              VerticalOptions="Start"
+                              TextColor="DarkBlue"
+                              FontResourcePath="KumarOne-Regular.otf"
+                              FontSize="18" />
+
+            <lrpForms:SvgImage x:Name="StartStopImage"
+                               Grid.Row="0" Grid.Column="2" Grid.RowSpan="2"
+                               HorizontalOptions="FillAndExpand"
+                               VerticalOptions="FillAndExpand"
+                               Margin="15">
+                <lrpForms:SvgImage.GestureRecognizers>
+                    <TapGestureRecognizer x:Name="StartStopTapGesture" />
+                </lrpForms:SvgImage.GestureRecognizers>
+            </lrpForms:SvgImage>
+        </Grid>
+    </ContentView.Content>
 </ContentView>

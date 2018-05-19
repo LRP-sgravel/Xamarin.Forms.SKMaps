@@ -13,7 +13,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-using FormsSkiaBikeTracker.Shared.ViewModels;
+using FormsSkiaBikeTracker.ViewModels;
 using MvvmCross.WeakSubscription;
 using Xamarin.Forms;
 

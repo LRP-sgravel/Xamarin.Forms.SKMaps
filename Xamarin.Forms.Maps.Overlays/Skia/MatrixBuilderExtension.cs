@@ -95,7 +95,7 @@ namespace Xamarin.Forms.Maps.Overlays.Skia
             return result;
         }
 
-        private static double ToRadians(this double degrees)
+        internal static double ToRadians(this double degrees)
         {
             const double ConversionFactor = Math.PI / 180.0;
 

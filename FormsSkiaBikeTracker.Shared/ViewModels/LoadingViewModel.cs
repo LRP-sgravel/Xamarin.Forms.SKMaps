@@ -13,7 +13,7 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 using FormsSkiaBikeTracker.Models;
-using FormsSkiaBikeTracker.Shared.ViewModels;
+using FormsSkiaBikeTracker.ViewModels;
 using LRPFramework.Mvx.ViewModels;
 using LRPFramework.Services;
 using MvvmCross.IoC;
@@ -67,7 +67,7 @@ namespace FormsSkiaBikeTracker.ViewModels
             Bootstrapper.BootTextChanged -= UpdateBootText;
             Bootstrapper.BootCompleted -= OnBootCompleted;
 
-            if (Realm.GetInstance()
+            if (Realm.GetInstance(RealmConstants.RealmConfiguration)
                      .All<Athlete>()
                      .Any())
             {

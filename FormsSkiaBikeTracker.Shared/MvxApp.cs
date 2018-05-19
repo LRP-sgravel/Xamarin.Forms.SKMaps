@@ -70,7 +70,7 @@ namespace FormsSkiaBikeTracker
         
         public static IResourceLocator InitializeResources()
         {
-            Assembly currentAssembly = Assembly.Load(new AssemblyName("FormsSkiaBikeTracker.Shared"));
+            Assembly currentAssembly = Assembly.Load(new AssemblyName("FormsSkiaBikeTracker"));
             ResourceLocator resourceLocator = new ResourceLocator(Constants.GeneralNamespace, currentAssembly);
 
             resourceLocator.RegisterPath(ResourceKeys.RootKey, Constants.RootResourcesFolder);

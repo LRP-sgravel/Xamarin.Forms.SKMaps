@@ -18,7 +18,7 @@ using MvvmCross.IoC;
 using MvvmCross.Plugin.File;
 using SkiaSharp;
 
-namespace FormsSkiaBikeTracker.Shared.ViewModels
+namespace FormsSkiaBikeTracker.ViewModels
 {
     public class AthleteLoginControlViewModel : LRPViewModel
     {

@@ -8,11 +8,17 @@
     <None Remove="Resources\Fonts\KumarOne-Regular.otf" />
     <None Remove="Resources\Images\full_logo.svg" />
     <None Remove="Resources\Images\location-arrow-outline.svg" />
+    <None Remove="Resources\Images\play.svg" />
+    <None Remove="Resources\Images\stop.svg" />
     <None Remove="Resources\Images\symbol_logo.svg" />
     <None Remove="Resources\Text\Common.json" />
     <None Remove="Resources\Text\fr\Common.json" />
+    <None Remove="Resources\Text\fr\QuickStatsBanner.json" />
+    <None Remove="Resources\Text\fr\ViewModels.ActivityViewModel.json" />
     <None Remove="Resources\Text\fr\ViewModels.LoginViewModel.json" />
     <None Remove="Resources\Text\fr\ViewModels.SignUpViewModel.json" />
+    <None Remove="Resources\Text\QuickStatsBanner.json" />
+    <None Remove="Resources\Text\ViewModels.ActivityViewModel.json" />
     <None Remove="Resources\Text\ViewModels.LoginViewModel.json" />
     <None Remove="Resources\Text\ViewModels.SignUpViewModel.json" />
   </ItemGroup>
@@ -21,11 +27,17 @@
     <EmbeddedResource Include="Resources\Fonts\KumarOne-Regular.otf" />
     <EmbeddedResource Include="Resources\Images\full_logo.svg" />
     <EmbeddedResource Include="Resources\Images\location-arrow-outline.svg" />
+    <EmbeddedResource Include="Resources\Images\play.svg" />
+    <EmbeddedResource Include="Resources\Images\stop.svg" />
     <EmbeddedResource Include="Resources\Images\symbol_logo.svg" />
+    <EmbeddedResource Include="Resources\Text\fr\QuickStatsBanner.json" />
+    <EmbeddedResource Include="Resources\Text\QuickStatsBanner.json" />
     <EmbeddedResource Include="Resources\Text\Common.json" />
     <EmbeddedResource Include="Resources\Text\fr\Common.json" />
+    <EmbeddedResource Include="Resources\Text\fr\ViewModels.ActivityViewModel.json" />
     <EmbeddedResource Include="Resources\Text\fr\ViewModels.LoginViewModel.json" />
     <EmbeddedResource Include="Resources\Text\fr\ViewModels.SignUpViewModel.json" />
+    <EmbeddedResource Include="Resources\Text\ViewModels.ActivityViewModel.json" />
     <EmbeddedResource Include="Resources\Text\ViewModels.LoginViewModel.json" />
     <EmbeddedResource Include="Resources\Text\ViewModels.SignUpViewModel.json" />
   </ItemGroup>
@@ -62,6 +74,10 @@
 
   <ItemGroup>
     <Folder Include="Properties\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Xamarin.Forms.Maps.Overlays\Xamarin.Forms.Maps.Overlays.csproj" />
   </ItemGroup>
 
 </Project>

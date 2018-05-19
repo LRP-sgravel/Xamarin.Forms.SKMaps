@@ -15,7 +15,7 @@ namespace FormsSkiaBikeTracker
         public const string RootResourcesFolder = "Resources";
         public const string RootTextFolder = RootResourcesFolder + "/Text";
         public const string RootImagesFolder = RootResourcesFolder + "/Images";
-        public const string GeneralNamespace = "FormsSkiaBikeTracker.Shared";
+        public const string GeneralNamespace = "FormsSkiaBikeTracker";
         public const string TextTypeKey = "Common";
     }
 }

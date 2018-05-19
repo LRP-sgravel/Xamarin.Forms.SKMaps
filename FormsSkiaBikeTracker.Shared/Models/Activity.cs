@@ -17,7 +17,7 @@ namespace FormsSkiaBikeTracker.Models
     public class Activity : RealmObject
     {
         [PrimaryKey]
-        public long Id { get; set; }
+        public string Id { get; set; } = Guid.NewGuid().ToString();
         public DateTimeOffset StartTime { get; set; }
         public ActivityRoute Route { get; set; }
         public ActivityStatistics Statistics { get; set; }

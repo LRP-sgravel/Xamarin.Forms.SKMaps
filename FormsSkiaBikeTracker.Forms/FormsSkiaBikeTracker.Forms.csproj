@@ -7,7 +7,6 @@
   <ItemGroup>
     <None Remove="Pages\LoadingPage.xaml" />
     <None Remove="Pages\LoginPage.xaml" />
-    <None Remove="Pages\MainPage.xaml" />
     <None Remove="Pages\SignUpPage.xaml" />
   </ItemGroup>
 
@@ -21,8 +20,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\FormsSkiaBikeTracker.Shared\FormsSkiaBikeTracker.Shared.csproj" />
+    <ProjectReference Include="..\FormsSkiaBikeTracker.Shared\FormsSkiaBikeTracker.csproj" />
     <ProjectReference Include="..\Xamarin.Forms.Maps.Overlays\Xamarin.Forms.Maps.Overlays.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Pages\ActivityPage.xaml.cs">
+      <DependentUpon>ActivityPage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>

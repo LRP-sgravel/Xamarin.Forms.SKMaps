@@ -23,7 +23,7 @@ using MvvmCross.Logging;
 using Realms;
 using SimpleCrypto;
 
-namespace FormsSkiaBikeTracker.Shared.ViewModels
+namespace FormsSkiaBikeTracker.ViewModels
 {
     public class LoginViewModel : LRPViewModel
     {
@@ -79,7 +79,7 @@ namespace FormsSkiaBikeTracker.Shared.ViewModels
         {
             MainThread.Run(() =>
             {
-                Athletes = Realm.GetInstance()
+                Athletes = Realm.GetInstance(RealmConstants.RealmConfiguration)
                                 .All<Athlete>();
             });
 
@@ -104,7 +104,7 @@ namespace FormsSkiaBikeTracker.Shared.ViewModels
 
             if (isPasswordValid)
             {
-                NavigationService.Navigate<MainViewModel, string>(SelectedAthlete.Id);
+                NavigationService.Navigate<ActivityViewModel, string>(SelectedAthlete.Id);
             }
             else
             {
