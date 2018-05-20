@@ -17,7 +17,7 @@ namespace FormsSkiaBikeTracker.Forms.Controls
 {
     public class ResizableViewCell : ViewCell
     {
-        private object _contentMeasureInvalidatedSubscription;
+        private IDisposable _contentMeasureInvalidatedSubscription;
 
         protected override void OnPropertyChanged(string propertyName = null)
         {

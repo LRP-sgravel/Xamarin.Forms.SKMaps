@@ -24,7 +24,7 @@ namespace FormsSkiaBikeTracker.Services
         public bool IsActive { get; private set; }
         public IMutableRoute ActiveRecording { get; private set; }
 
-        private object _locationChangedSubscription;
+        private IDisposable _locationChangedSubscription;
 
         public RouteRecorder(ILocationTracker locationTracker)
         {

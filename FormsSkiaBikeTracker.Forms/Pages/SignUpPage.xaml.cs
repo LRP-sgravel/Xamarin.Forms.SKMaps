@@ -20,7 +20,7 @@ namespace FormsSkiaBikeTracker.Forms.Pages
     {
         public IValidationResult CurrentErrors { get; } = new ValidationResult();
 
-        private object _errorsChangedSubscription;
+        private IDisposable _errorsChangedSubscription;
 
         public SignUpPagePage()
         {

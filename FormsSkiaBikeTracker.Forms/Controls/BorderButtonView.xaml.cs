@@ -52,7 +52,7 @@ namespace FormsSkiaBikeTracker.Forms.Controls
             set => SetValue(CommandParameterProperty, value);
         }
 
-        private object _backgroundPropertyChangedSubscription;
+        private IDisposable _backgroundPropertyChangedSubscription;
 
         public BorderButtonView()
         {

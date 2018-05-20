@@ -4,6 +4,8 @@ using LRPFramework.Services.Resources;
 using MvvmCross;
 using MvvmCross.Localization;
 using Xamarin.Forms;
+using Xamarin.Forms.Maps;
+using Xamarin.Forms.Maps.Overlays.Extensions;
 using Xamarin.Forms.Maps.Overlays.Models;
 using Xamarin.Forms.Xaml;
 
@@ -23,9 +25,9 @@ namespace FormsSkiaBikeTracker.Forms.Controls
                                                                                             DistanceUnit.Kilometer,
                                                                                             propertyChanged: OnSpeedUnitsChanged);
         public static readonly BindableProperty TotalDistanceTraveledProperty = BindableProperty.Create(nameof(TotalDistanceTraveled),
-                                                                                                        typeof(double),
+                                                                                                        typeof(Distance),
                                                                                                         typeof(QuickStatsBanner),
-                                                                                                        0.0,
+                                                                                                        Distance.FromMeters(0),
                                                                                                         propertyChanged: OnDistanceChanged);
         public static readonly BindableProperty StartStopCommandProperty = BindableProperty.Create(nameof(StartStopCommand),
                                                                                                    typeof(ICommand),
@@ -41,9 +43,9 @@ namespace FormsSkiaBikeTracker.Forms.Controls
                                                                                                     false,
                                                                                                     propertyChanged: OnIsActivityRunningChanged);
 
-        public double TotalDistanceTraveled
+        public Distance TotalDistanceTraveled
         {
-            get => (double)GetValue(TotalDistanceTraveledProperty);
+            get => (Distance)GetValue(TotalDistanceTraveledProperty);
             set => SetValue(TotalDistanceTraveledProperty, value);
         }
         
@@ -133,7 +135,7 @@ namespace FormsSkiaBikeTracker.Forms.Controls
 
         private void UpdateDistanceText()
         {
-            DistanceLabel.Text = $"{TotalDistanceTraveled:0.00}{SpeedUnit.ToShortText()}";
+            DistanceLabel.Text = $"{TotalDistanceTraveled.ToDistanceUnit(SpeedUnit):0.00}{SpeedUnit.ToShortText()}";
         }
 
         private void UpdateStartStopCommand()

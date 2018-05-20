@@ -9,6 +9,7 @@
 // 
 // ***********************************************************************
 
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using FormsSkiaBikeTracker.Services.Interface;
@@ -47,7 +48,7 @@ namespace FormsSkiaBikeTracker.Forms.Controls.Maps
             set => SetValue(LineWidthProperty, value);
         }
 
-        private object _mutableRouteSubscription;
+        private IDisposable _mutableRouteSubscription;
 
         private static void OnRouteChanged(BindableObject bindable, object oldValue, object newValue)
         {

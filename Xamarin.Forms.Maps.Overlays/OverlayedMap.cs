@@ -9,6 +9,7 @@
 // 
 // ***********************************************************************
 
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
@@ -24,7 +25,7 @@ namespace Xamarin.Forms.Maps.Overlays
                                                                                               typeof(OverlayedMap),
                                                                                               new ObservableCollection<DrawableMapOverlay>());
 
-        private object _overlaysCollectionChangedSubscription;
+        private IDisposable _overlaysCollectionChangedSubscription;
 
         public ObservableCollection<DrawableMapOverlay> MapOverlays => (ObservableCollection<DrawableMapOverlay>)GetValue(MapOverlaysProperty);
 

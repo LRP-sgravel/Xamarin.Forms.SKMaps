@@ -21,7 +21,7 @@ namespace FormsSkiaBikeTracker.Forms.Pages
     [MvxContentPagePresentation(NoHistory = true)]
     public partial class ActivityPage
     {
-        private object _locationChangedSubscription;
+        private IDisposable _locationChangedSubscription;
 
         public ActivityPage()
         {

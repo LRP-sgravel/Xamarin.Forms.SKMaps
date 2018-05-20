@@ -13,6 +13,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Timers;
+using FormsSkiaBikeTracker.Extensions;
 using FormsSkiaBikeTracker.Extensions.Realm;
 using FormsSkiaBikeTracker.Models;
 using FormsSkiaBikeTracker.Services.Interface;
@@ -33,6 +35,8 @@ namespace FormsSkiaBikeTracker.ViewModels
     [MvxContentPagePresentation(NoHistory = true, Animated = true)]
     public class ActivityViewModel : LRPViewModel<string>
     {
+        private const double DefaultStaleTimerMs = 3000;
+
         [MvxInject]
         public ILocationTracker LocationTracker { get; set; }
 
@@ -106,8 +110,8 @@ namespace FormsSkiaBikeTracker.ViewModels
             }
         }
 
-        private double _totalDistance;
-        public double TotalDistance
+        private Distance _totalDistance;
+        public Distance TotalDistance
         {
             get => _totalDistance;
             set
@@ -128,9 +132,11 @@ namespace FormsSkiaBikeTracker.ViewModels
         private IRouteRecorder _Recorder { get; set; }
         private Activity _CurrentActivity { get; set; }
         private DateTimeOffset _LastLocationTime { get; set; } = DateTimeOffset.MinValue;
+        private TimerWrapper _CurrentStaleTimer { get; set; }
 
-        private object _locationChangedSubscription;
-        private object _recordingActivitySubscription;
+        private IDisposable _locationChangedSubscription;
+        private IDisposable _recordingActivitySubscription;
+        private IDisposable _staleTimerSubscription;
 
         public override void Start()
         {
@@ -148,7 +154,7 @@ namespace FormsSkiaBikeTracker.ViewModels
                            .Find<Athlete>(athleteId);
         }
 
-        private async void ToggleRecording()
+        private void ToggleRecording()
         {
             if (_Recorder == null)
             {
@@ -157,9 +163,7 @@ namespace FormsSkiaBikeTracker.ViewModels
                 try
                 {
                     ActivityRoute = _Recorder.Start();
-                    _CurrentActivity = await CreateNewActivityFromRecording(ActivityRoute, Athlete)
-                                           .ConfigureAwait(false);
-                    
+                    _CurrentActivity = CreateNewActivityFromRecording(ActivityRoute, Athlete);
 
                     _recordingActivitySubscription = ActivityRoute.WeakSubscribe<IMutableRoute, PointsAddedEventArgs>(nameof(ActivityRoute.PointsAdded),
                                                                                                                       OnNewPointRecorded);
@@ -180,11 +184,11 @@ namespace FormsSkiaBikeTracker.ViewModels
             RaisePropertyChanged(nameof(IsActivityRunning));
         }
 
-        private async Task<Activity> CreateNewActivityFromRecording(IMutableRoute activityRoute, Athlete athlete)
+        private Activity CreateNewActivityFromRecording(IMutableRoute activityRoute, Athlete athlete)
         {
             Activity result = null;
 
-            TotalDistance = 0;
+            TotalDistance = Distance.FromMeters(0);
 
             Realm realmInstance = Realm.GetInstance(RealmConstants.RealmConfiguration);
             realmInstance.Write(() =>
@@ -192,6 +196,7 @@ namespace FormsSkiaBikeTracker.ViewModels
                                result = new Activity();
                                result.StartTime = DateTimeOffset.Now;
                                result.Route = new ActivityRoute();
+                               result.Statistics = new ActivityStatistics();
 
                                athlete.Activities.Add(result);
 
@@ -208,13 +213,33 @@ namespace FormsSkiaBikeTracker.ViewModels
             DateTimeOffset now = DateTimeOffset.UtcNow;
 
             UpdateActivityStatistics(newLocation, now);
+            StartStaleTimer();
 
             FirstLocationAcquired = true;
             _LastLocationTime = now;
             LastUserLocation = newLocation;
         }
 
-        private void UpdateActivityStatistics(Position location, DateTimeOffset locationTime)
+        private void StartStaleTimer()
+        {
+            // Release previous timer
+            _CurrentStaleTimer?.Stop();
+            _CurrentStaleTimer?.Dispose();
+            _staleTimerSubscription?.Dispose();
+            
+            // Setup new one with interval
+            _CurrentStaleTimer = new TimerWrapper(DefaultStaleTimerMs);
+            _CurrentStaleTimer.AutoReset = false;
+            _staleTimerSubscription = _CurrentStaleTimer.WeakSubscribe<TimerWrapper, ElapsedEventArgs>(nameof(_CurrentStaleTimer.Elapsed), OnStaleTimerElapsed);
+            _CurrentStaleTimer.Start();
+        }
+
+        private void OnStaleTimerElapsed(object sender, ElapsedEventArgs e)
+        {
+            CurrentSpeed = 0;
+        }
+
+        private async void UpdateActivityStatistics(Position location, DateTimeOffset locationTime)
         {
             if (_LastLocationTime > DateTimeOffset.MinValue)
             {
@@ -223,25 +248,31 @@ namespace FormsSkiaBikeTracker.ViewModels
 
                 CurrentSpeed = distanceTravelled.ToDistanceUnit(Athlete.DistanceUnit) / timeElapsed;
 
-                if (_CurrentActivity != null)
+                if (IsActivityRunning)
                 {
-                    Realm realmInstance = Realm.GetInstance(RealmConstants.RealmConfiguration);
+                    TotalDistance = TotalDistance.Add(distanceTravelled);
 
-                    TotalDistance += distanceTravelled.ToDistanceUnit(Athlete.DistanceUnit);
-
-                    realmInstance.Write(() =>
-                        {
-                            Activity activity = realmInstance.Find<Activity>(_CurrentActivity.Id);
-
-                            if (activity.Statistics == null)
-                            {
-                                activity.Statistics = new ActivityStatistics();
-                            }
-
-                            activity.Statistics.DistanceMeters += distanceTravelled.Meters;
-                        });
+                    try
+                    {
+                        await SaveStatisticsToRealmAsync(TotalDistance).ConfigureAwait(false);
+                    }
+                    catch (Exception e)
+                    {
+                        MvxLog.Instance.Log(MvxLogLevel.Error, () => "Failed to save statistics to Mux");
+                    }
                 }
             }
+        }
+
+        private Task SaveStatisticsToRealmAsync(Distance totalDistance)
+        {
+            return Realm.GetInstance(RealmConstants.RealmConfiguration)
+                        .WriteAsync(realmInstance =>
+                            {
+                                Activity activity = realmInstance.Find<Activity>(_CurrentActivity.Id);
+
+                                activity.Statistics.DistanceMeters = totalDistance.Meters;
+                            });
         }
 
         private void OnNewPointRecorded(object sender, PointsAddedEventArgs args)

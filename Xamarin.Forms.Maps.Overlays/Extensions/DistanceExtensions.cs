@@ -9,6 +9,7 @@
 // 
 // ***********************************************************************
 
+using System.Runtime.CompilerServices;
 using Xamarin.Forms.Maps.Overlays.Models;
 
 namespace Xamarin.Forms.Maps.Overlays.Extensions
@@ -28,6 +29,11 @@ namespace Xamarin.Forms.Maps.Overlays.Extensions
             }
 
             return 0;
+        }
+
+        public static Distance Add(this Distance self, Distance addition)
+        {
+            return Distance.FromMeters(self.Meters + addition.Meters);
         }
     }
 }

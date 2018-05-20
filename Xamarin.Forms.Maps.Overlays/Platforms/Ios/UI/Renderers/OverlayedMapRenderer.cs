@@ -69,8 +69,8 @@ namespace Xamarin.Forms.Maps.Overlays.Platforms.Ios.UI.Renderers
             private DrawableMapOverlay _SharedOverlay { get; }
             private MKMapView _NativeMap { get; }
 
-            private object _boundsChangedSubscription;
-            private object _overlayDirtySubscription;
+            private IDisposable _boundsChangedSubscription;
+            private IDisposable _overlayDirtySubscription;
             private Queue<SKBitmap> _overlayBitmapPool = new Queue<SKBitmap>();
 
             public MapOverlayRenderer(MKMapView mapView, DrawableMapOverlay sharedOverlay, IMKOverlay overlay) : base(overlay)
