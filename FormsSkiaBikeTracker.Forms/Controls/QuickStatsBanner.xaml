@@ -21,38 +21,35 @@
 
             <controls:SKLabel x:Name="SpeedHeaderLabel"
                               Grid.Row="0" Grid.Column="0"
-                              Margin="0, 0, 0, 2"
                               HorizontalOptions="Center"
                               VerticalOptions="End"
                               TextColor="DarkGreen"
                               FontResourcePath="KumarOne-Regular.otf"
-                              FontSize="18" />
+                              FontSize="16" />
             <controls:SKLabel x:Name="CurrentSpeedLabel"
                               Grid.Row="1" Grid.Column="0"
-                              Margin="0, 2, 0, 0"
                               HorizontalOptions="Center"
                               VerticalOptions="Start"
                               TextColor="DarkGreen"
                               FontResourcePath="KumarOne-Regular.otf"
-                              FontSize="18" />
+                              FontSize="14" />
 
             <controls:SKLabel x:Name="DistanceHeaderLabel"
                               Grid.Row="0" Grid.Column="1"
-                              Margin="0, 0, 0, 2"
                               HorizontalOptions="Center"
                               VerticalOptions="End"
                               TextColor="DarkBlue"
                               FontResourcePath="KumarOne-Regular.otf"
-                              FontSize="18"
+                              FontSize="16"
                               Text="{lrpMvxForms:LocalizedText Distance}" />
             <controls:SKLabel x:Name="DistanceLabel"
                               Grid.Row="1" Grid.Column="1"
-                              Margin="0, 2, 0, 0"
                               HorizontalOptions="Center"
                               VerticalOptions="Start"
                               TextColor="DarkBlue"
                               FontResourcePath="KumarOne-Regular.otf"
-                              FontSize="18" />
+                              FontSize="14"
+                              BackgroundColor="Red" />
 
             <lrpForms:SvgImage x:Name="StartStopImage"
                                Grid.Row="0" Grid.Column="2" Grid.RowSpan="2"
