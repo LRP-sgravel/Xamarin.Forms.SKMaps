@@ -48,8 +48,7 @@
                               VerticalOptions="Start"
                               TextColor="DarkBlue"
                               FontResourcePath="KumarOne-Regular.otf"
-                              FontSize="14"
-                              BackgroundColor="Red" />
+                              FontSize="14" />
 
             <lrpForms:SvgImage x:Name="StartStopImage"
                                Grid.Row="0" Grid.Column="2" Grid.RowSpan="2"
