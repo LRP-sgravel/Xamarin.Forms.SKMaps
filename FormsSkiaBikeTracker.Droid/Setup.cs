@@ -8,67 +8,22 @@
 //   Copyright (c) 2017, Le rond-point
 // 
 // ***********************************************************************
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
+
 using Android.Content;
 using Flurry.Analytics;
 using FormsSkiaBikeTracker.Droid.Services;
-using MvvmCross.Platform;
-using MvvmCross.Platform.Platform;
-using MvvmCross.Droid.Views;
-using MvvmCross.Core.ViewModels;
-using MvvmCross.Core.Views;
-using MvvmCross.Platform.IoC;
-using FormsSkiaBikeTracker.Forms.UI.Pages;
+using FormsSkiaBikeTracker.Forms;
 using FormsSkiaBikeTracker.Services.Interface;
-using LRPLib.Mvx.Droid;
+using LRPFramework.Mvx.Views.Forms.Droid;
+using LRPFramework.Services.Threading;
+using MvvmCross.Binding;
+using MvvmCross.IoC;
+using MvxEntry = MvvmCross.Mvx;
 
 namespace FormsSkiaBikeTracker.Droid
 {
-    public class Setup : LrpDroidSetup
+    public class Setup : LRPFormsDroidSetup<MvxApp, FormsApp>
     {
-        public Setup(Context applicationContext)
-            : base(applicationContext)
-        {
-        }
-
-        protected override IMvxApplication CreateApp()
-        {
-            return new App();
-        }
-
-        protected override IMvxTrace CreateDebugTrace()
-        {
-            bool alwaysOutput = false;
-
-#if DEBUG
-            alwaysOutput = true;
-#endif
-
-            return new LrpDroidDebugTrace(alwaysOutput);
-        }
-
-        protected override IMvxAndroidViewPresenter CreateViewPresenter()
-        {
-            LRPFormsAndroidPagePresenter presenter = new LRPFormsAndroidPagePresenter();
-            Mvx.RegisterSingleton<IMvxViewPresenter>(presenter);
-
-            return presenter;
-        }
-
-        protected override IEnumerable<Assembly> GetViewAssemblies()
-        {
-            var result = base.GetViewAssemblies();
-
-            return result.Append(typeof(LoadingPage).Assembly).ToList();
-        }
-
-        protected override IMvxNameMapping CreateViewToViewModelNaming()
-        {
-            return new MvxPostfixAwareViewToViewModelNameMapping("View", "Page");
-        }
-
         protected override IMvxIocOptions CreateIocOptions()
         {
             return new MvxIocOptions
@@ -76,13 +31,14 @@ namespace FormsSkiaBikeTracker.Droid
                 PropertyInjectorOptions = MvxPropertyInjectorOptions.MvxInject
             };
         }
-
+        
         protected override void InitializePlatformServices()
         {
             base.InitializePlatformServices();
 
-            Mvx.RegisterSingleton<IDocumentRoot>(Mvx.IocConstruct<DocumentRoot>);
-            SetupFlurry();
+            MvxEntry.RegisterSingleton<IDocumentRoot>(MvxEntry.IocConstruct<DocumentRoot>);
+
+            MvxEntry.CallbackWhenRegistered<MainThread>(SetupFlurry);
         }
 
         private void SetupFlurry()
@@ -103,6 +59,5 @@ namespace FormsSkiaBikeTracker.Droid
                                               .VersionName);
             FlurryAgent.OnStartSession(context);                                  
         }
-
     }
 }

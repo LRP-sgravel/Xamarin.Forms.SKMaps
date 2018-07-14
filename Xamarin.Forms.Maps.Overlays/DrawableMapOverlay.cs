@@ -14,8 +14,9 @@ using LRPFramework.Views.Forms;
 using SkiaSharp;
 using Xamarin.Forms.Maps.Overlays.Extensions;
 using Xamarin.Forms.Maps.Overlays.Models;
+using Xamarin.Forms.Maps.Overlays.Skia;
 
-namespace Xamarin.Forms.Maps.Overlays.Skia
+namespace Xamarin.Forms.Maps.Overlays
 {
     public abstract class DrawableMapOverlay : DrawableView
     {

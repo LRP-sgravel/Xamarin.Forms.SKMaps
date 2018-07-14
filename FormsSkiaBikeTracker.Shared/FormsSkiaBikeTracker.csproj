@@ -48,18 +48,20 @@
     <PackageReference Include="Fody" Version="2.4.6" />
     <PackageReference Include="LRPFramework" Version="2.0.0" />
     <PackageReference Include="LRPFramework.Mvx" Version="2.0.0" />
-    <PackageReference Include="Microsoft.AppCenter.Analytics" Version="1.6.0" />
-    <PackageReference Include="Microsoft.AppCenter.Crashes" Version="1.6.0" />
-    <PackageReference Include="Microsoft.NETCore.Platforms" Version="2.0.2" />
+    <PackageReference Include="Microsoft.NETCore.Platforms" Version="2.1.0" />
+    <PackageReference Include="MvvmCross" Version="6.0.1" />
     <PackageReference Include="MvvmCross.Forms" Version="6.0.1" />
+    <PackageReference Include="MvvmCross.Plugin.File" Version="6.0.1" />
+    <PackageReference Include="MvvmCross.Plugin.Json" Version="6.0.1" />
     <PackageReference Include="MvvmCross.Plugin.JsonLocalization" Version="6.0.1" />
     <PackageReference Include="MvvmCross.Plugin.Location" Version="6.0.1" />
     <PackageReference Include="MvvmCross.Plugin.PictureChooser" Version="6.0.1" />
+    <PackageReference Include="MvvmCross.Plugin.ResourceLoader" Version="6.0.1" />
     <PackageReference Include="Realm" Version="3.0.0" />
     <PackageReference Include="Realm.Database" Version="3.0.0" />
     <PackageReference Include="Realm.DataBinding" Version="1.2.0" />
     <PackageReference Include="SimpleCrypto.NetCore" Version="1.0.0" />
-    <PackageReference Include="SkiaSharp" Version="1.60.0" />
+    <PackageReference Include="SkiaSharp" Version="1.60.2" />
     <PackageReference Include="System.Collections.Immutable" Version="1.4.0" />
     <PackageReference Include="System.Console" Version="4.3.1" />
     <PackageReference Include="System.Linq.Queryable" Version="4.3.0" />
@@ -69,7 +71,6 @@
     <PackageReference Include="System.Security.Cryptography.X509Certificates" Version="4.3.2" />
     <PackageReference Include="System.Xml.ReaderWriter" Version="4.3.1" />
     <PackageReference Include="Xamarin.Build.Download" Version="0.4.11" />
-    <PackageReference Include="Xamarin.Forms.Maps" Version="2.5.1.527436" />
   </ItemGroup>
 
   <ItemGroup>

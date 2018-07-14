@@ -12,6 +12,7 @@
 
         <item name="android:buttonStyle">@style/NoShadowButton</item>
     </style>
+    
     <style name="NoShadowButton" parent="android:style/Widget.Button">
         <item name="android:stateListAnimator">@null</item>
     </style>

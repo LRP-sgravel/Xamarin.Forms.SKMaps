@@ -8511,8 +8511,11 @@ namespace FormsSkiaBikeTracker.Droid
 			// aapt resource value: 0x7f0d016e
 			public const int Animation_Design_BottomSheetDialog = 2131558766;
 			
-			// aapt resource value: 0x7f0d0192
-			public const int AppCompatDialogStyle = 2131558802;
+			// aapt resource value: 0x7f0d0193
+			public const int AppCompatDialogStyle = 2131558803;
+			
+			// aapt resource value: 0x7f0d0191
+			public const int AppTheme_Splash = 2131558801;
 			
 			// aapt resource value: 0x7f0d00a9
 			public const int Base_AlertDialog_AppCompat = 2131558569;
@@ -9015,14 +9018,14 @@ namespace FormsSkiaBikeTracker.Droid
 			// aapt resource value: 0x7f0d000e
 			public const int CardView_Light = 2131558414;
 			
+			// aapt resource value: 0x7f0d0195
+			public const int DialogButtonStyle = 2131558805;
+			
 			// aapt resource value: 0x7f0d0194
-			public const int DialogButtonStyle = 2131558804;
+			public const int LightAlertDialogTheme = 2131558804;
 			
-			// aapt resource value: 0x7f0d0193
-			public const int LightAlertDialogTheme = 2131558803;
-			
-			// aapt resource value: 0x7f0d0191
-			public const int ListViewStyle = 2131558801;
+			// aapt resource value: 0x7f0d0192
+			public const int ListViewStyle = 2131558802;
 			
 			// aapt resource value: 0x7f0d018f
 			public const int MainTheme = 2131558799;
@@ -9030,8 +9033,8 @@ namespace FormsSkiaBikeTracker.Droid
 			// aapt resource value: 0x7f0d0190
 			public const int MainTheme_Base = 2131558800;
 			
-			// aapt resource value: 0x7f0d0195
-			public const int NoShadowButton = 2131558805;
+			// aapt resource value: 0x7f0d0196
+			public const int NoShadowButton = 2131558806;
 			
 			// aapt resource value: 0x7f0d002d
 			public const int Platform_AppCompat = 2131558445;

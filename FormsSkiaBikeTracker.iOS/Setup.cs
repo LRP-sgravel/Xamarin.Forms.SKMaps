@@ -9,9 +9,6 @@
 // 
 // ***********************************************************************
 
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
 using Flurry.Analytics;
 using FormsSkiaBikeTracker.Services.Interface;
 using Foundation;
@@ -21,7 +18,6 @@ using MvvmCross.IoC;
 using FormsSkiaBikeTracker.Forms;
 using FormsSkiaBikeTracker.Ios.Services;
 using LRPFramework.Services.Threading;
-using MvvmCross.Binding;
 
 namespace FormsSkiaBikeTracker.Ios
 {

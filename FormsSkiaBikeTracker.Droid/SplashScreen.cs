@@ -9,46 +9,50 @@
 // 
 // ***********************************************************************
 using Android.App;
-using MvvmCross.Droid.Views;
-using Xamarin.Forms;
+using Android.OS;
+using FormsSkiaBikeTracker.Forms;
+using MvvmCross.Forms.Platforms.Android.Views;
+using Acr.UserDialogs;
+using MvvmCross.Platforms.Android;
+using LRPFramework.Mvx;
+using LRPFramework.Views;
+using LRPFramework.Views.Forms;
+using LRPFramework.Mvx.Views;
+using LRPFramework.Mvx.Views.Forms;
+using MvxEntry = MvvmCross.Mvx;
 
 namespace FormsSkiaBikeTracker.Droid
 {
     [Activity(Label = "FormsSkiaBikeTracker",
               MainLauncher = true,
               Icon = "@drawable/icon",
-              Theme = "@style/ThemeOverlay.AppCompat.Light",
+              Theme = "@style/AppTheme.Splash",
               NoHistory = true)]
-    public class SplashScreen : MvxSplashScreenActivity
+    public class SplashScreen : MvxFormsSplashScreenAppCompatActivity<Setup, MvxApp, FormsApp>
     {
         public SplashScreen() : base(Resource.Layout.SplashScreen)
         {
         }
 
-        private bool _isInitializationComplete = false;
-        public override void InitializationComplete()
+        protected override void OnCreate(Bundle bundle)
         {
-            if (!_isInitializationComplete)
-            {
-                _isInitializationComplete = true;
-                StartActivity(typeof(MainActivity));
-            }
-        }
-
-        protected override void OnCreate(Android.OS.Bundle bundle)
-        {
-            Xamarin.Forms.Forms.Init(this, bundle);
-
-            // Leverage controls' StyleId attrib. to Xamarin.UITest
-            Xamarin.Forms.Forms.ViewInitialized += (object sender, ViewInitializedEventArgs e) =>
-            {
-                if (!string.IsNullOrWhiteSpace(e.View.StyleId))
-                {
-                    e.NativeView.ContentDescription = e.View.StyleId;
-                }
-            };
+            UserDialogs.Init(() => MvxEntry.Resolve<IMvxAndroidCurrentTopActivity>().Activity);
 
             base.OnCreate(bundle);
+        }
+
+        protected override void RunAppStart(Bundle bundle)
+        {
+            LRPFramework.LRPFramework.Init();
+            LRPFrameworkMvx.Init();
+            LRPFrameworkViews.Init();
+            LRPFrameworkViewsForms.Init();
+            LRPFrameworkMvxViews.Init();
+            LRPFrameworkMvxViewsForms.Init();
+
+            StartActivity(typeof(MainActivity));
+
+            base.RunAppStart(bundle);
         }
     }
 }

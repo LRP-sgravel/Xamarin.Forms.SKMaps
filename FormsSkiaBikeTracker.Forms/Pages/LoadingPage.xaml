@@ -3,12 +3,14 @@
                       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                       xmlns:lrp="clr-namespace:LRPFramework.Views.Forms.Markup;assembly=LRPFramework.Views.Forms"
                       xmlns:mvx="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
+                      xmlns:lrpForms="clr-namespace:LRPFramework.Views.Forms;assembly=LRPFramework.Views.Forms"
+                      xmlns:lrpMvxForms="clr-namespace:LRPFramework.Mvx.Views.Forms.Markup;assembly=LRPFramework.Mvx.Views.Forms"
                       x:Class="FormsSkiaBikeTracker.Forms.Pages.LoadingPage">
 
     <AbsoluteLayout>
-        <Image AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+        <lrpForms:SvgImage AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
                AbsoluteLayout.LayoutFlags="All"
-               Source="Default.png"
+               Source="{lrpMvxForms:EmbeddedImage full_logo.svg}"
                Aspect="AspectFit" />
         <Label AbsoluteLayout.LayoutBounds="0, 0.75, 1, .05"
                AbsoluteLayout.LayoutFlags="All"

@@ -12,9 +12,10 @@
 
   <ItemGroup>
     <PackageReference Include="LRPFramework.Mvx.Views.Forms" Version="2.0.0" />
-    <PackageReference Include="LRPFramework.Views.Forms" Version="2.0.0" />
     <PackageReference Include="SkiaSharp.Svg" Version="1.60.0" />
+    <PackageReference Include="SkiaSharp.Views.Forms" Version="1.60.2" />
     <PackageReference Include="System.Net.Http" Version="4.3.3" />
+    <PackageReference Include="Xamarin.Build.Download" Version="0.4.11" />
     <PackageReference Include="Xamarin.Forms" Version="2.5.1.527436" />
     <PackageReference Include="Xamarin.Forms.Maps" Version="2.5.1.527436" />
   </ItemGroup>
