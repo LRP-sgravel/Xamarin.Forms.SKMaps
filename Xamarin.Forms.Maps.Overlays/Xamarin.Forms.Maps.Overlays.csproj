@@ -18,11 +18,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="LRPFramework.Views.Forms" Version="2.0.0" />
+    <PackageReference Include="LRPFramework.Mvx.Views.Forms" Version="2.0.0" />
     <PackageReference Include="MathNet.Numerics" Version="4.4.1" />
     <PackageReference Include="MvvmCross" Version="6.0.1" />
+    <PackageReference Include="SkiaSharp" Version="1.60.2" />
     <PackageReference Include="SkiaSharp.Svg" Version="1.60.0" />
-    <PackageReference Include="SkiaSharp.Views.Forms" Version="1.60.0" />
+    <PackageReference Include="SkiaSharp.Views" Version="1.60.2" />
+    <PackageReference Include="SkiaSharp.Views.Forms" Version="1.60.2" />
+    <PackageReference Include="Xamarin.Build.Download" Version="0.4.11" />
     <PackageReference Include="Xamarin.Forms" Version="2.5.1.527436" />
     <PackageReference Include="Xamarin.Forms.Maps" Version="2.5.1.527436" />
   </ItemGroup>

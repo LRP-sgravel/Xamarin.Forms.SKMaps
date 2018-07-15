@@ -22,6 +22,11 @@ namespace Xamarin.Forms.Maps.Overlays.Models
         public double LatitudeDegrees { get; }
         public double LongitudeDegrees { get; }
 
+        public SKMapPosition TopLeft => new SKMapPosition(Center.Latitude + LatitudeDegrees, Center.Longitude - LongitudeDegrees);
+        public SKMapPosition TopRight => new SKMapPosition(Center.Latitude + LatitudeDegrees, Center.Longitude + LongitudeDegrees);
+        public SKMapPosition BottomLeft => new SKMapPosition(Center.Latitude - LatitudeDegrees, Center.Longitude - LongitudeDegrees);
+        public SKMapPosition BottomRight => new SKMapPosition(Center.Latitude - LatitudeDegrees, Center.Longitude + LongitudeDegrees);
+
         public SKMapSpan(MapSpan mapSpan) : this(new SKMapPosition(mapSpan.Center),
                                                  mapSpan.LatitudeDegrees,
                                                  mapSpan.LongitudeDegrees)

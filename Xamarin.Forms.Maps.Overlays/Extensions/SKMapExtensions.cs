@@ -20,8 +20,8 @@ namespace Xamarin.Forms.Maps.Overlays.Extensions
     {
         // Skia uses float instead of double.  Therefore the map size does not fit in the integer portion of the
         //  float and this obviously leads to issues
-        public const double MercatorMapSize = 268435456;
-        public const double MercatorCenterOffset = MercatorMapSize * 0.5;
+        public const int MercatorMapSize = 268435456;
+        public const int MercatorCenterOffset = MercatorMapSize >> 1;
         private const double MercatorRadius = MercatorCenterOffset / Math.PI;
 
         public static Rectangle ToMercator(this MapSpan gpsSpan)
@@ -31,8 +31,8 @@ namespace Xamarin.Forms.Maps.Overlays.Extensions
 
         public static Rectangle ToMercator(this SKMapSpan gpsSpan)
         {
-            SKMapPosition topLeftGps = gpsSpan.TopLeft();
-            SKMapPosition bottomRightGps = gpsSpan.BottomRight();
+            SKMapPosition topLeftGps = gpsSpan.TopLeft;
+            SKMapPosition bottomRightGps = gpsSpan.BottomRight;
             Point canvasTopLeft = topLeftGps.ToMercator();
             Point canvasBottomRight = bottomRightGps.ToMercator();
 
@@ -87,22 +87,6 @@ namespace Xamarin.Forms.Maps.Overlays.Extensions
             double longitude = (mercatorCoords.X / MercatorMapSize) * MapSpanExtensions.WorldLongitude - MapSpanExtensions.MaxLongitude;
 
             return new SKMapPosition(latitude, longitude);
-        }
-
-        public static SKMatrix ToSKMatrix(this Matrix<double> doubleMatrix)
-        {
-            return new SKMatrix
-                   {
-                       ScaleX = (float)doubleMatrix[0, 0],
-                       SkewX = (float)doubleMatrix[0, 1],
-                       TransX = (float)doubleMatrix[0, 2],
-                       SkewY = (float)doubleMatrix[1, 0],
-                       ScaleY = (float)doubleMatrix[1, 1],
-                       TransY = (float)doubleMatrix[1, 2],
-                       Persp0 = (float)doubleMatrix[2, 0],
-                       Persp1 = (float)doubleMatrix[2, 1],
-                       Persp2 = (float)doubleMatrix[2, 2],
-                   };
         }
     }
 }

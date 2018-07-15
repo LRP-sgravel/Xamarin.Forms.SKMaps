@@ -66,5 +66,21 @@ namespace Xamarin.Forms.Maps.Overlays.Extensions
                               (float)rectMatrix[0, 1],
                               (float)rectMatrix[1, 0]);
         }
+
+        public static SKMatrix ToSKMatrix(this Matrix<double> doubleMatrix)
+        {
+            return new SKMatrix
+            {
+                ScaleX = (float)doubleMatrix[0, 0],
+                SkewX = (float)doubleMatrix[0, 1],
+                TransX = (float)doubleMatrix[0, 2],
+                SkewY = (float)doubleMatrix[1, 0],
+                ScaleY = (float)doubleMatrix[1, 1],
+                TransY = (float)doubleMatrix[1, 2],
+                Persp0 = (float)doubleMatrix[2, 0],
+                Persp1 = (float)doubleMatrix[2, 1],
+                Persp2 = (float)doubleMatrix[2, 2],
+            };
+        }
     }
 }

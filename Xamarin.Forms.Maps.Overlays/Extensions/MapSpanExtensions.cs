@@ -27,22 +27,22 @@ namespace Xamarin.Forms.Maps.Overlays.Extensions
 
         public static Position TopLeft(this MapSpan self)
         {
-            return new SKMapSpan(self).TopLeft().ToPosition();
+            return new SKMapSpan(self).TopLeft.ToPosition();
+        }
+
+        public static Position TopRight(this MapSpan self)
+        {
+            return new SKMapSpan(self).TopRight.ToPosition();
+        }
+
+        public static Position BottomLeft(this MapSpan self)
+        {
+            return new SKMapSpan(self).BottomLeft.ToPosition();
         }
 
         public static Position BottomRight(this MapSpan self)
         {
-            return new SKMapSpan(self).BottomRight().ToPosition();
-        }
-
-        public static SKMapPosition TopLeft(this SKMapSpan self)
-        {
-            return new SKMapPosition(self.Center.Latitude + self.LatitudeDegrees, self.Center.Longitude - self.LongitudeDegrees);
-        }
-
-        public static SKMapPosition BottomRight(this SKMapSpan self)
-        {
-            return new SKMapPosition(self.Center.Latitude - self.LatitudeDegrees, self.Center.Longitude + self.LongitudeDegrees);
+            return new SKMapSpan(self).BottomRight.ToPosition();
         }
 
         public static MapSpan WrapIfRequired(this MapSpan self)

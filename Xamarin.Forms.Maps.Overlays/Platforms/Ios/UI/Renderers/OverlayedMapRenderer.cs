@@ -123,7 +123,7 @@ namespace Xamarin.Forms.Maps.Overlays.Platforms.Ios.UI.Renderers
 
                     // Let's exit this method so MapKit renders to screen while we free our resources in the background.
                     Task.Run(() => ReleaseOverlayBitmap(drawBitmap));
-                    }
+                }
             }
 
             private SKBitmap GetOverlayBitmap()
