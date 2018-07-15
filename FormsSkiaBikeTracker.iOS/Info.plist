@@ -23,9 +23,9 @@
 	<key>MinimumOSVersion</key>
 	<string>9.0</string>
 	<key>CFBundleDisplayName</key>
-	<string>FormsSkiaBikeTracker.iOS</string>
+	<string>LRPBikeTracker</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.FormsSkiaBikeTracker.iOS</string>
+	<string>net.lerondpoint.biketracker</string>
 	<key>CFBundleVersion</key>
 	<string>1.0</string>
 	<key>CFBundleIconFiles</key>
