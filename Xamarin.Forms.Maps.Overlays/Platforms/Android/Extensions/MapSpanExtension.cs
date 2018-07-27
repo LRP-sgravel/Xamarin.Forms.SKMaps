@@ -24,7 +24,9 @@ namespace Xamarin.Forms.Maps.Overlays.Platforms.Droid.Extensions
 
         public static LatLngBounds ToLatLng(this SKMapSpan self)
         {
-            return new LatLngBounds(self.BottomLeft.ToLatLng(), self.TopRight.ToLatLng());
+            LatLngBounds.Builder builder = new LatLngBounds.Builder().Include(self.BottomLeft.ToLatLng())
+                                                                     .Include(self.TopRight.ToLatLng());
+            return builder.Build();
         }
 
         public static SKMapSpan ToMapSpan(this LatLngBounds self)
@@ -44,7 +46,7 @@ namespace Xamarin.Forms.Maps.Overlays.Platforms.Droid.Extensions
         {
             SKMapSpan mapSpan = self.ToGps();
 
-            return new LatLngBounds(mapSpan.BottomLeft.ToLatLng(), mapSpan.TopRight.ToLatLng());
+            return mapSpan.ToLatLng();
         }
     }
 }

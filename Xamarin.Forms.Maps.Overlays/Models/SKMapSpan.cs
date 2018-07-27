@@ -46,6 +46,11 @@ namespace Xamarin.Forms.Maps.Overlays.Models
             LongitudeDegrees = Math.Min(MapSpanExtensions.MaxLongitude, Math.Abs(longitudeDegrees));
         }
 
+        public override string ToString()
+        {
+            return $"({BottomLeft.Latitude}, {BottomLeft.Longitude}; {TopRight.Latitude}, {TopRight.Longitude})";
+        }
+
         public MapSpan ToMapSpan()
         {
             return new MapSpan(Center.ToPosition(), LatitudeDegrees, LongitudeDegrees);
