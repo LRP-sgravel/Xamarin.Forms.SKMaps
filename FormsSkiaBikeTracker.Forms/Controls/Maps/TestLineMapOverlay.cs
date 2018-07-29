@@ -36,7 +36,7 @@ namespace FormsSkiaBikeTracker.Forms.Controls.Maps
 
             paint.IsAntialias = true;
             paint.StrokeWidth = 1;
-/*            paint.Color = Color.Fuchsia.ToSKColor();
+            paint.Color = Color.Fuchsia.ToSKColor();
 
             if (canvasMapRect.Center.Latitude > 0)
             {
@@ -85,7 +85,6 @@ namespace FormsSkiaBikeTracker.Forms.Controls.Maps
                             baseBounds.Center.Longitude - baseBounds.LongitudeDegrees,
                             paint,
                             false);
-            */
             paint.StrokeWidth = 5;
             paint.Color = Color.Orange.ToSKColor();
 

@@ -113,13 +113,13 @@ namespace Xamarin.Forms.Maps.Overlays.Platforms.Ios.UI.Renderers
                 {
                     CGRect coreDrawRect = RectForMapRect(mapRect);
                     SKBitmap drawBitmap = GetOverlayBitmap();
-                    SKMapCanvas mapCanvas = new SKMapCanvas(drawBitmap, mapRect.ToRectangle(), zoomScale);
+                    SKMapCanvas mapCanvas = new SKMapCanvas(drawBitmap, mapRect.ToRectangle(), zoomScale, true);
 
                     _SharedOverlay.DrawOnMap(mapCanvas, rectSpan, zoomScale);
+                    
+                    Console.WriteLine($"Drawing tile for zoom scale {zoomScale} with GPS bounds {mapRect} and Mercator {mapRect.ToRectangle()}");
 
-                    context.SaveState();
                     context.DrawImage(coreDrawRect, drawBitmap.ToCGImage());
-                    context.RestoreState();
 
                     // Let's exit this method so MapKit renders to screen while we free our resources in the background.
                     Task.Run(() => ReleaseOverlayBitmap(drawBitmap));

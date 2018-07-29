@@ -13,10 +13,12 @@ using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
+using System.Threading.Tasks;
 using Android.Content;
 using Android.Gms.Maps;
 using Android.Gms.Maps.Model;
-using Android.Graphics;
+using SkiaSharp;
+using SkiaSharp.Views.Android;
 using Xamarin.Forms;
 using Xamarin.Forms.Maps.Android;
 using Xamarin.Forms.Maps.Overlays;
@@ -24,6 +26,7 @@ using Xamarin.Forms.Maps.Overlays.Extensions;
 using Xamarin.Forms.Maps.Overlays.Models;
 using Xamarin.Forms.Maps.Overlays.Platforms.Droid.Extensions;
 using Xamarin.Forms.Maps.Overlays.Platforms.Droid.UI.Renderers;
+using Xamarin.Forms.Maps.Overlays.Skia;
 using Xamarin.Forms.Platform.Android;
 
 [assembly: ExportRenderer(typeof(OverlayedMap), typeof(OverlayedMapRenderer))]
@@ -31,8 +34,6 @@ namespace Xamarin.Forms.Maps.Overlays.Platforms.Droid.UI.Renderers
 {
     internal class OverlayedMapRenderer : MapRenderer
     {
-        private GroundOverlay newOverlay;
-
         private class OverlayTrackerTileProvider : Java.Lang.Object, ITileProvider
         {
             private class TileInfo : Java.Lang.Object
@@ -58,7 +59,9 @@ namespace Xamarin.Forms.Maps.Overlays.Platforms.Droid.UI.Renderers
             private DrawableMapOverlay _SharedOverlay { get; }
             private GoogleMap _NativeMap { get; }
             private List<GroundOverlay> _GroundOverlays { get; } = new List<GroundOverlay>();
+            public TileOverlay Overlay { get; internal set; }
 
+            private Queue<SKBitmap> _overlayBitmapPool = new Queue<SKBitmap>();
             private object _cleanupLock = new object();
 
             public OverlayTrackerTileProvider(GoogleMap nativeMap, DrawableMapOverlay sharedOverlay)
@@ -84,40 +87,85 @@ namespace Xamarin.Forms.Maps.Overlays.Platforms.Droid.UI.Renderers
                             {
                                 overlay.Remove();
                             }
-                        }
-                        _LastZoomLevel = zoom;
 
-                        Console.WriteLine($"Requesting tile at ({x}, {y}) for zoom level {zoom}");
-
-                        bool overlayExists = _GroundOverlays.FirstOrDefault(o => (o.Tag as TileInfo)?.Equals(tileInfo) ?? false) != null;
-
-                        if (!overlayExists)
-                        {
-                            int tileSize = SKMapExtensions.MercatorMapSize >> zoom;
-                            int xPixelsStart = x * tileSize;
-                            int yPixelsStart = y * tileSize;
-                            SKMapSpan tileSpan = new Rectangle(xPixelsStart, yPixelsStart, tileSize, tileSize).ToGps();
-
-                            //if(tileSpan.FastIntersects(_SharedOverlay.GpsBounds))
-                            {
-                                LatLngBounds nativeBounds = tileSpan.ToLatLng();
-                                GroundOverlayOptions overlayOptions = new GroundOverlayOptions().PositionFromBounds(nativeBounds)
-                                                                                                .InvokeImage(BitmapDescriptorFactory.DefaultMarker());
-                                GroundOverlay newOverlay = _NativeMap.AddGroundOverlay(overlayOptions);
-
-                                Console.WriteLine($"Adding ground tile at ({x}, {y}) for zoom level {zoom} with GPS bounds {tileSpan} (Native = {nativeBounds})");
-
-                                newOverlay.Tag = tileInfo;
-                                _GroundOverlays.Add(newOverlay);
-                            }
+                            _LastZoomLevel = zoom;
+                            Overlay.ClearTileCache();
                         }
                         else
                         {
-                            Console.WriteLine($"Ground tile at ({x}, {y}) for zoom level {zoom} already exists");
+                            Console.WriteLine($"Requesting tile at ({x}, {y}) for zoom level {zoom}");
+
+                            bool overlayExists = _GroundOverlays.FirstOrDefault(o => (o.Tag as TileInfo)?.Equals(tileInfo) ?? false) != null;
+
+                            if (!overlayExists)
+                            {
+                                int virtualTileSize = SKMapExtensions.MercatorMapSize >> zoom;
+                                int xPixelsStart = x * virtualTileSize;
+                                int yPixelsStart = y * virtualTileSize;
+                                Rectangle mercatorSpan = new Rectangle(xPixelsStart, yPixelsStart, virtualTileSize, virtualTileSize);
+                                SKMapSpan tileSpan = mercatorSpan.ToGps();
+
+                                if (tileSpan.FastIntersects(_SharedOverlay.GpsBounds))
+                                {
+                                    GroundOverlayOptions overlayOptions;
+                                    SKBitmap bitmap = GetOverlayBitmap();
+                                    double zoomScale = SKMapCanvas.MapTileSize / (double)virtualTileSize;
+                                    SKMapCanvas mapCanvas = new SKMapCanvas(bitmap, mercatorSpan, zoomScale);
+
+                                    _SharedOverlay.DrawOnMap(mapCanvas, tileSpan, zoom);
+
+                                    overlayOptions = new GroundOverlayOptions().PositionFromBounds(tileSpan.ToLatLng())
+                                                                                .InvokeImage(BitmapDescriptorFactory.FromBitmap(bitmap.ToBitmap()));
+
+                                    GroundOverlay newOverlay = _NativeMap.AddGroundOverlay(overlayOptions);
+
+                                    Console.WriteLine($"Adding ground tile at ({x}, {y}) for zoom level {zoom} ({zoomScale}) with GPS bounds {tileSpan} and Mercator {mercatorSpan}");
+
+                                    newOverlay.Tag = tileInfo;
+                                    _GroundOverlays.Add(newOverlay);
+
+                                    // Let's exit this method so MapKit renders to screen while we free our resources in the background.
+                                    Task.Run(() => ReleaseOverlayBitmap(bitmap));
+                                }
+                            }
+                            else
+                            {
+                                Console.WriteLine($"Ground tile at ({x}, {y}) for zoom level {zoom} already exists");
+                            }
                         }
                     });
 
                 return TileProvider.NoTile;
+            }
+
+            private SKBitmap GetOverlayBitmap()
+            {
+                SKBitmap overlayBitmap;
+
+                lock (_overlayBitmapPool)
+                {
+                    if (_overlayBitmapPool.Count == 0)
+                    {
+                        overlayBitmap = new SKBitmap(SKMapCanvas.MapTileSize, SKMapCanvas.MapTileSize, SKColorType.Rgba8888, SKAlphaType.Premul);
+                        overlayBitmap.Erase(SKColor.Empty);
+                    }
+                    else
+                    {
+                        overlayBitmap = _overlayBitmapPool.Dequeue();
+                    }
+                }
+
+                return overlayBitmap;
+            }
+
+            private void ReleaseOverlayBitmap(SKBitmap tileBitmap)
+            {
+                tileBitmap.Erase(SKColor.Empty);
+
+                lock (_overlayBitmapPool)
+                {
+                    _overlayBitmapPool.Enqueue(tileBitmap);
+                }
             }
         }
 
@@ -151,26 +199,6 @@ namespace Xamarin.Forms.Maps.Overlays.Platforms.Droid.UI.Renderers
         protected override void OnMapReady(GoogleMap map)
         {
             base.OnMapReady(map);
-
-/*            const int tileSize = 256;
-            LatLngBounds nativeBounds = new LatLngBounds(new LatLng(-40, -40), new LatLng(40, 40));
-            GroundOverlayOptions overlayOptions;
-
-            using (Bitmap tileBitmap = Bitmap.CreateBitmap(tileSize, tileSize, Bitmap.Config.Argb8888))
-            using (Canvas bitmapCanvas = new Canvas(tileBitmap))
-            using (Paint paint = new Paint())
-            {
-                paint.Color = Color.Red.ToAndroid();
-
-                bitmapCanvas.DrawCircle(tileSize * 0.5f, tileSize * 0.5f, tileSize * 0.5f, paint);
-
-                overlayOptions = new GroundOverlayOptions().PositionFromBounds(nativeBounds)
-                                                           .InvokeTransparency(0)
-                                                           .InvokeZIndex(100)
-                                                           .InvokeImage(BitmapDescriptorFactory.FromBitmap(tileBitmap));
-            }
-
-            this.newOverlay = NativeMap.AddGroundOverlay(overlayOptions);*/
 
             SetupMapOverlays();
         }
@@ -216,6 +244,7 @@ namespace Xamarin.Forms.Maps.Overlays.Platforms.Droid.UI.Renderers
                             TileOverlayOptions overlayOptions = new TileOverlayOptions().InvokeTileProvider(tracker);
                             TileOverlay overlay = NativeMap.AddTileOverlay(overlayOptions);
 
+                            tracker.Overlay = overlay;
                             _TileTrackers.Add(overlay);
                         }
                         break;

@@ -80,11 +80,11 @@ namespace Xamarin.Forms.Maps.Overlays.Skia
             MapCanvasPath.AddRect(canvasRect, direction);
         }
 
-        public void AddRoundedRect(MapSpan gpsSpan, float radiusX, float radiusY, SKPathDirection direction = SKPathDirection.Clockwise)
+        public void AddRoundRect(MapSpan gpsSpan, float radiusX, float radiusY, SKPathDirection direction = SKPathDirection.Clockwise)
         {
             SKRect canvasRect = _MapCanvas.ConvertSpanToLocal(gpsSpan);
 
-            MapCanvasPath.AddRoundedRect(canvasRect, radiusX, radiusY, direction);
+            MapCanvasPath.AddRoundRect(canvasRect, radiusX, radiusY, direction);
         }
 
         public void ArcTo(double gps1X, double gps1Y, double gps2X, double gps2Y, float radius)

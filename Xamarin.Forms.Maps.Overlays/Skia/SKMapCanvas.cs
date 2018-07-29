@@ -26,26 +26,31 @@ namespace Xamarin.Forms.Maps.Overlays.Skia
         public const int MaxZoomLevel = 17;
         public static double MaxZoomScale => Math.Pow(2, -MaxZoomLevel);
 
-        private SKCanvas _Canvas { get; }
+        private SKCanvas _Canvas { get; set; }
         private Rectangle _MercatorRenderArea { get; }
         private double _ScaleFactor { get; }
         private Matrix<double> _MercatorMatrix { get; set; }
         private Stack<Matrix<double>> _MatrixStack { get; } = new Stack<Matrix<double>>();
 
-        public SKMapCanvas(SKBitmap bitmap, Rectangle mercatorRenderArea, double scaleFactor)
+        internal SKMapCanvas(SKBitmap bitmap, Rectangle mercatorRenderArea, double scaleFactor, bool invertedYCoordinates = false)
         {
             _MercatorRenderArea = mercatorRenderArea;
             _ScaleFactor = scaleFactor;
             _MercatorMatrix = CreateTileBaseMatrix();
 
             _Canvas = new SKCanvas(bitmap);
-            _Canvas.Scale(1, -1);
-            _Canvas.Translate(0, -bitmap.Height);
+
+            if (invertedYCoordinates)
+            {
+                _Canvas.Scale(1, -1);
+                _Canvas.Translate(0, -bitmap.Height);
+            }
         }
 
         public void Dispose()
         {
             _Canvas?.Dispose();
+            _Canvas = null;
         }
 
         public SKMapPath CreateEmptyMapPath()
@@ -242,7 +247,11 @@ namespace Xamarin.Forms.Maps.Overlays.Skia
         {
             SKRect canvasDest = ConvertSpanToLocal(gpsSpan);
 
+            _Canvas.Save();
+            _Canvas.Scale(1, -1);
+            _Canvas.Translate(0, -_Canvas.LocalClipBounds.Height);
             _Canvas.DrawImage(image, source, canvasDest, paint);
+            _Canvas.Restore();
         }
 
         public void DrawBitmap(SKBitmap bitmap, MapSpan gpsSpan, SKPaint paint = null)
@@ -262,7 +271,11 @@ namespace Xamarin.Forms.Maps.Overlays.Skia
         {
             SKRect canvasDest = ConvertSpanToLocal(gpsSpan);
 
+            _Canvas.Save();
+            _Canvas.Scale(1, -1);
+            _Canvas.Translate(0, -_Canvas.LocalClipBounds.Height);
             _Canvas.DrawBitmap(bitmap, source, canvasDest, paint);
+            _Canvas.Restore();
         }
 
         public void DrawPicture(SKPicture picture, Position gpsPosition, Size destinationSize, SKPaint paint = null)

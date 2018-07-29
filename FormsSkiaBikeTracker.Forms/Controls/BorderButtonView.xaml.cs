@@ -101,10 +101,10 @@ namespace FormsSkiaBikeTracker.Forms.Controls
             SKPath clipPath = new SKPath();
             float cornerSize = buttonRect.Height * 0.5f;
 
-            clipPath.AddRoundedRect(buttonRect, cornerSize, cornerSize);
+            clipPath.AddRoundRect(buttonRect, cornerSize, cornerSize);
             buttonRect.Inflate(new SKSize(-BorderWidth, -BorderWidth));
             cornerSize = buttonRect.Height * 0.5f;
-            clipPath.AddRoundedRect(buttonRect, cornerSize, cornerSize, SKPathDirection.CounterClockwise);
+            clipPath.AddRoundRect(buttonRect, cornerSize, cornerSize, SKPathDirection.CounterClockwise);
 
             Background.ClippingPath = clipPath;
         }
