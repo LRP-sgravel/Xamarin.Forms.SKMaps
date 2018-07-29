@@ -46,9 +46,6 @@ namespace FormsSkiaBikeTracker.Forms.Pages
         {
             // Used to initally center the map on the user on first location acquisition
             CenterOnUser();
-
-            _locationChangedSubscription?.DisposeIfDisposable();
-            _locationChangedSubscription = null;
         }
 
         private void CenterOnUser(object sender, EventArgs e)
@@ -58,10 +55,13 @@ namespace FormsSkiaBikeTracker.Forms.Pages
 
         private void CenterOnUser()
         {
-            if (ViewModel.FirstLocationAcquired)
+            if (ViewModel.FirstLocationAcquired && MapControl?.VisibleRegion != null)
             {
                 MapControl.MoveToRegion(MapSpan.FromCenterAndRadius(ViewModel.LastUserLocation,
                                                                     MapControl.VisibleRegion.Radius));
+
+                _locationChangedSubscription?.DisposeIfDisposable();
+                _locationChangedSubscription = null;
             }
         }
     }

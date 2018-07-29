@@ -247,11 +247,7 @@ namespace Xamarin.Forms.Maps.Overlays.Skia
         {
             SKRect canvasDest = ConvertSpanToLocal(gpsSpan);
 
-            _Canvas.Save();
-            _Canvas.Scale(1, -1);
-            _Canvas.Translate(0, -_Canvas.LocalClipBounds.Height);
             _Canvas.DrawImage(image, source, canvasDest, paint);
-            _Canvas.Restore();
         }
 
         public void DrawBitmap(SKBitmap bitmap, MapSpan gpsSpan, SKPaint paint = null)
@@ -271,11 +267,7 @@ namespace Xamarin.Forms.Maps.Overlays.Skia
         {
             SKRect canvasDest = ConvertSpanToLocal(gpsSpan);
 
-            _Canvas.Save();
-            _Canvas.Scale(1, -1);
-            _Canvas.Translate(0, -_Canvas.LocalClipBounds.Height);
             _Canvas.DrawBitmap(bitmap, source, canvasDest, paint);
-            _Canvas.Restore();
         }
 
         public void DrawPicture(SKPicture picture, Position gpsPosition, Size destinationSize, SKPaint paint = null)
@@ -353,7 +345,7 @@ namespace Xamarin.Forms.Maps.Overlays.Skia
             canvasPoint = ApplyMatrix(mercatorPosition);
 
             matrix *= Matrix<double>.Build.Translation(canvasPoint.X, canvasPoint.Y);
-            matrix *= Matrix<double>.Build.Scale(xScale, -yScale);
+            matrix *= Matrix<double>.Build.Scale(xScale, yScale);
             matrix *= Matrix<double>.Build.Translation(sourceRect.Width * -0.5, sourceRect.Height * -0.5);
 
             return matrix;

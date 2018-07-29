@@ -103,7 +103,7 @@
     <PackageReference Include="MvvmCross.Plugin.JsonLocalization">
       <Version>6.0.1</Version>
     </PackageReference>
-    <PackageReference Include="MvvmCross.Plugin.Location">
+    <PackageReference Include="MvvmCross.Plugin.Location.Fused">
       <Version>6.0.1</Version>
     </PackageReference>
     <PackageReference Include="MvvmCross.Plugin.PictureChooser">
@@ -117,6 +117,9 @@
     </PackageReference>
     <PackageReference Include="Newtonsoft.Json">
       <Version>11.0.2</Version>
+    </PackageReference>
+    <PackageReference Include="Plugin.Permissions">
+      <Version>3.0.0.12</Version>
     </PackageReference>
     <PackageReference Include="Realm">
       <Version>3.0.0</Version>
@@ -153,6 +156,12 @@
     <PackageReference Include="Xamarin.Android.Support.v7.MediaRouter" Version="27.0.2" />
     <PackageReference Include="Xamarin.Forms.Maps">
       <Version>2.5.1.527436</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.GooglePlayServices.Location">
+      <Version>60.1142.1</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.GooglePlayServices.Maps">
+      <Version>60.1142.1</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>

@@ -10,10 +10,15 @@
 // ***********************************************************************
 
 using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using Acr.UserDialogs;
 using FormsSkiaBikeTracker.Services.Interface;
 using MvvmCross.IoC;
 using MvvmCross.Logging;
 using MvvmCross.Plugin.Location;
+using Plugin.Permissions;
+using Plugin.Permissions.Abstractions;
 
 namespace FormsSkiaBikeTracker.Services
 {
@@ -27,7 +32,7 @@ namespace FormsSkiaBikeTracker.Services
         public bool IsTracking => LocationService.Started;
         public MvxGeoLocation Location => LocationService.CurrentLocation;
 
-        public void Start(int refreshMovementMeters = 30, int refreshSeconds = 15, bool foreground = true)
+        public async Task Start(int refreshMovementMeters = 30, int refreshSeconds = 15, bool foreground = true)
         {
             // Stop if already started
             Pause();
@@ -49,8 +54,45 @@ namespace FormsSkiaBikeTracker.Services
                     options.TrackingMode = MvxLocationTrackingMode.Background;
                 }
 
-                LocationService.Start(options, OnLocationUpdated, OnWatcherError);
+                if (await GetLocationPermissions())
+                {
+                    LocationService.Start(options, OnLocationUpdated, OnWatcherError);
+                }
             }
+        }
+
+        private async Task<bool> GetLocationPermissions()
+        {
+            Permission permissionType = Permission.LocationAlways;
+            PermissionStatus currentStatus = await CrossPermissions.Current.CheckPermissionStatusAsync(permissionType)
+                                                                           .ConfigureAwait(false);
+
+            if (currentStatus != PermissionStatus.Granted)
+            {
+                if (await CrossPermissions.Current.ShouldShowRequestPermissionRationaleAsync(permissionType)
+                                                  .ConfigureAwait(false))
+                {
+                    await UserDialogs.Instance.AlertAsync(new AlertConfig
+                                                          {
+                                                              Message = "We need your permission to use your location"
+                                                          })
+                                              .ConfigureAwait(false);
+                }
+
+                Dictionary<Permission, PermissionStatus> result = await CrossPermissions.Current.RequestPermissionsAsync(permissionType)
+                                                                                                .ConfigureAwait(false);
+
+                if (result.ContainsKey(permissionType))
+                {
+                    currentStatus = result[permissionType];
+                }
+                else
+                {
+                    currentStatus = PermissionStatus.Unknown;
+                }
+            }
+
+            return currentStatus == PermissionStatus.Granted;
         }
 
         public void Pause()

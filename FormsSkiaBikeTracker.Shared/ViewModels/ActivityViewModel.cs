@@ -258,7 +258,7 @@ namespace FormsSkiaBikeTracker.ViewModels
                     }
                     catch (Exception e)
                     {
-                        MvxLog.Instance.Log(MvxLogLevel.Error, () => "Failed to save statistics to Mux");
+                        MvxLog.Instance.Log(MvxLogLevel.Error, () => "Failed to save statistics to Mux", e);
                     }
                 }
             }

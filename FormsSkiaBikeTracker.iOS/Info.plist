@@ -60,6 +60,8 @@
 	<string>Track your position on a map during an activity</string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>Track your position on a map during an activity</string>
+    <key>NSCalendarsUsageDescription</key>
+    <string>Needs Calendar Permission</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>location</string>

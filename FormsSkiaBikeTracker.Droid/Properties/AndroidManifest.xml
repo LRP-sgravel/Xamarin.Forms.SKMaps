@@ -1,6 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0" package="net.lerondpoint.biketracker" android:installLocation="auto">
 	<uses-sdk android:minSdkVersion="21" android:targetSdkVersion="27" />
+	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 	<application android:label="FormsSkiaBikeTracker.Android">
 		<meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyCM1UYAAH-Yk5JmlARad8GJWt47Z-C_BA4" />
 	</application>

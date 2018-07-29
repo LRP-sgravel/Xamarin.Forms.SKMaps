@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using MvvmCross.Plugin.Location;
 
 namespace FormsSkiaBikeTracker.Services.Interface
@@ -17,6 +18,6 @@ namespace FormsSkiaBikeTracker.Services.Interface
         event EventHandler<LocationMovedEventArgs> Moved;
 
         void Pause();
-        void Start(int refreshMovementMeters = 30, int refreshSeconds = 15, bool foreground = true);
+        Task Start(int refreshMovementMeters = 30, int refreshSeconds = 15, bool foreground = true);
     }
 }

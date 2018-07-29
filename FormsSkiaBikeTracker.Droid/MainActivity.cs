@@ -13,6 +13,9 @@ using Android.App;
 using Android.OS;
 using Android.Content.PM;
 using MvvmCross.Forms.Platforms.Android.Views;
+using Plugin.CurrentActivity;
+using Plugin.Permissions;
+using Android.Runtime;
 
 namespace FormsSkiaBikeTracker.Droid
 {
@@ -28,7 +31,16 @@ namespace FormsSkiaBikeTracker.Droid
             ToolbarResource = Resource.Layout.toolbar;
             TabLayoutResource = Resource.Layout.tabs;
 
+            CrossCurrentActivity.Current.Init(this, bundle);
+
             base.OnCreate(bundle);
+        }
+
+        public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Permission[] grantResults)
+        {
+            PermissionsImplementation.Current.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+
+            base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
     }
 }

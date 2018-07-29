@@ -57,6 +57,7 @@
     <PackageReference Include="MvvmCross.Plugin.Location" Version="6.0.1" />
     <PackageReference Include="MvvmCross.Plugin.PictureChooser" Version="6.0.1" />
     <PackageReference Include="MvvmCross.Plugin.ResourceLoader" Version="6.0.1" />
+    <PackageReference Include="Plugin.Permissions" Version="3.0.0.12" />
     <PackageReference Include="Realm" Version="3.0.0" />
     <PackageReference Include="Realm.Database" Version="3.0.0" />
     <PackageReference Include="Realm.DataBinding" Version="1.2.0" />
