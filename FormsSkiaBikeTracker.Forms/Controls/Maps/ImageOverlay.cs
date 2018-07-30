@@ -91,33 +91,31 @@ namespace FormsSkiaBikeTracker.Forms.Controls.Maps
 
         public override void DrawOnMap(SKMapCanvas canvas, SKMapSpan canvasMapRect, double zoomScale)
         {
-            SKMapSpan zoomSpan = SKMapCanvas.PixelsToMaximumMapSpanAtZoom(IconSizePixels, zoomScale);
-            SKMapSpan centeredSpan = new SKMapSpan(Position, zoomSpan.LatitudeDegrees, zoomSpan.LongitudeDegrees);
+            SKMapSpan iconArea = SKMapCanvas.PixelsToMaximumMapSpanAtScale(IconSizePixels, zoomScale);
+            MapSpan centeredSpan = new SKMapSpan(Position, iconArea.LatitudeDegrees, iconArea.LongitudeDegrees).ToMapSpan();
 
             // More precise/zoom based culling to reduce drawing calls
             if (Icon != null && canvasMapRect.FastIntersects(centeredSpan))
             {
                 if (_svgIcon != null)
                 {
-                    canvas.DrawPicture(_svgIcon.Picture, Position, IconSizePixels);
+                    canvas.DrawPicture(_svgIcon.Picture, centeredSpan.Center, IconSizePixels);
                 }
                 else if (_bitmapIcon != null)
                 {
-                    SKMapSpan iconArea = SKMapCanvas.PixelsToMaximumMapSpanAtZoom(IconSizePixels, zoomScale);
-
-                    canvas.DrawBitmap(_bitmapIcon, new MapSpan(Position, iconArea.LatitudeDegrees, iconArea.LongitudeDegrees));
+                    canvas.DrawBitmap(_bitmapIcon, centeredSpan);
                 }
             }
         }
 
         private void UpdateBounds()
         {
-            GpsBounds = new MapSpan(Position, _iconMaxArea.LatitudeDegrees, _iconMaxArea.LongitudeDegrees);
+            GpsBounds = new MapSpan(Position, _iconMaxArea.LatitudeDegrees * 20, _iconMaxArea.LongitudeDegrees * 20);
         }
 
         private void UpdateIconArea()
         {
-            _iconMaxArea = SKMapCanvas.PixelsToMaximumMapSpanAtZoom(IconSizePixels, SKMapCanvas.MaxZoomScale);
+            _iconMaxArea = SKMapCanvas.PixelsToMaximumMapSpanAtScale(IconSizePixels, SKMapCanvas.MaxZoomScale);
             UpdateBounds();
         }
 

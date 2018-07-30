@@ -55,11 +55,13 @@
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Choose your picture</string>
 	<key>NSLocationUsageDescription</key>
-	<string>Track your position on a map during an activity</string>
+	<string>Track your position during an activity</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Track your position on a map during an activity</string>
+	<string>Track your position during an activity</string>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>Track your position on a map during an activity</string>
+	<string>Track your position during an activity</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Track your position during an activity</string>
     <key>NSCalendarsUsageDescription</key>
     <string>Needs Calendar Permission</string>
 	<key>UIBackgroundModes</key>

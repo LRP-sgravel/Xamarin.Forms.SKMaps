@@ -56,6 +56,7 @@ namespace Xamarin.Forms.Maps.Overlays.Platforms.Droid.UI.Renderers
             }
 
             private int _LastZoomLevel { get; set; } = -1;
+            private Context _Context { get; }
             private DrawableMapOverlay _SharedOverlay { get; }
             private GoogleMap _NativeMap { get; }
             private List<GroundOverlay> _GroundOverlays { get; } = new List<GroundOverlay>();
@@ -64,8 +65,9 @@ namespace Xamarin.Forms.Maps.Overlays.Platforms.Droid.UI.Renderers
             private Queue<SKBitmap> _overlayBitmapPool = new Queue<SKBitmap>();
             private object _cleanupLock = new object();
 
-            public OverlayTrackerTileProvider(GoogleMap nativeMap, DrawableMapOverlay sharedOverlay)
+            public OverlayTrackerTileProvider(Context context, GoogleMap nativeMap, DrawableMapOverlay sharedOverlay)
             {
+                _Context = context;
                 _NativeMap = nativeMap;
                 _SharedOverlay = sharedOverlay;
             }
@@ -112,7 +114,7 @@ namespace Xamarin.Forms.Maps.Overlays.Platforms.Droid.UI.Renderers
                                     double zoomScale = SKMapCanvas.MapTileSize / (double)virtualTileSize;
                                     SKMapCanvas mapCanvas = new SKMapCanvas(bitmap, mercatorSpan, zoomScale);
 
-                                    _SharedOverlay.DrawOnMap(mapCanvas, tileSpan, zoom);
+                                    _SharedOverlay.DrawOnMap(mapCanvas, tileSpan, zoomScale);
 
                                     overlayOptions = new GroundOverlayOptions().PositionFromBounds(tileSpan.ToLatLng())
                                                                                 .InvokeImage(BitmapDescriptorFactory.FromBitmap(bitmap.ToBitmap()));
@@ -124,7 +126,7 @@ namespace Xamarin.Forms.Maps.Overlays.Platforms.Droid.UI.Renderers
                                     newOverlay.Tag = tileInfo;
                                     _GroundOverlays.Add(newOverlay);
 
-                                    // Let's exit this method so MapKit renders to screen while we free our resources in the background.
+                                    // Let's exit this method so the main thread can render to screen while we free our resources in the background.
                                     Task.Run(() => ReleaseOverlayBitmap(bitmap));
                                 }
                             }
@@ -146,7 +148,9 @@ namespace Xamarin.Forms.Maps.Overlays.Platforms.Droid.UI.Renderers
                 {
                     if (_overlayBitmapPool.Count == 0)
                     {
-                        overlayBitmap = new SKBitmap(SKMapCanvas.MapTileSize, SKMapCanvas.MapTileSize, SKColorType.Rgba8888, SKAlphaType.Premul);
+                        int bitmapSize = (int)(SKMapCanvas.MapTileSize * _Context.Resources.DisplayMetrics.Density);
+
+                        overlayBitmap = new SKBitmap(bitmapSize, bitmapSize, SKColorType.Rgba8888, SKAlphaType.Premul);
                         overlayBitmap.Erase(SKColor.Empty);
                     }
                     else
@@ -240,7 +244,7 @@ namespace Xamarin.Forms.Maps.Overlays.Platforms.Droid.UI.Renderers
 
                         foreach (DrawableMapOverlay sharedOverlay in _SharedControl.MapOverlays)
                         {
-                            OverlayTrackerTileProvider tracker = new OverlayTrackerTileProvider(NativeMap, sharedOverlay);
+                            OverlayTrackerTileProvider tracker = new OverlayTrackerTileProvider(Context, NativeMap, sharedOverlay);
                             TileOverlayOptions overlayOptions = new TileOverlayOptions().InvokeTileProvider(tracker);
                             TileOverlay overlay = NativeMap.AddTileOverlay(overlayOptions);
 

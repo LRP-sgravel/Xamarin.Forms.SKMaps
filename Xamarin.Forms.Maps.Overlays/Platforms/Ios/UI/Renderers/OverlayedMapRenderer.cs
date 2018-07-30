@@ -134,7 +134,9 @@ namespace Xamarin.Forms.Maps.Overlays.Platforms.Ios.UI.Renderers
                 {
                     if (_overlayBitmapPool.Count == 0)
                     {
-                        overlayBitmap = new SKBitmap(SKMapCanvas.MapTileSize, SKMapCanvas.MapTileSize, SKColorType.Rgba8888, SKAlphaType.Premul);
+                        int bitmapSize = SKMapCanvas.MapTileSize;
+
+                        overlayBitmap = new SKBitmap(bitmapSize, bitmapSize, SKColorType.Rgba8888, SKAlphaType.Premul);
                         overlayBitmap.Erase(SKColor.Empty);
                     }
                     else

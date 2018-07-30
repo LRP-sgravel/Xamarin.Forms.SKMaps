@@ -25,26 +25,34 @@ namespace Xamarin.Forms.Maps.Overlays.Skia
         public const int HalfMapTileSize = 256 >> 1;
         public const int MaxZoomLevel = 17;
         public static double MaxZoomScale => Math.Pow(2, -MaxZoomLevel);
+        private static double PlatformPixelScale => Device.RuntimePlatform == Device.iOS ? 2 : 1;
 
         private SKCanvas _Canvas { get; set; }
+
+        private float _BitmapDensity { get; }
         private Rectangle _MercatorRenderArea { get; }
         private double _ScaleFactor { get; }
         private Matrix<double> _MercatorMatrix { get; set; }
+        private bool _InvertedYCoordinates { get; set; }
+
         private Stack<Matrix<double>> _MatrixStack { get; } = new Stack<Matrix<double>>();
 
         internal SKMapCanvas(SKBitmap bitmap, Rectangle mercatorRenderArea, double scaleFactor, bool invertedYCoordinates = false)
         {
+            _BitmapDensity = bitmap.Height / (float)MapTileSize;
             _MercatorRenderArea = mercatorRenderArea;
             _ScaleFactor = scaleFactor;
-            _MercatorMatrix = CreateTileBaseMatrix();
+            _MercatorMatrix = CreateDefaultTileBaseMatrix();
+            _InvertedYCoordinates = invertedYCoordinates;
 
             _Canvas = new SKCanvas(bitmap);
 
-            if (invertedYCoordinates)
+            if (_InvertedYCoordinates)
             {
                 _Canvas.Scale(1, -1);
                 _Canvas.Translate(0, -bitmap.Height);
             }
+            _Canvas.Scale(_BitmapDensity);
         }
 
         public void Dispose()
@@ -72,7 +80,7 @@ namespace Xamarin.Forms.Maps.Overlays.Skia
             }
             else
             {
-                _MercatorMatrix = CreateTileBaseMatrix();
+                _MercatorMatrix = CreateDefaultTileBaseMatrix();
             }
         }
 
@@ -88,7 +96,7 @@ namespace Xamarin.Forms.Maps.Overlays.Skia
             else
             {
                 _MatrixStack.Clear();
-                _MercatorMatrix = CreateTileBaseMatrix();
+                _MercatorMatrix = CreateDefaultTileBaseMatrix();
             }
         }
 
@@ -237,7 +245,7 @@ namespace Xamarin.Forms.Maps.Overlays.Skia
 
         public void DrawImage(SKImage image, Position gpsPosition, SKPaint paint = null)
         {
-            Size imageMapSize = PixelsToMapSize(new Size(image.Width, image.Height), gpsPosition, _ScaleFactor);
+            Size imageMapSize = PixelsToMapSizeAtScale(new Size(image.Width, image.Height), gpsPosition, _ScaleFactor);
             MapSpan imageMapSpan = new MapSpan(gpsPosition, imageMapSize.Height * 0.5, imageMapSize.Width * 0.5);
 
             DrawImage(image, imageMapSpan, paint);
@@ -257,7 +265,7 @@ namespace Xamarin.Forms.Maps.Overlays.Skia
 
         public void DrawBitmap(SKBitmap bitmap, Position gpsPosition, SKPaint paint = null)
         {
-            Size imageMapSize = PixelsToMapSize(new Size(bitmap.Width, bitmap.Height), gpsPosition, _ScaleFactor);
+            Size imageMapSize = PixelsToMapSizeAtScale(new Size(bitmap.Width, bitmap.Height), gpsPosition, _ScaleFactor);
             MapSpan imageMapSpan = new MapSpan(gpsPosition, imageMapSize.Height * 0.5, imageMapSize.Width * 0.5);
 
             DrawBitmap(bitmap, imageMapSpan, paint);
@@ -278,41 +286,42 @@ namespace Xamarin.Forms.Maps.Overlays.Skia
             _Canvas.DrawPicture(picture, ref canvasMatrix, paint);
         }
         
-        public static Size PixelsToMaximumMapSizeAtZoom(Size pixelsSize, double zoomScale)
+        public static Size PixelsToMaximumMapSizeAtScale(Size pixelsSize, double zoomScale)
         {
-            SKMapSpan gpsArea = PixelsToMaximumMapSpanAtZoom(pixelsSize, zoomScale);
+            SKMapSpan gpsArea = PixelsToMaximumMapSpanAtScale(pixelsSize, zoomScale);
 
             return new Size(gpsArea.LongitudeDegrees * 2, gpsArea.LatitudeDegrees * 2);
         }
 
-        public static SKMapSpan PixelsToMaximumMapSpanAtZoom(Size pixelsSize, double zoomScale)
+        public static SKMapSpan PixelsToMaximumMapSpanAtScale(Size pixelsSize, double zoomScale)
         {
-            return PixelsToMapSpan(pixelsSize,
-                                           new Point(SKMapExtensions.MercatorCenterOffset, SKMapExtensions.MercatorCenterOffset),
-                                           zoomScale);
+            return PixelsToMapSpanAtScale(pixelsSize,
+                                          new Point(SKMapExtensions.MercatorCenterOffset, SKMapExtensions.MercatorCenterOffset),
+                                          zoomScale);
         }
 
-        public static Size PixelsToMapSize(Size pixelsSize, Position mapPosition, double zoomScale)
+        public static Size PixelsToMapSizeAtScale(Size pixelsSize, Position mapPosition, double zoomScale)
         {
-            SKMapSpan gpsArea = PixelsToMapSpan(pixelsSize, mapPosition, zoomScale);
+            SKMapSpan gpsArea = PixelsToMapSpanAtScale(pixelsSize, mapPosition, zoomScale);
 
             return new Size(gpsArea.LongitudeDegrees * 2, gpsArea.LatitudeDegrees * 2);
         }
 
-        public static SKMapSpan PixelsToMapSpan(Size pixelsSize, Position mapPosition, double zoomScale)
+        public static SKMapSpan PixelsToMapSpanAtScale(Size pixelsSize, Position mapPosition, double zoomScale)
         {
             Point mercatorPosition = mapPosition.ToMercator();
 
-            return PixelsToMapSpan(pixelsSize, mercatorPosition, zoomScale);
+            return PixelsToMapSpanAtScale(pixelsSize, mercatorPosition, zoomScale);
         }
 
-        internal static SKMapSpan PixelsToMapSpan(Size pixelsSize, Point mercatorPosition, double zoomScale)
+        internal static SKMapSpan PixelsToMapSpanAtScale(Size pixelSize, Point mercatorPosition, double zoomScale)
         {
-            Rectangle sizeRect = new Rectangle(0, 0, pixelsSize.Width, pixelsSize.Height);
-            Rectangle mercatorRectAtPosition = new Rectangle(mercatorPosition.X - pixelsSize.Width / zoomScale * 0.5,
-                                                             mercatorPosition.Y - pixelsSize.Height / zoomScale * 0.5,
-                                                             pixelsSize.Width / zoomScale,
-                                                             pixelsSize.Height / zoomScale);
+            Size platformPixelsSize = pixelSize * PlatformPixelScale;
+            Rectangle sizeRect = new Rectangle(Point.Zero, platformPixelsSize);
+            Rectangle mercatorRectAtPosition = new Rectangle(mercatorPosition.X - (platformPixelsSize.Width / zoomScale) * 0.5,
+                                                             mercatorPosition.Y - (platformPixelsSize.Height / zoomScale) * 0.5,
+                                                             platformPixelsSize.Width / zoomScale,
+                                                             platformPixelsSize.Height / zoomScale);
             Matrix<double> mercatorAtZoom = CreateTileBaseMatrix(mercatorRectAtPosition, zoomScale);
             Matrix<double> originSize = mercatorAtZoom.Inverse() * sizeRect.ToMatrix();
 
@@ -322,12 +331,13 @@ namespace Xamarin.Forms.Maps.Overlays.Skia
         
         private Matrix<double> GetPictureDrawMatrix(SKPicture picture, Position gpsPosition, Size pixelSize)
         {
+            Size platformPixelsSize = pixelSize * PlatformPixelScale;
             Matrix<double> matrix = Matrix<double>.Build.DenseIdentity(3, 3);
             Point mercatorPosition = gpsPosition.ToMercator();
             SKRect sourceRect = picture.CullRect;
-            SKMapSpan drawSpan = PixelsToMapSpan(pixelSize, gpsPosition, _ScaleFactor);
-            double xScale = pixelSize.Width / sourceRect.Width;
-            double yScale = pixelSize.Height / sourceRect.Height;
+            SKMapSpan drawSpan = PixelsToMapSpanAtScale(platformPixelsSize, gpsPosition, _ScaleFactor);
+            double xScale = platformPixelsSize.Width / sourceRect.Width;
+            double yScale = platformPixelsSize.Height / sourceRect.Height;
             SKPoint canvasPoint;
 
             if (drawSpan.Crosses180thMeridianRight() && _MercatorRenderArea.Left < SKMapExtensions.MercatorCenterOffset)
@@ -424,12 +434,12 @@ namespace Xamarin.Forms.Maps.Overlays.Skia
             return mercatorRect.ToGps();
         }
 
-        private Matrix<double> CreateTileBaseMatrix()
+        private Matrix<double> CreateDefaultTileBaseMatrix()
         {
             return CreateTileBaseMatrix(_MercatorRenderArea, _ScaleFactor);
         }
 
-        private static Matrix<double> CreateTileBaseMatrix(Rectangle mercatorArea , double scale)
+        private static Matrix<double> CreateTileBaseMatrix(Rectangle mercatorArea, double scale)
         {
             Matrix<double> result = Matrix<double>.Build.DenseIdentity(3, 3);
 

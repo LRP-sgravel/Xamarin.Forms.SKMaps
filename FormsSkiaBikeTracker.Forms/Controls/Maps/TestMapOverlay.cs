@@ -29,7 +29,7 @@ namespace FormsSkiaBikeTracker.Forms.Controls.Maps
 
         public TestMapOverlay()
         {
-            this.strokeWidthArea = SKMapCanvas.PixelsToMaximumMapSizeAtZoom(new Size(50, 50), SKMapCanvas.MaxZoomScale);
+            this.strokeWidthArea = SKMapCanvas.PixelsToMaximumMapSizeAtScale(new Size(50, 50), SKMapCanvas.MaxZoomScale);
 
             baseBounds = new MapSpan(new Position(37, -122), 1, 1);
             GpsBounds = new MapSpan(baseBounds.Center,
@@ -93,7 +93,7 @@ namespace FormsSkiaBikeTracker.Forms.Controls.Maps
             canvas.DrawPath(zonePath, paint);
 
             paint.Color = Color.Green.MultiplyAlpha(0.5).ToSKColor();
-            Size currentScaleStrokeArea = SKMapCanvas.PixelsToMapSize(new Size(5, 5), baseBounds.Center, zoomScale);
+            Size currentScaleStrokeArea = SKMapCanvas.PixelsToMapSizeAtScale(new Size(5, 5), baseBounds.Center, zoomScale);
             MapSpan insetBounds = new MapSpan(baseBounds.Center,
                                               baseBounds.LatitudeDegrees - currentScaleStrokeArea.Height,
                                               baseBounds.LongitudeDegrees - currentScaleStrokeArea.Width);
