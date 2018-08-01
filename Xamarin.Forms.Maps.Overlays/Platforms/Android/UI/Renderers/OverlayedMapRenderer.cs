@@ -43,6 +43,7 @@ namespace Xamarin.Forms.Maps.Overlays.Platforms.Droid.UI.Renderers
                 public int X { get; set; }
                 public int Y { get; set; }
                 public int Zoom { get; set; }
+                public bool NeedsRedraw { get; set; } = true;
 
                 public override bool Equals(Java.Lang.Object obj)
                 {
@@ -97,7 +98,7 @@ namespace Xamarin.Forms.Maps.Overlays.Platforms.Droid.UI.Renderers
                                 Console.WriteLine($"Clearing tiles for zoom level {_LastZoomLevel}");
 
                                 _LastZoomLevel = zoom;
-                                RefreshAllGroundOverlays();
+                                ResetAllTiles();
                             }
                             else
                             {
@@ -109,16 +110,16 @@ namespace Xamarin.Forms.Maps.Overlays.Platforms.Droid.UI.Renderers
 
                                 if (tileSpan.FastIntersects(SharedOverlay.GpsBounds))
                                 {
-                                    bool overlayExists;
+                                    GroundOverlay overlay;
 
                                     lock (_GroundOverlays)
                                     {
-                                        overlayExists = _GroundOverlays.FirstOrDefault(o => (o.Tag as TileInfo)?.Equals(tileInfo) ?? false) != null;
+                                        overlay = _GroundOverlays.FirstOrDefault(o => (o.Tag as TileInfo)?.Equals(tileInfo) ?? false);
                                     }
 
                                     Console.WriteLine($"Requesting tile at ({x}, {y}) for zoom level {zoom}");
 
-                                    if (!overlayExists)
+                                    if (overlay == null)
                                     {
                                         GroundOverlayOptions overlayOptions;
                                         SKBitmap bitmap = GetOverlayBitmap();
@@ -130,19 +131,29 @@ namespace Xamarin.Forms.Maps.Overlays.Platforms.Droid.UI.Renderers
                                         overlayOptions = new GroundOverlayOptions().PositionFromBounds(tileSpan.ToLatLng())
                                                                                     .InvokeImage(BitmapDescriptorFactory.FromBitmap(bitmap.ToBitmap()));
 
-                                        GroundOverlay newOverlay = _NativeMap.AddGroundOverlay(overlayOptions);
+                                        overlay = _NativeMap.AddGroundOverlay(overlayOptions);
 
                                         Console.WriteLine($"Adding ground tile at ({x}, {y}) for zoom level {zoom} ({zoomScale}) with GPS bounds {tileSpan} and Mercator {mercatorSpan}");
 
-                                        newOverlay.Tag = tileInfo;
+                                        overlay.Tag = tileInfo;
 
                                         lock (_GroundOverlays)
                                         {
-                                            _GroundOverlays.Add(newOverlay);
+                                            _GroundOverlays.Add(overlay);
                                         }
 
                                         // Let's exit this method so the main thread can render to screen while we free our resources in the background.
                                         Task.Run(() => ReleaseOverlayBitmap(bitmap));
+                                    }
+                                    else if ((overlay.Tag as TileInfo)?.NeedsRedraw ?? false)
+                                    {
+                                        SKBitmap bitmap = GetOverlayBitmap();
+                                        double zoomScale = SKMapCanvas.MapTileSize / (double)virtualTileSize;
+                                        SKMapCanvas mapCanvas = new SKMapCanvas(bitmap, mercatorSpan, zoomScale);
+
+                                        SharedOverlay.DrawOnMap(mapCanvas, tileSpan, zoomScale);
+
+                                        overlay.SetImage(BitmapDescriptorFactory.FromBitmap(bitmap.ToBitmap()));
                                     }
                                 }
                                 else
@@ -172,10 +183,31 @@ namespace Xamarin.Forms.Maps.Overlays.Platforms.Droid.UI.Renderers
                 }
             }
 
-            private void RefreshAllGroundOverlays()
+            private void ResetAllTiles()
             {
                 RemoveAllTiles();
                 TileOverlay.ClearTileCache();
+            }
+
+            private void RefreshAllTiles()
+            {
+                MarkAllTilesDirty();
+                TileOverlay.ClearTileCache();
+            }
+
+            private void MarkAllTilesDirty()
+            {
+                List<GroundOverlay> overlays;
+
+                lock (_GroundOverlays)
+                {
+                    overlays = new List<GroundOverlay>(_GroundOverlays);
+                }
+
+                foreach (GroundOverlay overlay in overlays)
+                {
+                    (overlay.Tag as TileInfo).NeedsRedraw = true;
+                }
             }
 
             private void OverlayGpsBoundsChanged(object sender, PropertyChangedEventArgs args)
@@ -196,7 +228,7 @@ namespace Xamarin.Forms.Maps.Overlays.Platforms.Droid.UI.Renderers
             private void InvalidateSpan(MapSpan area)
             {
                 // TODO: Check if we need to do a full or partial refresh...
-                RefreshAllGroundOverlays();
+                RefreshAllTiles();
             }
 
             private SKBitmap GetOverlayBitmap()
