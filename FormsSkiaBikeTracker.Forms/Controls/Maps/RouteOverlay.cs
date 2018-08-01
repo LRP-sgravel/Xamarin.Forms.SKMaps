@@ -58,6 +58,7 @@ namespace FormsSkiaBikeTracker.Forms.Controls.Maps
             overlay.TrySubscribeToMutableRoute();
             overlay.UpdateLOD();
             overlay.UpdateBounds();
+            overlay.Invalidate();
         }
 
         public override void DrawOnMap(SKMapCanvas canvas, SKMapSpan canvasMapRect, double zoomScale)
@@ -115,6 +116,7 @@ namespace FormsSkiaBikeTracker.Forms.Controls.Maps
 
         private void OnRoutePointsAdded(object sender, PointsAddedEventArgs e)
         {
+            Invalidate();
         }
     }
 }

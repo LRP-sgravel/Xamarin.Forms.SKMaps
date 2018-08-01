@@ -110,7 +110,7 @@ namespace FormsSkiaBikeTracker.Forms.Controls.Maps
 
         private void UpdateBounds()
         {
-            GpsBounds = new MapSpan(Position, _iconMaxArea.LatitudeDegrees * 20, _iconMaxArea.LongitudeDegrees * 20);
+            GpsBounds = new MapSpan(Position, _iconMaxArea.LatitudeDegrees, _iconMaxArea.LongitudeDegrees);
         }
 
         private void UpdateIconArea()

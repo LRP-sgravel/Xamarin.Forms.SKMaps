@@ -26,6 +26,7 @@ using MvvmCross.IoC;
 using MvvmCross.Plugin.JsonLocalization;
 using MvvmCross.ViewModels;
 using SimpleCrypto;
+using System.Globalization;
 
 namespace FormsSkiaBikeTracker
 {
@@ -89,11 +90,7 @@ namespace FormsSkiaBikeTracker
             Mvx.RegisterSingleton<IMvxTextProvider>(builder.TextProvider);
 
             // Set language
-#if DEBUG
-            builder.LoadResources("fr");
-#else
             builder.LoadResources(CultureInfo.CurrentUICulture.TwoLetterISOLanguageName);
-#endif
         }
 
         private void InitializeBootstrap()

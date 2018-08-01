@@ -11,8 +11,10 @@
     "Password": "Password",
 
     // Distance units
-    "KilometerShortDistance" : "km",
+    "KilometersShortDistance" : "km",
+    "MetersShortDistance" : "m",
     "MilesShortDistance" : "mi",
-    "KilometerShortSpeed" : "km/h",
+    "KilometersShortSpeed" : "km/h",
+    "MetersShortSpeed" : "m/h",
     "MilesShortSpeed" : "mi/h"
 }

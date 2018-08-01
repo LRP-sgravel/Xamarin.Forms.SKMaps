@@ -97,7 +97,6 @@ namespace Xamarin.Forms.Maps.Overlays.Platforms.Ios.UI.Renderers
             private void InvalidateSpan(MapSpan area)
             {
                 // TODO: Check if we need to do a full or partial refresh...
-
                 if (_SharedOverlay.IsVisible)
                 {
                     _NativeMap.RemoveOverlay(_NativeOverlay);
