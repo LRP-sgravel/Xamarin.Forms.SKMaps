@@ -25,7 +25,7 @@ namespace Xamarin.Forms.Maps.Overlays.Skia
         public const int HalfMapTileSize = 256 >> 1;
         public const int MaxZoomLevel = 17;
         public static double MaxZoomScale => Math.Pow(2, -MaxZoomLevel);
-        private static double PlatformPixelScale => Device.RuntimePlatform == Device.iOS ? 2 : 1;
+        private static float PlatformPixelScale => Device.RuntimePlatform == Device.iOS ? 2 : 1;
 
         private SKCanvas _Canvas { get; set; }
 
@@ -205,7 +205,7 @@ namespace Xamarin.Forms.Maps.Overlays.Skia
         {
             SKRect canvasRect = ConvertSpanToLocal(gpsSpan);
 
-            _Canvas.DrawOval(canvasRect, paint);
+            _Canvas.DrawOval(canvasRect, ScaleStrokeForPlatform(paint));
         }
 
         public void DrawLine(double startLatitude, double startLongitude, double endLatitude, double endLongitude, SKPaint paint, bool shortLine = true)
@@ -223,19 +223,19 @@ namespace Xamarin.Forms.Maps.Overlays.Skia
             Tuple<SKMapPosition, SKMapPosition> line = new Tuple<SKMapPosition, SKMapPosition>(start, end);
             Tuple<SKPoint, SKPoint> canvasLine = ConvertLineToLocal(line, shortLine);
 
-            _Canvas.DrawLine(canvasLine.Item1.X, canvasLine.Item1.Y, canvasLine.Item2.X, canvasLine.Item2.Y, paint);
+            _Canvas.DrawLine(canvasLine.Item1.X, canvasLine.Item1.Y, canvasLine.Item2.X, canvasLine.Item2.Y, ScaleStrokeForPlatform(paint));
         }
 
         public void DrawPath(SKMapPath path, SKPaint paint)
         {
-            _Canvas.DrawPath(path.MapCanvasPath, paint);
+            _Canvas.DrawPath(path.MapCanvasPath, ScaleStrokeForPlatform(paint));
         }
 
         public void DrawRect(MapSpan gpsSpan, SKPaint paint)
         {
             SKRect canvasDest = ConvertSpanToLocal(gpsSpan);
 
-            _Canvas.DrawRect(canvasDest, paint);
+            _Canvas.DrawRect(canvasDest, ScaleStrokeForPlatform(paint));
         }
 
         public void DrawImage(SKImage image, MapSpan gpsSpan, SKPaint paint = null)
@@ -312,6 +312,13 @@ namespace Xamarin.Forms.Maps.Overlays.Skia
             Point mercatorPosition = mapPosition.ToMercator();
 
             return PixelsToMapSpanAtScale(pixelsSize, mercatorPosition, zoomScale);
+        }
+
+        private static SKPaint ScaleStrokeForPlatform(SKPaint source)
+        {
+            source.StrokeWidth *= PlatformPixelScale;
+
+            return source;
         }
 
         internal static SKMapSpan PixelsToMapSpanAtScale(Size pixelSize, Point mercatorPosition, double zoomScale)
