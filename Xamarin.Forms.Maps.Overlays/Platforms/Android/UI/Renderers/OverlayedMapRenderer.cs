@@ -87,84 +87,90 @@ namespace Xamarin.Forms.Maps.Overlays.Platforms.Droid.UI.Renderers
 
             public Tile GetTile(int x, int y, int zoom)
             {
-                Device.BeginInvokeOnMainThread(() =>
-                    {
-                        if (SharedOverlay.IsVisible)
-                        {
-                            TileInfo tileInfo = new TileInfo { X = x, Y = y, Zoom = zoom };
+                TileInfo tileInfo = new TileInfo { X = x, Y = y, Zoom = zoom };
 
-                            if (_LastZoomLevel != zoom)
-                            {
-                                Console.WriteLine($"Clearing tiles for zoom level {_LastZoomLevel}");
+                if (_LastZoomLevel != zoom)
+                {
+                    Console.WriteLine($"Clearing tiles for zoom level {_LastZoomLevel}");
 
-                                _LastZoomLevel = zoom;
-                                ResetAllTiles();
-                            }
-                            else
-                            {
-                                int virtualTileSize = SKMapExtensions.MercatorMapSize >> zoom;
-                                int xPixelsStart = x * virtualTileSize;
-                                int yPixelsStart = y * virtualTileSize;
-                                Rectangle mercatorSpan = new Rectangle(xPixelsStart, yPixelsStart, virtualTileSize, virtualTileSize);
-                                SKMapSpan tileSpan = mercatorSpan.ToGps();
-
-                                if (tileSpan.FastIntersects(SharedOverlay.GpsBounds))
-                                {
-                                    GroundOverlay overlay;
-
-                                    lock (_GroundOverlays)
-                                    {
-                                        overlay = _GroundOverlays.FirstOrDefault(o => (o.Tag as TileInfo)?.Equals(tileInfo) ?? false);
-                                    }
-
-                                    Console.WriteLine($"Requesting tile at ({x}, {y}) for zoom level {zoom}");
-
-                                    if (overlay == null)
-                                    {
-                                        GroundOverlayOptions overlayOptions;
-                                        SKBitmap bitmap = GetOverlayBitmap();
-                                        double zoomScale = SKMapCanvas.MapTileSize / (double)virtualTileSize;
-                                        SKMapCanvas mapCanvas = new SKMapCanvas(bitmap, mercatorSpan, zoomScale);
-
-                                        SharedOverlay.DrawOnMap(mapCanvas, tileSpan, zoomScale);
-
-                                        overlayOptions = new GroundOverlayOptions().PositionFromBounds(tileSpan.ToLatLng())
-                                                                                    .InvokeImage(BitmapDescriptorFactory.FromBitmap(bitmap.ToBitmap()));
-
-                                        overlay = _NativeMap.AddGroundOverlay(overlayOptions);
-
-                                        Console.WriteLine($"Adding ground tile at ({x}, {y}) for zoom level {zoom} ({zoomScale}) with GPS bounds {tileSpan} and Mercator {mercatorSpan}");
-
-                                        overlay.Tag = tileInfo;
-
-                                        lock (_GroundOverlays)
-                                        {
-                                            _GroundOverlays.Add(overlay);
-                                        }
-
-                                        // Let's exit this method so the main thread can render to screen while we free our resources in the background.
-                                        Task.Run(() => ReleaseOverlayBitmap(bitmap));
-                                    }
-                                    else if ((overlay.Tag as TileInfo)?.NeedsRedraw ?? false)
-                                    {
-                                        SKBitmap bitmap = GetOverlayBitmap();
-                                        double zoomScale = SKMapCanvas.MapTileSize / (double)virtualTileSize;
-                                        SKMapCanvas mapCanvas = new SKMapCanvas(bitmap, mercatorSpan, zoomScale);
-
-                                        SharedOverlay.DrawOnMap(mapCanvas, tileSpan, zoomScale);
-
-                                        overlay.SetImage(BitmapDescriptorFactory.FromBitmap(bitmap.ToBitmap()));
-                                    }
-                                }
-                                else
-                                {
-                                    Console.WriteLine($"Ground tile at ({x}, {y}) for zoom level {zoom} already exists");
-                                }
-                            }
-                        }
-                    });
+                    _LastZoomLevel = zoom;
+                    ResetAllTiles();
+                }
+                else
+                {
+                    Task.Run(() => HandleGroundOverlayForTile(tileInfo));
+                }
 
                 return TileProvider.NoTile;
+            }
+
+            private async Task HandleGroundOverlayForTile(TileInfo tileInfo)
+            {
+                if (SharedOverlay.IsVisible)
+                {
+                    int virtualTileSize = SKMapExtensions.MercatorMapSize >> tileInfo.Zoom;
+                    int xPixelsStart = tileInfo.X * virtualTileSize;
+                    int yPixelsStart = tileInfo.Y * virtualTileSize;
+                    double zoomScale = SKMapCanvas.MapTileSize / (double)virtualTileSize;
+                    Rectangle mercatorSpan = new Rectangle(xPixelsStart, yPixelsStart, virtualTileSize, virtualTileSize);
+                    SKMapSpan tileSpan = mercatorSpan.ToGps();
+
+                    if (tileSpan.FastIntersects(SharedOverlay.GpsBounds))
+                    {
+                        SKBitmap bitmap = DrawTileToBitmap(tileSpan, zoomScale);
+                        BitmapDescriptor bitmapDescriptor = BitmapDescriptorFactory.FromBitmap(bitmap.ToBitmap());
+                        TaskCompletionSource<object> drawingTcs = new TaskCompletionSource<object>();
+
+                        Console.WriteLine($"Refreshing ground tile at ({tileInfo.X}, {tileInfo.Y}) for zoom level {tileInfo.Zoom} ({zoomScale}) with GPS bounds {tileSpan}");
+
+                        Device.BeginInvokeOnMainThread(() =>
+                        {
+                            GroundOverlay overlay;
+
+                            lock (_GroundOverlays)
+                            {
+                                overlay = _GroundOverlays.FirstOrDefault(o => (o.Tag as TileInfo)?.Equals(tileInfo) ?? false);
+                            }
+
+                            if (overlay == null)
+                            {
+                                GroundOverlayOptions overlayOptions = new GroundOverlayOptions().PositionFromBounds(tileSpan.ToLatLng())
+                                                                                                .InvokeImage(bitmapDescriptor);
+
+                                overlay = _NativeMap.AddGroundOverlay(overlayOptions);
+                                overlay.Tag = tileInfo;
+
+                                lock (_GroundOverlays)
+                                {
+                                    _GroundOverlays.Add(overlay);
+                                }
+                            }
+                            else if ((overlay.Tag as TileInfo)?.NeedsRedraw ?? false)
+                            {
+                                overlay.SetImage(bitmapDescriptor);
+                            }
+
+                            drawingTcs.TrySetResult(null);
+                        });
+
+                        await drawingTcs.Task.ConfigureAwait(false);
+                        ReleaseOverlayBitmap(bitmap);
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Ground tile at ({tileInfo.X}, {tileInfo.Y}) for zoom level {tileInfo.Zoom} already exists");
+                    }
+                }
+            }
+
+            private SKBitmap DrawTileToBitmap(SKMapSpan tileSpan, double zoomScale)
+            {
+                Rectangle mercatorSpan = tileSpan.ToMercator();
+                SKBitmap bitmap = GetOverlayBitmap();
+                SKMapCanvas mapCanvas = new SKMapCanvas(bitmap, mercatorSpan, zoomScale);
+
+                SharedOverlay.DrawOnMap(mapCanvas, tileSpan, zoomScale);
+                return bitmap;
             }
 
             public void RemoveAllTiles()
@@ -177,22 +183,13 @@ namespace Xamarin.Forms.Maps.Overlays.Platforms.Droid.UI.Renderers
                     _GroundOverlays.Clear();
                 }
 
-                foreach (GroundOverlay overlay in oldOverlays)
+                Device.BeginInvokeOnMainThread(() =>
                 {
-                    overlay.Remove();
-                }
-            }
-
-            private void ResetAllTiles()
-            {
-                RemoveAllTiles();
-                TileOverlay.ClearTileCache();
-            }
-
-            private void RefreshAllTiles()
-            {
-                MarkAllTilesDirty();
-                TileOverlay.ClearTileCache();
+                    foreach (GroundOverlay overlay in oldOverlays)
+                    {
+                        overlay.Remove();
+                    }
+                });
             }
 
             private void MarkAllTilesDirty()
@@ -204,10 +201,31 @@ namespace Xamarin.Forms.Maps.Overlays.Platforms.Droid.UI.Renderers
                     overlays = new List<GroundOverlay>(_GroundOverlays);
                 }
 
-                foreach (GroundOverlay overlay in overlays)
+                Device.BeginInvokeOnMainThread(() =>
                 {
-                    (overlay.Tag as TileInfo).NeedsRedraw = true;
-                }
+                    foreach (GroundOverlay overlay in overlays)
+                    {
+                        (overlay.Tag as TileInfo).NeedsRedraw = true;
+                    }
+                });
+            }
+
+            private void ResetAllTiles()
+            {
+                RemoveAllTiles();
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    TileOverlay.ClearTileCache();
+                });
+            }
+
+            private void RefreshAllTiles()
+            {
+                MarkAllTilesDirty();
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    TileOverlay.ClearTileCache();
+                });
             }
 
             private void OverlayGpsBoundsChanged(object sender, PropertyChangedEventArgs args)
