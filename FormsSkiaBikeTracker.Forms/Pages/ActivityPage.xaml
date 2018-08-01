@@ -60,12 +60,12 @@
                                                                                  ElementName=MapControl,
                                                                                  Property=Width,
                                                                                  Factor=1,
-                                                                                 Constant=-52}"
+                                                                                 Constant=-47}"
                                RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView,
                                                                                  ElementName=MapControl,
                                                                                  Property=Height,
-                                                                                 Factor=1,
-                                                                                 Constant=-52}"
+                                                                                 Factor=0,
+                                                                                 Constant=17}"
                                Source="{lrpMvxForms:EmbeddedImage location-arrow-outline.svg}">
                 <lrpForms:SvgImage.GestureRecognizers>
                     <TapGestureRecognizer Tapped="CenterOnUser" />

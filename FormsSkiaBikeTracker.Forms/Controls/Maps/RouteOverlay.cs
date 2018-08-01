@@ -80,6 +80,8 @@ namespace FormsSkiaBikeTracker.Forms.Controls.Maps
                     paint.Color = LineColor.ToSKColor();
                     paint.StrokeWidth = LineWidth;
                     paint.Style = SKPaintStyle.Stroke;
+                    paint.IsAntialias = true;
+
                     canvas.DrawPath(path, paint);
                 }
             }

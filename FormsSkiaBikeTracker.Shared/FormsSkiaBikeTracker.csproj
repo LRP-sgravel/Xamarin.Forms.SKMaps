@@ -7,6 +7,7 @@
   <ItemGroup>
     <None Remove="Resources\Fonts\KumarOne-Regular.otf" />
     <None Remove="Resources\Images\full_logo.svg" />
+    <None Remove="Resources\Images\location-arrow-fill.svg" />
     <None Remove="Resources\Images\location-arrow-outline.svg" />
     <None Remove="Resources\Images\play.svg" />
     <None Remove="Resources\Images\stop.svg" />
@@ -26,6 +27,7 @@
   <ItemGroup>
     <EmbeddedResource Include="Resources\Fonts\KumarOne-Regular.otf" />
     <EmbeddedResource Include="Resources\Images\full_logo.svg" />
+    <EmbeddedResource Include="Resources\Images\location-arrow-fill.svg" />
     <EmbeddedResource Include="Resources\Images\location-arrow-outline.svg" />
     <EmbeddedResource Include="Resources\Images\play.svg" />
     <EmbeddedResource Include="Resources\Images\stop.svg" />
