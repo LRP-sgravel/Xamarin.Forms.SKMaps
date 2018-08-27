@@ -18,7 +18,6 @@ using System.Threading.Tasks;
 using Android.Content;
 using Android.Gms.Maps;
 using Android.Gms.Maps.Model;
-using MvvmCross.WeakSubscription;
 using SkiaSharp;
 using SkiaSharp.Views.Android;
 using Xamarin.Forms;
@@ -29,6 +28,7 @@ using Xamarin.Forms.Maps.Overlays.Models;
 using Xamarin.Forms.Maps.Overlays.Platforms.Droid.Extensions;
 using Xamarin.Forms.Maps.Overlays.Platforms.Droid.UI.Renderers;
 using Xamarin.Forms.Maps.Overlays.Skia;
+using Xamarin.Forms.Maps.Overlays.WeakSubscription;
 using Xamarin.Forms.Platform.Android;
 
 [assembly: ExportRenderer(typeof(OverlayedMap), typeof(OverlayedMapRenderer))]
@@ -77,12 +77,12 @@ namespace Xamarin.Forms.Maps.Overlays.Platforms.Droid.UI.Renderers
                 _NativeMap = nativeMap;
                 SharedOverlay = sharedOverlay;
 
-                _boundsChangedSubscription = SharedOverlay.WeakSubscribe<DrawableMapOverlay>(nameof(SharedOverlay.GpsBounds),
-                                                                                              OverlayGpsBoundsChanged);
+                _boundsChangedSubscription = SharedOverlay.WeakSubscribe(() => SharedOverlay.GpsBounds,
+                                                                         OverlayGpsBoundsChanged);
                 _overlayDirtySubscription = SharedOverlay.WeakSubscribe<DrawableMapOverlay, MapSpan>(nameof(SharedOverlay.RequestInvalidate),
-                                                                                                      MarkOverlayDirty);
-                _isVisibleChangedSubscription = SharedOverlay.WeakSubscribe<DrawableMapOverlay>(nameof(SharedOverlay.IsVisible),
-                                                                                              OverlayVisibilityChanged);
+                                                                                                     MarkOverlayDirty);
+                _isVisibleChangedSubscription = SharedOverlay.WeakSubscribe(() => SharedOverlay.IsVisible,
+                                                                            OverlayVisibilityChanged);
             }
 
             public Tile GetTile(int x, int y, int zoom)

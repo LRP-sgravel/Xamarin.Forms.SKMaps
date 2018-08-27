@@ -13,8 +13,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
-using MvvmCross.WeakSubscription;
-using Xamarin.Forms.Maps.Overlays.Skia;
+using Xamarin.Forms.Maps.Overlays.WeakSubscription;
 
 namespace Xamarin.Forms.Maps.Overlays
 {

@@ -18,7 +18,6 @@ using System.Threading.Tasks;
 using CoreGraphics;
 using CoreLocation;
 using MapKit;
-using MvvmCross.WeakSubscription;
 using SkiaSharp;
 using SkiaSharp.Views.iOS;
 using Xamarin.Forms;
@@ -28,6 +27,7 @@ using Xamarin.Forms.Maps.Overlays.Models;
 using Xamarin.Forms.Maps.Overlays.Platforms.Ios.Extensions;
 using Xamarin.Forms.Maps.Overlays.Platforms.Ios.UI.Renderers;
 using Xamarin.Forms.Maps.Overlays.Skia;
+using Xamarin.Forms.Maps.Overlays.WeakSubscription;
 using Xamarin.Forms.Platform.iOS;
 
 [assembly: ExportRenderer(typeof(OverlayedMap), typeof(OverlayedMapRenderer))]
@@ -78,8 +78,8 @@ namespace Xamarin.Forms.Maps.Overlays.Platforms.Ios.UI.Renderers
                 _SharedOverlay = sharedOverlay;
                 _NativeMap = mapView;
 
-                _boundsChangedSubscription = _SharedOverlay.WeakSubscribe<DrawableMapOverlay>(nameof(_SharedOverlay.GpsBounds),
-                                                                                              OverlayGpsBoundsChanged);
+                _boundsChangedSubscription = _SharedOverlay.WeakSubscribe(() => _SharedOverlay.GpsBounds,
+                                                                          OverlayGpsBoundsChanged);
                 _overlayDirtySubscription = _SharedOverlay.WeakSubscribe<DrawableMapOverlay, MapSpan>(nameof(_SharedOverlay.RequestInvalidate),
                                                                                                       MarkOverlayDirty);
             }

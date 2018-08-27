@@ -10,7 +10,6 @@
 // ***********************************************************************
 
 using System;
-using LRPFramework.Views.Forms;
 using SkiaSharp;
 using Xamarin.Forms.Maps.Overlays.Extensions;
 using Xamarin.Forms.Maps.Overlays.Models;
@@ -18,7 +17,7 @@ using Xamarin.Forms.Maps.Overlays.Skia;
 
 namespace Xamarin.Forms.Maps.Overlays
 {
-    public abstract class DrawableMapOverlay : DrawableView
+    public abstract class DrawableMapOverlay : View
     {
         public event EventHandler<MapSpan> RequestInvalidate;
 
@@ -32,16 +31,10 @@ namespace Xamarin.Forms.Maps.Overlays
 
         protected DrawableMapOverlay()
         {
-            HasTransparency = true;
             GpsBounds = MapSpanExtensions.WorldSpan;
         }
 
-        protected sealed override void Paint(SKCanvas canvas)
-        {
-            // Use the DrawOnMap method
-        }
-
-        protected new void Invalidate()
+        protected void Invalidate()
         {
             if (IsVisible)
             {
