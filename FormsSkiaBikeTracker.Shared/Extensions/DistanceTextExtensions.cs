@@ -9,7 +9,6 @@
 // 
 // ***********************************************************************
 
-using LRPFramework.Views.Forms.Markup;
 using MvvmCross;
 using MvvmCross.Localization;
 using Xamarin.Forms.Maps.Overlays.Models;
