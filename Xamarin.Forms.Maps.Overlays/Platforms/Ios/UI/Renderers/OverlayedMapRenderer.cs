@@ -29,6 +29,7 @@ using Xamarin.Forms.Maps.Overlays.Platforms.Ios.UI.Renderers;
 using Xamarin.Forms.Maps.Overlays.Skia;
 using Xamarin.Forms.Maps.Overlays.WeakSubscription;
 using Xamarin.Forms.Platform.iOS;
+using static Xamarin.Forms.Maps.Overlays.DrawableMapOverlay;
 
 [assembly: ExportRenderer(typeof(OverlayedMap), typeof(OverlayedMapRenderer))]
 namespace Xamarin.Forms.Maps.Overlays.Platforms.Ios.UI.Renderers
@@ -69,7 +70,6 @@ namespace Xamarin.Forms.Maps.Overlays.Platforms.Ios.UI.Renderers
             private DrawableMapOverlay _SharedOverlay { get; }
             private MKMapView _NativeMap { get; }
 
-            private IDisposable _boundsChangedSubscription;
             private IDisposable _overlayDirtySubscription;
             private Queue<SKBitmap> _overlayBitmapPool = new Queue<SKBitmap>();
 
@@ -78,20 +78,13 @@ namespace Xamarin.Forms.Maps.Overlays.Platforms.Ios.UI.Renderers
                 _SharedOverlay = sharedOverlay;
                 _NativeMap = mapView;
 
-                _boundsChangedSubscription = _SharedOverlay.WeakSubscribe(() => _SharedOverlay.GpsBounds,
-                                                                          OverlayGpsBoundsChanged);
-                _overlayDirtySubscription = _SharedOverlay.WeakSubscribe<DrawableMapOverlay, MapSpan>(nameof(_SharedOverlay.RequestInvalidate),
-                                                                                                      MarkOverlayDirty);
+                _overlayDirtySubscription = _SharedOverlay.WeakSubscribe<DrawableMapOverlay, MapOverlayInvalidateEventArgs>(nameof(_SharedOverlay.RequestInvalidate),
+                                                                                                                            MarkOverlayDirty);
             }
 
-            private void OverlayGpsBoundsChanged(object sender, PropertyChangedEventArgs args)
+            private void MarkOverlayDirty(object sender, MapOverlayInvalidateEventArgs args)
             {
-                InvalidateSpan(_SharedOverlay.GpsBounds);
-            }
-
-            private void MarkOverlayDirty(object sender, MapSpan area)
-            {
-                InvalidateSpan(area);
+                InvalidateSpan(args.GpsBounds);
             }
 
             private void InvalidateSpan(MapSpan area)

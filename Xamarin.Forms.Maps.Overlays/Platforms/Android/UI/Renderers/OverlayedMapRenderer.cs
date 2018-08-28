@@ -12,7 +12,6 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
-using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
 using Android.Content;
@@ -30,6 +29,7 @@ using Xamarin.Forms.Maps.Overlays.Platforms.Droid.UI.Renderers;
 using Xamarin.Forms.Maps.Overlays.Skia;
 using Xamarin.Forms.Maps.Overlays.WeakSubscription;
 using Xamarin.Forms.Platform.Android;
+using static Xamarin.Forms.Maps.Overlays.DrawableMapOverlay;
 
 [assembly: ExportRenderer(typeof(OverlayedMap), typeof(OverlayedMapRenderer))]
 namespace Xamarin.Forms.Maps.Overlays.Platforms.Droid.UI.Renderers
@@ -66,9 +66,7 @@ namespace Xamarin.Forms.Maps.Overlays.Platforms.Droid.UI.Renderers
             private GoogleMap _NativeMap { get; }
             private List<GroundOverlay> _GroundOverlays { get; } = new List<GroundOverlay>();
 
-            private IDisposable _boundsChangedSubscription;
             private IDisposable _overlayDirtySubscription;
-            private IDisposable _isVisibleChangedSubscription;
             private Queue<SKBitmap> _overlayBitmapPool = new Queue<SKBitmap>();
 
             public OverlayTrackerTileProvider(Context context, GoogleMap nativeMap, DrawableMapOverlay sharedOverlay)
@@ -77,12 +75,8 @@ namespace Xamarin.Forms.Maps.Overlays.Platforms.Droid.UI.Renderers
                 _NativeMap = nativeMap;
                 SharedOverlay = sharedOverlay;
 
-                _boundsChangedSubscription = SharedOverlay.WeakSubscribe(() => SharedOverlay.GpsBounds,
-                                                                         OverlayGpsBoundsChanged);
-                _overlayDirtySubscription = SharedOverlay.WeakSubscribe<DrawableMapOverlay, MapSpan>(nameof(SharedOverlay.RequestInvalidate),
+                _overlayDirtySubscription = SharedOverlay.WeakSubscribe<DrawableMapOverlay, MapOverlayInvalidateEventArgs>(nameof(SharedOverlay.RequestInvalidate),
                                                                                                      MarkOverlayDirty);
-                _isVisibleChangedSubscription = SharedOverlay.WeakSubscribe(() => SharedOverlay.IsVisible,
-                                                                            OverlayVisibilityChanged);
             }
 
             public Tile GetTile(int x, int y, int zoom)
@@ -228,19 +222,9 @@ namespace Xamarin.Forms.Maps.Overlays.Platforms.Droid.UI.Renderers
                 });
             }
 
-            private void OverlayGpsBoundsChanged(object sender, PropertyChangedEventArgs args)
+            private void MarkOverlayDirty(object sender, MapOverlayInvalidateEventArgs args)
             {
-                InvalidateSpan(SharedOverlay.GpsBounds);
-            }
-
-            private void OverlayVisibilityChanged(object sender, PropertyChangedEventArgs args)
-            {
-                InvalidateSpan(SharedOverlay.GpsBounds);
-            }
-
-            private void MarkOverlayDirty(object sender, MapSpan area)
-            {
-                InvalidateSpan(area);
+                InvalidateSpan(args.GpsBounds);
             }
 
             private void InvalidateSpan(MapSpan area)
