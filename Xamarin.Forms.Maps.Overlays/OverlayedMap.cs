@@ -46,7 +46,7 @@ namespace Xamarin.Forms.Maps.Overlays
             {
                 foreach (DrawableMapOverlay overlay in MapOverlays)
                 {
-                    overlay.Parent = this;
+                    overlay.BindingContext = this.BindingContext;
                 }
             }
         }
@@ -62,7 +62,7 @@ namespace Xamarin.Forms.Maps.Overlays
                 {
                     foreach (DrawableMapOverlay overlay in newItems)
                     {
-                        overlay.Parent = this;
+                        overlay.BindingContext = this.BindingContext;
                     }
                     break;
                 }
@@ -70,7 +70,7 @@ namespace Xamarin.Forms.Maps.Overlays
                 {
                     foreach (DrawableMapOverlay overlay in removedItems)
                     {
-                        overlay.Parent = null;
+                        overlay.BindingContext = null;
                     }
                     break;
                 }
@@ -78,11 +78,11 @@ namespace Xamarin.Forms.Maps.Overlays
                 {
                     foreach (DrawableMapOverlay overlay in newItems)
                     {
-                        overlay.Parent = this;
+                        overlay.BindingContext = this.BindingContext;
                     }
                     foreach (DrawableMapOverlay overlay in removedItems)
                     {
-                        overlay.Parent = null;
+                        overlay.BindingContext = null;
                     }
                     break;
                 }

@@ -17,11 +17,18 @@ using Xamarin.Forms.Maps.Overlays.Skia;
 
 namespace Xamarin.Forms.Maps.Overlays
 {
-    public abstract class DrawableMapOverlay : View
+    public abstract class DrawableMapOverlay : BindableObject
     {
         public event EventHandler<MapSpan> RequestInvalidate;
 
         public static readonly BindableProperty GpsBoundsProperty = BindableProperty.Create(nameof(GpsBounds), typeof(MapSpan), typeof(DrawableMapOverlay), new MapSpan(new Position(0, 0), 0.1, 0.1));
+        public static readonly BindableProperty IsVisibleProperty = BindableProperty.Create(nameof(IsVisible), typeof(bool), typeof(DrawableMapOverlay), true);
+
+        public bool IsVisible
+        {
+            get { return (bool)GetValue(IsVisibleProperty); }
+            set { SetValue(IsVisibleProperty, value); }
+        }
 
         public MapSpan GpsBounds
         {
