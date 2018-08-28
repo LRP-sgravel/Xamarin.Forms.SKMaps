@@ -77,22 +77,16 @@ namespace FormsSkiaBikeTracker.Forms.Controls
 
         protected override void Paint(SKCanvas canvas)
         {
-            float centerX = (float)Bounds.Width * 0.5f;
-            float centerY = (float)Bounds.Height * 0.5f;
-            float imageSize = Math.Min(centerX, centerY);
-            float borderRadius = imageSize - BorderWidth * 0.5f;
-
-            canvas.ClipPath(ClippingPath);
-
             if (Source != null && Source.Bitmap != null)
             {
-                float scaleFactor = canvas.TotalMatrix.ScaleX;
-                float nativeImageSize = imageSize * scaleFactor;
+                double fillScale = GetFillScale(new Size(Source.Bitmap.Width, Source.Bitmap.Height), Bounds.Size);
+                double destinationWidth = Source.Bitmap.Width * fillScale;
+                double destinationHeight = Source.Bitmap.Height * fillScale;
                 SKRect bitmapBounds = SKRect.Create(0, 0, Source.Bitmap.Width, Source.Bitmap.Height);
-                SKRect destinationBounds = SKRect.Create((float)(Width - nativeImageSize) * 0.5f,
-                                                         (float)(Height - nativeImageSize) * 0.5f,
-                                                         nativeImageSize,
-                                                         nativeImageSize);
+                SKRect destinationBounds = SKRect.Create((float)(Width - destinationWidth) * 0.5f,
+                                                         (float)(Height - destinationHeight) * 0.5f,
+                                                         (float)destinationWidth,
+                                                         (float)destinationHeight);
 
                 canvas.DrawBitmap(Source.Bitmap, bitmapBounds, destinationBounds);
             }
@@ -115,6 +109,11 @@ namespace FormsSkiaBikeTracker.Forms.Controls
 
                 using (borderPaint)
                 {
+                    float centerX = (float)Width * 0.5f;
+                    float centerY = (float)Height * 0.5f;
+                    float shortRadius = Math.Min(centerX, centerY);
+                    float borderRadius = shortRadius - BorderWidth * 0.5f;
+
                     canvas.DrawCircle(centerX, centerY, borderRadius, borderPaint);
                 }
             }
@@ -124,10 +123,7 @@ namespace FormsSkiaBikeTracker.Forms.Controls
         {
             try
             {
-                float xScale = (float)Width / sourceRect.Width;
-                float yScale = (float)Height / sourceRect.Height;
-                float fillScale = Math.Min(xScale, yScale);
-
+                float fillScale = (float)GetFillScale(new Size(sourceRect.Size.Width, sourceRect.Size.Height), Bounds.Size);
                 SKMatrix initialTranslate = SKMatrix.MakeTranslation(sourceRect.Width * -0.5f,
                                                                      sourceRect.Height * -0.5f);
                 SKMatrix finalTranslate = SKMatrix.MakeTranslation((float)Width * 0.5f,
@@ -145,6 +141,14 @@ namespace FormsSkiaBikeTracker.Forms.Controls
             {
                 return SKMatrix.MakeIdentity();
             }
+        }
+
+        private double GetFillScale(Size source, Size destination)
+        {
+            double xScale = destination.Width / source.Width;
+            double yScale = destination.Height / source.Height;
+
+            return  Math.Min(xScale, yScale);
         }
 
         protected override void OnPropertyChanged(string propertyName = null)
