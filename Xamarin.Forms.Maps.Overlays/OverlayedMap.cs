@@ -10,9 +10,11 @@
 // ***********************************************************************
 
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
+using System.Linq;
 using Xamarin.Forms.Maps.Overlays.WeakSubscription;
 
 namespace Xamarin.Forms.Maps.Overlays
@@ -23,14 +25,21 @@ namespace Xamarin.Forms.Maps.Overlays
                                                                                               typeof(ObservableCollection<DrawableMapOverlay>),
                                                                                               typeof(OverlayedMap),
                                                                                               new ObservableCollection<DrawableMapOverlay>());
+        public static readonly BindableProperty MapMarkersProperty = BindableProperty.Create(nameof(MapMarkers),
+                                                                                             typeof(ObservableCollection<DrawableMapMarker>),
+                                                                                             typeof(OverlayedMap),
+                                                                                             new ObservableCollection<DrawableMapMarker>());
+
+        public ObservableCollection<DrawableMapOverlay> MapOverlays => GetValue(MapOverlaysProperty) as ObservableCollection<DrawableMapOverlay>;
+        public ObservableCollection<DrawableMapMarker> MapMarkers => GetValue(MapMarkersProperty) as ObservableCollection<DrawableMapMarker>;
 
         private IDisposable _overlaysCollectionChangedSubscription;
-
-        public ObservableCollection<DrawableMapOverlay> MapOverlays => (ObservableCollection<DrawableMapOverlay>)GetValue(MapOverlaysProperty);
+        private IDisposable _markersCollectionChangedSubscription;
 
         public OverlayedMap()
         {
-            _overlaysCollectionChangedSubscription = MapOverlays.WeakSubscribe(OnMapOverlaysCollectionChanged);
+            _overlaysCollectionChangedSubscription = MapOverlays.WeakSubscribe(OnMapItemsCollectionChanged);
+            _markersCollectionChangedSubscription = MapOverlays.WeakSubscribe(OnMapItemsCollectionChanged);
         }
 
         protected override void OnBindingContextChanged()
@@ -42,53 +51,43 @@ namespace Xamarin.Forms.Maps.Overlays
 
         private void UpdateInheritedBindingContext()
         {
-            if (MapOverlays != null)
+            UpdateInheritedBindingContext(Enumerable.Union<BindableObject>(MapOverlays, MapMarkers), this.BindingContext);
+        }
+
+        private void UpdateInheritedBindingContext(IEnumerable<BindableObject> items, object bindingContext)
+        {
+            foreach (BindableObject overlay in items)
             {
-                foreach (DrawableMapOverlay overlay in MapOverlays)
-                {
-                    overlay.BindingContext = this.BindingContext;
-                }
+                overlay.BindingContext = bindingContext;
             }
         }
 
-        private void OnMapOverlaysCollectionChanged(object sender, NotifyCollectionChangedEventArgs args)
+        private void OnMapItemsCollectionChanged(object sender, NotifyCollectionChangedEventArgs args)
         {
-            IList<DrawableMapOverlay> newItems = (args.NewItems as IList<DrawableMapOverlay>) ?? new List<DrawableMapOverlay>();
-            IList<DrawableMapOverlay> removedItems = (args.OldItems as IList<DrawableMapOverlay>) ?? new List<DrawableMapOverlay>();
+            IEnumerable<BindableObject> newItems = (args.NewItems?.Cast<BindableObject>()) ?? new List<BindableObject>();
+            IEnumerable<BindableObject> removedItems = (args.OldItems?.Cast<BindableObject>()) ?? new List<BindableObject>();
 
             switch (args.Action)
             {
                 case NotifyCollectionChangedAction.Add:
                 {
-                    foreach (DrawableMapOverlay overlay in newItems)
-                    {
-                        overlay.BindingContext = this.BindingContext;
-                    }
+                    UpdateInheritedBindingContext(newItems, this.BindingContext);
                     break;
                 }
                 case NotifyCollectionChangedAction.Remove:
                 {
-                    foreach (DrawableMapOverlay overlay in removedItems)
-                    {
-                        overlay.BindingContext = null;
-                    }
+                    UpdateInheritedBindingContext(removedItems, null);
                     break;
                 }
                 case NotifyCollectionChangedAction.Replace:
                 {
-                    foreach (DrawableMapOverlay overlay in newItems)
-                    {
-                        overlay.BindingContext = this.BindingContext;
-                    }
-                    foreach (DrawableMapOverlay overlay in removedItems)
-                    {
-                        overlay.BindingContext = null;
-                    }
+                    UpdateInheritedBindingContext(newItems, this.BindingContext);
+                    UpdateInheritedBindingContext(removedItems, null);
                     break;
                 }
                 case NotifyCollectionChangedAction.Reset:
                 {
-                    UpdateInheritedBindingContext();
+                    UpdateInheritedBindingContext((sender as ICollection)?.Cast<BindableObject>(), this.BindingContext);
                     break;
                 }
             }
