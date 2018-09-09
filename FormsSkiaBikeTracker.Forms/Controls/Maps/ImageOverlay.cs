@@ -52,8 +52,9 @@ namespace FormsSkiaBikeTracker.Forms.Controls.Maps
             }
         }
 
-        public override void DrawMarker(SKCanvas canvas)
+        public override void DrawMarker(SKSurface surface)
         {
+            SKCanvas canvas = surface.Canvas;
             SKMatrix fillMatrix = GetFillMatrix(canvas, _svgIcon.Picture.CullRect);
 
             canvas.DrawPicture(_svgIcon.Picture, ref fillMatrix);

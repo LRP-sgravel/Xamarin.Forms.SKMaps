@@ -60,6 +60,6 @@ namespace Xamarin.Forms.Maps.Overlays
             RequestInvalidate?.Invoke(this, new MapMarkerInvalidateEventArgs(this));
         }
 
-        public abstract void DrawMarker(SKCanvas canvas);
+        public abstract void DrawMarker(SKSurface surface);
     }
 }

@@ -95,7 +95,7 @@ namespace Xamarin.Forms.Maps.Overlays.Platforms.Android.UI.Renderers
             if (pin is DrawableMapMarker)
             {
                 DrawableMapMarker sharedMarker = pin as DrawableMapMarker;
-                SKBitmap markerBitmap = DrawMarker(sharedMarker);
+                SKPixmap markerBitmap = DrawMarker(sharedMarker);
 
                 options.SetIcon(BitmapDescriptorFactory.FromBitmap(markerBitmap.ToBitmap()))
                        .Visible(sharedMarker.IsVisible);
@@ -297,22 +297,21 @@ namespace Xamarin.Forms.Maps.Overlays.Platforms.Android.UI.Renderers
 
         private void UpdateMarkerIcon(DrawableMapMarker pin, Marker marker)
         {
-            SKBitmap markerBitmap = DrawMarker(pin);
+            SKPixmap markerBitmap = DrawMarker(pin);
 
             marker.SetIcon(BitmapDescriptorFactory.FromBitmap(markerBitmap.ToBitmap()));
         }
 
-        private SKBitmap DrawMarker(DrawableMapMarker sharedMarker)
+        private SKPixmap DrawMarker(DrawableMapMarker sharedMarker)
         {
-            Size markerSize = new Size(sharedMarker.Width * Context.Resources.DisplayMetrics.Density,
-                                       sharedMarker.Height * Context.Resources.DisplayMetrics.Density);
-            SKBitmap markerBitmap = new SKBitmap((int)markerSize.Width, (int)markerSize.Height, SKColorType.Rgba8888, SKAlphaType.Premul);
-            SKCanvas canvas = new SKCanvas(markerBitmap);
+            double bitmapWidth = sharedMarker.Width * Context.Resources.DisplayMetrics.Density;
+            double bitmapHeight = sharedMarker.Height * Context.Resources.DisplayMetrics.Density;
+            SKSurface surface = SKSurface.Create((int)bitmapWidth, (int)bitmapHeight, SKColorType.Rgba8888, SKAlphaType.Premul);
 
-            markerBitmap.Erase(SKColor.Empty);
-            sharedMarker.DrawMarker(canvas);
+            surface.Canvas.Clear(SKColor.Empty);
+            sharedMarker.DrawMarker(surface);
 
-            return markerBitmap;
+            return surface.PeekPixels();
         }
 
         public bool OnMarkerClick(Marker marker)
