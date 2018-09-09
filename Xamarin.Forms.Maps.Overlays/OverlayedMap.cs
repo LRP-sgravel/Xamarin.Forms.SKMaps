@@ -25,13 +25,7 @@ namespace Xamarin.Forms.Maps.Overlays
                                                                                               typeof(ObservableCollection<DrawableMapOverlay>),
                                                                                               typeof(OverlayedMap),
                                                                                               new ObservableCollection<DrawableMapOverlay>());
-        public static readonly BindableProperty MapMarkersProperty = BindableProperty.Create(nameof(MapMarkers),
-                                                                                             typeof(ObservableCollection<DrawableMapMarker>),
-                                                                                             typeof(OverlayedMap),
-                                                                                             new ObservableCollection<DrawableMapMarker>());
-
         public ObservableCollection<DrawableMapOverlay> MapOverlays => GetValue(MapOverlaysProperty) as ObservableCollection<DrawableMapOverlay>;
-        public ObservableCollection<DrawableMapMarker> MapMarkers => GetValue(MapMarkersProperty) as ObservableCollection<DrawableMapMarker>;
 
         private IDisposable _overlaysCollectionChangedSubscription;
         private IDisposable _markersCollectionChangedSubscription;
@@ -51,7 +45,7 @@ namespace Xamarin.Forms.Maps.Overlays
 
         private void UpdateInheritedBindingContext()
         {
-            UpdateInheritedBindingContext(Enumerable.Union<BindableObject>(MapOverlays, MapMarkers), this.BindingContext);
+            UpdateInheritedBindingContext(Enumerable.Union<BindableObject>(MapOverlays, Pins), this.BindingContext);
         }
 
         private void UpdateInheritedBindingContext(IEnumerable<BindableObject> items, object bindingContext)

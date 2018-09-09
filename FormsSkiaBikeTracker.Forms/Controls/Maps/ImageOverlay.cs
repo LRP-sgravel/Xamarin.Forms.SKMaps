@@ -16,22 +16,14 @@ using MvvmCross.Logging;
 using SkiaSharp;
 using SkiaSharp.Views.Forms;
 using Xamarin.Forms;
-using Xamarin.Forms.Maps;
 using Xamarin.Forms.Maps.Overlays;
-using Xamarin.Forms.Maps.Overlays.Models;
-using Xamarin.Forms.Maps.Overlays.Skia;
 using SKSvg = SkiaSharp.Extended.Svg.SKSvg;
 
 namespace FormsSkiaBikeTracker.Forms.Controls.Maps
 {
-    public class ImageOverlay : DrawableMapOverlay
+    public class ImageOverlay : DrawableMapMarker
     {
-        public static readonly BindableProperty PositionProperty =
-            BindableProperty.Create(nameof(Position), typeof(Position), typeof(ImageOverlay), default(Position), propertyChanged: OnPositionChanged);
-        public static readonly BindableProperty IconProperty =
-            BindableProperty.Create(nameof(Icon), typeof(ImageSource), typeof(ImageOverlay), propertyChanged: OnIconChanged);
-        public static readonly BindableProperty IconSizePixelsProperty =
-            BindableProperty.Create(nameof(IconSizePixels), typeof(Size), typeof(ImageOverlay), new Size(75, 75), propertyChanged: OnIconSizeChanged);
+        public static readonly BindableProperty IconProperty = BindableProperty.Create(nameof(Icon), typeof(ImageSource), typeof(ImageOverlay), propertyChanged: OnIconChanged);
         
         public ImageSource Icon
         {
@@ -39,33 +31,11 @@ namespace FormsSkiaBikeTracker.Forms.Controls.Maps
             set => SetValue(IconProperty, value);
         }
 
-        public Size IconSizePixels
-        {
-            get => (Size)GetValue(IconSizePixelsProperty);
-            set => SetValue(IconSizePixelsProperty, value);
-        }
-
-        public Position Position
-        {
-            get => (Position)GetValue(PositionProperty);
-            set => SetValue(PositionProperty, value);
-        }
-
         private SKBitmap _bitmapIcon;
-
-        private SKMapSpan _iconMaxArea;
         private SKSvg _svgIcon;
 
         public ImageOverlay()
         {
-            UpdateIconArea();
-        }
-
-        private static void OnPositionChanged(BindableObject bindable, object oldvalue, object newvalue)
-        {
-            ImageOverlay overlay = bindable as ImageOverlay;
-
-            overlay.UpdateBounds();
         }
 
         private static async void OnIconChanged(BindableObject bindable, object oldValue, object newValue)
@@ -82,41 +52,43 @@ namespace FormsSkiaBikeTracker.Forms.Controls.Maps
             }
         }
 
-        private static void OnIconSizeChanged(BindableObject bindable, object oldvalue, object newvalue)
+        public override void DrawMarker(SKCanvas canvas)
         {
-            ImageOverlay overlay = bindable as ImageOverlay;
+            SKMatrix fillMatrix = GetFillMatrix(canvas, _svgIcon.Picture.CullRect);
 
-            overlay.UpdateIconArea();
+            canvas.DrawPicture(_svgIcon.Picture, ref fillMatrix);
         }
 
-        public override void DrawOnMap(SKMapCanvas canvas, SKMapSpan canvasMapRect, double zoomScale)
+        private SKMatrix GetFillMatrix(SKCanvas canvas, SKRect sourceRect)
         {
-            SKMapSpan iconArea = SKMapCanvas.PixelsToMaximumMapSpanAtScale(IconSizePixels, zoomScale);
-            MapSpan centeredSpan = new SKMapSpan(Position, iconArea.LatitudeDegrees, iconArea.LongitudeDegrees).ToMapSpan();
-
-            // More precise/zoom based culling to reduce drawing calls
-            if (Icon != null && canvasMapRect.FastIntersects(centeredSpan))
+            try
             {
-                if (_svgIcon != null)
-                {
-                    canvas.DrawPicture(_svgIcon.Picture, centeredSpan.Center, IconSizePixels);
-                }
-                else if (_bitmapIcon != null)
-                {
-                    canvas.DrawBitmap(_bitmapIcon, centeredSpan);
-                }
+                float fillScale = (float)GetFillScale(new Size(sourceRect.Size.Width, sourceRect.Size.Height), canvas.LocalClipBounds);
+                SKMatrix initialTranslate = SKMatrix.MakeTranslation(sourceRect.Width * -0.5f,
+                                                                     sourceRect.Height * -0.5f);
+                SKMatrix finalTranslate = SKMatrix.MakeTranslation(canvas.LocalClipBounds.Width * 0.5f,
+                                                                   canvas.LocalClipBounds.Height * 0.5f);
+                SKMatrix scale = SKMatrix.MakeScale(fillScale, fillScale);
+                SKMatrix result = SKMatrix.MakeIdentity();
+
+                SKMatrix.Concat(ref result, result, finalTranslate);
+                SKMatrix.Concat(ref result, result, scale);
+                SKMatrix.Concat(ref result, result, initialTranslate); 
+
+                return result;
+            }
+            catch (Exception)
+            {
+                return SKMatrix.MakeIdentity();
             }
         }
 
-        private void UpdateBounds()
+        private double GetFillScale(Size source, SKRect destination)
         {
-            GpsBounds = new MapSpan(Position, _iconMaxArea.LatitudeDegrees, _iconMaxArea.LongitudeDegrees);
-        }
+            double xScale = destination.Width / source.Width;
+            double yScale = destination.Height / source.Height;
 
-        private void UpdateIconArea()
-        {
-            _iconMaxArea = SKMapCanvas.PixelsToMaximumMapSpanAtScale(IconSizePixels, SKMapCanvas.MaxZoomScale);
-            UpdateBounds();
+            return Math.Min(xScale, yScale);
         }
 
         private async Task LoadIconImageSource(ImageSource source)

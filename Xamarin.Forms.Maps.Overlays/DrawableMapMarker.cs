@@ -3,44 +3,49 @@ using System;
 
 namespace Xamarin.Forms.Maps.Overlays
 {
-    public abstract class DrawableMapMarker : BindableObject
+    public abstract class DrawableMapMarker : Pin
     {
         public class MapMarkerInvalidateEventArgs
         {
-            public Position GpsPosition { get; set; }
-            public Size MarkerSize { get; set; }
-            public bool IsVisible { get; set; }
+            public double Width { get; }
+            public double Height { get; }
 
             internal MapMarkerInvalidateEventArgs(DrawableMapMarker marker)
             {
-                GpsPosition = marker.GpsPosition;
-                MarkerSize = marker.MarkerSize;
-                IsVisible = marker.IsVisible;
+                Width = marker.Width;
+                Height = marker.Height;
             }
         }
 
         public event EventHandler<MapMarkerInvalidateEventArgs> RequestInvalidate;
 
-        public static readonly BindableProperty GpsPositionProperty = BindableProperty.Create(nameof(GpsPosition), typeof(Position), typeof(DrawableMapMarker), new Position(0, 0), propertyChanged: OnDrawablePropertyChanged);
-        public static readonly BindableProperty MarkerSizeProperty = BindableProperty.Create(nameof(MarkerSize), typeof(Size), typeof(DrawableMapMarker), new Size(32, 32), propertyChanged: OnDrawablePropertyChanged);
-        public static readonly BindableProperty IsVisibleProperty = BindableProperty.Create(nameof(IsVisible), typeof(bool), typeof(DrawableMapMarker), true, propertyChanged: OnDrawablePropertyChanged);
+        public static readonly BindableProperty WidthProperty = BindableProperty.Create(nameof(Width), typeof(double), typeof(DrawableMapMarker), 32.0, propertyChanged: OnDrawablePropertyChanged);
+        public static readonly BindableProperty HeightProperty = BindableProperty.Create(nameof(Height), typeof(double), typeof(DrawableMapMarker), 32.0, propertyChanged: OnDrawablePropertyChanged);
+        public static readonly BindableProperty IsVisibleProperty = BindableProperty.Create(nameof(IsVisible), typeof(bool), typeof(DrawableMapMarker), true);
+        public static readonly BindableProperty ClickableProperty = BindableProperty.Create(nameof(Clickable), typeof(bool), typeof(DrawableMapMarker), true);
 
-        public Position GpsPosition
+        public double Width
         {
-            get => (Position)GetValue(GpsPositionProperty);
-            set => SetValue(GpsPositionProperty, value);
+            get { return (double)GetValue(WidthProperty); }
+            set { SetValue(WidthProperty, value); }
         }
 
-        public Size MarkerSize
+        public double Height
         {
-            get { return (Size)GetValue(MarkerSizeProperty); }
-            set { SetValue(MarkerSizeProperty, value); }
+            get { return (double)GetValue(HeightProperty); }
+            set { SetValue(HeightProperty, value); }
         }
 
         public bool IsVisible
         {
             get { return (bool)GetValue(IsVisibleProperty); }
             set { SetValue(IsVisibleProperty, value); }
+        }
+
+        public bool Clickable
+        {
+            get { return (bool)GetValue(ClickableProperty); }
+            set { SetValue(ClickableProperty, value); }
         }
 
         private static void OnDrawablePropertyChanged(BindableObject bindable, object oldValue, object newValue)

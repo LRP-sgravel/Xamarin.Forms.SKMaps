@@ -1,4 +1,4 @@
-<Project Sdk="MSBuild.Sdk.Extras/1.2.2">
+﻿<Project Sdk="MSBuild.Sdk.Extras/1.2.2">
 
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;net461;Xamarin.iOS10;MonoAndroid81</TargetFrameworks>
@@ -10,10 +10,12 @@
   </ItemGroup>
 
   <ItemGroup Condition=" $(TargetFramework.StartsWith('Xamarin.iOS')) ">
+    <None Remove="Platforms\Ios\**\*.cs" />
     <Compile Include="Platforms\Ios\**\*.cs" />
   </ItemGroup>
 
   <ItemGroup Condition=" $(TargetFramework.StartsWith('MonoAndroid')) ">
+    <None Remove="Platforms\Android\**\*.cs" />
     <Compile Include="Platforms\Android\**\*.cs" />
   </ItemGroup>
 
@@ -31,6 +33,39 @@
     <Reference Include="MvvmCross">
       <HintPath>C:\Users\sgrav\.nuget\packages\mvvmcross\6.0.1\lib\netstandard2.0\MvvmCross.dll</HintPath>
     </Reference>
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'MonoAndroid81'">
+    <PackageReference Include="Xamarin.Android.Support.Animated.Vector.Drawable">
+      <Version>27.0.2.1</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Android.Support.Annotations">
+      <Version>27.0.2.1</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Android.Support.Compat">
+      <Version>27.0.2.1</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Android.Support.Core.UI">
+      <Version>27.0.2.1</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Android.Support.Core.Utils">
+      <Version>27.0.2.1</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Android.Support.Fragment">
+      <Version>27.0.2.1</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Android.Support.Media.Compat">
+      <Version>27.0.2.1</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Android.Support.v7.AppCompat">
+      <Version>27.0.2.1</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Android.Support.Vector.Drawable">
+      <Version>27.0.2.1</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.GooglePlayServices.Maps">
+      <Version>60.1142.1</Version>
+    </PackageReference>
   </ItemGroup>
 
 </Project>

@@ -39,10 +39,15 @@
                                                                                           Factor=1,
                                                                                           Constant=0}"
                                    IsShowingUser="False">
-                <overlays:OverlayedMap.MapOverlays>
+                <overlays:OverlayedMap.Pins>
                     <maps:ImageOverlay Icon="{lrpMvxForms:EmbeddedImage symbol_logo.svg}"
+                                       Width="48"
+                                       Height="48"
+                                       Label=""
                                        Position="{Binding LastUserLocation}"
                                        IsVisible="{Binding FirstLocationAcquired}" />
+                </overlays:OverlayedMap.Pins>
+                <overlays:OverlayedMap.MapOverlays>
                     <maps:RouteOverlay Route="{Binding ActivityRoute}"
                                        LineColor="Red"
                                        LineWidth="3"

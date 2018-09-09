@@ -215,9 +215,9 @@ namespace FormsSkiaBikeTracker.ViewModels
             UpdateActivityStatistics(newLocation, now);
             StartStaleTimer();
 
-            FirstLocationAcquired = true;
             _LastLocationTime = now;
             LastUserLocation = newLocation;
+            FirstLocationAcquired = true;
         }
 
         private void StartStaleTimer()
