@@ -9,27 +9,15 @@
 // 
 // ***********************************************************************
 
-using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
-using System.ComponentModel;
 using System.Linq;
-using System.Threading.Tasks;
-using CoreGraphics;
-using CoreLocation;
 using MapKit;
-using SkiaSharp;
-using SkiaSharp.Views.iOS;
 using Xamarin.Forms;
 using Xamarin.Forms.Maps.iOS;
 using Xamarin.Forms.Maps.Overlays;
-using Xamarin.Forms.Maps.Overlays.Models;
-using Xamarin.Forms.Maps.Overlays.Platforms.Ios.Extensions;
 using Xamarin.Forms.Maps.Overlays.Platforms.Ios.UI.Renderers;
-using Xamarin.Forms.Maps.Overlays.Skia;
-using Xamarin.Forms.Maps.Overlays.WeakSubscription;
 using Xamarin.Forms.Platform.iOS;
-using static Xamarin.Forms.Maps.Overlays.DrawableMapOverlay;
 
 [assembly: ExportRenderer(typeof(OverlayedMap), typeof(OverlayedMapRenderer))]
 namespace Xamarin.Forms.Maps.Overlays.Platforms.Ios.UI.Renderers
@@ -40,114 +28,12 @@ namespace Xamarin.Forms.Maps.Overlays.Platforms.Ios.UI.Renderers
         {
             public static MKOverlayRenderer OverlayRenderer(MKMapView mapView, IMKOverlay overlay)
             {
-                if (overlay is MapOverlay)
+                if (overlay is SkiaMapOverlay)
                 {
-                    return new MapOverlayRenderer(mapView, (overlay as MapOverlay).SharedOverlay, overlay);
+                    return new SkiaMapOverlayRenderer(mapView, (overlay as SkiaMapOverlay).SharedOverlay, overlay);
                 }
 
                 return null;
-            }
-        }
-
-        private class MapOverlay : MKOverlay
-        {
-            public override CLLocationCoordinate2D Coordinate => SharedOverlay.GpsBounds.Center.ToLocationCoordinate();
-            public override MKMapRect BoundingMapRect => SharedOverlay.GpsBounds.ToMapRect();
-
-            public DrawableMapOverlay SharedOverlay { get; }
-            private OverlayedMap _SharedControl { get; }
-
-            public MapOverlay(DrawableMapOverlay sharedOverlay, OverlayedMap sharedControl)
-            {
-                SharedOverlay = sharedOverlay;
-                _SharedControl = sharedControl;
-            }
-        }
-
-        private class MapOverlayRenderer : MKOverlayRenderer
-        {
-            private MapOverlay _NativeOverlay => Overlay as MapOverlay;
-            private DrawableMapOverlay _SharedOverlay { get; }
-            private MKMapView _NativeMap { get; }
-
-            private IDisposable _overlayDirtySubscription;
-            private Queue<SKBitmap> _overlayBitmapPool = new Queue<SKBitmap>();
-
-            public MapOverlayRenderer(MKMapView mapView, DrawableMapOverlay sharedOverlay, IMKOverlay overlay) : base(overlay)
-            {
-                _SharedOverlay = sharedOverlay;
-                _NativeMap = mapView;
-
-                _overlayDirtySubscription = _SharedOverlay.WeakSubscribe<DrawableMapOverlay, MapOverlayInvalidateEventArgs>(nameof(_SharedOverlay.RequestInvalidate),
-                                                                                                                            MarkOverlayDirty);
-            }
-
-            private void MarkOverlayDirty(object sender, MapOverlayInvalidateEventArgs args)
-            {
-                InvalidateSpan(args.GpsBounds);
-            }
-
-            private void InvalidateSpan(MapSpan area)
-            {
-                // TODO: Check if we need to do a full or partial refresh...
-                if (_SharedOverlay.IsVisible)
-                {
-                    _NativeMap.RemoveOverlay(_NativeOverlay);
-                    _NativeMap.AddOverlay(_NativeOverlay);
-                }
-            }
-
-            public override void DrawMapRect(MKMapRect mapRect, nfloat zoomScale, CGContext context)
-            {
-                SKMapSpan rectSpan = mapRect.ToMapSpan();
-
-                if (_SharedOverlay.IsVisible && rectSpan.FastIntersects(_SharedOverlay.GpsBounds))
-                {
-                    CGRect coreDrawRect = RectForMapRect(mapRect);
-                    SKBitmap drawBitmap = GetOverlayBitmap();
-                    SKMapCanvas mapCanvas = new SKMapCanvas(drawBitmap, mapRect.ToRectangle(), zoomScale, true);
-
-                    _SharedOverlay.DrawOnMap(mapCanvas, rectSpan, zoomScale);
-                    
-                    Console.WriteLine($"Drawing tile for zoom scale {zoomScale} with GPS bounds {mapRect} and Mercator {mapRect.ToRectangle()}");
-
-                    context.DrawImage(coreDrawRect, drawBitmap.ToCGImage());
-
-                    // Let's exit this method so MapKit renders to screen while we free our resources in the background.
-                    Task.Run(() => ReleaseOverlayBitmap(drawBitmap));
-                }
-            }
-
-            private SKBitmap GetOverlayBitmap()
-            {
-                SKBitmap overlayBitmap;
-
-                lock (_overlayBitmapPool)
-                {
-                    if (_overlayBitmapPool.Count == 0)
-                    {
-                        int bitmapSize = SKMapCanvas.MapTileSize;
-
-                        overlayBitmap = new SKBitmap(bitmapSize, bitmapSize, SKColorType.Rgba8888, SKAlphaType.Premul);
-                        overlayBitmap.Erase(SKColor.Empty);
-                    }
-                    else
-                    {
-                        overlayBitmap = _overlayBitmapPool.Dequeue();
-                    }
-                }
-
-                return overlayBitmap;
-            }
-
-            private void ReleaseOverlayBitmap(SKBitmap tileBitmap)
-            {
-                tileBitmap.Erase(SKColor.Empty);
-
-                lock (_overlayBitmapPool)
-                {
-                    _overlayBitmapPool.Enqueue(tileBitmap);
-                }
             }
         }
 
@@ -217,23 +103,23 @@ namespace Xamarin.Forms.Maps.Overlays.Platforms.Ios.UI.Renderers
             {
                 case NotifyCollectionChangedAction.Add:
                 {
-                    _NativeControl.AddOverlays(newItems.Select(o => (IMKOverlay)new MapOverlay(o, _SharedControl))
+                    _NativeControl.AddOverlays(newItems.Select(o => (IMKOverlay)new SkiaMapOverlay(o, _SharedControl))
                                                        .ToArray());
                     break;
                 }
                 case NotifyCollectionChangedAction.Remove:
                 {
                     _NativeControl.RemoveOverlays(_NativeControl.Overlays
-                                                                .Where(o => removedItems.Contains((o as MapOverlay).SharedOverlay))
+                                                                .Where(o => removedItems.Contains((o as SkiaMapOverlay).SharedOverlay))
                                                                 .ToArray());
                     break;
                 }
                 case NotifyCollectionChangedAction.Replace:
                 {
                     _NativeControl.RemoveOverlays(_NativeControl.Overlays
-                                                                .Where(o => removedItems.Contains((o as MapOverlay).SharedOverlay))
+                                                                .Where(o => removedItems.Contains((o as SkiaMapOverlay).SharedOverlay))
                                                                 .ToArray());
-                    _NativeControl.AddOverlays(newItems.Select(o => (IMKOverlay)new MapOverlay(o, _SharedControl))
+                    _NativeControl.AddOverlays(newItems.Select(o => (IMKOverlay)new SkiaMapOverlay(o, _SharedControl))
                                                        .ToArray());
                     break;
                 }
@@ -245,7 +131,7 @@ namespace Xamarin.Forms.Maps.Overlays.Platforms.Ios.UI.Renderers
                     }
 
                     _NativeControl.AddOverlays(_SharedControl.MapOverlays
-                                                             .Select(o => (IMKOverlay)new MapOverlay(o, _SharedControl))
+                                                             .Select(o => (IMKOverlay)new SkiaMapOverlay(o, _SharedControl))
                                                              .ToArray());
                     break;
                 }

@@ -1,4 +1,7 @@
-﻿using System;
+﻿// Pending PR : https://github.com/xamarin/Xamarin.Forms/pull/3751
+// Source : https://github.com/xamarin/Xamarin.Forms/blob/c8c7f45b15262e966d1899133bce0457972b941c/Xamarin.Forms.Maps.Android/MapRenderer.cs
+
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
