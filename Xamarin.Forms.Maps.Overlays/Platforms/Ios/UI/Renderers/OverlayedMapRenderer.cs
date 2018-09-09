@@ -47,21 +47,11 @@ namespace Xamarin.Forms.Maps.Overlays.Platforms.Ios.UI.Renderers
                 _SharedControl.MapOverlays.CollectionChanged -= MapOverlaysCollectionChanged;
             }
 
-#if DEBUG_MAP
-            if (_NativeControl != null)
-            {
-                _NativeControl.RegionWillChange -= MapRegionWillChange;
-            }
-#endif
-
             base.OnElementChanged(e);
 
             if (_NativeControl != null)
             {
                 _NativeControl.OverlayRenderer = OverlayedMapDelegate.OverlayRenderer;
-#if DEBUG_MAP
-                _NativeControl.RegionWillChange += MapRegionWillChange;
-#endif
 
                 if (_SharedControl?.MapOverlays != null)
                 {
@@ -70,26 +60,6 @@ namespace Xamarin.Forms.Maps.Overlays.Platforms.Ios.UI.Renderers
                 }
             }
         }
-
-#if DEBUG_MAP
-        private void MapRegionWillChange(object sender, MKMapViewChangeEventArgs args)
-        {
-            if (_SharedControl?.MapOverlays != null)
-            {
-                foreach (DrawableMapOverlay overlay in _SharedControl?.MapOverlays)
-                {
-                    MapOverlay nativeOverlay = _NativeControl.Overlays.FirstOrDefault(o => (o as MapOverlay).SharedOverlay == overlay) as MapOverlay;
-
-                    if (nativeOverlay != null)
-                    {
-                        MKOverlayRenderer renderer = _NativeControl.RendererForOverlay(nativeOverlay);
-
-                        renderer?.SetNeedsDisplay();
-                    }
-                }
-            }
-        }
-#endif
 
         private void MapOverlaysCollectionChanged(object sender, NotifyCollectionChangedEventArgs args)
         {
