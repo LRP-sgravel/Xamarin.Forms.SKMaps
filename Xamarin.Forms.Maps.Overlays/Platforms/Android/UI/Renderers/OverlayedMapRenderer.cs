@@ -51,6 +51,7 @@ namespace Xamarin.Forms.Maps.Overlays.Platforms.Android.UI.Renderers
                 {
                     oldMap.MapOverlays.CollectionChanged -= MapOverlaysCollectionChanged;
                 }
+
                 if (oldMap.Pins as ObservableCollection<Pin> != null)
                 {
                     ((ObservableCollection<Pin>)oldMap.Pins).CollectionChanged -= PinsCollectionChanged;
@@ -69,6 +70,7 @@ namespace Xamarin.Forms.Maps.Overlays.Platforms.Android.UI.Renderers
                 {
                     newMap.MapOverlays.CollectionChanged += MapOverlaysCollectionChanged;
                 }
+
                 if (newMap.Pins as ObservableCollection<Pin> != null)
                 {
                     ((ObservableCollection<Pin>)newMap.Pins).CollectionChanged += PinsCollectionChanged;
@@ -252,21 +254,21 @@ namespace Xamarin.Forms.Maps.Overlays.Platforms.Android.UI.Renderers
             }
         }
 
-        private void UnregisterPinCallbacks(IEnumerable<Pin> removedItems)
-        {
-            foreach (DrawableMapMarker pin in removedItems.OfType<DrawableMapMarker>())
-            {
-                pin.PropertyChanged -= OnPinPropertyChanged;
-                pin.RequestInvalidate -= OnPinInvalidateRequested;
-            }
-        }
-
         private void RegisterPinCallbacks(IEnumerable<Pin> newItems)
         {
             foreach (DrawableMapMarker pin in newItems.OfType<DrawableMapMarker>())
             {
                 pin.PropertyChanged += OnPinPropertyChanged;
                 pin.RequestInvalidate += OnPinInvalidateRequested;
+            }
+        }
+
+        private void UnregisterPinCallbacks(IEnumerable<Pin> removedItems)
+        {
+            foreach (DrawableMapMarker pin in removedItems.OfType<DrawableMapMarker>())
+            {
+                pin.PropertyChanged -= OnPinPropertyChanged;
+                pin.RequestInvalidate -= OnPinInvalidateRequested;
             }
         }
 

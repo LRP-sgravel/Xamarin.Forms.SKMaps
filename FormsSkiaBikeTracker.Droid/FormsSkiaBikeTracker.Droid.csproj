@@ -92,9 +92,6 @@
     <PackageReference Include="MvvmCross">
       <Version>6.0.1</Version>
     </PackageReference>
-    <PackageReference Include="MvvmCross.Forms">
-      <Version>6.0.1</Version>
-    </PackageReference>
     <PackageReference Include="MvvmCross.Plugin.File">
       <Version>6.0.1</Version>
     </PackageReference>
@@ -150,11 +147,6 @@
       <Version>0.4.11</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.Forms" Version="2.5.1.527436" />
-    <PackageReference Include="Xamarin.Android.Support.Design" Version="27.0.2" />
-    <PackageReference Include="Xamarin.Android.Support.v7.AppCompat" Version="27.0.2" />
-    <PackageReference Include="Xamarin.Android.Support.v4" Version="27.0.2" />
-    <PackageReference Include="Xamarin.Android.Support.v7.CardView" Version="27.0.2" />
-    <PackageReference Include="Xamarin.Android.Support.v7.MediaRouter" Version="27.0.2" />
     <PackageReference Include="Xamarin.Forms.Maps">
       <Version>2.5.1.527436</Version>
     </PackageReference>
