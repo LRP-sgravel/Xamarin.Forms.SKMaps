@@ -20,25 +20,25 @@ using Xamarin.Forms.Maps.Overlays.Models;
 using Xamarin.Forms.Maps.Overlays.Platforms.Ios.Extensions;
 using Xamarin.Forms.Maps.Overlays.Skia;
 using Xamarin.Forms.Maps.Overlays.WeakSubscription;
-using static Xamarin.Forms.Maps.Overlays.DrawableMapOverlay;
+using static Xamarin.Forms.Maps.Overlays.SKMapOverlay;
 
 namespace Xamarin.Forms.Maps.Overlays.Platforms.Ios.UI.Renderers
 {
     internal class SkiaMapOverlayRenderer : MKOverlayRenderer
     {
         private SkiaMapOverlay _NativeOverlay => Overlay as SkiaMapOverlay;
-        private DrawableMapOverlay _SharedOverlay { get; }
+        private SKMapOverlay _SharedOverlay { get; }
         private MKMapView _NativeMap { get; }
 
         private IDisposable _overlayDirtySubscription;
         private Queue<SKBitmap> _overlayBitmapPool = new Queue<SKBitmap>();
 
-        public SkiaMapOverlayRenderer(MKMapView mapView, DrawableMapOverlay sharedOverlay, IMKOverlay overlay) : base(overlay)
+        public SkiaMapOverlayRenderer(MKMapView mapView, SKMapOverlay sharedOverlay, IMKOverlay overlay) : base(overlay)
         {
             _SharedOverlay = sharedOverlay;
             _NativeMap = mapView;
 
-            _overlayDirtySubscription = _SharedOverlay.WeakSubscribe<DrawableMapOverlay, MapOverlayInvalidateEventArgs>(nameof(_SharedOverlay.RequestInvalidate),
+            _overlayDirtySubscription = _SharedOverlay.WeakSubscribe<SKMapOverlay, MapOverlayInvalidateEventArgs>(nameof(_SharedOverlay.RequestInvalidate),
                                                                                                                         MarkOverlayDirty);
         }
 

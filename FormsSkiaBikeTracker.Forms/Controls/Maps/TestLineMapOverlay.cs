@@ -20,7 +20,7 @@ using Xamarin.Forms.Maps.Overlays.Skia;
 
 namespace FormsSkiaBikeTracker.Forms.Controls.Maps
 {
-    public class TestLineMapOverlay : DrawableMapOverlay
+    public class TestLineMapOverlay : SKMapOverlay
     {
         private SKMapSpan baseBounds;
 

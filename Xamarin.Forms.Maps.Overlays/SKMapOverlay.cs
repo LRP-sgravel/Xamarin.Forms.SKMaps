@@ -16,14 +16,14 @@ using Xamarin.Forms.Maps.Overlays.Skia;
 
 namespace Xamarin.Forms.Maps.Overlays
 {
-    public abstract class DrawableMapOverlay : BindableObject
+    public abstract class SKMapOverlay : BindableObject
     {
         public class MapOverlayInvalidateEventArgs
         {
             public MapSpan GpsBounds { get; set; }
             public bool IsVisible { get; set; }
 
-            internal MapOverlayInvalidateEventArgs(DrawableMapOverlay overlay)
+            internal MapOverlayInvalidateEventArgs(SKMapOverlay overlay)
             {
                 GpsBounds = overlay.GpsBounds;
                 IsVisible = overlay.IsVisible;
@@ -32,8 +32,8 @@ namespace Xamarin.Forms.Maps.Overlays
 
         public event EventHandler<MapOverlayInvalidateEventArgs> RequestInvalidate;
 
-        public static readonly BindableProperty GpsBoundsProperty = BindableProperty.Create(nameof(GpsBounds), typeof(MapSpan), typeof(DrawableMapOverlay), new MapSpan(new Position(0, 0), 0.1, 0.1), propertyChanged: OnDrawablePropertyChanged);
-        public static readonly BindableProperty IsVisibleProperty = BindableProperty.Create(nameof(IsVisible), typeof(bool), typeof(DrawableMapOverlay), true, propertyChanged: OnDrawablePropertyChanged);
+        public static readonly BindableProperty GpsBoundsProperty = BindableProperty.Create(nameof(GpsBounds), typeof(MapSpan), typeof(SKMapOverlay), new MapSpan(new Position(0, 0), 0.1, 0.1), propertyChanged: OnDrawablePropertyChanged);
+        public static readonly BindableProperty IsVisibleProperty = BindableProperty.Create(nameof(IsVisible), typeof(bool), typeof(SKMapOverlay), true, propertyChanged: OnDrawablePropertyChanged);
 
         public MapSpan GpsBounds
         {
@@ -47,14 +47,14 @@ namespace Xamarin.Forms.Maps.Overlays
             set { SetValue(IsVisibleProperty, value); }
         }
 
-        protected DrawableMapOverlay()
+        protected SKMapOverlay()
         {
             GpsBounds = MapSpanExtensions.WorldSpan;
         }
 
         private static void OnDrawablePropertyChanged(BindableObject bindable, object oldValue, object newValue)
         {
-            DrawableMapOverlay overlay = bindable as DrawableMapOverlay;
+            SKMapOverlay overlay = bindable as SKMapOverlay;
 
             overlay.Invalidate();
         }

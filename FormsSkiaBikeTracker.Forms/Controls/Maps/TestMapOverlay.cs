@@ -22,7 +22,7 @@ using SKSvg = SkiaSharp.Extended.Svg.SKSvg;
 
 namespace FormsSkiaBikeTracker.Forms.Controls.Maps
 {
-    public class TestMapOverlay : DrawableMapOverlay
+    public class TestMapOverlay : SKMapOverlay
     {
         private Size strokeWidthArea;
         private MapSpan baseBounds;

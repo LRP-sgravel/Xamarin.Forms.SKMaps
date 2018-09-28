@@ -22,10 +22,10 @@ namespace Xamarin.Forms.Maps.Overlays
     public class OverlayedMap : Map
     {
         public static readonly BindableProperty MapOverlaysProperty = BindableProperty.Create(nameof(MapOverlays),
-                                                                                              typeof(ObservableCollection<DrawableMapOverlay>),
+                                                                                              typeof(ObservableCollection<SKMapOverlay>),
                                                                                               typeof(OverlayedMap),
-                                                                                              new ObservableCollection<DrawableMapOverlay>());
-        public ObservableCollection<DrawableMapOverlay> MapOverlays => GetValue(MapOverlaysProperty) as ObservableCollection<DrawableMapOverlay>;
+                                                                                              new ObservableCollection<SKMapOverlay>());
+        public ObservableCollection<SKMapOverlay> MapOverlays => GetValue(MapOverlaysProperty) as ObservableCollection<SKMapOverlay>;
 
         private IDisposable _overlaysCollectionChangedSubscription;
         private IDisposable _markersCollectionChangedSubscription;

@@ -94,9 +94,9 @@ namespace Xamarin.Forms.Maps.Overlays.Platforms.Android.UI.Renderers
         {
             MarkerOptions options = base.CreateMarker(pin);
 
-            if (pin is DrawableMapMarker)
+            if (pin is SKPin)
             {
-                DrawableMapMarker sharedMarker = pin as DrawableMapMarker;
+                SKPin sharedMarker = pin as SKPin;
                 SKPixmap markerBitmap = DrawMarker(sharedMarker);
 
                 options.SetIcon(BitmapDescriptorFactory.FromBitmap(markerBitmap.ToBitmap()))
@@ -108,26 +108,26 @@ namespace Xamarin.Forms.Maps.Overlays.Platforms.Android.UI.Renderers
 
         private void OnPinPropertyChanged(object sender, PropertyChangedEventArgs args)
         {
-            DrawableMapMarker pin = sender as DrawableMapMarker;
+            SKPin pin = sender as SKPin;
             Marker marker = FindMarkerForPin(pin);
 
             if (pin != null)
             {
-                if (args.PropertyName == DrawableMapMarker.WidthProperty.PropertyName ||
-                    args.PropertyName == DrawableMapMarker.HeightProperty.PropertyName)
+                if (args.PropertyName == SKPin.WidthProperty.PropertyName ||
+                    args.PropertyName == SKPin.HeightProperty.PropertyName)
                 {
                     UpdateMarkerIcon(pin, marker);
                 }
-                else if (args.PropertyName == DrawableMapMarker.IsVisibleProperty.PropertyName)
+                else if (args.PropertyName == SKPin.IsVisibleProperty.PropertyName)
                 {
                     marker.Visible = pin.IsVisible;
                 }
             }
         }
 
-        private void OnPinInvalidateRequested(object sender, DrawableMapMarker.MapMarkerInvalidateEventArgs args)
+        private void OnPinInvalidateRequested(object sender, SKPin.MapMarkerInvalidateEventArgs args)
         {
-            DrawableMapMarker pin = sender as DrawableMapMarker;
+            SKPin pin = sender as SKPin;
             Marker marker = FindMarkerForPin(pin);
 
             UpdateMarkerIcon(pin, marker);
@@ -155,17 +155,17 @@ namespace Xamarin.Forms.Maps.Overlays.Platforms.Android.UI.Renderers
 
         private void MapOverlaysCollectionChanged(object sender, NotifyCollectionChangedEventArgs args)
         {
-            IEnumerable<DrawableMapOverlay> newItems = args.NewItems?
-                                                           .OfType<DrawableMapOverlay>()
+            IEnumerable<SKMapOverlay> newItems = args.NewItems?
+                                                           .OfType<SKMapOverlay>()
                                                            .DefaultIfEmpty();
-            IEnumerable<DrawableMapOverlay> removedItems = args.OldItems?
-                                                               .OfType<DrawableMapOverlay>()
+            IEnumerable<SKMapOverlay> removedItems = args.OldItems?
+                                                               .OfType<SKMapOverlay>()
                                                                .DefaultIfEmpty();
             switch (args.Action)
             {
                 case NotifyCollectionChangedAction.Add:
                     {
-                        foreach (DrawableMapOverlay mapOverlay in newItems)
+                        foreach (SKMapOverlay mapOverlay in newItems)
                         {
                             AddTrackerForOverlay(mapOverlay);
                         }
@@ -173,7 +173,7 @@ namespace Xamarin.Forms.Maps.Overlays.Platforms.Android.UI.Renderers
                     }
                 case NotifyCollectionChangedAction.Remove:
                     {
-                        foreach (DrawableMapOverlay mapOverlay in removedItems)
+                        foreach (SKMapOverlay mapOverlay in removedItems)
                         {
                             OverlayTrackerTileProvider tracker = FindTrackerForOverlay(mapOverlay);
 
@@ -186,7 +186,7 @@ namespace Xamarin.Forms.Maps.Overlays.Platforms.Android.UI.Renderers
                     }
                 case NotifyCollectionChangedAction.Replace:
                     {
-                        foreach (DrawableMapOverlay mapOverlay in removedItems)
+                        foreach (SKMapOverlay mapOverlay in removedItems)
                         {
                             OverlayTrackerTileProvider tracker = FindTrackerForOverlay(mapOverlay);
 
@@ -196,7 +196,7 @@ namespace Xamarin.Forms.Maps.Overlays.Platforms.Android.UI.Renderers
                             }
                         }
 
-                        foreach (DrawableMapOverlay mapOverlay in newItems)
+                        foreach (SKMapOverlay mapOverlay in newItems)
                         {
                             AddTrackerForOverlay(mapOverlay);
                         }
@@ -211,7 +211,7 @@ namespace Xamarin.Forms.Maps.Overlays.Platforms.Android.UI.Renderers
                             RemoveTracker(tracker);
                         }
 
-                        foreach (DrawableMapOverlay overlay in _SharedControl.MapOverlays)
+                        foreach (SKMapOverlay overlay in _SharedControl.MapOverlays)
                         {
                             AddTrackerForOverlay(overlay);
                         }
@@ -222,11 +222,11 @@ namespace Xamarin.Forms.Maps.Overlays.Platforms.Android.UI.Renderers
 
         private void PinsCollectionChanged(object sender, NotifyCollectionChangedEventArgs args)
         {
-            IEnumerable<DrawableMapMarker> newItems = args.NewItems?
-                                                          .OfType<DrawableMapMarker>()
+            IEnumerable<SKPin> newItems = args.NewItems?
+                                                          .OfType<SKPin>()
                                                           .DefaultIfEmpty();
-            IEnumerable<DrawableMapMarker> removedItems = args.OldItems?
-                                                              .OfType<DrawableMapMarker>()
+            IEnumerable<SKPin> removedItems = args.OldItems?
+                                                              .OfType<SKPin>()
                                                               .DefaultIfEmpty();
             switch (args.Action)
             {
@@ -256,7 +256,7 @@ namespace Xamarin.Forms.Maps.Overlays.Platforms.Android.UI.Renderers
 
         private void RegisterPinCallbacks(IEnumerable<Pin> newItems)
         {
-            foreach (DrawableMapMarker pin in newItems.OfType<DrawableMapMarker>())
+            foreach (SKPin pin in newItems.OfType<SKPin>())
             {
                 pin.PropertyChanged += OnPinPropertyChanged;
                 pin.RequestInvalidate += OnPinInvalidateRequested;
@@ -265,14 +265,14 @@ namespace Xamarin.Forms.Maps.Overlays.Platforms.Android.UI.Renderers
 
         private void UnregisterPinCallbacks(IEnumerable<Pin> removedItems)
         {
-            foreach (DrawableMapMarker pin in removedItems.OfType<DrawableMapMarker>())
+            foreach (SKPin pin in removedItems.OfType<SKPin>())
             {
                 pin.PropertyChanged -= OnPinPropertyChanged;
                 pin.RequestInvalidate -= OnPinInvalidateRequested;
             }
         }
 
-        private void AddTrackerForOverlay(DrawableMapOverlay sharedOverlay)
+        private void AddTrackerForOverlay(SKMapOverlay sharedOverlay)
         {
             OverlayTrackerTileProvider tracker = new OverlayTrackerTileProvider(Context, NativeMap, sharedOverlay);
             TileOverlayOptions overlayOptions = new TileOverlayOptions().InvokeTileProvider(tracker);
@@ -292,19 +292,19 @@ namespace Xamarin.Forms.Maps.Overlays.Platforms.Android.UI.Renderers
             _TileTrackers.Remove(tracker);
         }
 
-        private OverlayTrackerTileProvider FindTrackerForOverlay(DrawableMapOverlay mapOverlay)
+        private OverlayTrackerTileProvider FindTrackerForOverlay(SKMapOverlay mapOverlay)
         {
             return _TileTrackers.FirstOrDefault(t => t.SharedOverlay == mapOverlay);
         }
 
-        private void UpdateMarkerIcon(DrawableMapMarker pin, Marker marker)
+        private void UpdateMarkerIcon(SKPin pin, Marker marker)
         {
             SKPixmap markerBitmap = DrawMarker(pin);
 
             marker.SetIcon(BitmapDescriptorFactory.FromBitmap(markerBitmap.ToBitmap()));
         }
 
-        private SKPixmap DrawMarker(DrawableMapMarker sharedMarker)
+        private SKPixmap DrawMarker(SKPin sharedMarker)
         {
             double bitmapWidth = sharedMarker.Width * Context.Resources.DisplayMetrics.Density;
             double bitmapHeight = sharedMarker.Height * Context.Resources.DisplayMetrics.Density;
@@ -319,7 +319,7 @@ namespace Xamarin.Forms.Maps.Overlays.Platforms.Android.UI.Renderers
         public bool OnMarkerClick(Marker marker)
         {
             Pin clickedMarker = _SharedControl.Pins.FirstOrDefault(p => (string)p.Id == marker.Id);
-            DrawableMapMarker drawableMarker = clickedMarker as DrawableMapMarker;
+            SKPin drawableMarker = clickedMarker as SKPin;
 
             return drawableMarker?.Clickable ?? false;
         }

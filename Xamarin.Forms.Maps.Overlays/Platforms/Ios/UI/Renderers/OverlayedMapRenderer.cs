@@ -1,4 +1,4 @@
-﻿// **********************************************************************
+// **********************************************************************
 // 
 //   OverlayedMapRenderer.cs
 //   
@@ -10,12 +10,16 @@
 // ***********************************************************************
 
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Collections.Specialized;
+using System.ComponentModel;
 using System.Linq;
+using CoreGraphics;
 using MapKit;
 using Xamarin.Forms;
 using Xamarin.Forms.Maps.iOS;
 using Xamarin.Forms.Maps.Overlays;
+using Xamarin.Forms.Maps.Overlays.Platforms.Ios.Extensions;
 using Xamarin.Forms.Maps.Overlays.Platforms.Ios.UI.Renderers;
 using Xamarin.Forms.Platform.iOS;
 
@@ -40,34 +44,56 @@ namespace Xamarin.Forms.Maps.Overlays.Platforms.Ios.UI.Renderers
         private OverlayedMap _SharedControl => Element as OverlayedMap;
         private MKMapView _NativeControl => Control as MKMapView;
 
-        protected override void OnElementChanged(ElementChangedEventArgs<View> e)
+        protected override void OnElementChanged(ElementChangedEventArgs<View> args)
         {
-            if (_SharedControl?.MapOverlays != null)
+            OverlayedMap oldMap = args.OldElement as OverlayedMap;
+            OverlayedMap newMap = args.NewElement as OverlayedMap;
+
+            if (oldMap != null)
             {
-                _SharedControl.MapOverlays.CollectionChanged -= MapOverlaysCollectionChanged;
+                _NativeControl.OverlayRenderer = null;
+                _NativeControl.GetViewForAnnotation = null;
+
+                if (oldMap.MapOverlays != null)
+                {
+                    oldMap.MapOverlays.CollectionChanged -= MapOverlaysCollectionChanged;
+                }
+
+                if (oldMap.Pins as ObservableCollection<Pin> != null)
+                {
+                    ((ObservableCollection<Pin>)oldMap.Pins).CollectionChanged -= PinsCollectionChanged;
+                }
+                UnregisterPinCallbacks(oldMap.Pins);
             }
+            
+            base.OnElementChanged(args);
 
-            base.OnElementChanged(e);
-
-            if (_NativeControl != null)
+            if (newMap != null)
             {
                 _NativeControl.OverlayRenderer = OverlayedMapDelegate.OverlayRenderer;
+                _NativeControl.GetViewForAnnotation = GetViewForPin;
 
                 if (_SharedControl?.MapOverlays != null)
                 {
                     _SharedControl.MapOverlays.CollectionChanged += MapOverlaysCollectionChanged;
                     SetupMapOverlays();
                 }
+
+                if (newMap.Pins as ObservableCollection<Pin> != null)
+                {
+                    ((ObservableCollection<Pin>)newMap.Pins).CollectionChanged += PinsCollectionChanged;
+                }
+                RegisterPinCallbacks(newMap.Pins);
             }
         }
 
         private void MapOverlaysCollectionChanged(object sender, NotifyCollectionChangedEventArgs args)
         {
-            IEnumerable<DrawableMapOverlay> newItems = args.NewItems?
-                                                           .Cast<DrawableMapOverlay>()
+            IEnumerable<SKMapOverlay> newItems = args.NewItems?
+                                                           .Cast<SKMapOverlay>()
                                                            .DefaultIfEmpty();
-            IEnumerable<DrawableMapOverlay> removedItems = args.OldItems?
-                                                               .Cast<DrawableMapOverlay>()
+            IEnumerable<SKMapOverlay> removedItems = args.OldItems?
+                                                               .Cast<SKMapOverlay>()
                                                                .DefaultIfEmpty();
             switch (args.Action)
             {
@@ -107,10 +133,170 @@ namespace Xamarin.Forms.Maps.Overlays.Platforms.Ios.UI.Renderers
                 }
             }
         }
-        
+
+        private void PinsCollectionChanged(object sender, NotifyCollectionChangedEventArgs args)
+        {
+            IEnumerable<SKPin> newItems = args.NewItems?
+                                                          .OfType<SKPin>()
+                                                          .DefaultIfEmpty();
+            IEnumerable<SKPin> removedItems = args.OldItems?
+                                                              .OfType<SKPin>()
+                                                              .DefaultIfEmpty();
+            switch (args.Action)
+            {
+                case NotifyCollectionChangedAction.Add:
+                    {
+                        RegisterPinCallbacks(newItems);
+                        break;
+                    }
+                case NotifyCollectionChangedAction.Remove:
+                    {
+                        UnregisterPinCallbacks(removedItems);
+                        break;
+                    }
+                case NotifyCollectionChangedAction.Replace:
+                    {
+                        UnregisterPinCallbacks(removedItems);
+                        RegisterPinCallbacks(newItems);
+                        break;
+                    }
+                case NotifyCollectionChangedAction.Reset:
+                    {
+                        // Nothing to do, event is already registered
+                        break;
+                    }
+            }
+        }
+
         private void SetupMapOverlays()
         {
             MapOverlaysCollectionChanged(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Reset));
         }
+
+        private MKAnnotationView GetViewForPin(MKMapView mapView, IMKAnnotation annotation)
+        {
+            SkiaPinAnnotation skiaAnnotation = annotation as SkiaPinAnnotation;
+
+            if (skiaAnnotation != null)
+            {
+                SKPin pin = skiaAnnotation.SharedPin;
+                SkiaPinAnnotationView pinView = mapView.DequeueReusableAnnotation(SkiaPinAnnotationView.ViewIdentifier) as SkiaPinAnnotationView
+                                                    ?? CreateAnnotationView(skiaAnnotation);
+
+                pinView.UpdateImage();
+                pinView.Hidden = !pin.IsVisible;
+
+                return pinView;
+            }
+
+            return null;
+        }
+
+        private SkiaPinAnnotationView CreateAnnotationView(SkiaPinAnnotation skiaAnnotation)
+        {
+            return new SkiaPinAnnotationView(skiaAnnotation);
+        }
+
+        private void RegisterPinCallbacks(IEnumerable<Pin> newItems)
+        {
+            foreach (SKPin pin in newItems.OfType<SKPin>())
+            {
+                pin.PropertyChanged += OnPinPropertyChanged;
+                pin.RequestInvalidate += OnPinInvalidateRequested;
+            }
+        }
+
+        private void UnregisterPinCallbacks(IEnumerable<Pin> removedItems)
+        {
+            foreach (SKPin pin in removedItems.OfType<SKPin>())
+            {
+                pin.PropertyChanged -= OnPinPropertyChanged;
+                pin.RequestInvalidate -= OnPinInvalidateRequested;
+            }
+        }
+
+        private void OnPinPropertyChanged(object sender, PropertyChangedEventArgs args)
+        {
+            Pin pin = sender as Pin;
+            SKPin skiaPin = pin as SKPin;
+            MKPointAnnotation annotation = FindAnnotationForPin(pin) as MKPointAnnotation;
+
+            if (skiaPin != null)
+            {
+                if (args.PropertyName == SKPin.WidthProperty.PropertyName ||
+                    args.PropertyName == SKPin.HeightProperty.PropertyName)
+                {
+                    UpdateAnnotationIcon(skiaPin);
+                }
+                else if (args.PropertyName == SKPin.IsVisibleProperty.PropertyName)
+                {
+                    MKAnnotationView view = _NativeControl.ViewForAnnotation(annotation);
+
+                    if (view != null)
+                    {
+                        view.Hidden = !skiaPin.IsVisible;
+                    }
+                }
+            }
+
+            if (pin != null && annotation != null)
+            {
+                if (args.PropertyName == Pin.LabelProperty.PropertyName)
+                {
+                    annotation.Title = pin.Label;
+                }
+                else if (args.PropertyName == Pin.AddressProperty.PropertyName)
+                {
+                    annotation.Subtitle = pin.Address;
+                }
+                else if (args.PropertyName == Pin.PositionProperty.PropertyName)
+                {
+                    annotation.SetCoordinate(pin.Position.ToLocationCoordinate());
+                }
+            }
+        }
+
+        protected override IMKAnnotation CreateAnnotation(Pin pin)
+        {
+            if (pin is SKPin)
+            {
+                IMKAnnotation result = new SkiaPinAnnotation(pin as SKPin);
+
+                pin.Id = result;
+
+                return result;
+            }
+
+            return base.CreateAnnotation(pin);
+        }
+
+        private IMKAnnotation FindAnnotationForPin(Pin pin)
+        {
+            if (pin == null)
+            {
+                return null;
+            }
+
+            return pin.Id as IMKAnnotation;
+        }
+
+        private void OnPinInvalidateRequested(object sender, SKPin.MapMarkerInvalidateEventArgs args)
+        {
+            SKPin pin = sender as SKPin;
+
+            if (pin != null)
+            {
+                UpdateAnnotationIcon(pin);
+            }
+        }
+
+        private void UpdateAnnotationIcon(SKPin pin)
+        {
+            IMKAnnotation annotation = FindAnnotationForPin(pin);
+            MKAnnotationView view = _NativeControl.ViewForAnnotation(annotation);
+
+            (view as SkiaPinAnnotationView)?.UpdateImage();
+        }
     }
 }
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                           

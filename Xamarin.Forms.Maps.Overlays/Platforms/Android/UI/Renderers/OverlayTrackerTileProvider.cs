@@ -12,7 +12,7 @@ using Xamarin.Forms.Maps.Overlays.Models;
 using Xamarin.Forms.Maps.Overlays.Platforms.Droid.Extensions;
 using Xamarin.Forms.Maps.Overlays.Skia;
 using Xamarin.Forms.Maps.Overlays.WeakSubscription;
-using static Xamarin.Forms.Maps.Overlays.DrawableMapOverlay;
+using static Xamarin.Forms.Maps.Overlays.SKMapOverlay;
 
 namespace Xamarin.Forms.Maps.Overlays.Platforms.Android.UI.Renderers
 {
@@ -39,7 +39,7 @@ namespace Xamarin.Forms.Maps.Overlays.Platforms.Android.UI.Renderers
         }
 
         public TileOverlay TileOverlay { get; set; }
-        public DrawableMapOverlay SharedOverlay { get; }
+        public SKMapOverlay SharedOverlay { get; }
 
         private int _LastZoomLevel { get; set; } = -1;
         private Context _Context { get; }
@@ -49,13 +49,13 @@ namespace Xamarin.Forms.Maps.Overlays.Platforms.Android.UI.Renderers
         private IDisposable _overlayDirtySubscription;
         private Queue<SKBitmap> _overlayBitmapPool = new Queue<SKBitmap>();
 
-        public OverlayTrackerTileProvider(Context context, GoogleMap nativeMap, DrawableMapOverlay sharedOverlay)
+        public OverlayTrackerTileProvider(Context context, GoogleMap nativeMap, SKMapOverlay sharedOverlay)
         {
             _Context = context;
             _NativeMap = nativeMap;
             SharedOverlay = sharedOverlay;
 
-            _overlayDirtySubscription = SharedOverlay.WeakSubscribe<DrawableMapOverlay, MapOverlayInvalidateEventArgs>(nameof(SharedOverlay.RequestInvalidate),
+            _overlayDirtySubscription = SharedOverlay.WeakSubscribe<SKMapOverlay, MapOverlayInvalidateEventArgs>(nameof(SharedOverlay.RequestInvalidate),
                                                                                                  MarkOverlayDirty);
         }
 

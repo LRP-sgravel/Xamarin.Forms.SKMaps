@@ -21,7 +21,7 @@ using Xamarin.Forms.Maps.Overlays.Skia;
 
 namespace FormsSkiaBikeTracker.Forms.Controls.Maps
 {
-    public class Test2xScaleOffsetMapOverlay : DrawableMapOverlay
+    public class Test2xScaleOffsetMapOverlay : SKMapOverlay
     {
         public Test2xScaleOffsetMapOverlay()
         {

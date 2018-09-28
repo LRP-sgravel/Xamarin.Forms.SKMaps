@@ -21,7 +21,7 @@ using SKSvg = SkiaSharp.Extended.Svg.SKSvg;
 
 namespace FormsSkiaBikeTracker.Forms.Controls.Maps
 {
-    public class ImageOverlay : DrawableMapMarker
+    public class ImageOverlay : SKPin
     {
         public static readonly BindableProperty IconProperty = BindableProperty.Create(nameof(Icon), typeof(ImageSource), typeof(ImageOverlay), propertyChanged: OnIconChanged);
         

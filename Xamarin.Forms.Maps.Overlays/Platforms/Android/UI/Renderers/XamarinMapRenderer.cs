@@ -329,10 +329,10 @@ namespace Xamarin.Forms.Maps.Overlays.Platforms.Android.UI.Renderers
                     map.MoveCamera(update);
                 }
             }
-            catch (IllegalStateException exc)
+            catch (IllegalStateException e)
             {
-                System.Diagnostics.Debug.WriteLine("MoveToRegion exception: " + exc);
-                Log.Warning("Xamarin.Forms MapRenderer", $"MoveToRegion exception: {exc}");
+                System.Diagnostics.Debug.WriteLine("MoveToRegion exception: " + e);
+                Log.Warning("Xamarin.Forms MapRenderer", $"MoveToRegion exception: {e}");
             }
         }
 

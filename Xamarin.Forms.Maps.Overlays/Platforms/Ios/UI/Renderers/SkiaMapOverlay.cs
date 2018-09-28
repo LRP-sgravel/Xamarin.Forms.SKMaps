@@ -11,9 +11,6 @@
 
 using CoreLocation;
 using MapKit;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using Xamarin.Forms.Maps.Overlays.Platforms.Ios.Extensions;
 
 namespace Xamarin.Forms.Maps.Overlays.Platforms.Ios.UI.Renderers
@@ -23,10 +20,10 @@ namespace Xamarin.Forms.Maps.Overlays.Platforms.Ios.UI.Renderers
         public override CLLocationCoordinate2D Coordinate => SharedOverlay.GpsBounds.Center.ToLocationCoordinate();
         public override MKMapRect BoundingMapRect => SharedOverlay.GpsBounds.ToMapRect();
 
-        public DrawableMapOverlay SharedOverlay { get; }
+        public SKMapOverlay SharedOverlay { get; }
         private OverlayedMap _SharedControl { get; }
 
-        public SkiaMapOverlay(DrawableMapOverlay sharedOverlay, OverlayedMap sharedControl)
+        public SkiaMapOverlay(SKMapOverlay sharedOverlay, OverlayedMap sharedControl)
         {
             SharedOverlay = sharedOverlay;
             _SharedControl = sharedControl;

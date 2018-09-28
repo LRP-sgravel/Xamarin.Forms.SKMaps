@@ -25,7 +25,7 @@ using Xamarin.Forms.Maps.Overlays.Skia;
 
 namespace FormsSkiaBikeTracker.Forms.Controls.Maps
 {
-    public class RouteOverlay : DrawableMapOverlay
+    public class RouteOverlay : SKMapOverlay
     {
         public static readonly BindableProperty RouteProperty = BindableProperty.Create(nameof(Route), typeof(IRoute), typeof(RouteOverlay), propertyChanged: OnRouteChanged);
         public static readonly BindableProperty LineColorProperty = BindableProperty.Create(nameof(LineColor), typeof(Color), typeof(RouteOverlay), Color.Black);

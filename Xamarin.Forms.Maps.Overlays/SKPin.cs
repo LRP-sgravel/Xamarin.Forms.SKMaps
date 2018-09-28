@@ -3,14 +3,14 @@ using System;
 
 namespace Xamarin.Forms.Maps.Overlays
 {
-    public abstract class DrawableMapMarker : Pin
+    public abstract class SKPin : Pin
     {
         public class MapMarkerInvalidateEventArgs
         {
             public double Width { get; }
             public double Height { get; }
 
-            internal MapMarkerInvalidateEventArgs(DrawableMapMarker marker)
+            internal MapMarkerInvalidateEventArgs(SKPin marker)
             {
                 Width = marker.Width;
                 Height = marker.Height;
@@ -19,10 +19,10 @@ namespace Xamarin.Forms.Maps.Overlays
 
         public event EventHandler<MapMarkerInvalidateEventArgs> RequestInvalidate;
 
-        public static readonly BindableProperty WidthProperty = BindableProperty.Create(nameof(Width), typeof(double), typeof(DrawableMapMarker), 32.0, propertyChanged: OnDrawablePropertyChanged);
-        public static readonly BindableProperty HeightProperty = BindableProperty.Create(nameof(Height), typeof(double), typeof(DrawableMapMarker), 32.0, propertyChanged: OnDrawablePropertyChanged);
-        public static readonly BindableProperty IsVisibleProperty = BindableProperty.Create(nameof(IsVisible), typeof(bool), typeof(DrawableMapMarker), true);
-        public static readonly BindableProperty ClickableProperty = BindableProperty.Create(nameof(Clickable), typeof(bool), typeof(DrawableMapMarker), true);
+        public static readonly BindableProperty WidthProperty = BindableProperty.Create(nameof(Width), typeof(double), typeof(SKPin), 32.0, propertyChanged: OnDrawablePropertyChanged);
+        public static readonly BindableProperty HeightProperty = BindableProperty.Create(nameof(Height), typeof(double), typeof(SKPin), 32.0, propertyChanged: OnDrawablePropertyChanged);
+        public static readonly BindableProperty IsVisibleProperty = BindableProperty.Create(nameof(IsVisible), typeof(bool), typeof(SKPin), true);
+        public static readonly BindableProperty ClickableProperty = BindableProperty.Create(nameof(Clickable), typeof(bool), typeof(SKPin), true);
 
         public double Width
         {
@@ -50,7 +50,7 @@ namespace Xamarin.Forms.Maps.Overlays
 
         private static void OnDrawablePropertyChanged(BindableObject bindable, object oldValue, object newValue)
         {
-            DrawableMapMarker marker = bindable as DrawableMapMarker;
+            SKPin marker = bindable as SKPin;
 
             marker.Invalidate();
         }
