@@ -251,7 +251,7 @@ namespace Xamarin.Forms.Maps.Overlays.Platforms.Ios.UI.Renderers
                 }
                 else if (args.PropertyName == Pin.PositionProperty.PropertyName)
                 {
-                    annotation.SetCoordinate(pin.Position.ToLocationCoordinate());
+                    annotation.Coordinate = pin.Position.ToLocationCoordinate();
                 }
             }
         }

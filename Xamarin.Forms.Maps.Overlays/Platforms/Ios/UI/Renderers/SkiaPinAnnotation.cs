@@ -1,4 +1,5 @@
-﻿using MapKit;
+﻿using CoreLocation;
+using MapKit;
 using Xamarin.Forms.Maps.Overlays.Platforms.Ios.Extensions;
 
 namespace Xamarin.Forms.Maps.Overlays.Platforms.Ios.UI.Renderers
@@ -15,5 +16,56 @@ namespace Xamarin.Forms.Maps.Overlays.Platforms.Ios.UI.Renderers
             Subtitle = pin.Address;
             SetCoordinate(pin.Position.ToLocationCoordinate());
         }
+
+        public override string Title
+        {
+            get => base.Title;
+            set
+            {
+                if (Title != value)
+                {
+                    string titleKey = nameof(Title).ToLower();
+
+                    WillChangeValue(titleKey);
+                    Title = value;
+                    DidChangeValue(titleKey);
+                }
+            }
+        }
+
+        public override string Subtitle
+        {
+            get => base.Subtitle;
+            set
+            {
+                if (Subtitle != value)
+                {
+                    string subtitleKey = nameof(Subtitle).ToLower();
+
+                    WillChangeValue(subtitleKey);
+                    base.Subtitle = value;
+                    DidChangeValue(subtitleKey);
+                }
+            }
+        }
+
+        public override CLLocationCoordinate2D Coordinate
+        {
+            get => base.Coordinate;
+            set
+            {
+                if (Coordinate.Latitude != value.Latitude ||
+                    Coordinate.Longitude != value.Longitude)
+                {
+                    string coordinateKey = nameof(Coordinate).ToLower();
+
+                    WillChangeValue(coordinateKey);
+                    base.Coordinate = value;
+                    DidChangeValue(coordinateKey);
+                }
+            }
+        }
+
+        public override void SetCoordinate(CLLocationCoordinate2D value) => Coordinate = value;
     }
 }
