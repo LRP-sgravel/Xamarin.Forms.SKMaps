@@ -4,16 +4,14 @@
                      xmlns="http://xamarin.com/schemas/2014/forms"
                      xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                      xmlns:viewModels="clr-namespace:FormsSkiaBikeTracker.ViewModels;assembly=FormsSkiaBikeTracker"
-                     xmlns:lrpForms="clr-namespace:LRPFramework.Views.Forms.Markup;assembly=LRPFramework.Views.Forms"
-                     xmlns:lrpViews="clr-namespace:LRPFramework.Views.Forms;assembly=LRPFramework.Views.Forms"
-                     xmlns:lrpMvxForms="clr-namespace:LRPFramework.Mvx.Views.Forms.Markup;assembly=LRPFramework.Mvx.Views.Forms"
                      xmlns:mvx="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
                      xmlns:controls="clr-namespace:FormsSkiaBikeTracker.Forms.Controls;assembly=FormsSkiaBikeTracker.Forms"
                      xmlns:effects="clr-namespace:FormsSkiaBikeTracker.Forms.UI.Effects;assembly=FormsSkiaBikeTracker.Forms"
+                     xmlns:markup="clr-namespace:FormsSkiaBikeTracker.Forms.Markup;assembly=FormsSkiaBikeTracker.Forms"
                      x:Class="FormsSkiaBikeTracker.Forms.Pages.LoginPage"
                      x:Name="LoginPageRoot"
-                     Title="{lrpForms:LocalizedText Login}"
-                     NavigationPage.BackButtonTitle="{lrpForms:LocalizedText Cancel}"
+                     Title="{markup:LocalizedText Login}"
+                     NavigationPage.BackButtonTitle="{markup:LocalizedText Cancel}"
                      NavigationPage.HasNavigationBar="False">
 
     <Grid RowSpacing="0">
@@ -25,16 +23,16 @@
             <RowDefinition Height="120" />
         </Grid.RowDefinitions>
 
-        <lrpViews:SvgImage Grid.Row="0" 
+        <controls:SvgImage Grid.Row="0" 
                             Margin="40, 50, 40, 40"
                             HeightRequest="100"
                             WidthRequest="300"
                             HorizontalOptions="Center"
                             VerticalOptions="Fill"
                             Aspect="AspectFit"
-                            Source="{lrpMvxForms:EmbeddedImage full_logo.svg}" />
+                            Source="{markup:EmbeddedImage full_logo.svg}" />
 
-        <lrpViews:LinearGradientBoxView Grid.Row="1"
+        <controls:LinearGradientBoxView Grid.Row="1"
                                         EndColor="AliceBlue"
                                         StartColor="LightSkyBlue" />
         <ListView x:Name="AthletesListView"
@@ -67,12 +65,12 @@
                 <effects:NoSelectionListViewEffect />
             </ListView.Effects>
         </ListView>
-        <lrpViews:LinearGradientBoxView Grid.Row="3"
+        <controls:LinearGradientBoxView Grid.Row="3"
                                         StartColor="AliceBlue"
                                         EndColor="LightSkyBlue" />
         <controls:BorderButtonView Grid.Row="4"
                                     Margin="20"
-                                    Text="{lrpForms:LocalizedText SignUp}"
+                                    Text="{markup:LocalizedText SignUp}"
                                     BorderWidth="4"
                                     Clicked="SignupButtonClicked"
                                     Command="{Binding GoToSignupCommand}" />

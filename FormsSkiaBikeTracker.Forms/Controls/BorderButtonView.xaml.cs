@@ -11,7 +11,6 @@
 
 using System;
 using System.Windows.Input;
-using LRPFramework.Views.Forms;
 using MvvmCross.WeakSubscription;
 using SkiaSharp;
 using SkiaSharp.Views.Forms;

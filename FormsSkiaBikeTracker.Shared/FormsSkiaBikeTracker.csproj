@@ -48,11 +48,8 @@
     <PackageReference Include="Acr.Settings" Version="9.0.0" />
     <PackageReference Include="Acr.UserDialogs" Version="7.0.1" />
     <PackageReference Include="Fody" Version="2.4.6" />
-    <PackageReference Include="LRPFramework" Version="2.0.0" />
-    <PackageReference Include="LRPFramework.Mvx" Version="2.0.0" />
     <PackageReference Include="Microsoft.NETCore.Platforms" Version="2.1.0" />
     <PackageReference Include="MvvmCross" Version="6.0.1" />
-    <PackageReference Include="MvvmCross.Forms" Version="6.0.1" />
     <PackageReference Include="MvvmCross.Plugin.File" Version="6.0.1" />
     <PackageReference Include="MvvmCross.Plugin.Json" Version="6.0.1" />
     <PackageReference Include="MvvmCross.Plugin.JsonLocalization" Version="6.0.1" />

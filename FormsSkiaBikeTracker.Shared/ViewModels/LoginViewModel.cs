@@ -14,24 +14,37 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Acr.UserDialogs;
 using FormsSkiaBikeTracker.Models;
-using FormsSkiaBikeTracker.ViewModels;
-using LRPFramework.Mvx.ViewModels;
-using LRPFramework.Services.Threading;
+using FormsSkiaBikeTracker.Services;
+using FormsSkiaBikeTracker.Services.Interface;
+using MvvmCross.Base;
 using MvvmCross.Commands;
 using MvvmCross.IoC;
 using MvvmCross.Logging;
+using MvvmCross.Navigation;
+using MvvmCross.ViewModels;
 using Realms;
 using SimpleCrypto;
 
 namespace FormsSkiaBikeTracker.ViewModels
 {
-    public class LoginViewModel : LRPViewModel
+    public class LoginViewModel : MvxViewModel
     {
         [MvxInject]
         public ICryptoService Crypto { get; set; }
 
         [MvxInject]
         public IUserDialogs AlertInteraction { get; set; }
+
+        [MvxInject]
+        public IMvxNavigationService NavigationService { get; set; }
+
+        [MvxInject]
+        public IMvxMainThreadAsyncDispatcher MainThread { get; set; }
+
+        [MvxInject]
+        public IResourceLocator ResourceLocator { get; set; }
+
+        public LanguageBinder LanguageBinder { get; private set; }
 
         private IEnumerable<Athlete> _athletes;
         public IEnumerable<Athlete> Athletes
@@ -75,13 +88,22 @@ namespace FormsSkiaBikeTracker.ViewModels
             SelectedAthlete = pickedAthlete;
         }
 
+        public override void Start()
+        {
+            base.Start();
+
+            LanguageBinder  = new LanguageBinder(ResourceLocator.ResourcesNamespace,
+                                                 nameof(LoginViewModel),
+                                                 false);
+        }
+
         public override Task Initialize()
         {
-            MainThread.Run(() =>
-            {
-                Athletes = Realm.GetInstance(RealmConstants.RealmConfiguration)
-                                .All<Athlete>();
-            });
+            MainThread.ExecuteOnMainThreadAsync(() =>
+                {
+                    Athletes = Realm.GetInstance(RealmConstants.RealmConfiguration)
+                                    .All<Athlete>();
+                });
 
             return base.Initialize();
         }
@@ -114,7 +136,7 @@ namespace FormsSkiaBikeTracker.ViewModels
 
         private void GoToSignup()
         {
-            NavigationService.Navigate<SignUpViewModel, bool>(true);
+            NavigationService.Navigate<SignUpViewModel>();
         }
     }
 }

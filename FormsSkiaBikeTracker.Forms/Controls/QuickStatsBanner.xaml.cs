@@ -1,6 +1,6 @@
 ﻿using System.Windows.Input;
 using FormsSkiaBikeTracker.Extensions;
-using LRPFramework.Services.Resources;
+using FormsSkiaBikeTracker.Services.Interface;
 using MvvmCross;
 using MvvmCross.Localization;
 using Xamarin.Forms;

@@ -13,14 +13,14 @@ using System;
 using System.IO;
 using FormsSkiaBikeTracker.Models;
 using FormsSkiaBikeTracker.Services.Interface;
-using LRPFramework.Mvx.ViewModels;
 using MvvmCross.IoC;
 using MvvmCross.Plugin.File;
+using MvvmCross.ViewModels;
 using SkiaSharp;
 
 namespace FormsSkiaBikeTracker.ViewModels
 {
-    public class AthleteLoginControlViewModel : LRPViewModel
+    public class AthleteLoginControlViewModel : MvxViewModel
     {
         public Athlete Athlete
         {

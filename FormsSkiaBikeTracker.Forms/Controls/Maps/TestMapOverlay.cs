@@ -9,7 +9,7 @@
 // 
 // ***********************************************************************
 
-using LRPFramework.Services.Resources;
+using FormsSkiaBikeTracker.Services.Interface;
 using MvvmCross;
 using SkiaSharp;
 using SkiaSharp.Views.Forms;

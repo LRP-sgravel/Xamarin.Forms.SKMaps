@@ -2,8 +2,7 @@
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:controls="clr-namespace:FormsSkiaBikeTracker.Forms.Controls;assembly=FormsSkiaBikeTracker.Forms"
-             xmlns:lrpForms="clr-namespace:LRPFramework.Views.Forms;assembly=LRPFramework.Views.Forms"
-             xmlns:lrpMvxForms="clr-namespace:LRPFramework.Views.Forms.Markup;assembly=LRPFramework.Views.Forms"
+             xmlns:markup="clr-namespace:FormsSkiaBikeTracker.Forms.Markup;assembly=FormsSkiaBikeTracker.Forms"
              x:Class="FormsSkiaBikeTracker.Forms.Controls.QuickStatsBanner">
     <ContentView.Content>
         <Grid HorizontalOptions="FillAndExpand"
@@ -41,7 +40,7 @@
                               TextColor="DarkBlue"
                               FontResourcePath="KumarOne-Regular.otf"
                               FontSize="16"
-                              Text="{lrpMvxForms:LocalizedText Distance}" />
+                              Text="{markup:LocalizedText Distance}" />
             <controls:SKLabel x:Name="DistanceLabel"
                               Grid.Row="1" Grid.Column="1"
                               HorizontalOptions="Center"
@@ -50,15 +49,15 @@
                               FontResourcePath="KumarOne-Regular.otf"
                               FontSize="14" />
 
-            <lrpForms:SvgImage x:Name="StartStopImage"
+            <controls:SvgImage x:Name="StartStopImage"
                                Grid.Row="0" Grid.Column="2" Grid.RowSpan="2"
                                HorizontalOptions="FillAndExpand"
                                VerticalOptions="FillAndExpand"
                                Margin="15">
-                <lrpForms:SvgImage.GestureRecognizers>
+                <controls:SvgImage.GestureRecognizers>
                     <TapGestureRecognizer x:Name="StartStopTapGesture" />
-                </lrpForms:SvgImage.GestureRecognizers>
-            </lrpForms:SvgImage>
+                </controls:SvgImage.GestureRecognizers>
+            </controls:SvgImage>
         </Grid>
     </ContentView.Content>
 </ContentView>

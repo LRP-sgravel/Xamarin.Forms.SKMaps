@@ -10,23 +10,22 @@
 // ***********************************************************************
 
 using System.Reflection;
-using System.Threading.Tasks;
 using Acr.Settings;
 using Acr.UserDialogs;
 using FormsSkiaBikeTracker.Services;
 using FormsSkiaBikeTracker.Services.Interface;
 using MvvmCross.Localization;
-using FormsSkiaBikeTracker.ViewModels;
-using LRPFramework.Mvx.Services.Localization;
-using LRPFramework.Services;
-using LRPFramework.Services.Resources;
-using LRPFramework.Services.Threading;
 using MvvmCross;
 using MvvmCross.IoC;
 using MvvmCross.Plugin.JsonLocalization;
 using MvvmCross.ViewModels;
 using SimpleCrypto;
 using System.Globalization;
+using FormsSkiaBikeTracker.ViewModels;
+using FormsSkiaBikeTracker.Models;
+using Realms;
+using System.Linq;
+using MvvmCross.Base;
 
 namespace FormsSkiaBikeTracker
 {
@@ -41,14 +40,22 @@ namespace FormsSkiaBikeTracker
 
             InitializeServices();
 
-            RegisterAppStart<LoadingViewModel>();
+            if (Realm.GetInstance(RealmConstants.RealmConfiguration)
+                     .All<Athlete>()
+                     .Any())
+            {
+                RegisterAppStart<LoginViewModel>();
+            }
+            else
+            {
+                RegisterAppStart<SignUpViewModel>();
+            }
 
             base.Initialize();
         }
 
         private void InitializeServices()
         {
-            Mvx.LazyConstructAndRegisterSingleton<ILRPBootstrapper, LRPBootstrapper>();
             Mvx.LazyConstructAndRegisterSingleton<ICryptoService, PBKDF2>();
             Mvx.RegisterSingleton<ILocationTracker>(InitializeLocationTracker);
             Mvx.RegisterSingleton<IResourceLocator>(InitializeResources);
@@ -56,8 +63,7 @@ namespace FormsSkiaBikeTracker
             Mvx.RegisterSingleton<ISettings>(CrossSettings.Current);
             Mvx.RegisterType<IRouteRecorder, RouteRecorder>();
 
-            Mvx.CallbackWhenRegistered<MainThread>(InitializeText);
-            Mvx.CallbackWhenRegistered<MainThread>(InitializeBootstrap);
+            Mvx.CallbackWhenRegistered<IMvxMainThreadAsyncDispatcher>(InitializeText);
         }
 
         private ILocationTracker InitializeLocationTracker()
@@ -84,23 +90,13 @@ namespace FormsSkiaBikeTracker
 
         private void InitializeText()
         {
-            LRPTextProviderBuilder builder = new LRPTextProviderBuilder(Constants.RootTextFolder, Constants.TextTypeKey);
+            TextProviderBuilder builder = new TextProviderBuilder(Constants.RootTextFolder, Constants.TextTypeKey);
 
             Mvx.RegisterSingleton<IMvxTextProviderBuilder>(builder);
             Mvx.RegisterSingleton<IMvxTextProvider>(builder.TextProvider);
 
             // Set language
             builder.LoadResources(CultureInfo.CurrentUICulture.TwoLetterISOLanguageName);
-        }
-
-        private void InitializeBootstrap()
-        {
-            ILRPBootstrapper bootstrapper = Mvx.Resolve<ILRPBootstrapper>();
-
-            bootstrapper.AddAsyncStep(new LRPAsyncActionBootstrapStep(a => Task.Delay(1500)));
-            bootstrapper.QueueStep(new LRPActionBootstrapStep(() => { }) { StepActionText = "Booting..." });
-
-            bootstrapper.Boot();
         }
     }
 }

@@ -12,16 +12,16 @@
 using Flurry.Analytics;
 using FormsSkiaBikeTracker.Services.Interface;
 using Foundation;
-using LRPFramework.Mvx.Views.Forms.iOS;
 using MvvmCross;
 using MvvmCross.IoC;
 using FormsSkiaBikeTracker.Forms;
 using FormsSkiaBikeTracker.Ios.Services;
-using LRPFramework.Services.Threading;
+using MvvmCross.Forms.Platforms.Ios.Core;
+using MvvmCross.Base;
 
 namespace FormsSkiaBikeTracker.Ios
 {
-    public class Setup : LRPFormsIosSetup<MvxApp, FormsApp>
+    public class Setup : MvxFormsIosSetup<MvxApp, FormsApp>
     {
         protected override IMvxIocOptions CreateIocOptions()
         {
@@ -37,7 +37,7 @@ namespace FormsSkiaBikeTracker.Ios
 
             Mvx.LazyConstructAndRegisterSingleton<IDocumentRoot, DocumentRoot>();
 
-            Mvx.CallbackWhenRegistered<MainThread>(SetupFlurry);
+            Mvx.CallbackWhenRegistered<IMvxMainThreadAsyncDispatcher>(SetupFlurry);
         }
 
         private void SetupFlurry()

@@ -1,6 +1,6 @@
 ﻿// **********************************************************************
 // 
-//   DrawnBackgroundControlView.xaml.cs
+//   DrawnBackgroundControlView.cs
 //   
 //   This file is subject to the terms and conditions defined in
 //   file 'LICENSE.txt', which is part of this source code package.
@@ -9,7 +9,7 @@
 // 
 // ***********************************************************************
 
-using LRPFramework.Views.Forms;
+using SkiaSharp.Views.Forms;
 using Xamarin.Forms;
 
 namespace FormsSkiaBikeTracker.Forms.Controls
@@ -17,7 +17,7 @@ namespace FormsSkiaBikeTracker.Forms.Controls
     public class DrawnBackgroundControlView : AbsoluteLayout
     {
         public static readonly BindableProperty BackgroundProperty = BindableProperty.Create(nameof(Background),
-                                                                                             typeof(DrawableView),
+                                                                                             typeof(SKCanvasView),
                                                                                              typeof(DrawnBackgroundControlView),
                                                                                              null,
                                                                                              BindingMode.OneWay,
@@ -39,9 +39,9 @@ namespace FormsSkiaBikeTracker.Forms.Controls
         }
 
 
-        public DrawableView Background
+        public SKCanvasView Background
         {
-            get => (DrawableView)GetValue(BackgroundProperty);
+            get => (SKCanvasView)GetValue(BackgroundProperty);
             set => SetValue(BackgroundProperty, value);
         }
 

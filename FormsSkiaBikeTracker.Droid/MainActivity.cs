@@ -19,7 +19,7 @@ using Android.Runtime;
 
 namespace FormsSkiaBikeTracker.Droid
 {
-    [Activity(Label = "FormsSkiaBikeTracker",
+    [Activity(Label = "Xamarin.Forms.SKMaps Demo",
               Theme = "@style/MainTheme",
               ScreenOrientation = ScreenOrientation.Portrait,
               ConfigurationChanges = ConfigChanges.KeyboardHidden | ConfigChanges.Orientation | ConfigChanges.ScreenSize)]

@@ -17,14 +17,13 @@ using System.Timers;
 using FormsSkiaBikeTracker.Extensions;
 using FormsSkiaBikeTracker.Extensions.Realm;
 using FormsSkiaBikeTracker.Models;
+using FormsSkiaBikeTracker.Services;
 using FormsSkiaBikeTracker.Services.Interface;
-using LRPFramework.Extensions;
-using LRPFramework.Mvx.ViewModels;
 using MvvmCross;
 using MvvmCross.Commands;
-using MvvmCross.Forms.Presenters.Attributes;
 using MvvmCross.IoC;
 using MvvmCross.Logging;
+using MvvmCross.ViewModels;
 using MvvmCross.WeakSubscription;
 using Realms;
 using Xamarin.Forms.Maps;
@@ -32,13 +31,17 @@ using Xamarin.Forms.Maps.Overlays.Extensions;
 
 namespace FormsSkiaBikeTracker.ViewModels
 {
-    [MvxContentPagePresentation(NoHistory = true, Animated = true)]
-    public class ActivityViewModel : LRPViewModel<string>
+    public class ActivityViewModel : MvxViewModel<string>
     {
         private const double DefaultStaleTimerMs = 3000;
 
         [MvxInject]
         public ILocationTracker LocationTracker { get; set; }
+
+        [MvxInject]
+        public IResourceLocator ResourceLocator { get; set; }
+
+        public LanguageBinder LanguageBinder { get; private set; }
 
         private Athlete _athlete;
         public Athlete Athlete
@@ -142,14 +145,16 @@ namespace FormsSkiaBikeTracker.ViewModels
         {
             base.Start();
 
+            LanguageBinder = new LanguageBinder(ResourceLocator.ResourcesNamespace,
+                                                 nameof(ActivityViewModel),
+                                                 false);
+
             _locationChangedSubscription = LocationTracker.WeakSubscribe<ILocationTracker, LocationMovedEventArgs>(nameof(LocationTracker.Moved),
                                                                                                                    UserLocationUpdated);
         }
 
         public override void Prepare(string athleteId)
         {
-            base.Prepare(athleteId);
-
             Athlete = Realm.GetInstance(RealmConstants.RealmConfiguration)
                            .Find<Athlete>(athleteId);
         }
@@ -277,8 +282,7 @@ namespace FormsSkiaBikeTracker.ViewModels
 
         private void OnNewPointRecorded(object sender, PointsAddedEventArgs args)
         {
-            SavePointsToActivityAsync(_CurrentActivity.Id, args.NewPoints)
-                .ForgetAndCatch();
+            SavePointsToActivityAsync(_CurrentActivity.Id, args.NewPoints).ForgetAndCatch();
         }
 
         private Task SavePointsToActivityAsync(string activityId, IEnumerable<Position> points)

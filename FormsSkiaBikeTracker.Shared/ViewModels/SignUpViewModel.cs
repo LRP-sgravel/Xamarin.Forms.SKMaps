@@ -14,17 +14,18 @@ using System.Globalization;
 using System.IO;
 using System.Threading.Tasks;
 using FormsSkiaBikeTracker.Models;
+using FormsSkiaBikeTracker.Services;
 using FormsSkiaBikeTracker.Services.Interface;
 using FormsSkiaBikeTracker.Services.Validation;
-using FormsSkiaBikeTracker.ViewModels;
-using LRPFramework.Mvx.ViewModels;
-using LRPFramework.Services.Threading;
 using MvvmCross;
+using MvvmCross.Base;
 using MvvmCross.Commands;
 using MvvmCross.IoC;
 using MvvmCross.Logging;
+using MvvmCross.Navigation;
 using MvvmCross.Plugin.File;
 using MvvmCross.Plugin.PictureChooser;
+using MvvmCross.ViewModels;
 using Realms;
 using SimpleCrypto;
 using SkiaSharp;
@@ -32,7 +33,7 @@ using Xamarin.Forms.Maps.Overlays.Models;
 
 namespace FormsSkiaBikeTracker.ViewModels
 {
-    public class SignUpViewModel : LRPViewModel<bool>
+    public class SignUpViewModel : MvxViewModel
     {
         private const string PictureSavePath = "AthletePictures";
         private const string TempPicturePath = "Caches";
@@ -46,6 +47,17 @@ namespace FormsSkiaBikeTracker.ViewModels
 
         [MvxInject]
         public IDocumentRoot DocumentRoot { get; set; }
+
+        [MvxInject]
+        public IMvxNavigationService NavigationService { get; set; }
+
+        [MvxInject]
+        public IMvxMainThreadAsyncDispatcher MainThread { get; set; }
+
+        [MvxInject]
+        public IResourceLocator ResourceLocator { get; set; }
+
+        public LanguageBinder LanguageBinder { get; private set; }
 
         private SKBitmap _pictureBitmap;
         public SKBitmap PictureBitmap
@@ -102,8 +114,6 @@ namespace FormsSkiaBikeTracker.ViewModels
                 }
             }
         }
-        
-        private bool _SignInOnCompletion { get; set; }
 
         private IMvxCommand _selectAthletePictureCommand;
         public IMvxCommand SelectAthletePictureCommand => _selectAthletePictureCommand ?? (_selectAthletePictureCommand = new MvxAsyncCommand(SelectAthletePicture));
@@ -117,41 +127,38 @@ namespace FormsSkiaBikeTracker.ViewModels
         {
             base.Start();
 
+            LanguageBinder = new LanguageBinder(ResourceLocator.ResourcesNamespace,
+                                                 nameof(SignUpViewModel),
+                                                 false);
+
             FileStore.EnsureFolderExists(PictureFilePath(string.Empty));
         }
-
-        public override void Prepare(bool signInOnCompletion)
-        {
-            base.Prepare(signInOnCompletion);
-
-            _SignInOnCompletion = signInOnCompletion;
-        }
-
+        
         private Task SelectAthletePicture()
         {
-            return MainThread.RunAsync(async () =>
-                                       {
-                                           Stream pictureStream;
-                                           IMvxPictureChooserTask pictureChooser = Mvx.Resolve<IMvxPictureChooserTask>();
+            return MainThread.ExecuteOnMainThreadAsync(async () =>
+                {
+                    Stream pictureStream;
+                    IMvxPictureChooserTask pictureChooser = Mvx.Resolve<IMvxPictureChooserTask>();
 
-                                           try
-                                           {
-                                               pictureStream = await pictureChooser.TakePicture(256, 95);
-                                           }
-                                           catch (Exception)
-                                           {
-                                               pictureStream = await pictureChooser.ChoosePictureFromLibrary(256, 95);
-                                           }
+                    try
+                    {
+                        pictureStream = await pictureChooser.TakePicture(256, 95);
+                    }
+                    catch (Exception)
+                    {
+                        pictureStream = await pictureChooser.ChoosePictureFromLibrary(256, 95);
+                    }
 
-                                           if (pictureStream != null)
-                                           {
-                                               PicturePicked(pictureStream);
-                                           }
-                                           else
-                                           {
-                                               PicturePickCancelled();
-                                           }
-                                       });
+                    if (pictureStream != null)
+                    {
+                        PicturePicked(pictureStream);
+                    }
+                    else
+                    {
+                        PicturePickCancelled();
+                    }
+                });
         }
 
         private void RegisterAthlete(IValidationResult validationResult)
@@ -166,36 +173,29 @@ namespace FormsSkiaBikeTracker.ViewModels
                 string athletePictureRelativePath = SaveUserPicture(athleteId);
 
                 realmInstance.Write(() =>
-                {
-                    try
                     {
-                        Athlete newAthlete;
-                        newAthlete = new Athlete
+                        try
                         {
-                            Name = Name,
-                            Id = athleteId,
-                            PicturePath = athletePictureRelativePath,
-                            PasswordSalt = salt,
-                            PasswordHash = Crypto.Compute(Password, salt),
-                            DistanceUnit = RegionInfo.CurrentRegion.IsMetric ? DistanceUnit.Kilometer : DistanceUnit.Miles
-                        };
+                            Athlete newAthlete;
+                            newAthlete = new Athlete
+                            {
+                                Name = Name,
+                                Id = athleteId,
+                                PicturePath = athletePictureRelativePath,
+                                PasswordSalt = salt,
+                                PasswordHash = Crypto.Compute(Password, salt),
+                                DistanceUnit = RegionInfo.CurrentRegion.IsMetric ? DistanceUnit.Kilometer : DistanceUnit.Miles
+                            };
 
-                        realmInstance.Add(newAthlete);
-                    }
-                    catch (Exception e)
-                    {
-                        MvxLog.Instance.Log(MvxLogLevel.Warn, () => e.Message);
-                    }
-                });
+                            realmInstance.Add(newAthlete);
+                        }
+                        catch (Exception e)
+                        {
+                            MvxLog.Instance.Log(MvxLogLevel.Warn, () => e.Message);
+                        }
+                    });
 
-                if (_SignInOnCompletion)
-                {
-                    NavigationService.Navigate<ActivityViewModel, string>(athleteId);
-                }
-                else
-                {
-                    NavigationService.Close(this);
-                }
+                NavigationService.Navigate<ActivityViewModel, string>(athleteId);
             }
         }
 

@@ -14,11 +14,6 @@ using FormsSkiaBikeTracker.Forms;
 using MvvmCross.Forms.Platforms.Android.Views;
 using Acr.UserDialogs;
 using MvvmCross.Platforms.Android;
-using LRPFramework.Mvx;
-using LRPFramework.Views;
-using LRPFramework.Views.Forms;
-using LRPFramework.Mvx.Views;
-using LRPFramework.Mvx.Views.Forms;
 using MvxEntry = MvvmCross.Mvx;
 
 namespace FormsSkiaBikeTracker.Droid
@@ -43,13 +38,6 @@ namespace FormsSkiaBikeTracker.Droid
 
         protected override void RunAppStart(Bundle bundle)
         {
-            LRPFramework.LRPFramework.Init();
-            LRPFrameworkMvx.Init();
-            LRPFrameworkViews.Init();
-            LRPFrameworkViewsForms.Init();
-            LRPFrameworkMvxViews.Init();
-            LRPFrameworkMvxViewsForms.Init();
-
             StartActivity(typeof(MainActivity));
 
             base.RunAppStart(bundle);

@@ -5,13 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Pages\LoadingPage.xaml" />
     <None Remove="Pages\LoginPage.xaml" />
     <None Remove="Pages\SignUpPage.xaml" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="LRPFramework.Mvx.Views.Forms" Version="2.0.0" />
+    <PackageReference Include="MvvmCross.Forms" Version="6.0.1" />
     <PackageReference Include="SkiaSharp.Svg" Version="1.60.0" />
     <PackageReference Include="SkiaSharp.Views.Forms" Version="1.60.3" />
     <PackageReference Include="System.Net.Http" Version="4.3.3" />

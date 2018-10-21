@@ -11,8 +11,7 @@
 
 using System;
 using System.IO;
-using LRPFramework.Services.Resources;
-using LRPFramework.Views.Forms;
+using FormsSkiaBikeTracker.Services.Interface;
 using MvvmCross;
 using MvvmCross.Logging;
 using SkiaSharp;
@@ -21,7 +20,7 @@ using Xamarin.Forms;
 
 namespace FormsSkiaBikeTracker.Forms.Controls
 {
-    public class SKLabel : DrawableView
+    public class SKLabel : SKCanvasView
     {
         public static readonly BindableProperty FontResourcePathProperty = BindableProperty.Create(nameof(FontResourcePath), typeof(string), typeof(SKLabel), string.Empty, BindingMode.OneWay, null, FontResourcePathPropertyChanged);
         public static readonly BindableProperty TextProperty = BindableProperty.Create(nameof(Text), typeof(string), typeof(SKLabel), string.Empty, BindingMode.OneWay, null, ResizePropertyChanged);
@@ -61,8 +60,6 @@ namespace FormsSkiaBikeTracker.Forms.Controls
         {
             _Paint = new SKPaint();
             _resourceLocator = Mvx.Resolve<IResourceLocator>();
-
-            HasTransparency = true;
         }
 
         ~SKLabel()
@@ -102,7 +99,7 @@ namespace FormsSkiaBikeTracker.Forms.Controls
             SKLabel view = bindable as SKLabel;
 
             view.RefreshPaint();
-            view.Invalidate();
+            view.InvalidateSurface();
         }
                 
         private static void ResizePropertyChanged(BindableObject bindable, object oldValue, object newValue)
@@ -111,7 +108,7 @@ namespace FormsSkiaBikeTracker.Forms.Controls
 
             view.RefreshPaint();
             view.InvalidateMeasure();
-            view.Invalidate();
+            view.InvalidateSurface();
         }
 
         protected override void InvalidateMeasure()
@@ -140,10 +137,13 @@ namespace FormsSkiaBikeTracker.Forms.Controls
             return _LastSize.GetValueOrDefault(new SizeRequest());
         }
 
-        protected override void Paint(SKCanvas canvas)
+        protected override void OnPaintSurface(SKPaintSurfaceEventArgs args)
         {
             if (HasSomethingToDraw())
             {
+                SKCanvas canvas = args.Surface.Canvas;
+
+                canvas.Clear();
                 canvas.DrawText(Text, 0, (float)Height - _Paint.FontMetrics.Descent * 0.5f, _Paint);
             }
         }

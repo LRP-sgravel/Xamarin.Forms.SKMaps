@@ -4,13 +4,13 @@
                     xmlns="http://xamarin.com/schemas/2014/forms"
                     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                     xmlns:mvx="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
-                    xmlns:lrpForms="clr-namespace:LRPFramework.Views.Forms;assembly=LRPFramework.Views.Forms"
-                    xmlns:lrpMvxForms="clr-namespace:LRPFramework.Mvx.Views.Forms.Markup;assembly=LRPFramework.Mvx.Views.Forms"
                     xmlns:overlays="clr-namespace:Xamarin.Forms.Maps.Overlays;assembly=Xamarin.Forms.Maps.Overlays"
                     xmlns:maps="clr-namespace:FormsSkiaBikeTracker.Forms.Controls.Maps;assembly=FormsSkiaBikeTracker.Forms"
                     xmlns:viewModels="clr-namespace:FormsSkiaBikeTracker.ViewModels;assembly=FormsSkiaBikeTracker"
                     xmlns:controls="clr-namespace:FormsSkiaBikeTracker.Forms.Controls;assembly=FormsSkiaBikeTracker.Forms"
-                    x:Class="FormsSkiaBikeTracker.Forms.Pages.ActivityPage">
+                    xmlns:markup="clr-namespace:FormsSkiaBikeTracker.Forms.Markup;assembly=FormsSkiaBikeTracker.Forms"
+                    x:Class="FormsSkiaBikeTracker.Forms.Pages.ActivityPage"
+                    Title="{markup:LocalizedText RideDude}">
 
     <Grid RowSpacing="0">
         <Grid.RowDefinitions>
@@ -40,7 +40,7 @@
                                                                                           Constant=0}"
                                    IsShowingUser="False">
                 <overlays:OverlayedMap.Pins>
-                    <maps:ImageOverlay Icon="{lrpMvxForms:EmbeddedImage symbol_logo.svg}"
+                    <maps:ImageOverlay Icon="{markup:EmbeddedImage symbol_logo.svg}"
                                        Width="48"
                                        Height="48"
                                        Label=""
@@ -55,7 +55,7 @@
                 </overlays:OverlayedMap.MapOverlays>
             </overlays:OverlayedMap>
 
-            <lrpForms:SvgImage RelativeLayout.WidthConstraint="{ConstraintExpression Type=Constant,
+            <controls:SvgImage RelativeLayout.WidthConstraint="{ConstraintExpression Type=Constant,
                                                                                      Factor=0,
                                                                                      Constant=32}"
                                RelativeLayout.HeightConstraint="{ConstraintExpression Type=Constant,
@@ -71,11 +71,11 @@
                                                                                  Property=Height,
                                                                                  Factor=0,
                                                                                  Constant=17}"
-                               Source="{lrpMvxForms:EmbeddedImage location-arrow-outline.svg}">
-                <lrpForms:SvgImage.GestureRecognizers>
+                               Source="{markup:EmbeddedImage location-arrow-outline.svg}">
+                <controls:SvgImage.GestureRecognizers>
                     <TapGestureRecognizer Tapped="CenterOnUser" />
-                </lrpForms:SvgImage.GestureRecognizers>
-            </lrpForms:SvgImage>
+                </controls:SvgImage.GestureRecognizers>
+            </controls:SvgImage>
         </RelativeLayout>
     </Grid>
 </mvx:MvxContentPage>

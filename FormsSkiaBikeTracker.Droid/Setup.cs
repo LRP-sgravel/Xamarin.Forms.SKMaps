@@ -14,15 +14,14 @@ using Flurry.Analytics;
 using FormsSkiaBikeTracker.Droid.Services;
 using FormsSkiaBikeTracker.Forms;
 using FormsSkiaBikeTracker.Services.Interface;
-using LRPFramework.Mvx.Views.Forms.Droid;
-using LRPFramework.Services.Threading;
-using MvvmCross.Binding;
+using MvvmCross.Base;
+using MvvmCross.Forms.Platforms.Android.Core;
 using MvvmCross.IoC;
 using MvxEntry = MvvmCross.Mvx;
 
 namespace FormsSkiaBikeTracker.Droid
 {
-    public class Setup : LRPFormsDroidSetup<MvxApp, FormsApp>
+    public class Setup : MvxFormsAndroidSetup<MvxApp, FormsApp>
     {
         protected override IMvxIocOptions CreateIocOptions()
         {
@@ -38,7 +37,7 @@ namespace FormsSkiaBikeTracker.Droid
 
             MvxEntry.RegisterSingleton<IDocumentRoot>(MvxEntry.IocConstruct<DocumentRoot>);
 
-            MvxEntry.CallbackWhenRegistered<MainThread>(SetupFlurry);
+            MvxEntry.CallbackWhenRegistered<IMvxMainThreadAsyncDispatcher>(SetupFlurry);
         }
 
         private void SetupFlurry()

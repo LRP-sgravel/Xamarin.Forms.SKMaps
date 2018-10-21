@@ -11,7 +11,8 @@
 
 using System;
 using System.Threading.Tasks;
-using LRPFramework.Views.Forms.SourceHandler;
+using FormsSkiaBikeTracker.Forms.Services.SvgSourceHandlers;
+using FormsSkiaBikeTracker.Services.Interface;
 using MvvmCross.Logging;
 using SkiaSharp;
 using SkiaSharp.Views.Forms;
@@ -55,9 +56,17 @@ namespace FormsSkiaBikeTracker.Forms.Controls.Maps
         public override void DrawMarker(SKSurface surface)
         {
             SKCanvas canvas = surface.Canvas;
-            SKMatrix fillMatrix = GetFillMatrix(canvas, _svgIcon.Picture.CullRect);
 
-            canvas.DrawPicture(_svgIcon.Picture, ref fillMatrix);
+            if (_svgIcon != null)
+            {
+                SKMatrix fillMatrix = GetFillMatrix(canvas, _svgIcon.Picture.CullRect);
+
+                canvas.DrawPicture(_svgIcon.Picture, ref fillMatrix);
+            }
+            else if(_bitmapIcon != null)
+            {
+                canvas.DrawBitmap(_bitmapIcon, 0, 0);
+            }
         }
 
         private SKMatrix GetFillMatrix(SKCanvas canvas, SKRect sourceRect)
@@ -99,7 +108,7 @@ namespace FormsSkiaBikeTracker.Forms.Controls.Maps
 
             if (IsSvgImageSource(source))
             {
-                ISvgImageSourceHandler svgHandler = GetSvgImageHandler(source.GetType());
+                ISvgSourceHandler svgHandler = GetSvgImageHandler(source.GetType());
 
                 _svgIcon = await svgHandler.LoadImageAsync(source)
                                            .ConfigureAwait(false);
@@ -121,16 +130,16 @@ namespace FormsSkiaBikeTracker.Forms.Controls.Maps
                    type == typeof(StreamImageSource);
         }
 
-        private ISvgImageSourceHandler GetSvgImageHandler(Type type)
+        private ISvgSourceHandler GetSvgImageHandler(Type type)
         {
-            ISvgImageSourceHandler result = null;
+            ISvgSourceHandler result = null;
 
             if (type == typeof(UriImageSource))
-                result = new UriSvgLoaderSourceHandler();
+                result = new UriSvgSourceHandler();
             else if (type == typeof(FileImageSource))
-                result = new FileSvgImageSourceHandler();
+                result = new FileSvgSourceHandler();
             else if (type == typeof(StreamImageSource))
-                result = new StreamSvgImageSourceHandler();
+                result = new StreamSvgSourceHandler();
 
             return result;
         }

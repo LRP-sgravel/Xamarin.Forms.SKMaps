@@ -12,11 +12,6 @@
 using Foundation;
 using Xamarin.Forms;
 using FormsSkiaBikeTracker;
-using LRPFramework.Mvx;
-using LRPFramework.Mvx.Views;
-using LRPFramework.Mvx.Views.Forms;
-using LRPFramework.Views;
-using LRPFramework.Views.Forms;
 using MvvmCross.Forms.Platforms.Ios.Core;
 using FormsSkiaBikeTracker.Forms;
 
@@ -36,13 +31,6 @@ namespace FormsSkiaBikeTracker.Ios
 #endif
 
             Xamarin.Forms.Forms.Init();
-
-            LRPFramework.LRPFramework.Init();
-            LRPFrameworkMvx.Init();
-            LRPFrameworkViews.Init();
-            LRPFrameworkViewsForms.Init();
-            LRPFrameworkMvxViews.Init();
-            LRPFrameworkMvxViewsForms.Init();
 
             base.RunAppStart(hint);
         }

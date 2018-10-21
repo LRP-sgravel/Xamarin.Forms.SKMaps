@@ -36,7 +36,6 @@ namespace FormsSkiaBikeTracker.Forms.Pages
 
             if (ViewModel != null)
             {
-                Title = ViewModel.LanguageBinder.GetText("RideDude");
                 _locationChangedSubscription = ViewModel.WeakSubscribe(() => ViewModel.LastUserLocation,
                                                                        UserLocationChanged);
             }

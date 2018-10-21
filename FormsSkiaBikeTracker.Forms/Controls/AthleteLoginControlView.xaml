@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:lrp="clr-namespace:LRPFramework.Views.Forms.Markup;assembly=LRPFramework.Views.Forms"
              xmlns:controls="clr-namespace:FormsSkiaBikeTracker.Forms.Controls;assembly=FormsSkiaBikeTracker.Forms"
+             xmlns:markup="clr-namespace:FormsSkiaBikeTracker.Forms.Markup;assembly=FormsSkiaBikeTracker.Forms"
              x:Class="FormsSkiaBikeTracker.Forms.Controls.AthleteLoginControlView"
              x:Name="Control"
              HeightRequest="79"
@@ -61,7 +61,7 @@
                    VerticalOptions="Fill"
                    IsPassword="True"
                    Text="{Binding EnteredPassword}"
-                   Placeholder="{lrp:LocalizedText Password}"/>
+                   Placeholder="{markup:LocalizedText Password}"/>
             <Button x:Name="SubmitButton"
                     HorizontalOptions="End"
                     VerticalOptions="Fill"

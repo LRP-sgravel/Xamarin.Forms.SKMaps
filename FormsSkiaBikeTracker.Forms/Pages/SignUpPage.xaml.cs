@@ -16,13 +16,13 @@ using MvvmCross.WeakSubscription;
 
 namespace FormsSkiaBikeTracker.Forms.Pages
 {
-    public partial class SignUpPagePage
+    public partial class SignUpPage
     {
         public IValidationResult CurrentErrors { get; } = new ValidationResult();
 
         private IDisposable _errorsChangedSubscription;
 
-        public SignUpPagePage()
+        public SignUpPage()
         {
             InitializeComponent();
 

@@ -9,9 +9,7 @@
 // 
 // ***********************************************************************
 using System;
-using LRPFramework.Services.Resources;
-using LRPFramework.Views.Forms;
-using LRPFramework.Views.Forms.Extensions;
+using FormsSkiaBikeTracker.Services.Interface;
 using MvvmCross;
 using SkiaSharp;
 using SkiaSharp.Views.Forms;
@@ -20,7 +18,7 @@ using SKSvg = SkiaSharp.Extended.Svg.SKSvg;
 
 namespace FormsSkiaBikeTracker.Forms.Controls
 {
-    public class CircledImageView : DrawableView
+    public class CircledImageView : SKCanvasView
     {
         public static readonly BindableProperty SourceProperty = BindableProperty.Create(nameof(Source),
                                                                                          typeof(SKBitmapImageSource),
@@ -66,6 +64,8 @@ namespace FormsSkiaBikeTracker.Forms.Controls
             set => SetValue(BorderWidthProperty, value);
         }
 
+        private SKPath ClippingPath { get; set; }
+
         static CircledImageView()
         {
             IResourceLocator resLocator = Mvx.Resolve<IResourceLocator>();
@@ -75,8 +75,10 @@ namespace FormsSkiaBikeTracker.Forms.Controls
             DefaultImage.Load(resLocator.ResourcesAssembly.GetManifestResourceStream(resPath));
         }
 
-        protected override void Paint(SKCanvas canvas)
+        protected override void OnPaintSurface(SKPaintSurfaceEventArgs args)
         {
+            SKCanvas canvas = args.Surface.Canvas;
+
             if (Source != null && Source.Bitmap != null)
             {
                 double fillScale = GetFillScale(new Size(Source.Bitmap.Width, Source.Bitmap.Height), Bounds.Size);
@@ -102,7 +104,7 @@ namespace FormsSkiaBikeTracker.Forms.Controls
                 SKPaint borderPaint = new SKPaint
                                       {
                                           Style = SKPaintStyle.Stroke,
-                                          Color = ColorExtensions.ToSKColor(BorderColor),
+                                          Color = BorderColor.ToSKColor(),
                                           StrokeWidth = BorderWidth,
                                           IsAntialias = true,
                                       };
@@ -116,6 +118,11 @@ namespace FormsSkiaBikeTracker.Forms.Controls
 
                     canvas.DrawCircle(centerX, centerY, borderRadius, borderPaint);
                 }
+            }
+
+            if (ClippingPath != null)
+            {
+                canvas.ClipPath(ClippingPath);
             }
         }
 
@@ -178,7 +185,7 @@ namespace FormsSkiaBikeTracker.Forms.Controls
         {
             CircledImageView view = bindable as CircledImageView;
 
-            view.Invalidate();
+            view.InvalidateSurface();
         }
     }
 }

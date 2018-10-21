@@ -4,12 +4,11 @@
                      xmlns="http://xamarin.com/schemas/2014/forms"
                      xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                      xmlns:viewmodels="clr-namespace:FormsSkiaBikeTracker.ViewModels;assembly=FormsSkiaBikeTracker"
-                     xmlns:lrpMvxForms="clr-namespace:LRPFramework.Views.Forms.Markup;assembly=LRPFramework.Views.Forms"
                      xmlns:mvx="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
                      xmlns:controls="clr-namespace:FormsSkiaBikeTracker.Forms.Controls;assembly=FormsSkiaBikeTracker.Forms"
-                     xmlns:lrpForms="clr-namespace:LRPFramework.Views.Forms;assembly=LRPFramework.Views.Forms"
-                     x:Class="FormsSkiaBikeTracker.Forms.Pages.SignUpPagePage"
-                     Title="{lrpMvxForms:LocalizedText SigningUp}"
+                     xmlns:markup="clr-namespace:FormsSkiaBikeTracker.Forms.Markup;assembly=FormsSkiaBikeTracker.Forms"
+                     x:Class="FormsSkiaBikeTracker.Forms.Pages.SignUpPage"
+                     Title="{markup:LocalizedText SigningUp}"
                      x:Name="SignUpPage">
     <ScrollView>
         <Grid RowSpacing="3">
@@ -39,7 +38,7 @@
             <controls:SKLabel Grid.Row="2"
                               Margin="20, 0, 20, 0"
                               VerticalOptions="End"
-                              Text="{lrpMvxForms:LocalizedText Name}"
+                              Text="{markup:LocalizedText Name}"
                               TextColor="DarkSlateGray"
                               FontResourcePath="KumarOne-Regular.otf"
                               FontSize="18" />
@@ -53,7 +52,7 @@
             <controls:SKLabel Grid.Row="4"
                               Margin="20, 0, 20, 0"
                               VerticalOptions="End"
-                              Text="{lrpMvxForms:LocalizedText Password}"
+                              Text="{markup:LocalizedText Password}"
                               TextColor="DarkSlateGray"
                               FontResourcePath="KumarOne-Regular.otf"
                               FontSize="18"/>
@@ -68,7 +67,7 @@
             <controls:SKLabel Grid.Row="6"
                               Margin="20, 0, 20, 0"
                               VerticalOptions="End"
-                              Text="{lrpMvxForms:LocalizedText ConfirmPassword}"
+                              Text="{markup:LocalizedText ConfirmPassword}"
                               TextColor="DarkSlateGray"
                               FontResourcePath="KumarOne-Regular.otf"
                               FontSize="18"/>
@@ -80,14 +79,14 @@
                    VerticalOptions="Start"
                    FontSize="18" />
 
-            <lrpForms:LinearGradientBoxView Grid.Row="8"
+            <controls:LinearGradientBoxView Grid.Row="8"
                                           StartColor="AliceBlue"
                                           EndColor="LightSkyBlue" />
         
             <controls:BorderButtonView Grid.Row="9"
                                        Margin="20"
                                        BorderWidth="4"
-                                       Text="{lrpMvxForms:LocalizedText LetsRide}"
+                                       Text="{markup:LocalizedText LetsRide}"
                                        Command="{Binding RegisterAthleteCommand}"
                                        CommandParameter="{Binding Source={x:Reference SignUpPage}, Path=CurrentErrors}"/>
         </Grid>
