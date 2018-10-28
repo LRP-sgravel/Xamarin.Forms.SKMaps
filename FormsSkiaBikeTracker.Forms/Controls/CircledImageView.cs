@@ -80,6 +80,7 @@ namespace FormsSkiaBikeTracker.Forms.Controls
             SKCanvas canvas = args.Surface.Canvas;
 
             canvas.Scale(args.Info.Width / (float)Width);
+            canvas.Clear();
 
             if (Source != null && Source.Bitmap != null)
             {
