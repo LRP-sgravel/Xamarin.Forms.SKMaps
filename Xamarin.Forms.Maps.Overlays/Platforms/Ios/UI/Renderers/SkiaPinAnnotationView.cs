@@ -75,7 +75,8 @@ namespace Xamarin.Forms.Maps.Overlays.Platforms.Ios.UI.Renderers
 
         public void UpdateAnchor()
         {
-            Layer.AnchorPoint = new CGPoint(_SkiaAnnotation.SharedPin.AnchorX, _SkiaAnnotation.SharedPin.AnchorY);
+            CenterOffset = new CGPoint(Bounds.Width * (0.5 - _SkiaAnnotation.SharedPin.AnchorX),
+                                       Bounds.Height * (0.5 - _SkiaAnnotation.SharedPin.AnchorY));
         }
     }
 }
