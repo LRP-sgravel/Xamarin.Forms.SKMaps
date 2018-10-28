@@ -94,9 +94,6 @@ namespace FormsSkiaBikeTracker
 
             Mvx.RegisterSingleton<IMvxTextProviderBuilder>(builder);
             Mvx.RegisterSingleton<IMvxTextProvider>(builder.TextProvider);
-
-            // Set language
-            builder.LoadResources(CultureInfo.CurrentUICulture.TwoLetterISOLanguageName);
         }
     }
 }

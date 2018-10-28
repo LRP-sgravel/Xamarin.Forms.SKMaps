@@ -128,8 +128,8 @@ namespace FormsSkiaBikeTracker.ViewModels
             base.Start();
 
             LanguageBinder = new LanguageBinder(ResourceLocator.ResourcesNamespace,
-                                                 nameof(SignUpViewModel),
-                                                 false);
+                                                GetType().FullName.Replace(ResourceLocator.ResourcesNamespace + ".", string.Empty),
+                                                false);
 
             FileStore.EnsureFolderExists(PictureFilePath(string.Empty));
         }

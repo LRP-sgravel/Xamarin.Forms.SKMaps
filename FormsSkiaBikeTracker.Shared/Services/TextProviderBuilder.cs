@@ -16,6 +16,7 @@ using MvvmCross.Plugin.JsonLocalization;
 using MvvmCross.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Reflection;
 
@@ -33,7 +34,8 @@ namespace FormsSkiaBikeTracker.Services
             : base(Mvx.Resolve<IResourceLocator>().ResourcesNamespace, textFolder, new MvxEmbeddedJsonDictionaryTextProvider(false))
         {
             _DefaultTypeKey = defaultTypeKey;
-            LoadResources(string.Empty);
+
+            LoadTextResources();
         }
 
         protected override IDictionary<string, string> ResourceFiles
@@ -92,7 +94,13 @@ namespace FormsSkiaBikeTracker.Services
         {
             _ExtraTextKeys = new Dictionary<string, string>(extraKeys);
 
-            LoadResources(String.Empty);
+            LoadTextResources();
+        }
+
+        private void LoadTextResources()
+        {
+            LoadResources(string.Empty); // Load default text
+            LoadResources(CultureInfo.CurrentUICulture.TwoLetterISOLanguageName); // Override with language specific text
         }
     }
 }

@@ -146,8 +146,8 @@ namespace FormsSkiaBikeTracker.ViewModels
             base.Start();
 
             LanguageBinder = new LanguageBinder(ResourceLocator.ResourcesNamespace,
-                                                 nameof(ActivityViewModel),
-                                                 false);
+                                                GetType().FullName.Replace(ResourceLocator.ResourcesNamespace + ".", string.Empty),
+                                                false);
 
             _locationChangedSubscription = LocationTracker.WeakSubscribe<ILocationTracker, LocationMovedEventArgs>(nameof(LocationTracker.Moved),
                                                                                                                    UserLocationUpdated);
