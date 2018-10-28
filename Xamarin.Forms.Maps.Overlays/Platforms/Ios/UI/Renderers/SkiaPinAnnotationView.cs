@@ -72,5 +72,10 @@ namespace Xamarin.Forms.Maps.Overlays.Platforms.Ios.UI.Renderers
                     }
                 }, token);
         }
+
+        public void UpdateAnchor()
+        {
+            Layer.AnchorPoint = new CGPoint(_SkiaAnnotation.SharedPin.AnchorX, _SkiaAnnotation.SharedPin.AnchorY);
+        }
     }
 }

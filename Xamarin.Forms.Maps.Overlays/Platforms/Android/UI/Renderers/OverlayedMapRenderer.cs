@@ -101,6 +101,7 @@ namespace Xamarin.Forms.Maps.Overlays.Platforms.Android.UI.Renderers
 
                 options.SetIcon(BitmapDescriptorFactory.FromBitmap(markerBitmap.ToBitmap()))
                        .Visible(sharedMarker.IsVisible);
+                options.Anchor((float)sharedMarker.AnchorX, (float)sharedMarker.AnchorY);
             }
 
             return options;

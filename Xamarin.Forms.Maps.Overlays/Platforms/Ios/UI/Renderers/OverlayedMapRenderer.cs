@@ -14,6 +14,7 @@ using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Linq;
+using CoreGraphics;
 using MapKit;
 using Xamarin.Forms;
 using Xamarin.Forms.Maps.iOS;
@@ -183,6 +184,7 @@ namespace Xamarin.Forms.Maps.Overlays.Platforms.Ios.UI.Renderers
                                                     ?? CreateAnnotationView(skiaAnnotation);
 
                 pinView.UpdateImage();
+                pinView.UpdateAnchor();
                 pinView.Hidden = !pin.IsVisible;
 
                 return pinView;
@@ -293,9 +295,10 @@ namespace Xamarin.Forms.Maps.Overlays.Platforms.Ios.UI.Renderers
         {
             IMKAnnotation annotation = FindAnnotationForPin(pin);
             MKAnnotationView view = _NativeControl.ViewForAnnotation(annotation);
+            SkiaPinAnnotationView skPinView = view as SkiaPinAnnotationView;
 
-            (view as SkiaPinAnnotationView)?.UpdateImage();
+            skPinView?.UpdateImage();
+            skPinView?.UpdateAnchor();
         }
     }
 }
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                           

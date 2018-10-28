@@ -21,6 +21,8 @@ namespace Xamarin.Forms.Maps.Overlays
 
         public static readonly BindableProperty WidthProperty = BindableProperty.Create(nameof(Width), typeof(double), typeof(SKPin), 32.0, propertyChanged: OnDrawablePropertyChanged);
         public static readonly BindableProperty HeightProperty = BindableProperty.Create(nameof(Height), typeof(double), typeof(SKPin), 32.0, propertyChanged: OnDrawablePropertyChanged);
+        public static readonly BindableProperty AnchorXProperty = BindableProperty.Create(nameof(AnchorX), typeof(double), typeof(SKPin), 0.5, propertyChanged: OnDrawablePropertyChanged);
+        public static readonly BindableProperty AnchorYProperty = BindableProperty.Create(nameof(AnchorY), typeof(double), typeof(SKPin), 0.5, propertyChanged: OnDrawablePropertyChanged);
         public static readonly BindableProperty IsVisibleProperty = BindableProperty.Create(nameof(IsVisible), typeof(bool), typeof(SKPin), true);
         public static readonly BindableProperty ClickableProperty = BindableProperty.Create(nameof(Clickable), typeof(bool), typeof(SKPin), true);
 
@@ -34,6 +36,18 @@ namespace Xamarin.Forms.Maps.Overlays
         {
             get { return (double)GetValue(HeightProperty); }
             set { SetValue(HeightProperty, value); }
+        }
+
+        public double AnchorX
+        {
+            get { return (double)GetValue(AnchorXProperty); }
+            set { SetValue(AnchorXProperty, value); }
+        }
+
+        public double AnchorY
+        {
+            get { return (double)GetValue(AnchorYProperty); }
+            set { SetValue(AnchorYProperty, value); }
         }
 
         public bool IsVisible
