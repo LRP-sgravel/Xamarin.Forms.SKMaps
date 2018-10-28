@@ -18,7 +18,7 @@ using MvxEntry = MvvmCross.Mvx;
 
 namespace FormsSkiaBikeTracker.Droid
 {
-    [Activity(Label = "FormsSkiaBikeTracker",
+    [Activity(Label = "SKMaps Demo",
               MainLauncher = true,
               Icon = "@drawable/icon",
               Theme = "@style/AppTheme.Splash",
