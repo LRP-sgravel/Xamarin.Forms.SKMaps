@@ -50,6 +50,7 @@ namespace FormsSkiaBikeTracker.Forms.Controls
                 SKCanvas canvas = args.Surface.Canvas;
                 SKMatrix picMatrix = new SKMatrix();
                 SKPaint paint = new SKPaint();
+                float scale = args.Info.Width / (float)Width;
 
                 if (_TransformIsDirty)
                 {
@@ -57,6 +58,7 @@ namespace FormsSkiaBikeTracker.Forms.Controls
                 }
 
                 SKMatrix.Concat(ref picMatrix, canvas.TotalMatrix, _Transform);
+                SKMatrix.Concat(ref picMatrix, SKMatrix.MakeScale(scale, scale), picMatrix);
 
                 if (Color != Color.Transparent)
                 {

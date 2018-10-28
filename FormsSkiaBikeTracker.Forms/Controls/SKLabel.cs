@@ -82,7 +82,7 @@ namespace FormsSkiaBikeTracker.Forms.Controls
             Stream resStream = _resourceLocator.ResourcesAssembly.GetManifestResourceStream(resourcePath);
 
             _Typeface?.Dispose();
-                _Typeface = null;
+            _Typeface = null;
 
             if (resStream != null)
             {
@@ -143,6 +143,7 @@ namespace FormsSkiaBikeTracker.Forms.Controls
             {
                 SKCanvas canvas = args.Surface.Canvas;
 
+                canvas.Scale(args.Info.Width / (float)Width);
                 canvas.Clear();
                 canvas.DrawText(Text, 0, (float)Height - _Paint.FontMetrics.Descent * 0.5f, _Paint);
             }

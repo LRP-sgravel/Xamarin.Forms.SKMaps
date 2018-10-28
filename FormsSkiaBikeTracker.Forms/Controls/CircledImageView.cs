@@ -79,6 +79,8 @@ namespace FormsSkiaBikeTracker.Forms.Controls
         {
             SKCanvas canvas = args.Surface.Canvas;
 
+            canvas.Scale(args.Info.Width / (float)Width);
+
             if (Source != null && Source.Bitmap != null)
             {
                 double fillScale = GetFillScale(new Size(Source.Bitmap.Width, Source.Bitmap.Height), Bounds.Size);

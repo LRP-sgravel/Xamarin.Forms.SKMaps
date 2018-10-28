@@ -41,11 +41,11 @@ namespace FormsSkiaBikeTracker.Forms.Controls
             SKCanvas canvas = args.Surface.Canvas;
             SKColor startColor = StartColor.ToSKColor();
             SKColor endColor = EndColor.ToSKColor();
-            SKPoint endPoint = new SKPoint((float)Width, 0);
+            SKPoint endPoint = new SKPoint(args.Info.Width, 0);
 
             if (Direction == GradientDirection.TopToBottom)
             {
-                endPoint = new SKPoint(0, (float)Height);
+                endPoint = new SKPoint(0, args.Info.Height);
             }
 
             using (SKShader gradientShader = SKShader.CreateLinearGradient(new SKPoint(0, 0),
