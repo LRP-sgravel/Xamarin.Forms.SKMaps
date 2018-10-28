@@ -78,6 +78,7 @@ namespace FormsSkiaBikeTracker.Forms.Controls
         protected override void OnPaintSurface(SKPaintSurfaceEventArgs args)
         {
             SKCanvas canvas = args.Surface.Canvas;
+            float circleDiameter = (float)Math.Min(Width, Height);
 
             canvas.Scale(args.Info.Width / (float)Width);
             canvas.Clear();
@@ -89,7 +90,7 @@ namespace FormsSkiaBikeTracker.Forms.Controls
 
             if (Source != null && Source.Bitmap != null)
             {
-                double fillScale = GetFillScale(new Size(Source.Bitmap.Width, Source.Bitmap.Height), Bounds.Size);
+                double fillScale = GetFillScale(new SKSize(Source.Bitmap.Width, Source.Bitmap.Height), new SKSize(circleDiameter, circleDiameter));
                 double destinationWidth = Source.Bitmap.Width * fillScale;
                 double destinationHeight = Source.Bitmap.Height * fillScale;
                 SKRect bitmapBounds = SKRect.Create(0, 0, Source.Bitmap.Width, Source.Bitmap.Height);
@@ -121,8 +122,7 @@ namespace FormsSkiaBikeTracker.Forms.Controls
                 {
                     float centerX = (float)Width * 0.5f;
                     float centerY = (float)Height * 0.5f;
-                    float shortRadius = Math.Min(centerX, centerY);
-                    float borderRadius = shortRadius - BorderWidth * 0.5f;
+                    float borderRadius = (circleDiameter - BorderWidth) * 0.5f;
 
                     canvas.DrawCircle(centerX, centerY, borderRadius, borderPaint);
                 }
@@ -133,7 +133,8 @@ namespace FormsSkiaBikeTracker.Forms.Controls
         {
             try
             {
-                float fillScale = (float)GetFillScale(new Size(sourceRect.Size.Width, sourceRect.Size.Height), Bounds.Size);
+                float circleDiameter = (float)Math.Min(Width, Height);
+                float fillScale = GetFillScale(sourceRect.Size, new SKSize(circleDiameter, circleDiameter));
                 SKMatrix initialTranslate = SKMatrix.MakeTranslation(sourceRect.Width * -0.5f,
                                                                      sourceRect.Height * -0.5f);
                 SKMatrix finalTranslate = SKMatrix.MakeTranslation((float)Width * 0.5f,
@@ -141,8 +142,7 @@ namespace FormsSkiaBikeTracker.Forms.Controls
                 SKMatrix scale = SKMatrix.MakeScale(fillScale, fillScale);
                 SKMatrix result = SKMatrix.MakeIdentity();
 
-                SKMatrix.Concat(ref result, result, finalTranslate);
-                SKMatrix.Concat(ref result, result, scale);
+                SKMatrix.Concat(ref result, finalTranslate, scale);
                 SKMatrix.Concat(ref result, result, initialTranslate);
 
                 return result;
@@ -153,12 +153,12 @@ namespace FormsSkiaBikeTracker.Forms.Controls
             }
         }
 
-        private double GetFillScale(Size source, Size destination)
+        private float GetFillScale(SKSize source, SKSize destination)
         {
-            double xScale = destination.Width / source.Width;
-            double yScale = destination.Height / source.Height;
+            float xScale = destination.Width / source.Width;
+            float yScale = destination.Height / source.Height;
 
-            return  Math.Min(xScale, yScale);
+            return Math.Max(xScale, yScale);
         }
 
         protected override void OnPropertyChanged(string propertyName = null)

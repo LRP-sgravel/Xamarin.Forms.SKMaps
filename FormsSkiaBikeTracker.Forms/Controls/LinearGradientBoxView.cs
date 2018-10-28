@@ -59,6 +59,7 @@ namespace FormsSkiaBikeTracker.Forms.Controls
                 paint.Shader = gradientShader;
 
                 canvas.Scale(args.Info.Width / (float)Width);
+                canvas.Clear();
 
                 if (ClippingPath != null)
                 {
