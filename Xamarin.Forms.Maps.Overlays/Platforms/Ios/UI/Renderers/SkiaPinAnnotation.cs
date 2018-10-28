@@ -14,7 +14,7 @@ namespace Xamarin.Forms.Maps.Overlays.Platforms.Ios.UI.Renderers
 
             Title = pin.Label;
             Subtitle = pin.Address;
-            SetCoordinate(pin.Position.ToLocationCoordinate());
+            Coordinate = pin.Position.ToLocationCoordinate();
         }
 
         public override string Title
@@ -65,7 +65,5 @@ namespace Xamarin.Forms.Maps.Overlays.Platforms.Ios.UI.Renderers
                 }
             }
         }
-
-        public override void SetCoordinate(CLLocationCoordinate2D value) => Coordinate = value;
     }
 }

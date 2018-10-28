@@ -18,6 +18,7 @@ using FormsSkiaBikeTracker.Forms;
 using FormsSkiaBikeTracker.Ios.Services;
 using MvvmCross.Forms.Platforms.Ios.Core;
 using MvvmCross.Base;
+using MvvmCross.Plugin.Json;
 
 namespace FormsSkiaBikeTracker.Ios
 {
@@ -30,7 +31,14 @@ namespace FormsSkiaBikeTracker.Ios
                 PropertyInjectorOptions = MvxPropertyInjectorOptions.MvxInject
             };
         }
-        
+
+        protected override void InitializeFirstChance()
+        {
+            Mvx.RegisterSingleton<IMvxJsonConverter>(new MvxJsonConverter());
+
+            base.InitializeFirstChance();
+        }
+
         protected override void InitializePlatformServices()
         {
             base.InitializePlatformServices();
