@@ -27,7 +27,7 @@ namespace Xamarin.Forms.Maps.Overlays.Platforms.Ios.UI.Renderers
                     string titleKey = nameof(Title).ToLower();
 
                     WillChangeValue(titleKey);
-                    Title = value;
+                    base.Title = value;
                     DidChangeValue(titleKey);
                 }
             }
