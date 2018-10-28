@@ -82,6 +82,11 @@ namespace FormsSkiaBikeTracker.Forms.Controls
             canvas.Scale(args.Info.Width / (float)Width);
             canvas.Clear();
 
+            if (ClippingPath != null)
+            {
+                canvas.ClipPath(ClippingPath);
+            }
+
             if (Source != null && Source.Bitmap != null)
             {
                 double fillScale = GetFillScale(new Size(Source.Bitmap.Width, Source.Bitmap.Height), Bounds.Size);
@@ -121,11 +126,6 @@ namespace FormsSkiaBikeTracker.Forms.Controls
 
                     canvas.DrawCircle(centerX, centerY, borderRadius, borderPaint);
                 }
-            }
-
-            if (ClippingPath != null)
-            {
-                canvas.ClipPath(ClippingPath);
             }
         }
 

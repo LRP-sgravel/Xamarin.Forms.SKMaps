@@ -58,12 +58,14 @@ namespace FormsSkiaBikeTracker.Forms.Controls
                 paint.IsAntialias = true;
                 paint.Shader = gradientShader;
 
-                canvas.DrawPaint(paint);
-            }
+                canvas.Scale(args.Info.Width / (float)Width);
 
-            if (ClippingPath != null)
-            {
-                canvas.ClipPath(ClippingPath);
+                if (ClippingPath != null)
+                {
+                    canvas.ClipPath(ClippingPath);
+                }
+
+                canvas.DrawPaint(paint);
             }
         }
     }

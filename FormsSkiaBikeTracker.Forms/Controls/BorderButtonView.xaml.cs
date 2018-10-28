@@ -57,6 +57,8 @@ namespace FormsSkiaBikeTracker.Forms.Controls
         {
             InitializeComponent();
 
+            UpdateBorderMask();
+
             _backgroundPropertyChangedSubscription = Background.WeakSubscribe(nameof(Background.SizeChanged),
                                                                               SignUpBackgroundSizeChanged);
         }
@@ -106,6 +108,7 @@ namespace FormsSkiaBikeTracker.Forms.Controls
             clipPath.AddRoundRect(buttonRect, cornerSize, cornerSize, SKPathDirection.CounterClockwise);
 
             Background.ClippingPath = clipPath;
+            Background.InvalidateSurface();
         }
 
         private void ButtonClicked(object sender, EventArgs args)
