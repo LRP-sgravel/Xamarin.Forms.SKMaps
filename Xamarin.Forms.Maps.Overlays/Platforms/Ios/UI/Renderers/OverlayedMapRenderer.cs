@@ -183,6 +183,7 @@ namespace Xamarin.Forms.Maps.Overlays.Platforms.Ios.UI.Renderers
                 SkiaPinAnnotationView pinView = mapView.DequeueReusableAnnotation(SkiaPinAnnotationView.ViewIdentifier) as SkiaPinAnnotationView
                                                     ?? CreateAnnotationView(skiaAnnotation);
 
+                pinView.Annotation = skiaAnnotation;
                 pinView.UpdateImage();
                 pinView.UpdateAnchor();
                 pinView.Hidden = !pin.IsVisible;
