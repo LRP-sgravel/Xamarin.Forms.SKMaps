@@ -11,5 +11,30 @@ steps:
 
 - task: NuGetCommand@2
   inputs:
+    restoreSolution: '**/*.sln'
+
+- task: XamarinAndroid@1
+  inputs:
+    projectFile: '**/Xamarin.Forms.SKMaps.csproj'
+    outputDirectory: '$(outputDirectory)'
+    configuration: '$(buildConfiguration)'
+    
+- task: XamariniOS@2
+  inputs:
+    solutionFile: '**/Xamarin.Forms.SKMaps.csproj'
+    configuration: '$(buildConfiguration)'
+    packageApp: false
+    buildForSimulator: false
+    
+- task: NuGetCommand@2
+  inputs:
     command: pack
     packagesToPack: '**/Xamarin.Forms.SKMaps.csproj'
+    
+- task: NuGetCommand@2
+  inputs:
+    command: push
+    nuGetFeedType: external
+    publishFeedCredentials: '<Name of the NuGet service connection>'
+    versioningScheme: byEnvVar
+    versionEnvVar: Version
