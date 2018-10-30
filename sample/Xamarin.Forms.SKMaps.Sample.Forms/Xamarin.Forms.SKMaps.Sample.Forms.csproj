@@ -21,7 +21,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\Xamarin.Forms.SKMaps\Xamarin.Forms.SKMaps.csproj" />
-    <ProjectReference Include="..\Xamarin.Forms.SKMaps.Sample.Common\Xamarin.Forms.SKMaps.Sample.csproj" />
+    <ProjectReference Include="..\Xamarin.Forms.SKMaps.Sample\Xamarin.Forms.SKMaps.Sample.csproj" />
   </ItemGroup>
 
   <ItemGroup>

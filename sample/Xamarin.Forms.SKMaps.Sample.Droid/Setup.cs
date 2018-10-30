@@ -11,7 +11,7 @@
 
 using Android.Content;
 using Flurry.Analytics;
-using Xamarin.Forms.SKMaps.Sample.Droid.Services;
+using Xamarin.Forms.SKMaps.Sample.Android.Services;
 using Xamarin.Forms.SKMaps.Sample.Forms;
 using Xamarin.Forms.SKMaps.Sample.Services.Interface;
 using MvvmCross.Base;
@@ -19,7 +19,7 @@ using MvvmCross.Forms.Platforms.Android.Core;
 using MvvmCross.IoC;
 using MvxEntry = MvvmCross.Mvx;
 
-namespace Xamarin.Forms.SKMaps.Sample.Droid
+namespace Xamarin.Forms.SKMaps.Sample.Android
 {
     public class Setup : MvxFormsAndroidSetup<MvxApp, FormsApp>
     {

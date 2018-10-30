@@ -103,6 +103,9 @@
     <CodesignKey>iPhone Distribution</CodesignKey>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
   </PropertyGroup>
+    <PropertyGroup>
+        <SolutionDir>..\..\</SolutionDir>
+    </PropertyGroup>
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
@@ -416,13 +419,13 @@
       <Project>{a174f576-c01b-434b-9398-e5bc04535243}</Project>
       <Name>Xamarin.Forms.SKMaps</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Xamarin.Forms.SKMaps.Sample.Common\Xamarin.Forms.SKMaps.Sample.csproj">
-      <Project>{48dc3bde-5e7d-40c6-b682-aeda1e64894e}</Project>
-      <Name>Xamarin.Forms.SKMaps.Sample</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Xamarin.Forms.SKMaps.Sample.Forms\Xamarin.Forms.SKMaps.Sample.Forms.csproj">
       <Project>{37df1052-c719-4ec3-be0f-f8e115a23661}</Project>
       <Name>Xamarin.Forms.SKMaps.Sample.Forms</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Xamarin.Forms.SKMaps.Sample\Xamarin.Forms.SKMaps.Sample.csproj">
+      <Project>{26b61679-1497-4ab0-9823-121eb3768dad}</Project>
+      <Name>Xamarin.Forms.SKMaps.Sample</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />

@@ -1,12 +1,12 @@
 ﻿using System.Linq;
-using Xamarin.Forms.SKMaps.Sample.Droid.UI.Effects;
+using Xamarin.Forms.SKMaps.Sample.Android.UI.Effects;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 using NativeListView = Android.Widget.ListView;
 using SharedNoSelectionEffect = Xamarin.Forms.SKMaps.Sample.Forms.UI.Effects.NoSelectionListViewEffect;
 
 [assembly: ExportEffect(typeof(NoSelectionListViewEffect), nameof(NoSelectionListViewEffect))]
-namespace Xamarin.Forms.SKMaps.Sample.Droid.UI.Effects
+namespace Xamarin.Forms.SKMaps.Sample.Android.UI.Effects
 {
     class NoSelectionListViewEffect : PlatformEffect
     {

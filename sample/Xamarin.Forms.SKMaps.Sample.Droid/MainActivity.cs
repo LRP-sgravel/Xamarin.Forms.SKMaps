@@ -17,7 +17,7 @@ using Plugin.CurrentActivity;
 using Plugin.Permissions;
 using Android.Runtime;
 
-namespace Xamarin.Forms.SKMaps.Sample.Droid
+namespace Xamarin.Forms.SKMaps.Sample.Android
 {
     [Activity(Label = "SKMaps Demo",
               Theme = "@style/MainTheme",

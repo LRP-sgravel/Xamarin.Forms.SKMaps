@@ -16,7 +16,7 @@ using Acr.UserDialogs;
 using MvvmCross.Platforms.Android;
 using MvxEntry = MvvmCross.Mvx;
 
-namespace Xamarin.Forms.SKMaps.Sample.Droid
+namespace Xamarin.Forms.SKMaps.Sample.Android
 {
     [Activity(Label = "SKMaps Demo",
               MainLauncher = true,

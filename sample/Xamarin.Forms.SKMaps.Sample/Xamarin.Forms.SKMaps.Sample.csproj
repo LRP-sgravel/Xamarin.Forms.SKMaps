@@ -1,11 +1,13 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>Xamarin.Forms.SKMaps.Sample</AssemblyName>
     <RootNamespace>Xamarin.Forms.SKMaps.Sample</RootNamespace>
   </PropertyGroup>
-
+    <PropertyGroup>
+        <SolutionDir>..\..\</SolutionDir>
+    </PropertyGroup>
   <ItemGroup>
     <None Remove="Resources\Fonts\KumarOne-Regular.otf" />
     <None Remove="Resources\Images\full_logo.svg" />
