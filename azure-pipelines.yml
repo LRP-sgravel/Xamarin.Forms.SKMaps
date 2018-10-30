@@ -13,23 +13,10 @@ steps:
   inputs:
     restoreSolution: '**/*.sln'
 
-- task: XamarinAndroid@1
+- task: VSBuild@1
   inputs:
-    projectFile: '**/Xamarin.Forms.SKMaps.sln'
-    outputDirectory: '$(outputDirectory)'
+    solution: 'solution**/Xamarin.Forms.SKMaps.sln'
     configuration: 'Release'
-    
-- task: XamariniOS@2
-  inputs:
-    solutionFile: '**/Xamarin.Forms.SKMaps.sln'
-    configuration: 'Release'
-    packageApp: false
-    buildForSimulator: false
-    
-- task: NuGetCommand@2
-  inputs:
-    command: pack
-    packagesToPack: '**/Xamarin.Forms.SKMaps.sln'
     
 #- task: NuGetCommand@2
 #  inputs:
