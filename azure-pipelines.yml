@@ -17,12 +17,12 @@ steps:
   inputs:
     projectFile: '**/Xamarin.Forms.SKMaps.sln'
     outputDirectory: '$(outputDirectory)'
-    configuration: '$(buildConfiguration)'
+    configuration: 'Release'
     
 - task: XamariniOS@2
   inputs:
     solutionFile: '**/Xamarin.Forms.SKMaps.sln'
-    configuration: '$(buildConfiguration)'
+    configuration: 'Release'
     packageApp: false
     buildForSimulator: false
     
