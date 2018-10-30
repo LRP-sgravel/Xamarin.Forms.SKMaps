@@ -31,10 +31,10 @@ steps:
     command: pack
     packagesToPack: '**/Xamarin.Forms.SKMaps.csproj'
     
-- task: NuGetCommand@2
-  inputs:
-    command: push
-    nuGetFeedType: external
-    publishFeedCredentials: '<Name of the NuGet service connection>'
-    versioningScheme: byEnvVar
-    versionEnvVar: Version
+#- task: NuGetCommand@2
+#  inputs:
+#    command: push
+#    nuGetFeedType: external
+#    publishFeedCredentials: '<Name of the NuGet service connection>'
+#    versioningScheme: byEnvVar
+#    versionEnvVar: Version
