@@ -15,7 +15,7 @@ steps:
 
 - task: VSBuild@1
   inputs:
-    solution: 'solution**/Xamarin.Forms.SKMaps.sln'
+    solution: '**/Xamarin.Forms.SKMaps.sln'
     configuration: 'Release'
     
 #- task: NuGetCommand@2
