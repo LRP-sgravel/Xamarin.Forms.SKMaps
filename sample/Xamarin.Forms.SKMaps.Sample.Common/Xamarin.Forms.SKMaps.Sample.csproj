@@ -1,0 +1,86 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>Xamarin.Forms.SKMaps.Sample</AssemblyName>
+    <RootNamespace>Xamarin.Forms.SKMaps.Sample</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\Fonts\KumarOne-Regular.otf" />
+    <None Remove="Resources\Images\full_logo.svg" />
+    <None Remove="Resources\Images\location-arrow-fill.svg" />
+    <None Remove="Resources\Images\location-arrow-outline.svg" />
+    <None Remove="Resources\Images\play.svg" />
+    <None Remove="Resources\Images\stop.svg" />
+    <None Remove="Resources\Images\symbol_logo.svg" />
+    <None Remove="Resources\Text\Common.json" />
+    <None Remove="Resources\Text\fr\Common.json" />
+    <None Remove="Resources\Text\fr\QuickStatsBanner.json" />
+    <None Remove="Resources\Text\fr\ViewModels.ActivityViewModel.json" />
+    <None Remove="Resources\Text\fr\ViewModels.LoginViewModel.json" />
+    <None Remove="Resources\Text\fr\ViewModels.SignUpViewModel.json" />
+    <None Remove="Resources\Text\QuickStatsBanner.json" />
+    <None Remove="Resources\Text\ViewModels.ActivityViewModel.json" />
+    <None Remove="Resources\Text\ViewModels.LoginViewModel.json" />
+    <None Remove="Resources\Text\ViewModels.SignUpViewModel.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Fonts\KumarOne-Regular.otf" />
+    <EmbeddedResource Include="Resources\Images\full_logo.svg" />
+    <EmbeddedResource Include="Resources\Images\location-arrow-fill.svg" />
+    <EmbeddedResource Include="Resources\Images\location-arrow-outline.svg" />
+    <EmbeddedResource Include="Resources\Images\play.svg" />
+    <EmbeddedResource Include="Resources\Images\stop.svg" />
+    <EmbeddedResource Include="Resources\Images\symbol_logo.svg" />
+    <EmbeddedResource Include="Resources\Text\Common.json" />
+    <EmbeddedResource Include="Resources\Text\fr\QuickStatsBanner.json" />
+    <EmbeddedResource Include="Resources\Text\fr\Common.json" />
+    <EmbeddedResource Include="Resources\Text\fr\ViewModels.ActivityViewModel.json" />
+    <EmbeddedResource Include="Resources\Text\fr\ViewModels.LoginViewModel.json" />
+    <EmbeddedResource Include="Resources\Text\fr\ViewModels.SignUpViewModel.json" />
+    <EmbeddedResource Include="Resources\Text\QuickStatsBanner.json" />
+    <EmbeddedResource Include="Resources\Text\ViewModels.ActivityViewModel.json" />
+    <EmbeddedResource Include="Resources\Text\ViewModels.LoginViewModel.json" />
+    <EmbeddedResource Include="Resources\Text\ViewModels.SignUpViewModel.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Acr.Settings" Version="9.0.0" />
+    <PackageReference Include="Acr.UserDialogs" Version="7.0.1" />
+    <PackageReference Include="Fody" Version="2.4.6" />
+    <PackageReference Include="Microsoft.NETCore.Platforms" Version="2.1.0" />
+    <PackageReference Include="MvvmCross" Version="6.0.1" />
+    <PackageReference Include="MvvmCross.Plugin.File" Version="6.0.1" />
+    <PackageReference Include="MvvmCross.Plugin.Json" Version="6.0.1" />
+    <PackageReference Include="MvvmCross.Plugin.JsonLocalization" Version="6.0.1" />
+    <PackageReference Include="MvvmCross.Plugin.Location" Version="6.0.1" />
+    <PackageReference Include="MvvmCross.Plugin.PictureChooser" Version="6.0.1" />
+    <PackageReference Include="MvvmCross.Plugin.ResourceLoader" Version="6.0.1" />
+    <PackageReference Include="Plugin.Permissions" Version="3.0.0.12" />
+    <PackageReference Include="Realm" Version="3.0.0" />
+    <PackageReference Include="Realm.Database" Version="3.0.0" />
+    <PackageReference Include="Realm.DataBinding" Version="1.2.0" />
+    <PackageReference Include="SimpleCrypto.NetCore" Version="1.0.0" />
+    <PackageReference Include="SkiaSharp" Version="1.60.3" />
+    <PackageReference Include="System.Collections.Immutable" Version="1.4.0" />
+    <PackageReference Include="System.Console" Version="4.3.1" />
+    <PackageReference Include="System.Linq.Queryable" Version="4.3.0" />
+    <PackageReference Include="System.Net.Http" Version="4.3.3" />
+    <PackageReference Include="System.Reflection.TypeExtensions" Version="4.4.0" />
+    <PackageReference Include="System.Security.Cryptography.Algorithms" Version="4.3.1" />
+    <PackageReference Include="System.Security.Cryptography.X509Certificates" Version="4.3.2" />
+    <PackageReference Include="System.Xml.ReaderWriter" Version="4.3.1" />
+    <PackageReference Include="Xamarin.Build.Download" Version="0.4.11" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Xamarin.Forms.SKMaps\Xamarin.Forms.SKMaps.csproj" />
+  </ItemGroup>
+
+</Project>

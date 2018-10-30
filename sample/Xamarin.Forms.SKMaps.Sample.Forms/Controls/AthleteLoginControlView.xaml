@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:Xamarin.Forms.SKMaps.Sample.Forms.Controls;assembly=Xamarin.Forms.SKMaps.Sample.Forms"
+             xmlns:markup="clr-namespace:Xamarin.Forms.SKMaps.Sample.Forms.Markup;assembly=Xamarin.Forms.SKMaps.Sample.Forms"
+             x:Class="Xamarin.Forms.SKMaps.Sample.Forms.Controls.AthleteLoginControlView"
+             x:Name="Control"
+             HeightRequest="79"
+             IsClippedToBounds="True">
+    
+    <Grid x:Name="ContentGrid"
+          BindingContext="{Binding Source={x:Reference Name=Control}, Path=InternalViewModel}"
+          Margin="0, 0, 0, 10"
+          ColumnSpacing="0"
+          RowSpacing="0">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80" />
+            <RowDefinition x:Name="PasswordEntryRow">
+                <RowDefinition.Height>
+                    <OnPlatform x:TypeArguments="GridLength">
+                        <On Platform="iOS" Value="40" />
+                        <On Platform="Android" Value="55" />
+                    </OnPlatform>
+                </RowDefinition.Height>
+            </RowDefinition>
+        </Grid.RowDefinitions>
+            
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="5*" />
+        </Grid.ColumnDefinitions>
+
+        <controls:CircledImageView Grid.Row="0" Grid.Column="0"
+                                   Margin="10"
+                                   VerticalOptions="FillAndExpand"
+                                   HorizontalOptions="FillAndExpand"
+                                   Source="{Binding AthletePicture}"
+                                   BorderWidth="2"
+                                   BorderColor="DarkSlateGray" />
+        <controls:SKLabel Grid.Row="0" Grid.Column="1"
+                          Grid.ColumnSpan="2"
+                          Margin ="0, 0, 0, 10"
+                          VerticalOptions="Center"
+                          HorizontalOptions="Start"
+                          Text="{Binding Athlete.Name}"
+                          FontResourcePath="KumarOne-Regular.otf"
+                          FontSize="24"
+                          TextColor="DarkSlateGray" />
+
+        <StackLayout x:Name="PasswordLayout"
+                     Grid.Row="1" Grid.Column="0"
+                     Grid.ColumnSpan="2"
+                     Margin="20, 0, 0, 0"
+                     HeightRequest="0"
+                     HorizontalOptions="Fill"
+                     Orientation="Horizontal">
+            <Entry x:Name="PasswordEntry"
+                   Margin="20, 5, 10, 5"
+                   HorizontalOptions="FillAndExpand"
+                   VerticalOptions="Fill"
+                   IsPassword="True"
+                   Text="{Binding EnteredPassword}"
+                   Placeholder="{markup:LocalizedText Password}"/>
+            <Button x:Name="SubmitButton"
+                    HorizontalOptions="End"
+                    VerticalOptions="Fill"
+                    FontSize="20"
+                    TextColor="DarkSlateGray"
+                    Text=">>" />
+        </StackLayout>
+    </Grid>
+</ContentView>

@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<mvx:MvxContentPage x:TypeArguments="viewmodels:SignUpViewModel"
+                     xmlns="http://xamarin.com/schemas/2014/forms"
+                     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                     xmlns:viewmodels="clr-namespace:Xamarin.Forms.SKMaps.Sample.ViewModels;assembly=Xamarin.Forms.SKMaps.Sample"
+                     xmlns:mvx="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
+                     xmlns:controls="clr-namespace:Xamarin.Forms.SKMaps.Sample.Forms.Controls;assembly=Xamarin.Forms.SKMaps.Sample.Forms"
+                     xmlns:markup="clr-namespace:Xamarin.Forms.SKMaps.Sample.Forms.Markup;assembly=Xamarin.Forms.SKMaps.Sample.Forms"
+                     x:Class="Xamarin.Forms.SKMaps.Sample.Forms.Pages.SignUpPage"
+                     Title="{markup:LocalizedText SigningUp}"
+                     x:Name="SignUpPage">
+    <ScrollView>
+        <Grid RowSpacing="3">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="120"/>
+                <RowDefinition Height="5"/>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="2"/>
+                <RowDefinition Height="120"/>
+            </Grid.RowDefinitions>
+
+            <controls:CircledImageView Grid.Row="0"
+                                       Margin="0, 20, 0, 0"
+                                       BorderColor="DarkSlateGray"
+                                       BorderWidth="5"
+                                       Source="{Binding PictureBitmap}">
+                <controls:CircledImageView.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding SelectAthletePictureCommand}" />
+                </controls:CircledImageView.GestureRecognizers>
+            </controls:CircledImageView>
+        
+            <controls:SKLabel Grid.Row="2"
+                              Margin="20, 0, 20, 0"
+                              VerticalOptions="End"
+                              Text="{markup:LocalizedText Name}"
+                              TextColor="DarkSlateGray"
+                              FontResourcePath="KumarOne-Regular.otf"
+                              FontSize="18" />
+            <Entry x:Name="NameEntry"
+                   Grid.Row="3"
+                   Margin="20, 0, 20, 0"
+                   Text="{Binding Name, Mode=TwoWay}"
+                   VerticalOptions="Start"
+                   FontSize="18"/>
+        
+            <controls:SKLabel Grid.Row="4"
+                              Margin="20, 0, 20, 0"
+                              VerticalOptions="End"
+                              Text="{markup:LocalizedText Password}"
+                              TextColor="DarkSlateGray"
+                              FontResourcePath="KumarOne-Regular.otf"
+                              FontSize="18"/>
+            <Entry x:Name="PasswordEntry"
+                   Grid.Row="5"
+                   Margin="20, 0, 20, 0"
+                   Text="{Binding Password, Mode=TwoWay}"
+                   IsPassword="True"
+                   VerticalOptions="Start"
+                   FontSize="18" />
+        
+            <controls:SKLabel Grid.Row="6"
+                              Margin="20, 0, 20, 0"
+                              VerticalOptions="End"
+                              Text="{markup:LocalizedText ConfirmPassword}"
+                              TextColor="DarkSlateGray"
+                              FontResourcePath="KumarOne-Regular.otf"
+                              FontSize="18"/>
+            <Entry x:Name="ConfirmationEntry"
+                   Grid.Row="7"
+                   Margin="20, 0, 20, 0"
+                   Text="{Binding PasswordConfirmation, Mode=TwoWay}"
+                   IsPassword="True"
+                   VerticalOptions="Start"
+                   FontSize="18" />
+
+            <controls:LinearGradientBoxView Grid.Row="8"
+                                          StartColor="AliceBlue"
+                                          EndColor="LightSkyBlue" />
+        
+            <controls:BorderButtonView Grid.Row="9"
+                                       Margin="20"
+                                       BorderWidth="4"
+                                       Text="{markup:LocalizedText LetsRide}"
+                                       Command="{Binding RegisterAthleteCommand}"
+                                       CommandParameter="{Binding Source={x:Reference SignUpPage}, Path=CurrentErrors}"/>
+        </Grid>
+    </ScrollView>
+</mvx:MvxContentPage>
