@@ -15,13 +15,13 @@ steps:
 
 - task: XamarinAndroid@1
   inputs:
-    projectFile: '**/Xamarin.Forms.SKMaps.csproj'
+    projectFile: '**/Xamarin.Forms.SKMaps.sln'
     outputDirectory: '$(outputDirectory)'
     configuration: '$(buildConfiguration)'
     
 - task: XamariniOS@2
   inputs:
-    solutionFile: '**/Xamarin.Forms.SKMaps.csproj'
+    solutionFile: '**/Xamarin.Forms.SKMaps.sln'
     configuration: '$(buildConfiguration)'
     packageApp: false
     buildForSimulator: false
@@ -29,7 +29,7 @@ steps:
 - task: NuGetCommand@2
   inputs:
     command: pack
-    packagesToPack: '**/Xamarin.Forms.SKMaps.csproj'
+    packagesToPack: '**/Xamarin.Forms.SKMaps.sln'
     
 #- task: NuGetCommand@2
 #  inputs:
