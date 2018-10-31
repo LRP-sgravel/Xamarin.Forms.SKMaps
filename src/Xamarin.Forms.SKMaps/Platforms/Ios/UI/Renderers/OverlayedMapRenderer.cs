@@ -231,6 +231,14 @@ namespace Xamarin.Forms.SKMaps.Platforms.Ios.UI.Renderers
                 {
                     UpdateAnnotationIcon(skiaPin);
                 }
+                else if (args.PropertyName == SKPin.AnchorXProperty.PropertyName ||
+                         args.PropertyName == SKPin.AnchorYProperty.PropertyName)
+                {
+                    MKAnnotationView view = _NativeControl.ViewForAnnotation(annotation);
+                    SKPinAnnotationView skPinView = view as SKPinAnnotationView;
+
+                    skPinView?.UpdateAnchor();
+                }
                 else if (args.PropertyName == SKPin.IsVisibleProperty.PropertyName)
                 {
                     MKAnnotationView view = _NativeControl.ViewForAnnotation(annotation);

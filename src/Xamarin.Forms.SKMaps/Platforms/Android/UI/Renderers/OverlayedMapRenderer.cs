@@ -120,6 +120,11 @@ namespace Xamarin.Forms.SKMaps.Platforms.Android.UI.Renderers
                 {
                     UpdateMarkerIcon(pin, marker);
                 }
+                else if (args.PropertyName == SKPin.AnchorXProperty.PropertyName ||
+                         args.PropertyName == SKPin.AnchorYProperty.PropertyName)
+                {
+                    marker.SetAnchor((float)pin.AnchorX, (float)pin.AnchorY);
+                }
                 else if (args.PropertyName == SKPin.IsVisibleProperty.PropertyName)
                 {
                     marker.Visible = pin.IsVisible;
