@@ -9,6 +9,8 @@
     <Company>Le rond-point</Company>
     <Authors>Sylvain Gravel</Authors>
     <RepositoryUrl>https://github.com/LRP-sgravel/Xamarin.Forms.SKMaps</RepositoryUrl>
+    <Version>1.0.1</Version>
+    <AssemblyVersion>1.0.1.0</AssemblyVersion>
   </PropertyGroup>
   
   <ItemGroup>

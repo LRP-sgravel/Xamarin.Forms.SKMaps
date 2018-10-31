@@ -187,6 +187,7 @@ namespace Xamarin.Forms.SKMaps.Platforms.Ios.UI.Renderers
                 pinView.UpdateImage();
                 pinView.UpdateAnchor();
                 pinView.Hidden = !pin.IsVisible;
+                pinView.Enabled = !pin.Clickable;
 
                 return pinView;
             }
@@ -237,6 +238,15 @@ namespace Xamarin.Forms.SKMaps.Platforms.Ios.UI.Renderers
                     if (view != null)
                     {
                         view.Hidden = !skiaPin.IsVisible;
+                    }
+                }
+                else if (args.PropertyName == SKPin.ClickableProperty.PropertyName)
+                {
+                    MKAnnotationView view = _NativeControl.ViewForAnnotation(annotation);
+
+                    if (view != null)
+                    {
+                        view.Enabled = !skiaPin.Clickable;
                     }
                 }
             }
