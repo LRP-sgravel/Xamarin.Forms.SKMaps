@@ -93,7 +93,7 @@ The `SKMapOverlay` can be used to add custom "map tile" style overlays.  To do s
 </table>
 
 ### Drawing your overlay
-Similar to the `SKPin`, the `SKMapOverlay` should be subclassed and the overlay is drawn within an override named `DrawOnMap`.  To ease the drawing calculations, all drawing occurs in **GPS coordinates** through the `SKMapCanvas` class and other utility classes like `SKMapPath`.  You should always consider the `canvasMapRect` parameter when doing the render calls to avoid drawing outside of the current rendering area.  This method might be called concurently for many tiles, your implementation should therefore be thread-safe. `DrawOnMap` will not be called for tiles outside of your `GpsBounds`.
+Similar to the `SKPin`, the `SKMapOverlay` should be subclassed and the overlay is drawn within an override named `DrawOnMap`.  To ease the drawing calculations, all drawing occurs in **GPS coordinates** through the `SKMapCanvas` class and other utility classes like `SKMapPath`.
 
 ```csharp
 public override void DrawOnMap(SKMapCanvas canvas, SKMapSpan canvasMapRect, double zoomScale)
@@ -123,17 +123,25 @@ public override void DrawOnMap(SKMapCanvas canvas, SKMapSpan canvasMapRect, doub
 }
 ```
 
+
+#### Notes
+- You should always consider the `canvasMapRect` parameter when doing the render calls to avoid drawing outside of the current rendering area.
+- This method might be called concurently for many tiles, your implementation should therefore be thread-safe.
+- `DrawOnMap` will not be called for tiles outside of your `GpsBounds`.
+- Drawing shapes across the 180th meridian will automatically handle the necessary wrap-around.  In the case of lines, you can opt out and force the long line to be rendered by setting the `shortline` parameter to `false` in the `DrawLine` calls.  Other shapes require passing a `MapSpan` that goes across the 180th meridian, meaning that it would reach longitudes under -180 degrees or above 180 degrees (i.e. A rectangle centered at 179 degrees longitude with a span of 5 degrees).
+
+
 ### Other properties
 `SKMapOverlay` provides other properties to modify it's behavior.
 
 | Property | Purpose | Default |
 | ------------- | ------------- | ------------- |
-| `GpsBounds` | Gps bounds that fully emcompass the overlay. | --- |
+| `GpsBounds` | Gps bounds that fully emcompass the overlay. Tiles outside this area will not be rendered. | N/A |
 | `IsVisible` | Set the overlay's visibility on the map. | true (Visible) |
 
 
 ### Redrawing the overlay
-To force the overlay to be redrawn, you can call the `Invalidate` method.  Alternatively, changing the `GPSBounds`property will also force a full refresh of the overlay.
+To force the overlay to be redrawn, you can call the `Invalidate` method.  Alternatively, changing the `GPSBounds`property from within the child class will also force a full refresh of the overlay.
 
 ### Converting coordinates and pixel sizes
 Since the `SKMapOverlay` does all it's drawing operations in pixels but in a GPS coordinate space, you are likely to need to convert to/from pixel sizes to GPS.  A common use-case is wanting to draw a line of a given gps size regardless of the zoom level and position.  **Xamarin.Forms.SKMaps** provides utility methods to do those conversions.  Those methods are available on the `SKMapCanvas` class.
