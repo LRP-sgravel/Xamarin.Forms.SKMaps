@@ -1,7 +1,5 @@
 # Xamarin.Forms.SKMaps
-
----
-## SkiaSharp drawn map pins and overlays for Xamarin.Forms.Maps
+## Map pins and overlays for Xamarin.Forms.Maps, drawn with SkiaSharp
 **Xamarin.Forms.SKMaps** allows developers an easier integration of custom map features from a shared code base.  Built over Xamarin.Forms.Maps and adding the strength of SkiaSharp rendering, you can get easy and highly performant map drawing features from a single code base.
 
 # Build status
