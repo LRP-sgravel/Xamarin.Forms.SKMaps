@@ -47,8 +47,9 @@ Adding a `SKPin` could not be easier.  It uses the map's regular `Pins` property
 
 ### Drawing your pin
 The `CustomPin`class in the above example is the class responsible for rendering the pin marker.  To do so, subclass `SKPin` and override the `DrawPin` method.  You wil lreceive a `SKSurface` to draw on.  This surface will be sized according to its `Width` and `Height` and the device density.
+
 ```csharp
-public override void DrawMarker(SKSurface surface)
+public override void DrawPin(SKSurface surface)
 {
     SKCanvas canvas = surface.Canvas;
 
@@ -94,7 +95,7 @@ The `SKMapOverlay` can be used to add custom "map tile" style overlays.  To do s
 </table>
 
 ### Drawing your overlay
-Similar to the `SKPin`, the `SKMapOverlay` is drawn within an override named `DrawOnMap`.  To ease the drawing calculations, all drawing occurs in **GPS coordinates** through the `SKMapCanvas` class and other utility classes.
+Similar to the `SKPin`, the `SKMapOverlay` should be subclassed and is drawn within an override named `DrawOnMap`.  To ease the drawing calculations, all drawing occurs in **GPS coordinates** through the `SKMapCanvas` class and other utility classes.
 
 ```csharp
 public override void DrawOnMap(SKMapCanvas canvas, SKMapSpan canvasMapRect, double zoomScale)
