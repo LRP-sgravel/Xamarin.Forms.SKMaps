@@ -46,7 +46,7 @@ Adding a `SKPin` could not be easier.  It uses the map's regular `Pins` property
 </table>
 
 ### Drawing your pin
-The `CustomPin`class in the above example is the class responsible for rendering the pin marker.  To do so, subclass `SKPin` and override the `DrawPin` method.  You wil lreceive a `SKSurface` to draw on.  This surface will be sized according to its `Width` and `Height` and the device density.
+The `CustomPin` class in the above example is the class responsible for rendering the pin marker.  To do so, subclass `SKPin` and override the `DrawPin` method.  You will receive a `SKSurface` to draw on.  This surface will be sized according to its `Width` and `Height` and the device's density.
 
 ```csharp
 public override void DrawPin(SKSurface surface)
@@ -95,7 +95,7 @@ The `SKMapOverlay` can be used to add custom "map tile" style overlays.  To do s
 </table>
 
 ### Drawing your overlay
-Similar to the `SKPin`, the `SKMapOverlay` should be subclassed and is drawn within an override named `DrawOnMap`.  To ease the drawing calculations, all drawing occurs in **GPS coordinates** through the `SKMapCanvas` class and other utility classes.
+Similar to the `SKPin`, the `SKMapOverlay` should be subclassed and the overlay is drawn within an override named `DrawOnMap`.  To ease the drawing calculations, all drawing occurs in **GPS coordinates** through the `SKMapCanvas` class and other utility classes.
 
 ```csharp
 public override void DrawOnMap(SKMapCanvas canvas, SKMapSpan canvasMapRect, double zoomScale)
@@ -136,3 +136,11 @@ public override void DrawOnMap(SKMapCanvas canvas, SKMapSpan canvasMapRect, doub
 
 ### Redrawing the overlay
 To force the overlay to be redrawn, you can call the `Invalidate` method.  Alternatively, changing the `GPSBounds`property will also force a full refresh of the overlay.
+
+### Converting coordinates and pixel sizes
+Since the `SKMapOverlay` does all it's drawing operations in pixels but in a GPS coordinate space, you are likely to need to convert to/from pixel sizes to GPS.  A common use-case is wanting to draw a line of a given gps size regardless of the zoom level and position.  **Xamarin.Forms.SKMaps** provides utility methods to do those conversions.  Those methods are available on the `SKMapCanvas` class.
+
+| Method | Purpose |
+| ------------- | ------------- |
+| `PixelsToMaximumMapSpanAtScale` | Returns the maximum span that the provided pixels size requires for a given zoom scale. Because of the mercator projection, the maximum span will always be at the equator since the projection stretches the map at the poles. This method is useful to add padding to a shape when we don't know where it will be rendered.  Using a zoom scale of `SKMapCanvas.MaxZoomScale` will provide the maximum padding required when fully zoomed out. |
+| `PixelsToMapSizeAtScale` | Returns the span that the provided pixels size requires at the provided location for a given zoom scale. This method is useful to add padding to a shape when we know where it will be rendered. |
