@@ -74,7 +74,7 @@ public override void DrawMarker(SKSurface surface)
 | `Clickable` | Set the pin's clickability on the map. | true (Clickable) |
 
 ### Redrawing the pin
-To force the pin to be redrawn, you can call the `Invalidate` method.
+To force the pin to be redrawn, you can call the `Invalidate` method.  Changing the `Width` or `Height` will also force a refresh of the pin graphics.
 
 ## Overlays
 The `SKMapOverlay` can be used to add custom "map tile" style overlays.  To do so, add your overlays to the `SKMap` `MapOverlay`property.
