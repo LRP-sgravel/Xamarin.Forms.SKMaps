@@ -46,7 +46,7 @@ Adding a `SKPin` could not be easier.  It uses the map's regular `Pins` property
 </table>
 
 ### Drawing your pin
-The `CustomPin`class in the above example is the class responsible for rendering the pin marker.  To do so, subclass `SKPin` and override the `DrawMarker` method.  You wil lreceive a `SKSurface` to draw on.  This surface will be sized according to its `Width` and `Height` and the device density.
+The `CustomPin`class in the above example is the class responsible for rendering the pin marker.  To do so, subclass `SKPin` and override the `DrawPin` method.  You wil lreceive a `SKSurface` to draw on.  This surface will be sized according to its `Width` and `Height` and the device density.
 ```csharp
 public override void DrawMarker(SKSurface surface)
 {
