@@ -93,7 +93,7 @@ The `SKMapOverlay` can be used to add custom "map tile" style overlays.  To do s
 </table>
 
 ### Drawing your overlay
-Similar to the `SKPin`, the `SKMapOverlay` should be subclassed and the overlay is drawn within an override named `DrawOnMap`.  To ease the drawing calculations, all drawing occurs in **GPS coordinates** through the `SKMapCanvas` class and other utility classes.
+Similar to the `SKPin`, the `SKMapOverlay` should be subclassed and the overlay is drawn within an override named `DrawOnMap`.  To ease the drawing calculations, all drawing occurs in **GPS coordinates** through the `SKMapCanvas` class and other utility classes like `SKMapPath`.  You should always consider the `canvasMapRect` parameter when doing the render calls to avoid drawing outside of the current rendering area.  This method might be called concurently for many tiles, your implementation should therefore be thread-safe. `DrawOnMap` will not be called for tiles outside of your `GpsBounds`.
 
 ```csharp
 public override void DrawOnMap(SKMapCanvas canvas, SKMapSpan canvasMapRect, double zoomScale)
