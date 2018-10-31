@@ -66,7 +66,7 @@ namespace Xamarin.Forms.SKMaps.Platforms.Ios.UI.Renderers
                     using (SKSurface surface = SKSurface.Create((int)bitmapWidth, (int)bitmapHeight, SKColorType.Rgba8888, SKAlphaType.Premul))
                     {
                         surface.Canvas.Clear(SKColor.Empty);
-                        pin.DrawMarker(surface);
+                        pin.DrawPin(surface);
 
                         return surface.PeekPixels().ToUIImage();
                     }

@@ -53,7 +53,7 @@ namespace Xamarin.Forms.SKMaps.Sample.Forms.Controls.Maps
             }
         }
 
-        public override void DrawMarker(SKSurface surface)
+        public override void DrawPin(SKSurface surface)
         {
             SKCanvas canvas = surface.Canvas;
 

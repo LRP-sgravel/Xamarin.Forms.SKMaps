@@ -22,8 +22,8 @@ namespace Xamarin.Forms.SKMaps
 
         public static readonly BindableProperty WidthProperty = BindableProperty.Create(nameof(Width), typeof(double), typeof(SKPin), 32.0, propertyChanged: OnDrawablePropertyChanged);
         public static readonly BindableProperty HeightProperty = BindableProperty.Create(nameof(Height), typeof(double), typeof(SKPin), 32.0, propertyChanged: OnDrawablePropertyChanged);
-        public static readonly BindableProperty AnchorXProperty = BindableProperty.Create(nameof(AnchorX), typeof(double), typeof(SKPin), 0.5, propertyChanged: OnDrawablePropertyChanged);
-        public static readonly BindableProperty AnchorYProperty = BindableProperty.Create(nameof(AnchorY), typeof(double), typeof(SKPin), 0.5, propertyChanged: OnDrawablePropertyChanged);
+        public static readonly BindableProperty AnchorXProperty = BindableProperty.Create(nameof(AnchorX), typeof(double), typeof(SKPin), 0.5);
+        public static readonly BindableProperty AnchorYProperty = BindableProperty.Create(nameof(AnchorY), typeof(double), typeof(SKPin), 0.5);
         public static readonly BindableProperty IsVisibleProperty = BindableProperty.Create(nameof(IsVisible), typeof(bool), typeof(SKPin), true);
         public static readonly BindableProperty ClickableProperty = BindableProperty.Create(nameof(Clickable), typeof(bool), typeof(SKPin), true);
 
@@ -70,11 +70,11 @@ namespace Xamarin.Forms.SKMaps
             marker.Invalidate();
         }
 
-        protected void Invalidate()
+        public void Invalidate()
         {
             RequestInvalidate?.Invoke(this, new MapMarkerInvalidateEventArgs(this));
         }
 
-        public abstract void DrawMarker(SKSurface surface);
+        public abstract void DrawPin(SKSurface surface);
     }
 }

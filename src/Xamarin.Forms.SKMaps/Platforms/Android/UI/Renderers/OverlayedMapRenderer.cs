@@ -313,7 +313,7 @@ namespace Xamarin.Forms.SKMaps.Platforms.Android.UI.Renderers
             SKSurface surface = SKSurface.Create((int)bitmapWidth, (int)bitmapHeight, SKColorType.Rgba8888, SKAlphaType.Premul);
 
             surface.Canvas.Clear(SKColor.Empty);
-            sharedMarker.DrawMarker(surface);
+            sharedMarker.DrawPin(surface);
 
             return surface.PeekPixels();
         }

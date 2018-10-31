@@ -39,7 +39,7 @@ namespace Xamarin.Forms.SKMaps
         public MapSpan GpsBounds
         {
             get => (MapSpan)GetValue(GpsBoundsProperty);
-            set => SetValue(GpsBoundsProperty, value.WrapIfRequired());
+            protected set => SetValue(GpsBoundsProperty, value.WrapIfRequired());
         }
 
         public bool IsVisible
@@ -60,7 +60,7 @@ namespace Xamarin.Forms.SKMaps
             overlay.Invalidate();
         }
 
-        protected void Invalidate()
+        public void Invalidate()
         {
             RequestInvalidate?.Invoke(this, new MapOverlayInvalidateEventArgs(this));
         }
