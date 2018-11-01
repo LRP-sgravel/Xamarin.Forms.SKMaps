@@ -2,11 +2,13 @@
 ## Map pins and overlays for Xamarin.Forms.Maps, drawn with SkiaSharp
 **Xamarin.Forms.SKMaps** allows developers an easier integration of custom map features from a shared code base.  Built over Xamarin.Forms.Maps and adding the strength of SkiaSharp rendering, you get easy and highly performant map drawing features from a single code base.
 
-# Build status
+## Build status
 | Nuget | iOS | Android |
 | ------------- | ------------- | ------------- |
 | [![NuGet](https://img.shields.io/nuget/v/Xamarin.Forms.SKMaps.svg)](https://www.nuget.org/packages/Xamarin.Forms.SKMaps/) | [![Build status](https://build.appcenter.ms/v0.1/apps/0f6577e2-2c35-4491-97b1-e0b0671d5b23/branches/master/badge)](https://appcenter.ms)  | [![Build status](https://build.appcenter.ms/v0.1/apps/f5d64264-dee5-4b06-bfa4-a5fab2633624/branches/master/badge)](https://appcenter.ms)  |
- 
+
+<img alt="Xamarin.Forms.SKMaps Demo" src="./088E2535-1902-47EA-932D-DF9F23A4B8E5.png" width="272" />
+
 # Documentation
 Using Xamarin.Forms.SKMaps is as easy as using a regular Xamarin Forms Maps.  You can use the map control in Xaml or code, following your preference:
 
