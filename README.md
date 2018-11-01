@@ -76,7 +76,7 @@ public override void DrawPin(SKSurface surface)
 To force the pin to be redrawn, you can call the `Invalidate` method.  Changing the `Width` or `Height` will also force a refresh of the pin graphics.
 
 ## Overlays
-The `SKMapOverlay` can be used to add custom "map tile" style overlays.  To do so, add your overlays to the `SKMap` `MapOverlay`property.
+The `SKMapOverlay` can be used to add custom "map tile" style overlays.  To do so, add your overlays to the `SKMap` `MapOverlays`property.
 
 <table>
   <tr>
