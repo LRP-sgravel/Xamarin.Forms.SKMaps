@@ -8,7 +8,7 @@
 | [![NuGet](https://img.shields.io/nuget/v/Xamarin.Forms.SKMaps.svg)](https://www.nuget.org/packages/Xamarin.Forms.SKMaps/) | [![Build status](https://build.appcenter.ms/v0.1/apps/0f6577e2-2c35-4491-97b1-e0b0671d5b23/branches/master/badge)](https://appcenter.ms)  | [![Build status](https://build.appcenter.ms/v0.1/apps/f5d64264-dee5-4b06-bfa4-a5fab2633624/branches/master/badge)](https://appcenter.ms)  |
  
 # Documentation
-Using Xamarin.Forms.SKMaps is as easy as using aregular Xamarin Forms Maps.  You can use the map control in Xaml or code, following your preference:
+Using Xamarin.Forms.SKMaps is as easy as using a regular Xamarin Forms Maps.  You can use the map control in Xaml or code, following your preference:
 
 <table>
   <tr>
@@ -44,7 +44,7 @@ Adding a `SKPin` could not be easier.  It uses the map's regular `Pins` property
 </table>
 
 ### Drawing your pin
-The `CustomPin` class in the above example is the class responsible for rendering the pin marker.  To do so, subclass `SKPin` and override the `DrawPin` method.  You will receive a `SKSurface` to draw on.  This surface will be sized according to its `Width` and `Height` and the device's density.
+The `CustomPin` class in the above example is the class responsible for rendering the pin marker.  To do so, subclass `SKPin` and override the `DrawPin` method.  You will receive a `SKSurface` to draw on.  This surface will be sized according to its `Width`, `Height` and the device's screen density.
 
 ```csharp
 public override void DrawPin(SKSurface surface)
@@ -67,13 +67,13 @@ public override void DrawPin(SKSurface surface)
 | ------------- | ------------- | ------------- |
 | `Width` | The width of the pin, in device independent pixels. | 32 dip |
 | `Height` | The height of the pin, in device independent pixels. | 32 dip |
-| `AnchorX` | Set the pin's anchor X position.  The anchor will be over the pin's position on the map.  This value is in the range { 0...1 } with a value of 0 being on the left. | 0.5 (Center) |
-| `AnchorY` | Set the pin's anchor Y position.  The anchor will be over the pin's position on the map.  This value is in the range { 0...1 } with a value of 0 being on the top. | 0.5 (Center) |
+| `AnchorX` | Set the pin's anchor X position.  The anchor will be over the pin's position on the map.  This value is in the range { 0...1 } with a value of 0 being at the left. | 0.5 (Center) |
+| `AnchorY` | Set the pin's anchor Y position.  The anchor will be over the pin's position on the map.  This value is in the range { 0...1 } with a value of 0 being at the top. | 0.5 (Center) |
 | `IsVisible` | Set the pin's visibility on the map. | true (Visible) |
 | `Clickable` | Set the pin's clickability on the map. | true (Clickable) |
 
 ### Redrawing the pin
-To force the pin to be redrawn, you can call the `Invalidate` method.  Changing the `Width` or `Height` will also force a refresh of the pin graphics.
+To force the pin to be redrawn, you can call the `Invalidate` method.  Changing the `Width` or `Height` will also force a refresh of the pin graphics to accomodate the new size.
 
 ## Overlays
 The `SKMapOverlay` can be used to add custom "map tile" style overlays.  To do so, add your overlays to the `SKMap` `MapOverlays`property.
@@ -93,7 +93,7 @@ The `SKMapOverlay` can be used to add custom "map tile" style overlays.  To do s
 </table>
 
 ### Drawing your overlay
-Similar to the `SKPin`, the `SKMapOverlay` should be subclassed and the overlay is drawn within an override named `DrawOnMap`.  To ease the drawing calculations, all drawing occurs in **GPS coordinates** through the `SKMapCanvas` class and other utility classes like `SKMapPath`.
+Similar to the `SKPin`, the `SKMapOverlay` should be subclassed and the overlay is drawn within an override named `DrawOnMap`.  To ease the drawing calculations, all drawing occurs in **GPS coordinates** through the `SKMapCanvas` class and other utility classes like `SKMapPath`.  The `SKPaint` properties remain in pixels, for instance `StrokeWidth`.
 
 ```csharp
 public override void DrawOnMap(SKMapCanvas canvas, SKMapSpan canvasMapRect, double zoomScale)
@@ -123,13 +123,12 @@ public override void DrawOnMap(SKMapCanvas canvas, SKMapSpan canvasMapRect, doub
 }
 ```
 
-
 #### Notes
-- You should always consider the `canvasMapRect` parameter when doing the render calls to avoid drawing outside of the current rendering area.
-- This method might be called concurently for many tiles, your implementation should therefore be thread-safe.
-- `DrawOnMap` will not be called for tiles outside of your `GpsBounds`.
-- Drawing shapes across the 180th meridian will automatically handle the necessary wrap-around.  In the case of lines, you can opt out and force the long line to be rendered by setting the `shortline` parameter to `false` in the `DrawLine` calls.  Other shapes require passing a `MapSpan` that goes across the 180th meridian, meaning that it would reach longitudes under -180 degrees or above 180 degrees (i.e. A rectangle centered at 179 degrees longitude with a span of 5 degrees).
-
+- You should always consider the `canvasMapRect` parameter when doing the render calls to avoid drawing outside of the current rendering area.  Failure to do so could result in slower performance.
+- This method might be called concurently for many tiles, your implementation therefore needs to be thread-safe.
+- `DrawOnMap` will not be called for tiles outside of your overlay's `GpsBounds`.
+- Drawing shapes across the 180th meridian will automatically handle the necessary wrap-around.  To cross the 180th meridian,  shapes require passing a `MapSpan` that goes across the 180th meridian, meaning that it would reach longitudes under -180 degrees or above 180 degrees (i.e. A rectangle centered at 179 degrees longitude with a span of 5 degrees).
+- In the case of lines, the shortest route between the two provided coordinates is rendered by default. You can opt out and force the long route to be rendered by setting the `shortLine` parameter to `false` in the `DrawLine` calls.
 
 ### Other properties
 `SKMapOverlay` provides other properties to modify it's behavior.
@@ -144,7 +143,7 @@ public override void DrawOnMap(SKMapCanvas canvas, SKMapSpan canvasMapRect, doub
 To force the overlay to be redrawn, you can call the `Invalidate` method.  Alternatively, changing the `GPSBounds`property from within the child class will also force a full refresh of the overlay.
 
 ### Converting coordinates and pixel sizes
-Since the `SKMapOverlay` does all it's drawing operations in pixels but in a GPS coordinate space, you are likely to need to convert to/from pixel sizes to GPS.  A common use-case is wanting to draw a line of a given gps size regardless of the zoom level and position.  **Xamarin.Forms.SKMaps** provides utility methods to do those conversions.  Those methods are available on the `SKMapCanvas` class.
+Since the `SKMapOverlay` does all it's drawing operations in pixels but in a GPS coordinate space, you are likely to need to convert from pixel sizes to GPS spans.  A common use-case is wanting to draw a line of a given GPS size (i.e. 100 meters wide) regardless of the zoom level and position.  **Xamarin.Forms.SKMaps** provides utility methods to do those conversions.  Those methods are available on the `SKMapCanvas` class.
 
 | Method | Purpose |
 | ------------- | ------------- |
