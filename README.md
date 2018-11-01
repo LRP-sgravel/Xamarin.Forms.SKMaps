@@ -22,7 +22,9 @@ Using Xamarin.Forms.SKMaps is as easy as using a regular Xamarin Forms Maps.  Yo
  
 if using Xaml, make sure to include the proper namespace in your root element :
 ```xml
-<ContentPage xmlns:skmap="clr-namespace:Xamarin.Forms.SKMaps;assembly=Xamarin.Forms.SKMaps" >
+<ContentPage xmlns:skmap="clr-namespace:Xamarin.Forms.SKMaps;assembly=Xamarin.Forms.SKMaps">
+  ...
+</ContentPage>
 ```
 
 ## Pins
@@ -61,7 +63,7 @@ public override void DrawPin(SKSurface surface)
 ```
 
 ### Other properties
-`SKPin` provides other properties to modify it's behavior.
+`SKPin` provides other properties to modify it's behavior.  As it subclasses the `Pin` class, you also have access to the regular pin properties.
 
 | Property | Purpose | Default |
 | ------------- | ------------- | ------------- |
