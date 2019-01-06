@@ -1,16 +1,19 @@
 ﻿<Project Sdk="MSBuild.Sdk.Extras/1.2.2">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;net461;Xamarin.iOS10;MonoAndroid81</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;Xamarin.iOS10;MonoAndroid9</TargetFrameworks>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Title>Xamarin Forms Skia drawn maps</Title>
     <PackageIconUrl>https://raw.githubusercontent.com/LRP-sgravel/Xamarin.Forms.SKMaps/master/SKMaps-Icon.png</PackageIconUrl>
     <PackageProjectUrl>https://github.com/LRP-sgravel/Xamarin.Forms.SKMaps</PackageProjectUrl>
-    <Copyright>Le rond-point - 2018</Copyright>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+    <Copyright>2019 Le rond-point</Copyright>
     <Company>Le rond-point</Company>
     <Authors>Sylvain Gravel</Authors>
     <RepositoryUrl>https://github.com/LRP-sgravel/Xamarin.Forms.SKMaps</RepositoryUrl>
-    <Version>1.0.1</Version>
-    <AssemblyVersion>1.0.1.0</AssemblyVersion>
+    <PackageTags>Xamarin, Xamarin.Forms, Android, iOS</PackageTags>
+    <Version>1.0.2</Version>
+    <AssemblyVersion>1.0.2.0</AssemblyVersion>
   </PropertyGroup>
   
   <ItemGroup>
@@ -29,13 +32,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="MathNet.Numerics" Version="4.5.1" />
-    <PackageReference Include="SkiaSharp" Version="1.60.3" />
-    <PackageReference Include="SkiaSharp.Views" Version="1.60.3" />
-    <PackageReference Include="SkiaSharp.Views.Forms" Version="1.60.3" />
+    <PackageReference Include="MathNet.Numerics" Version="4.7.0" />
+    <PackageReference Include="SkiaSharp" Version="1.68.0" />
+    <PackageReference Include="SkiaSharp.Views" Version="1.68.0" />
+    <PackageReference Include="SkiaSharp.Views.Forms" Version="1.68.0" />
     <PackageReference Include="Xamarin.Build.Download" Version="0.4.11" />
-    <PackageReference Include="Xamarin.Forms" Version="2.5.1.527436" />
-    <PackageReference Include="Xamarin.Forms.Maps" Version="2.5.1.527436" />
+    <PackageReference Include="Xamarin.Forms" Version="3.3.0.912540" />
+    <PackageReference Include="Xamarin.Forms.Maps" Version="3.3.0.912540" />
   </ItemGroup>
 
   <ItemGroup>
