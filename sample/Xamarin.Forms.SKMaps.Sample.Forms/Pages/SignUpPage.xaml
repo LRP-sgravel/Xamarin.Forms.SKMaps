@@ -9,7 +9,7 @@
                      xmlns:markup="clr-namespace:Xamarin.Forms.SKMaps.Sample.Forms.Markup;assembly=Xamarin.Forms.SKMaps.Sample.Forms"
                      x:Class="Xamarin.Forms.SKMaps.Sample.Forms.Pages.SignUpPage"
                      Title="{markup:LocalizedText SigningUp}"
-                     x:Name="SignUpPage">
+                     x:Name="SignUpPageRoot">
     <ScrollView>
         <Grid RowSpacing="3">
             <Grid.RowDefinitions>
@@ -88,7 +88,7 @@
                                        BorderWidth="4"
                                        Text="{markup:LocalizedText LetsRide}"
                                        Command="{Binding RegisterAthleteCommand}"
-                                       CommandParameter="{Binding Source={x:Reference SignUpPage}, Path=CurrentErrors}"/>
+                                       CommandParameter="{Binding Source={x:Reference SignUpPageRoot}, Path=CurrentErrors}"/>
         </Grid>
     </ScrollView>
 </mvx:MvxContentPage>
