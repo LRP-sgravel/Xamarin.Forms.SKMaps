@@ -22,7 +22,7 @@ namespace Xamarin.Forms.SKMaps.Sample.Forms
         {
             base.OnStart();
 
-            TextProviderBuilder builder = Mvx.Resolve<IMvxTextProviderBuilder>() as TextProviderBuilder;
+            TextProviderBuilder builder = Mvx.IoCProvider.Resolve<IMvxTextProviderBuilder>() as TextProviderBuilder;
 
             builder.RegisterExtraTextKeys(new Dictionary<string, string>
                                           {

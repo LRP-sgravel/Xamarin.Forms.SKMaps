@@ -19,7 +19,7 @@ namespace Xamarin.Forms.SKMaps.Sample.Extensions
     {
         public static string ToShortText(this DistanceUnit self)
         {
-            IMvxTextProvider textProvider = Mvx.Resolve<IMvxTextProvider>();
+            IMvxTextProvider textProvider = Mvx.IoCProvider.Resolve<IMvxTextProvider>();
             string textId = string.Empty;
 
             switch (self)
@@ -40,7 +40,7 @@ namespace Xamarin.Forms.SKMaps.Sample.Extensions
 
         public static string ToShortSpeedText(this DistanceUnit self)
         {
-            IMvxTextProvider textProvider = Mvx.Resolve<IMvxTextProvider>();
+            IMvxTextProvider textProvider = Mvx.IoCProvider.Resolve<IMvxTextProvider>();
             string textId = string.Empty;
 
             switch (self)

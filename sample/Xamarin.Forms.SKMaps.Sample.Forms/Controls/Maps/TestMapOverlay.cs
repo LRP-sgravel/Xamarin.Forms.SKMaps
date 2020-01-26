@@ -106,7 +106,7 @@ namespace Xamarin.Forms.SKMaps.Sample.Forms.Controls.Maps
             paint.Color = Color.Black.ToSKColor();
             canvas.DrawRect(GpsBounds, paint);
 
-            IResourceLocator resLocator = Mvx.Resolve<IResourceLocator>();
+            IResourceLocator resLocator = Mvx.IoCProvider.Resolve<IResourceLocator>();
             string resPath = resLocator.GetResourcePath(ResourceKeys.ImagesKey, "symbol_logo.svg");
             SKSvg logoSvg = new SKSvg();
             logoSvg.Load(resLocator.ResourcesAssembly.GetManifestResourceStream(resPath));

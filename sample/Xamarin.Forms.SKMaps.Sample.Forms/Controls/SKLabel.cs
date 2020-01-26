@@ -59,7 +59,7 @@ namespace Xamarin.Forms.SKMaps.Sample.Forms.Controls
         public SKLabel()
         {
             _Paint = new SKPaint();
-            _resourceLocator = Mvx.Resolve<IResourceLocator>();
+            _resourceLocator = Mvx.IoCProvider.Resolve<IResourceLocator>();
         }
 
         ~SKLabel()

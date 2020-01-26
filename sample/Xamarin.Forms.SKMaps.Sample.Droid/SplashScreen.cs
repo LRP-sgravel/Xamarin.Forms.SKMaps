@@ -8,6 +8,8 @@
 //   Copyright (c) 2017, Le rond-point
 // 
 // ***********************************************************************
+
+using System.Threading.Tasks;
 using Android.App;
 using Android.OS;
 using Xamarin.Forms.SKMaps.Sample.Forms;
@@ -25,22 +27,22 @@ namespace Xamarin.Forms.SKMaps.Sample.Android
               NoHistory = true)]
     public class SplashScreen : MvxFormsSplashScreenAppCompatActivity<Setup, MvxApp, FormsApp>
     {
-        public SplashScreen() : base(Resource.Layout.SplashScreen)
+        public SplashScreen() : base(Resource.Layout.splashscreen)
         {
         }
 
         protected override void OnCreate(Bundle bundle)
         {
-            UserDialogs.Init(() => MvxEntry.Resolve<IMvxAndroidCurrentTopActivity>().Activity);
+            UserDialogs.Init(() => MvxEntry.IoCProvider.Resolve<IMvxAndroidCurrentTopActivity>().Activity);
 
             base.OnCreate(bundle);
         }
 
-        protected override void RunAppStart(Bundle bundle)
+        protected override Task RunAppStartAsync(Bundle bundle)
         {
             StartActivity(typeof(MainActivity));
 
-            base.RunAppStart(bundle);
+            return base.RunAppStartAsync(bundle);
         }
     }
 }

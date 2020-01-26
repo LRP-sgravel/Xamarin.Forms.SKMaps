@@ -9,7 +9,6 @@
 // 
 // ***********************************************************************
 
-using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
@@ -25,12 +24,13 @@ using Xamarin.Forms.SKMaps;
 using Xamarin.Forms.SKMaps.Platforms.Android.UI.Renderers;
 using Xamarin.Forms.Platform.Android;
 using Xamarin.Forms.Maps;
+using Xamarin.Forms.Maps.Android;
 using static Android.Gms.Maps.GoogleMap;
 
 [assembly: ExportRenderer(typeof(SKMap), typeof(SKMapRenderer))]
 namespace Xamarin.Forms.SKMaps.Platforms.Android.UI.Renderers
 {
-    internal class SKMapRenderer : XamarinMapRenderer, IOnMarkerClickListener
+    internal class SKMapRenderer : MapRenderer, IOnMarkerClickListener
     {
         private SKMap _SharedControl => Element as SKMap;
         private MapView _NativeControl => Control as MapView;
@@ -111,7 +111,7 @@ namespace Xamarin.Forms.SKMaps.Platforms.Android.UI.Renderers
         private void OnPinPropertyChanged(object sender, PropertyChangedEventArgs args)
         {
             SKPin pin = sender as SKPin;
-            Marker marker = FindMarkerForPin(pin);
+            Marker marker = GetMarkerForPin(pin);
 
             if (pin != null)
             {
@@ -135,7 +135,7 @@ namespace Xamarin.Forms.SKMaps.Platforms.Android.UI.Renderers
         private void OnPinInvalidateRequested(object sender, SKPin.MapMarkerInvalidateEventArgs args)
         {
             SKPin pin = sender as SKPin;
-            Marker marker = FindMarkerForPin(pin);
+            Marker marker = GetMarkerForPin(pin);
 
             UpdateMarkerIcon(pin, marker);
         }

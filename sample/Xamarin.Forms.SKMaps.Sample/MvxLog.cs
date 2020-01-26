@@ -16,7 +16,7 @@ namespace Xamarin.Forms.SKMaps.Sample
 {
     public class MvxLog
     {
-        public static IMvxLog Instance => MvxEntry.Resolve<IMvxLogProvider>()
-                                                  .GetLogFor<MvxLog>();
+        public static IMvxLog Instance => MvxEntry.IoCProvider.Resolve<IMvxLogProvider>()
+                                                              .GetLogFor<MvxLog>();
     }
 }

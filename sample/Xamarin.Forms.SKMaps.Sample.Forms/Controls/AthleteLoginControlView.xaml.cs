@@ -126,7 +126,7 @@ namespace Xamarin.Forms.SKMaps.Sample.Forms.Controls
 
             _ClosedHeightRequest = HeightRequest;
 
-            InternalViewModel = Mvx.IocConstruct<AthleteLoginControlViewModel>();
+            InternalViewModel = Mvx.IoCProvider.IoCConstruct<AthleteLoginControlViewModel>();
             InternalViewModel.Start();
         }
 

@@ -163,7 +163,7 @@ namespace Xamarin.Forms.SKMaps.Sample.ViewModels
         {
             if (_Recorder == null)
             {
-                _Recorder = Mvx.Resolve<IRouteRecorder>();
+                _Recorder = Mvx.IoCProvider.Resolve<IRouteRecorder>();
 
                 try
                 {

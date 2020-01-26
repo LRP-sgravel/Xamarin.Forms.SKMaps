@@ -1,6 +1,6 @@
 ﻿// **********************************************************************
 // 
-//   SignUpPage.xaml.cs
+//   SignUpViewModel.cs
 //   
 //   This file is subject to the terms and conditions defined in
 //   file 'LICENSE.txt', which is part of this source code package.
@@ -139,7 +139,7 @@ namespace Xamarin.Forms.SKMaps.Sample.ViewModels
             return MainThread.ExecuteOnMainThreadAsync(async () =>
                 {
                     Stream pictureStream;
-                    IMvxPictureChooserTask pictureChooser = Mvx.Resolve<IMvxPictureChooserTask>();
+                    IMvxPictureChooserTask pictureChooser = Mvx.IoCProvider.Resolve<IMvxPictureChooserTask>();
 
                     try
                     {

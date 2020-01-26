@@ -14,7 +14,7 @@ namespace Xamarin.Forms.SKMaps.Sample.Services
             get
             {
                 if (_textProvider == null)
-                    _textProvider = Mvx.Resolve<IMvxTextProvider>();
+                    _textProvider = Mvx.IoCProvider.Resolve<IMvxTextProvider>();
 
                 return _textProvider;
             }
@@ -31,7 +31,7 @@ namespace Xamarin.Forms.SKMaps.Sample.Services
             {
                 if (_textBuilder == null)
                 {
-                    _textBuilder = Mvx.Resolve<IMvxTextProviderBuilder>() as TextProviderBuilder;
+                    _textBuilder = Mvx.IoCProvider.Resolve<IMvxTextProviderBuilder>() as TextProviderBuilder;
                 }
 
                 return _textBuilder;

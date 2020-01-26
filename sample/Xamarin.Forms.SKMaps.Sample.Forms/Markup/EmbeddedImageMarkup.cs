@@ -19,7 +19,7 @@ namespace Xamarin.Forms.SKMaps.Sample.Forms.Markup
 
             if (Source != null)
             {
-                IResourceLocator resLocator = Mvx.Resolve<IResourceLocator>();
+                IResourceLocator resLocator = Mvx.IoCProvider.Resolve<IResourceLocator>();
 
                 if (resLocator == null || resLocator.ResourcesAssembly == null || !resLocator.HasPath(ResourceKeys.ImagesKey))
                 {

@@ -31,7 +31,7 @@ namespace Xamarin.Forms.SKMaps.Sample.Services
         private Dictionary<string, string> _ExtraTextKeys { get; set; } = new Dictionary<string, string>();
 
         public TextProviderBuilder(string textFolder, string defaultTypeKey)
-            : base(Mvx.Resolve<IResourceLocator>().ResourcesNamespace, textFolder, new MvxEmbeddedJsonDictionaryTextProvider(false))
+            : base(Mvx.IoCProvider.Resolve<IResourceLocator>().ResourcesNamespace, textFolder, new MvxEmbeddedJsonDictionaryTextProvider(false))
         {
             _DefaultTypeKey = defaultTypeKey;
 
@@ -65,7 +65,7 @@ namespace Xamarin.Forms.SKMaps.Sample.Services
 
                 if (LanguageResourcesLoaded != null)
                 {
-                    Mvx.Resolve<IMvxMainThreadAsyncDispatcher>().ExecuteOnMainThreadAsync(() => LanguageResourcesLoaded?.Invoke(this, EventArgs.Empty));
+                    Mvx.IoCProvider.Resolve<IMvxMainThreadAsyncDispatcher>().ExecuteOnMainThreadAsync(() => LanguageResourcesLoaded?.Invoke(this, EventArgs.Empty));
                 }
 
                 return dictionary;
@@ -74,12 +74,12 @@ namespace Xamarin.Forms.SKMaps.Sample.Services
 
         private void BuildViewModelsTextKeys()
         {
-            IEnumerable<TypeInfo> localizedViewModelTypes = Mvx.Resolve<IResourceLocator>()
-                                                               .ResourcesAssembly
-                                                               .DefinedTypes
-                                                               .Where(t => t.IsSubclassOf(typeof(MvxViewModel)));
-            string namespacePrefix = Mvx.Resolve<IResourceLocator>()
-                                        .ResourcesNamespace + ".";
+            IEnumerable<TypeInfo> localizedViewModelTypes = Mvx.IoCProvider.Resolve<IResourceLocator>()
+                                                                           .ResourcesAssembly
+                                                                           .DefinedTypes
+                                                                           .Where(t => t.IsSubclassOf(typeof(MvxViewModel)));
+            string namespacePrefix = Mvx.IoCProvider.Resolve<IResourceLocator>()
+                                                    .ResourcesNamespace + ".";
 
             _LocalizedTextKeys = new Dictionary<string, string>();
             foreach (TypeInfo type in localizedViewModelTypes)

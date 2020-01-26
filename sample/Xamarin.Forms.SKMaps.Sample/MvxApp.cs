@@ -1,6 +1,6 @@
 ﻿// **********************************************************************
 // 
-//   App.cs
+//   MvxApp.cs
 //   
 //   This file is subject to the terms and conditions defined in
 //   file 'LICENSE.txt', which is part of this source code package.
@@ -20,7 +20,6 @@ using MvvmCross.IoC;
 using MvvmCross.Plugin.JsonLocalization;
 using MvvmCross.ViewModels;
 using SimpleCrypto;
-using System.Globalization;
 using Xamarin.Forms.SKMaps.Sample.ViewModels;
 using Xamarin.Forms.SKMaps.Sample.Models;
 using Realms;
@@ -56,19 +55,19 @@ namespace Xamarin.Forms.SKMaps.Sample
 
         private void InitializeServices()
         {
-            Mvx.LazyConstructAndRegisterSingleton<ICryptoService, PBKDF2>();
-            Mvx.RegisterSingleton<ILocationTracker>(InitializeLocationTracker);
-            Mvx.RegisterSingleton<IResourceLocator>(InitializeResources);
-            Mvx.RegisterSingleton<IUserDialogs>(UserDialogs.Instance);
-            Mvx.RegisterSingleton<ISettings>(CrossSettings.Current);
-            Mvx.RegisterType<IRouteRecorder, RouteRecorder>();
+            Mvx.IoCProvider.LazyConstructAndRegisterSingleton<ICryptoService, PBKDF2>();
+            Mvx.IoCProvider.RegisterSingleton<ILocationTracker>(InitializeLocationTracker);
+            Mvx.IoCProvider.RegisterSingleton<IResourceLocator>(InitializeResources);
+            Mvx.IoCProvider.RegisterSingleton<IUserDialogs>(UserDialogs.Instance);
+            Mvx.IoCProvider.RegisterSingleton<ISettings>(CrossSettings.Current);
+            Mvx.IoCProvider.RegisterType<IRouteRecorder, RouteRecorder>();
 
-            Mvx.CallbackWhenRegistered<IMvxMainThreadAsyncDispatcher>(InitializeText);
+            Mvx.IoCProvider.CallbackWhenRegistered<IMvxMainThreadAsyncDispatcher>(InitializeText);
         }
 
         private ILocationTracker InitializeLocationTracker()
         {
-            ILocationTracker tracker = Mvx.IocConstruct<LocationTracker>();
+            ILocationTracker tracker = Mvx.IoCProvider.IoCConstruct<LocationTracker>();
 
             tracker.Start(3, 2, false);
 
@@ -92,8 +91,8 @@ namespace Xamarin.Forms.SKMaps.Sample
         {
             TextProviderBuilder builder = new TextProviderBuilder(Constants.RootTextFolder, Constants.DefaultTextTypeKey);
 
-            Mvx.RegisterSingleton<IMvxTextProviderBuilder>(builder);
-            Mvx.RegisterSingleton<IMvxTextProvider>(builder.TextProvider);
+            Mvx.IoCProvider.RegisterSingleton<IMvxTextProviderBuilder>(builder);
+            Mvx.IoCProvider.RegisterSingleton<IMvxTextProvider>(builder.TextProvider);
         }
     }
 }

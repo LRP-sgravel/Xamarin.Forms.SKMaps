@@ -35,9 +35,9 @@ namespace Xamarin.Forms.SKMaps.Sample.Android
         {
             base.InitializePlatformServices();
 
-            MvxEntry.RegisterSingleton<IDocumentRoot>(MvxEntry.IocConstruct<DocumentRoot>);
+            MvxEntry.IoCProvider.RegisterSingleton<IDocumentRoot>(MvxEntry.IoCProvider.IoCConstruct<DocumentRoot>);
 
-            MvxEntry.CallbackWhenRegistered<IMvxMainThreadAsyncDispatcher>(SetupFlurry);
+            MvxEntry.IoCProvider.CallbackWhenRegistered<IMvxMainThreadAsyncDispatcher>(SetupFlurry);
         }
 
         private void SetupFlurry()

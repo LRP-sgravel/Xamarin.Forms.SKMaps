@@ -68,7 +68,7 @@ namespace Xamarin.Forms.SKMaps.Sample.Forms.Controls
 
         static CircledImageView()
         {
-            IResourceLocator resLocator = Mvx.Resolve<IResourceLocator>();
+            IResourceLocator resLocator = Mvx.IoCProvider.Resolve<IResourceLocator>();
             string resPath = resLocator.GetResourcePath(ResourceKeys.ImagesKey, "symbol_logo.svg");
 
             DefaultImage = new SKSvg();

@@ -81,7 +81,7 @@ namespace Xamarin.Forms.SKMaps.Sample.Forms.Controls
 
         public QuickStatsBanner()
         {
-            IMvxTextProvider textProvider = Mvx.Resolve<IMvxTextProvider>();
+            IMvxTextProvider textProvider = Mvx.IoCProvider.Resolve<IMvxTextProvider>();
             InitializeComponent();
 
             SpeedHeaderLabel.Text = textProvider.GetText(Constants.GeneralNamespace, nameof(QuickStatsBanner), "Speed");
@@ -147,7 +147,7 @@ namespace Xamarin.Forms.SKMaps.Sample.Forms.Controls
         public void UpdateStartStopIcon()
         {
             string iconName = IsActivityRunning ? "stop.svg" : "play.svg";
-            IResourceLocator resLocator = Mvx.Resolve<IResourceLocator>();
+            IResourceLocator resLocator = Mvx.IoCProvider.Resolve<IResourceLocator>();
             string resourceFullName = resLocator.GetResourcePath(ResourceKeys.ImagesKey, iconName);
 
             StartStopImage.Source = ImageSource.FromResource(resourceFullName, resLocator.ResourcesAssembly);
