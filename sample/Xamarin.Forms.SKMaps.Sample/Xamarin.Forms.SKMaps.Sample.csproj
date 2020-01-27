@@ -52,14 +52,15 @@
     <PackageReference Include="Acr.Settings" Version="9.0.0" />
     <PackageReference Include="Acr.UserDialogs" Version="7.0.1" />
     <PackageReference Include="Fody" Version="2.4.6" />
-    <PackageReference Include="Microsoft.NETCore.Platforms" Version="2.1.0" />
-    <PackageReference Include="MvvmCross" Version="6.2.3" />
-    <PackageReference Include="MvvmCross.Plugin.File" Version="6.2.3" />
-    <PackageReference Include="MvvmCross.Plugin.Json" Version="6.2.3" />
-    <PackageReference Include="MvvmCross.Plugin.JsonLocalization" Version="6.2.3" />
-    <PackageReference Include="MvvmCross.Plugin.Location" Version="6.2.3" />
-    <PackageReference Include="MvvmCross.Plugin.PictureChooser" Version="6.2.3" />
-    <PackageReference Include="MvvmCross.Plugin.ResourceLoader" Version="6.2.3" />
+    <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
+    <PackageReference Include="Microsoft.NETCore.Platforms" Version="3.1.0" />
+    <PackageReference Include="MvvmCross" Version="6.4.2" />
+    <PackageReference Include="MvvmCross.Plugin.File" Version="6.4.2" />
+    <PackageReference Include="MvvmCross.Plugin.Json" Version="6.4.2" />
+    <PackageReference Include="MvvmCross.Plugin.JsonLocalization" Version="6.4.2" />
+    <PackageReference Include="MvvmCross.Plugin.Location" Version="6.4.2" />
+    <PackageReference Include="MvvmCross.Plugin.PictureChooser" Version="6.4.2" />
+    <PackageReference Include="MvvmCross.Plugin.ResourceLoader" Version="6.4.2" />
     <PackageReference Include="Plugin.Permissions" Version="3.0.0.12" />
     <PackageReference Include="Realm" Version="3.0.0" />
     <PackageReference Include="Realm.Database" Version="3.0.0" />
@@ -74,7 +75,7 @@
     <PackageReference Include="System.Security.Cryptography.Algorithms" Version="4.3.1" />
     <PackageReference Include="System.Security.Cryptography.X509Certificates" Version="4.3.2" />
     <PackageReference Include="System.Xml.ReaderWriter" Version="4.3.1" />
-    <PackageReference Include="Xamarin.Build.Download" Version="0.4.11" />
+    <PackageReference Include="Xamarin.Build.Download" Version="0.8.0" />
   </ItemGroup>
 
   <ItemGroup>

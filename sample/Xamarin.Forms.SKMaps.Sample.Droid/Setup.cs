@@ -31,9 +31,9 @@ namespace Xamarin.Forms.SKMaps.Sample.Android
             };
         }
         
-        protected override void InitializePlatformServices()
+        protected override void InitializeFirstChance()
         {
-            base.InitializePlatformServices();
+            base.InitializeFirstChance();
 
             MvxEntry.IoCProvider.RegisterSingleton<IDocumentRoot>(MvxEntry.IoCProvider.IoCConstruct<DocumentRoot>);
 
