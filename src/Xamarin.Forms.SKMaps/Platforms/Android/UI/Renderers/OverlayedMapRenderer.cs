@@ -281,12 +281,15 @@ namespace Xamarin.Forms.SKMaps.Platforms.Android.UI.Renderers
 
         private void AddTrackerForOverlay(SKMapOverlay sharedOverlay)
         {
-            OverlayTrackerTileProvider tracker = new OverlayTrackerTileProvider(Context, NativeMap, sharedOverlay);
-            TileOverlayOptions overlayOptions = new TileOverlayOptions().InvokeTileProvider(tracker);
-            TileOverlay overlay = NativeMap.AddTileOverlay(overlayOptions);
+            if (NativeMap != null)
+            {
+                OverlayTrackerTileProvider tracker = new OverlayTrackerTileProvider(Context, NativeMap, sharedOverlay);
+                TileOverlayOptions overlayOptions = new TileOverlayOptions().InvokeTileProvider(tracker);
+                TileOverlay overlay = NativeMap.AddTileOverlay(overlayOptions);
 
-            tracker.TileOverlay = overlay;
-            _TileTrackers.Add(tracker);
+                tracker.TileOverlay = overlay;
+                _TileTrackers.Add(tracker);
+            }
         }
 
         private void RemoveTracker(OverlayTrackerTileProvider tracker)

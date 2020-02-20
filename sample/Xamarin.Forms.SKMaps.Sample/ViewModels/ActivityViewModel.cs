@@ -151,6 +151,10 @@ namespace Xamarin.Forms.SKMaps.Sample.ViewModels
 
             _locationChangedSubscription = LocationTracker.WeakSubscribe<ILocationTracker, LocationMovedEventArgs>(nameof(LocationTracker.Moved),
                                                                                                                    UserLocationUpdated);
+            if (LocationTracker.IsTracking)
+            {
+                UserLocationUpdated(this, new LocationMovedEventArgs {Location = LocationTracker.Location});
+            }
         }
 
         public override void Prepare(string athleteId)
